@@ -24,11 +24,16 @@ public abstract class Organization {
     private static int counter=0;
     
     public enum Type{
-        RestaurantAdmin("RestaurantAdmin"),
+        Manager("Manager"),
         Customer("Customer"),
         DeliveryMan("Delivery"),
         SysAdmin("Sysadmin"),
-        Doctor("Doctor");
+        FactoryWorker("FactoryWorker"),
+        Doctor("Doctor"),
+        Nurse("Nurse"),
+        LabTechnician("LabTechnician"),
+        LabSupervisor("LabSupervisor"),
+        SupplyManager("SupplyManager");
         
         private String value;
         private Type(String value) {
