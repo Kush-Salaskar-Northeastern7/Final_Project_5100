@@ -12,13 +12,11 @@ import userinterface.DeliveryManRole.DeliveryManWorkAreaJPanel;
 
 /**
  *
- * @author harold
+ * @author anushka
  */
-public class DeliverManRole extends Role {
-
+public class NurseRole extends Role{
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
         return new DeliveryManWorkAreaJPanel(userProcessContainer,account,business);//To change body of generated methods, choose Tools | Templates.
     }
-    
 }

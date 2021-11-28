@@ -52,6 +52,15 @@ public class MainJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void loginJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginJButtonActionPerformed
+        // Get user name
+    }//GEN-LAST:event_loginJButtonActionPerformed
+
+    private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
+ 
+    }//GEN-LAST:event_logoutJButtonActionPerformed
+
+
     /**
      * @param args the command line arguments
      */
