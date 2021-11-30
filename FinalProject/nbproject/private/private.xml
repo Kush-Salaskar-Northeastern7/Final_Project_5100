@@ -3,23 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/MainJFrame.java</file>
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/Business/DB4OUtil/DB4OUtil.java</file>
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/Business/Role/DoctorRole.java</file>
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/LoginScreen.java</file>
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/SystemAdminWorkArea/SystemAdminWorkAreaJPanel.java</file>
-=======
-            <file>file:/Users/anushka/Final_Project_5100/FinalProject/src/Business/DeliveryMan/DeliveryMan.java</file>
-            <file>file:/Users/anushka/Final_Project_5100/FinalProject/src/Business/Restaurant/RestaurantDirectory.java</file>
-            <file>file:/Users/anushka/Final_Project_5100/FinalProject/src/Business/FactoryWorker/FactoryWorker.java</file>
-            <file>file:/Users/anushka/Final_Project_5100/FinalProject/src/Business/Employee/EmployeeDirectory.java</file>
-            <file>file:/Users/anushka/Final_Project_5100/FinalProject/src/Business/FactoryWorker/FactoryWorkerDirectory.java</file>
-            <file>file:/Users/anushka/Final_Project_5100/FinalProject/src/Business/Restaurant/Restaurant.java</file>
-            <file>file:/Users/anushka/Final_Project_5100/FinalProject/src/userinterface/LoginScreen.java</file>
-            <file>file:/Users/anushka/Final_Project_5100/FinalProject/src/userinterface/MainJFrame.java</file>
-            <file>file:/Users/anushka/Final_Project_5100/FinalProject/src/Business/DeliveryMan/DeliveryManDirectory.java</file>
->>>>>>> 56980321d12a5481939ce864de31e93df2b53ee9
         </group>
     </open-files>
 </project-private>
