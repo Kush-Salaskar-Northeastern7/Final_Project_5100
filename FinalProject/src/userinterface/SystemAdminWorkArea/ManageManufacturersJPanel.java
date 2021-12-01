@@ -8,6 +8,7 @@ package userinterface.SystemAdminWorkArea;
 import Business.EcoSystem;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.util.Random;
 import javax.swing.JPanel;
 import userinterface.LoginScreen;
 
@@ -255,6 +256,9 @@ public class ManageManufacturersJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        Random random = new Random();
+        int uid = random.nextInt(1000000);
+        System.out.println(uid);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
