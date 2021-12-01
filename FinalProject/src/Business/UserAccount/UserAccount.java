@@ -19,9 +19,18 @@ public class UserAccount {
     private Employee employee;
     private Role role;
     private WorkQueue workQueue;
+    private int uid;
 
     public UserAccount() {
         workQueue = new WorkQueue();
+    }
+
+    public int getUid() {
+        return uid;
+    }
+
+    public void setUid(int uid) {
+        this.uid = uid;
     }
     
     
