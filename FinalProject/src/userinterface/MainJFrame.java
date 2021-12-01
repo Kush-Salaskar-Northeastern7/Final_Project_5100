@@ -28,7 +28,7 @@ public class MainJFrame extends javax.swing.JFrame {
     public MainJFrame() {
         initComponents();
         system = dB4OUtil.retrieveSystem();
-        this.setSize(1680, 1050);
+        this.setSize(1480, 800);
         
         setLoginScreen();
     }
