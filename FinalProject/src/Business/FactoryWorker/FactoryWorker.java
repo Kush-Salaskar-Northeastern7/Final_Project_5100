@@ -5,10 +5,35 @@
  */
 package Business.FactoryWorker;
 
+import Business.UserAccount.UserAccount;
+
 /**
  *
  * @author anushka
  */
 public class FactoryWorker {
+    private String fwName;
+    private UserAccount userAccount;
+    
+    public FactoryWorker(){
+        userAccount = new UserAccount();
+    }
+
+    public String getFwName() {
+        return fwName;
+    }
+
+    public void setFwName(String fwName) {
+        this.fwName = fwName;
+    }
+
+    public UserAccount getUserAccount() {
+        return userAccount;
+    }
+
+    public void setUserAccount(UserAccount userAccount) {
+        this.userAccount = userAccount;
+    }
+    
     
 }

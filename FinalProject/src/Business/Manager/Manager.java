@@ -3,28 +3,28 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Business.LabTechnician;
+package Business.Manager;
 
 import Business.UserAccount.UserAccount;
 
 /**
  *
- * @author anushka
+ * @author kushsalaskar
  */
-public class LabTechnician {
-    private String ltName;
-    private UserAccount userAccount;
-    
-    public LabTechnician(){
-        userAccount = new UserAccount();
+public class Manager {
+   private String managerName;
+   private UserAccount userAccount;
+   
+   public Manager(){
+       userAccount = new UserAccount();
+   }
+
+    public String getManagerName() {
+        return managerName;
     }
 
-    public String getLtName() {
-        return ltName;
-    }
-
-    public void setLtName(String ltName) {
-        this.ltName = ltName;
+    public void setManagerName(String managerName) {
+        this.managerName = managerName;
     }
 
     public UserAccount getUserAccount() {
@@ -34,6 +34,5 @@ public class LabTechnician {
     public void setUserAccount(UserAccount userAccount) {
         this.userAccount = userAccount;
     }
-    
-    
+   
 }

@@ -5,6 +5,7 @@
  */
 package Business.FactoryWorker;
 
+import Business.UserAccount.UserAccount;
 import java.util.ArrayList;
 
 /**
@@ -22,11 +23,20 @@ public class FactoryWorkerDirectory {
         return factoryWorkerList;
     }
     
-    public FactoryWorker createFactoryWorker(){
+    public FactoryWorker createFactoryWorker(String fwName, UserAccount ua){
         FactoryWorker factoryworker = new FactoryWorker();
-        
+        factoryworker.setFwName(fwName);
+        factoryworker.setUserAccount(ua);
         factoryWorkerList.add(factoryworker);
         return factoryworker;
+    }
+
+    public void setFactoryWorkerList(ArrayList<FactoryWorker> factoryWorkerList) {
+        this.factoryWorkerList = factoryWorkerList;
+    }
+    
+    public void deleteFactoryWorker(FactoryWorker fw){
+        factoryWorkerList.remove(fw);
     }
     
     

@@ -5,10 +5,37 @@
  */
 package Business.LabSupervisor;
 
+import Business.UserAccount.UserAccount;
+import java.util.ArrayList;
+
 /**
  *
  * @author anushka
  */
 public class LabSupervisorDirectory {
+    private ArrayList<LabSupervisor> labSupervisorList;
     
+    public LabSupervisorDirectory(){
+        labSupervisorList = new ArrayList<>();
+    }
+    
+    public ArrayList<LabSupervisor> getLabSupervisorList() {
+        return labSupervisorList;
+    }
+
+    public void setLabSupervisorList(ArrayList<LabSupervisor> labSupervisorList) {
+        this.labSupervisorList = labSupervisorList;
+    }
+    
+    public LabSupervisor addLabSupervisor(String name, UserAccount ua){
+        LabSupervisor ls = new LabSupervisor();
+        ls.setLsName(name);
+        ls.setUserAccount(ua);
+        labSupervisorList.add(ls);
+        return ls;
+    }
+    
+    public void deleteLabSupervisor(LabSupervisor ls){
+        labSupervisorList.remove(ls);
+    }
 }

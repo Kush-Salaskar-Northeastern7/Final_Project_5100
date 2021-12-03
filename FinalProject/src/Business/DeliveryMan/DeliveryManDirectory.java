@@ -5,10 +5,37 @@
  */
 package Business.DeliveryMan;
 
+import Business.UserAccount.UserAccount;
+import java.util.ArrayList;
+
 /**
  *
  * @author harold
  */
 public class DeliveryManDirectory {
+    private ArrayList<DeliveryMan> deliveryManList;
     
+    public DeliveryManDirectory(){
+        deliveryManList = new ArrayList<DeliveryMan>();
+    }
+
+    public ArrayList<DeliveryMan> getDeliveryManList() {
+        return deliveryManList;
+    }
+
+    public void setDeliveryManList(ArrayList<DeliveryMan> deliveryManList) {
+        this.deliveryManList = deliveryManList;
+    }
+    
+    public DeliveryMan createDeliveryMan(String name, UserAccount ua){
+        DeliveryMan dm = new DeliveryMan();
+        dm.setDeliveryManName(name);
+        dm.setUserAccount(ua);
+        deliveryManList.add(dm);
+        return dm;
+    }
+    
+    public void deleteDeliveryMan(DeliveryMan dm){
+        deliveryManList.remove(dm);
+    }
 }

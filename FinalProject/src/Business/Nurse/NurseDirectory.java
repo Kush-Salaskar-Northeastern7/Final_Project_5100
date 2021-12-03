@@ -5,6 +5,7 @@
  */
 package Business.Nurse;
 
+import Business.UserAccount.UserAccount;
 import java.util.ArrayList;
 
 /**
@@ -22,13 +23,20 @@ public class NurseDirectory {
     public ArrayList<Nurse> getNurseList() {
         return nurseList;
     }
+
+    public void setNurseList(ArrayList<Nurse> nurseList) {
+        this.nurseList = nurseList;
+    }
     
-    public Nurse createNurse(){
+    public Nurse createNurse(String name, UserAccount ua){
         Nurse nurse = new Nurse();
-        
+        nurse.setNurseName(name);
+        nurse.setUserAccount(ua);
         nurseList.add(nurse);
         return nurse;
     }
     
-    
+    public void deleteNurse(Nurse n){
+        nurseList.remove(n);
+    }
 }
