@@ -5,10 +5,17 @@
  */
 package Business.Doctor;
 
+import Business.UserAccount.UserAccount;
+
 /**
  *
  * @author anushka
  */
 public class Doctor {
+    private String docName;
+    private UserAccount userAccount;
     
+    public Doctor(){
+        userAccount = new UserAccount();
+    }
 }
