@@ -34,4 +34,8 @@ public class LabSupervisorDirectory {
         labSupervisorList.add(ls);
         return ls;
     }
+    
+    public void deleteLabSupervisor(LabSupervisor ls){
+        labSupervisorList.remove(ls);
+    }
 }
