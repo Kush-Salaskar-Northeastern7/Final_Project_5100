@@ -5,10 +5,37 @@
  */
 package Business.Doctor;
 
+import Business.UserAccount.UserAccount;
+import java.util.ArrayList;
+
 /**
  *
  * @author anushka
  */
 public class DoctorDirectory {
+    private ArrayList<Doctor> doctorList;
     
+    public DoctorDirectory(){
+        doctorList = new ArrayList<Doctor>();
+    }
+
+    public ArrayList<Doctor> getDoctorList() {
+        return doctorList;
+    }
+
+    public void setDoctorList(ArrayList<Doctor> doctorList) {
+        this.doctorList = doctorList;
+    }
+    
+    public Doctor addDoctor(String name, UserAccount ua){
+        Doctor d = new Doctor();
+        d.setDocName(name);
+        d.setUserAccount(ua);
+        doctorList.add(d);
+        return d;
+    }
+    
+    public void deleteDoctor(Doctor d){
+        doctorList.remove(d);
+    }
 }
