@@ -38,6 +38,8 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         lblSelectedNode = new javax.swing.JLabel();
         button1 = new java.awt.Button();
         button2 = new java.awt.Button();
+        button3 = new java.awt.Button();
+        button4 = new java.awt.Button();
 
         setBackground(new java.awt.Color(255, 102, 102));
 
@@ -67,7 +69,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
 
         button1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         button1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        button1.setLabel("Manage Factory Workers");
+        button1.setLabel("Manage Manufacturers");
         button1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 button1ActionPerformed(evt);
@@ -76,7 +78,15 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
 
         button2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         button2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        button2.setLabel("Manage Manager");
+        button2.setLabel("Manage Hospitals");
+
+        button3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        button3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        button3.setLabel("Manage Laboratories");
+
+        button4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        button4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        button4.setLabel("Manage Suppliers");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -87,7 +97,9 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 .addGap(66, 66, 66)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(button2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(button1, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE))
+                    .addComponent(button1, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+                    .addComponent(button3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(button4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -98,7 +110,11 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addComponent(button2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(418, Short.MAX_VALUE))
+                .addGap(37, 37, 37)
+                .addComponent(button3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(button4, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(258, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -110,6 +126,8 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button button1;
     private java.awt.Button button2;
+    private java.awt.Button button3;
+    private java.awt.Button button4;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lblSelectedNode;
     // End of variables declaration//GEN-END:variables

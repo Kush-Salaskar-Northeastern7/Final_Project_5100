@@ -22,11 +22,13 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="jPanel3" alignment="0" max="32767" attributes="0"/>
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="button2" max="32767" attributes="0"/>
                   <Component id="button1" pref="231" max="32767" attributes="0"/>
+                  <Component id="button3" max="32767" attributes="0"/>
+                  <Component id="button4" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -40,7 +42,11 @@
               <Component id="button1" min="-2" pref="39" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               <Component id="button2" min="-2" pref="43" max="-2" attributes="0"/>
-              <EmptySpace pref="418" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+              <Component id="button3" min="-2" pref="43" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+              <Component id="button4" min="-2" pref="43" max="-2" attributes="0"/>
+              <EmptySpace pref="258" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -102,7 +108,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="14" style="1"/>
         </Property>
-        <Property name="label" type="java.lang.String" value="Manage Factory Workers"/>
+        <Property name="label" type="java.lang.String" value="Manage Manufacturers"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button1ActionPerformed"/>
@@ -116,7 +122,29 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="14" style="1"/>
         </Property>
-        <Property name="label" type="java.lang.String" value="Manage Manager"/>
+        <Property name="label" type="java.lang.String" value="Manage Hospitals"/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.Button" name="button3">
+      <Properties>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Hand Cursor"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="14" style="1"/>
+        </Property>
+        <Property name="label" type="java.lang.String" value="Manage Laboratories"/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.Button" name="button4">
+      <Properties>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Hand Cursor"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="14" style="1"/>
+        </Property>
+        <Property name="label" type="java.lang.String" value="Manage Suppliers"/>
       </Properties>
     </Component>
   </SubComponents>
