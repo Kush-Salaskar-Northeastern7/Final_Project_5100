@@ -133,7 +133,7 @@
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="btnManageEnterprise" linkSize="4" min="-2" pref="154" max="-2" attributes="0"/>
                                   <Component id="btnManageAdmin" linkSize="4" min="-2" pref="153" max="-2" attributes="0"/>
-                                  <Component id="btnManageAdmin1" min="-2" pref="153" max="-2" attributes="0"/>
+                                  <Component id="btnManageSuppliers" min="-2" pref="153" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -151,7 +151,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnManageAdmin" linkSize="2" min="-2" pref="36" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Component id="btnManageAdmin1" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="btnManageSuppliers" min="-2" pref="36" max="-2" attributes="0"/>
                       <EmptySpace pref="167" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -227,7 +227,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnManageAdminActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btnManageAdmin1">
+            <Component class="javax.swing.JButton" name="btnManageSuppliers">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="0"/>
@@ -246,7 +246,7 @@
                 <Property name="horizontalAlignment" type="int" value="2"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnManageAdmin1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnManageSuppliersActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

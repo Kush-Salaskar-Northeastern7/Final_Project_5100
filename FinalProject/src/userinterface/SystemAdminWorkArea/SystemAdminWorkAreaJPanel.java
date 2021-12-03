@@ -53,7 +53,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         btnManageManufacturer = new javax.swing.JButton();
         btnManageEnterprise = new javax.swing.JButton();
         btnManageAdmin = new javax.swing.JButton();
-        btnManageAdmin1 = new javax.swing.JButton();
+        btnManageSuppliers = new javax.swing.JButton();
         innerContainer = new javax.swing.JPanel();
 
         setLayout(new java.awt.BorderLayout());
@@ -145,16 +145,16 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnManageAdmin1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnManageAdmin1.setForeground(new java.awt.Color(255, 255, 255));
-        btnManageAdmin1.setText("Manage Suppliers");
-        btnManageAdmin1.setBorder(null);
-        btnManageAdmin1.setContentAreaFilled(false);
-        btnManageAdmin1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnManageAdmin1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnManageAdmin1.addActionListener(new java.awt.event.ActionListener() {
+        btnManageSuppliers.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnManageSuppliers.setForeground(new java.awt.Color(255, 255, 255));
+        btnManageSuppliers.setText("Manage Suppliers");
+        btnManageSuppliers.setBorder(null);
+        btnManageSuppliers.setContentAreaFilled(false);
+        btnManageSuppliers.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnManageSuppliers.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnManageSuppliers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnManageAdmin1ActionPerformed(evt);
+                btnManageSuppliersActionPerformed(evt);
             }
         });
 
@@ -172,7 +172,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnManageEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnManageAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnManageAdmin1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btnManageSuppliers, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -188,7 +188,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(btnManageAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnManageAdmin1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnManageSuppliers, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(167, Short.MAX_VALUE))
         );
 
@@ -228,17 +228,21 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         crdLyt.next(userProcessContainer);
     }//GEN-LAST:event_btnLogoutActionPerformed
 
-    private void btnManageAdmin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageAdmin1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnManageAdmin1ActionPerformed
+    private void btnManageSuppliersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageSuppliersActionPerformed
+        // Redirect to manage suppliers
+        ManageSuppliersJPanel actionPanel = new ManageSuppliersJPanel(innerContainer, ecosystem);
+        innerContainer.add("manageSuppliersJPanel", actionPanel);
+        CardLayout layout=(CardLayout)innerContainer.getLayout();
+        layout.next(innerContainer);
+    }//GEN-LAST:event_btnManageSuppliersActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnManageAdmin;
-    private javax.swing.JButton btnManageAdmin1;
     private javax.swing.JButton btnManageEnterprise;
     private javax.swing.JButton btnManageManufacturer;
+    private javax.swing.JButton btnManageSuppliers;
     private javax.swing.JPanel innerContainer;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
