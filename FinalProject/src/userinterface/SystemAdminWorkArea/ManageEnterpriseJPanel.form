@@ -25,10 +25,10 @@
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="button2" max="32767" attributes="0"/>
-                  <Component id="button1" pref="231" max="32767" attributes="0"/>
-                  <Component id="button3" max="32767" attributes="0"/>
-                  <Component id="button4" max="32767" attributes="0"/>
+                  <Component id="btnManageHospitals" max="32767" attributes="0"/>
+                  <Component id="btnManageManufacturers" pref="231" max="32767" attributes="0"/>
+                  <Component id="btnManageLaboratories" max="32767" attributes="0"/>
+                  <Component id="btnManageSuppliers" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -39,13 +39,13 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-              <Component id="button1" min="-2" pref="39" max="-2" attributes="0"/>
+              <Component id="btnManageManufacturers" min="-2" pref="39" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-              <Component id="button2" min="-2" pref="43" max="-2" attributes="0"/>
+              <Component id="btnManageHospitals" min="-2" pref="43" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-              <Component id="button3" min="-2" pref="43" max="-2" attributes="0"/>
+              <Component id="btnManageLaboratories" min="-2" pref="43" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-              <Component id="button4" min="-2" pref="43" max="-2" attributes="0"/>
+              <Component id="btnManageSuppliers" min="-2" pref="43" max="-2" attributes="0"/>
               <EmptySpace pref="258" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -100,7 +100,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="java.awt.Button" name="button1">
+    <Component class="java.awt.Button" name="btnManageManufacturers">
       <Properties>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
           <Color id="Hand Cursor"/>
@@ -111,10 +111,10 @@
         <Property name="label" type="java.lang.String" value="Manage Manufacturers"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnManageManufacturersActionPerformed"/>
       </Events>
     </Component>
-    <Component class="java.awt.Button" name="button2">
+    <Component class="java.awt.Button" name="btnManageHospitals">
       <Properties>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
           <Color id="Hand Cursor"/>
@@ -125,7 +125,7 @@
         <Property name="label" type="java.lang.String" value="Manage Hospitals"/>
       </Properties>
     </Component>
-    <Component class="java.awt.Button" name="button3">
+    <Component class="java.awt.Button" name="btnManageLaboratories">
       <Properties>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
           <Color id="Hand Cursor"/>
@@ -136,7 +136,7 @@
         <Property name="label" type="java.lang.String" value="Manage Laboratories"/>
       </Properties>
     </Component>
-    <Component class="java.awt.Button" name="button4">
+    <Component class="java.awt.Button" name="btnManageSuppliers">
       <Properties>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
           <Color id="Hand Cursor"/>
@@ -146,6 +146,9 @@
         </Property>
         <Property name="label" type="java.lang.String" value="Manage Suppliers"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnManageSuppliersActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

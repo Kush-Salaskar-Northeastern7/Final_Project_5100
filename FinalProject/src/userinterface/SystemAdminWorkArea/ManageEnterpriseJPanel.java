@@ -6,6 +6,7 @@
 package userinterface.SystemAdminWorkArea;
 
 import Business.EcoSystem;
+import java.awt.CardLayout;
 import javax.swing.JPanel;
 
 /**
@@ -36,10 +37,10 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
 
         jPanel3 = new javax.swing.JPanel();
         lblSelectedNode = new javax.swing.JLabel();
-        button1 = new java.awt.Button();
-        button2 = new java.awt.Button();
-        button3 = new java.awt.Button();
-        button4 = new java.awt.Button();
+        btnManageManufacturers = new java.awt.Button();
+        btnManageHospitals = new java.awt.Button();
+        btnManageLaboratories = new java.awt.Button();
+        btnManageSuppliers = new java.awt.Button();
 
         setBackground(new java.awt.Color(255, 102, 102));
 
@@ -67,26 +68,31 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
-        button1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        button1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        button1.setLabel("Manage Manufacturers");
-        button1.addActionListener(new java.awt.event.ActionListener() {
+        btnManageManufacturers.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnManageManufacturers.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnManageManufacturers.setLabel("Manage Manufacturers");
+        btnManageManufacturers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button1ActionPerformed(evt);
+                btnManageManufacturersActionPerformed(evt);
             }
         });
 
-        button2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        button2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        button2.setLabel("Manage Hospitals");
+        btnManageHospitals.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnManageHospitals.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnManageHospitals.setLabel("Manage Hospitals");
 
-        button3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        button3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        button3.setLabel("Manage Laboratories");
+        btnManageLaboratories.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnManageLaboratories.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnManageLaboratories.setLabel("Manage Laboratories");
 
-        button4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        button4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        button4.setLabel("Manage Suppliers");
+        btnManageSuppliers.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnManageSuppliers.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnManageSuppliers.setLabel("Manage Suppliers");
+        btnManageSuppliers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageSuppliersActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -96,10 +102,10 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(66, 66, 66)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(button2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(button1, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
-                    .addComponent(button3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(button4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnManageHospitals, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnManageManufacturers, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+                    .addComponent(btnManageLaboratories, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnManageSuppliers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -107,27 +113,38 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
-                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnManageManufacturers, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
-                .addComponent(button2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnManageHospitals, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
-                .addComponent(button3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnManageLaboratories, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
-                .addComponent(button4, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnManageSuppliers, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(258, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_button1ActionPerformed
+    private void btnManageManufacturersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageManufacturersActionPerformed
+        ManageManufacturersJPanel actionPanel = new ManageManufacturersJPanel(userProcessContainer, system);
+        userProcessContainer.add("manageManufacturersJPanel", actionPanel);
+        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnManageManufacturersActionPerformed
+
+    private void btnManageSuppliersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageSuppliersActionPerformed
+        // Redirect to manage suppliers
+        ManageSuppliersJPanel actionPanel = new ManageSuppliersJPanel(userProcessContainer, system);
+        userProcessContainer.add("manageSuppliersJPanel", actionPanel);
+        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnManageSuppliersActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Button button1;
-    private java.awt.Button button2;
-    private java.awt.Button button3;
-    private java.awt.Button button4;
+    private java.awt.Button btnManageHospitals;
+    private java.awt.Button btnManageLaboratories;
+    private java.awt.Button btnManageManufacturers;
+    private java.awt.Button btnManageSuppliers;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lblSelectedNode;
     // End of variables declaration//GEN-END:variables
