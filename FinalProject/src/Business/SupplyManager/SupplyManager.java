@@ -5,10 +5,33 @@
  */
 package Business.SupplyManager;
 
+import Business.UserAccount.UserAccount;
+
 /**
  *
  * @author anushka
  */
 public class SupplyManager {
+    private String smName;
+    private UserAccount userAccount;
     
+    public SupplyManager(){
+        userAccount = new UserAccount();
+    }
+
+    public String getSmName() {
+        return smName;
+    }
+
+    public void setSmName(String smName) {
+        this.smName = smName;
+    }
+
+    public UserAccount getUserAccount() {
+        return userAccount;
+    }
+
+    public void setUserAccount(UserAccount userAccount) {
+        this.userAccount = userAccount;
+    }
 }

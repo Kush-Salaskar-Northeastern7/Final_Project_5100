@@ -5,6 +5,7 @@
  */
 package Business.SupplyManager;
 
+import Business.UserAccount.UserAccount;
 import java.util.ArrayList;
 
 /**
@@ -21,12 +22,20 @@ public class SupplyManagerDirectory {
     public ArrayList<SupplyManager> getSupplyManagerList() {
         return supplyManagerList;
     }
+
+    public void setSupplyManagerList(ArrayList<SupplyManager> supplyManagerList) {
+        this.supplyManagerList = supplyManagerList;
+    }
     
-    public SupplyManager createSupplyManager(){
+    public SupplyManager createSupplyManager(String name, UserAccount ua){
         SupplyManager supplymanager = new SupplyManager();
-        
+        supplymanager.setSmName(name);
+        supplymanager.setUserAccount(ua);
         supplyManagerList.add(supplymanager);
         return supplymanager;
     }
     
+    public void deleteSupplyManager(SupplyManager sm){
+        supplyManagerList.remove(sm);
+    }
 }
