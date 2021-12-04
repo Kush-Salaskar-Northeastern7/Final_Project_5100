@@ -7,7 +7,10 @@ package userinterface.CustomerRole;
 
 import Business.Customer.Customer;
 import Business.EcoSystem;
+import Business.Employee.Employee;
+import Business.Role.CustomerRole;
 import Business.UserAccount.UserAccount;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -60,6 +63,7 @@ public class CustomerSignupJPanel extends javax.swing.JPanel {
         txtPtnUsername = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         txtPtnPassword = new javax.swing.JTextField();
+        btnCreatePtn = new javax.swing.JButton();
 
         jLabel1.setText("Name");
 
@@ -99,35 +103,47 @@ public class CustomerSignupJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnCreatePtn.setText("Signup");
+        btnCreatePtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreatePtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(124, 124, 124)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6))
-                .addGap(104, 104, 104)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(txtPtnGlucoseLvl)
-                    .addComponent(txtPtnDiabetesType, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtPtnAge, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtPtnZip, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtPtnCommunity, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtPtnAddress, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtPtnName, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtPtnUsername, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
-                    .addComponent(txtPtnPassword, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
-                    .addComponent(txtPtnPhoneNum))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(124, 124, 124)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6))
+                        .addGap(104, 104, 104)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtPtnGlucoseLvl)
+                            .addComponent(txtPtnDiabetesType, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPtnAge, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPtnZip, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPtnCommunity, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPtnAddress, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPtnName, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPtnUsername, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                            .addComponent(txtPtnPassword, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                            .addComponent(txtPtnPhoneNum)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(208, 208, 208)
+                        .addComponent(btnCreatePtn)))
                 .addContainerGap(325, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -173,7 +189,9 @@ public class CustomerSignupJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
                     .addComponent(txtPtnPhoneNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addComponent(btnCreatePtn)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -189,8 +207,16 @@ public class CustomerSignupJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPtnPasswordActionPerformed
 
+    private void btnCreatePtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreatePtnActionPerformed
+        // TODO add your handling code here:
+        
+        
+        
+    }//GEN-LAST:event_btnCreatePtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCreatePtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

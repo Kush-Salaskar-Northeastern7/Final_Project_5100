@@ -249,12 +249,7 @@ public class LoginScreen extends javax.swing.JPanel {
 
     private void btnPatientSignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPatientSignupActionPerformed
         // TODO add your handling code here:
-//        CustomerSignupJPanel custSignupJPanel;
-//        custSignupJPanel = new CustomerSignupJPanel(container, account, system);
-//        container.add("custSignupJPanel", custSignupJPanel);
-//        CardLayout layout = (CardLayout) container.getLayout();
-//        layout.next(custSignupJPanel);
-//        
+ 
         
         container.removeAll();
         CustomerSignupJPanel ls = new CustomerSignupJPanel(container, system);
@@ -262,9 +257,9 @@ public class LoginScreen extends javax.swing.JPanel {
         CardLayout crdLyt = (CardLayout) container.getLayout();
         crdLyt.next(container);
 
-        CardLayout layout= (CardLayout) container.getLayout();
-        container.add("workArea", account.getRole().createWorkArea(container, account, system));
-        layout.next(container);
+//        CardLayout layout= (CardLayout) container.getLayout();
+//        container.add("workArea", account.getRole().createWorkArea(container, account, system));
+//        layout.next(container);
     }//GEN-LAST:event_btnPatientSignupActionPerformed
 
 
