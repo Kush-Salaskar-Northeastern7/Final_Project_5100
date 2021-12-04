@@ -31,12 +31,12 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         this.system = system;
         initComponents();
         // populate enterprise list
-        populateEnterprises();
+//        populateEnterprises();
         populateTable();
     }
    
     private void populateTable() {
-        DefaultTableModel model = (DefaultTableModel) tblEnterpriseTable.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblHospEnterpriseTable.getModel();
         model.setRowCount(0);
         for (Enterprise en : system.getEnterpriseDirectory().getEnterpriseList()) {
             Object[] row = new Object[5];
@@ -71,21 +71,31 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         txtEnterprisePhone = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        txtEnterpriseEmail = new javax.swing.JTextField();
+        txtEnterpriseUsername = new javax.swing.JTextField();
         txtEnterpriseLoc = new javax.swing.JTextField();
         txtEnterpriseName = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         submitBtn = new javax.swing.JButton();
+        txtEnterpriseUsername1 = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        plTest = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         btnDeleteEnterprise = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         selectEnterpriseType = new javax.swing.JComboBox();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblEnterpriseTable = new javax.swing.JTable();
+        tblHospEnterpriseTable = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblManufacturerEnterpriseTable = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblSupplierEnterpriseTable = new javax.swing.JTable();
         jPanel8 = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tblLabEnterpriseTable = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(255, 102, 102));
 
@@ -143,7 +153,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/networking (1).png"))); // NOI18N
 
-        jLabel1.setText("Enterprise Name");
+        jLabel1.setText("Doctor name");
 
         jLabel4.setText("Location");
 
@@ -155,14 +165,16 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel5.setText("Email");
+        jLabel5.setText("Username");
 
-        submitBtn.setText("Add Enterprise");
+        submitBtn.setText("Add Doctor");
         submitBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitBtnActionPerformed(evt);
             }
         });
+
+        jLabel7.setText("Password");
 
         javax.swing.GroupLayout panelInputLayout = new javax.swing.GroupLayout(panelInput);
         panelInput.setLayout(panelInputLayout);
@@ -184,11 +196,17 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                             .addComponent(txtEnterpriseLoc)
                             .addComponent(txtEnterprisePhone, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtEnterpriseEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelInputLayout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtEnterpriseUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInputLayout.createSequentialGroup()
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtEnterpriseUsername1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         panelInputLayout.setVerticalGroup(
@@ -197,13 +215,17 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(panelInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtEnterpriseName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addGroup(panelInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel5)
+                        .addComponent(txtEnterpriseUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(24, 24, 24)
                 .addGroup(panelInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtEnterpriseLoc, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtEnterpriseEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel7)
+                        .addComponent(txtEnterpriseUsername1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(panelInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -214,26 +236,39 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
 
         panelInputLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel1, jLabel4, jLabel5, jLabel6, txtEnterpriseLoc, txtEnterpriseName});
 
+        plTest.setLayout(new java.awt.CardLayout());
+
+        jLabel8.setText("Hi");
+        plTest.add(jLabel8, "card2");
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(panelInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(61, 61, 61)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(panelInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(61, 61, 61))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(180, 180, 180)
+                        .addComponent(plTest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(9, 9, 9)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(panelInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(74, 74, 74)
+                        .addComponent(plTest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -257,10 +292,20 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Enterprise Type");
 
-        selectEnterpriseType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        selectEnterpriseType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Hospital", "Manufacturer", "Supplier", "Laboratory" }));
+        selectEnterpriseType.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                selectEnterpriseTypeItemStateChanged(evt);
+            }
+        });
         selectEnterpriseType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 selectEnterpriseTypeActionPerformed(evt);
+            }
+        });
+        selectEnterpriseType.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                selectEnterpriseTypePropertyChange(evt);
             }
         });
 
@@ -289,7 +334,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
 
         jPanel7Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel2, selectEnterpriseType});
 
-        tblEnterpriseTable.setModel(new javax.swing.table.DefaultTableModel(
+        tblHospEnterpriseTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -300,45 +345,114 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 "Enterprise Name", "Type", "Email", "Location", "Username"
             }
         ));
-        jScrollPane1.setViewportView(tblEnterpriseTable);
+        jScrollPane1.setViewportView(tblHospEnterpriseTable);
 
         jTabbedPane1.addTab("Hospitals", jScrollPane1);
+
+        tblManufacturerEnterpriseTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Enterprise Name", "Type", "Email", "Location", "Username"
+            }
+        ));
+        jScrollPane2.setViewportView(tblManufacturerEnterpriseTable);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 921, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 921, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 285, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         jTabbedPane1.addTab("Manufacturer", jPanel4);
+
+        tblSupplierEnterpriseTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Enterprise Name", "Type", "Email", "Location", "Username"
+            }
+        ));
+        jScrollPane3.setViewportView(tblSupplierEnterpriseTable);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 921, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 921, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 285, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         jTabbedPane1.addTab("Supplier", jPanel5);
+
+        tblLabEnterpriseTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Enterprise Name", "Type", "Email", "Location", "Username"
+            }
+        ));
+        jScrollPane5.setViewportView(tblLabEnterpriseTable);
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 921, Short.MAX_VALUE)
+            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel8Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 921, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 285, Short.MAX_VALUE)
+            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel8Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         jTabbedPane1.addTab("Laboratory", jPanel8);
@@ -422,7 +536,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
     public boolean checkEmptyFields() {
             
         String enterpriseName = txtEnterpriseName.getText();
-        String enterpriseEmail = txtEnterpriseEmail.getText();
+        String enterpriseEmail = txtEnterpriseUsername.getText();
         String enterpriseLoc = txtEnterpriseLoc.getText();
         String enterprisePhone = txtEnterprisePhone.getText();
         
@@ -441,11 +555,10 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         
         if (checkEmptyFields()) {
             Enterprise.EnterpriseType enterprisetype = (Enterprise.EnterpriseType) selectEnterpriseType.getSelectedItem();
-            System.out.println(enterprisetype);
 
             String enterpriseName = txtEnterpriseName.getText();
             String enterpriseLoc = txtEnterpriseLoc.getText();
-            String enterpriseEmail = txtEnterpriseEmail.getText();
+            String enterpriseEmail = txtEnterpriseUsername.getText();
             String enterprisePhone = txtEnterprisePhone.getText();
 
             Enterprise enterprise = system.getEnterpriseDirectory().createEnterprise(enterpriseName, enterprisetype, enterpriseLoc, enterpriseEmail, enterprisePhone);
@@ -457,13 +570,13 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
 
     private void btnDeleteEnterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteEnterpriseActionPerformed
         // TODO add your handling code here:
-        int selectedRowIndex = tblEnterpriseTable.getSelectedRow();
+        int selectedRowIndex = tblHospEnterpriseTable.getSelectedRow();
 
         if (selectedRowIndex < 0) {
             JOptionPane.showMessageDialog(this, "Please select an enterprise to delete");
             return;
         } else {
-            DefaultTableModel model = (DefaultTableModel) tblEnterpriseTable.getModel();
+            DefaultTableModel model = (DefaultTableModel) tblHospEnterpriseTable.getModel();
             Enterprise selectedEnterprise = (Enterprise) model.getValueAt(selectedRowIndex, 0);
             // get the manager account of the selected restaurant
 //            UserAccount useracc = ecosystem.getUserAccountDirectory().authenticateUser(userName.toString(), password.toString());
@@ -478,7 +591,26 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
 
     private void selectEnterpriseTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectEnterpriseTypeActionPerformed
         // TODO add your handling code here:
+        String enterprisetype = (String) selectEnterpriseType.getSelectedItem();
+
+        if(enterprisetype.equals("Hospital")){
+            ManageDoctorJPanel actionPanel = new ManageDoctorJPanel(plTest, system);
+            plTest.add("manageDoctorsJPanel", actionPanel);
+            CardLayout layout = (CardLayout)plTest.getLayout();
+            layout.next(plTest);
+        }
     }//GEN-LAST:event_selectEnterpriseTypeActionPerformed
+
+    private void selectEnterpriseTypePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_selectEnterpriseTypePropertyChange
+        // TODO add your handling code here:
+        
+//        if (enterpriseType == 0)
+    }//GEN-LAST:event_selectEnterpriseTypePropertyChange
+
+    private void selectEnterpriseTypeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_selectEnterpriseTypeItemStateChanged
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_selectEnterpriseTypeItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -491,6 +623,8 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -500,15 +634,23 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblSelectedNode;
     private javax.swing.JPanel panelInput;
+    private javax.swing.JPanel plTest;
     private javax.swing.JComboBox selectEnterpriseType;
     private javax.swing.JButton submitBtn;
-    private javax.swing.JTable tblEnterpriseTable;
-    private javax.swing.JTextField txtEnterpriseEmail;
+    private javax.swing.JTable tblHospEnterpriseTable;
+    private javax.swing.JTable tblLabEnterpriseTable;
+    private javax.swing.JTable tblManufacturerEnterpriseTable;
+    private javax.swing.JTable tblSupplierEnterpriseTable;
     private javax.swing.JTextField txtEnterpriseLoc;
     private javax.swing.JTextField txtEnterpriseName;
     private javax.swing.JTextField txtEnterprisePhone;
+    private javax.swing.JTextField txtEnterpriseUsername;
+    private javax.swing.JTextField txtEnterpriseUsername1;
     // End of variables declaration//GEN-END:variables
 }
