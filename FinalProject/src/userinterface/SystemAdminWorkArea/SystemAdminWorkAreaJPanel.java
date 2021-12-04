@@ -16,6 +16,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import userinterface.LoginScreen;
 import javax.swing.border.Border;
+import Business.DB4OUtil.DB4OUtil;
 
 /**
  *
@@ -29,11 +30,13 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     JPanel userProcessContainer;
     EcoSystem ecosystem;
     UserAccount account;
+    private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     public SystemAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem ecosystem) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.ecosystem=ecosystem;
         this.account = account;
+        ecosystem = dB4OUtil.retrieveSystem();
     }
     
     /**
@@ -50,8 +53,6 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         lblSelectedNode = new javax.swing.JLabel();
         jSplitPane = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
-        btnManageManufacturer = new javax.swing.JButton();
-        btnManageSuppliers = new javax.swing.JButton();
         btnManageSuppliers1 = new javax.swing.JButton();
         btnManageSuppliers2 = new javax.swing.JButton();
         innerContainer = new javax.swing.JPanel();
@@ -103,34 +104,6 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
 
-        btnManageManufacturer.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnManageManufacturer.setForeground(new java.awt.Color(255, 255, 255));
-        btnManageManufacturer.setText("Manage Manufacturers");
-        btnManageManufacturer.setBorder(null);
-        btnManageManufacturer.setBorderPainted(false);
-        btnManageManufacturer.setContentAreaFilled(false);
-        btnManageManufacturer.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnManageManufacturer.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnManageManufacturer.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        btnManageManufacturer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnManageManufacturerActionPerformed(evt);
-            }
-        });
-
-        btnManageSuppliers.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnManageSuppliers.setForeground(new java.awt.Color(255, 255, 255));
-        btnManageSuppliers.setText("Manage Patients");
-        btnManageSuppliers.setBorder(null);
-        btnManageSuppliers.setContentAreaFilled(false);
-        btnManageSuppliers.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnManageSuppliers.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnManageSuppliers.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnManageSuppliersActionPerformed(evt);
-            }
-        });
-
         btnManageSuppliers1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnManageSuppliers1.setForeground(new java.awt.Color(255, 255, 255));
         btnManageSuppliers1.setText("Manage Enterprises");
@@ -162,29 +135,23 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnManageManufacturer, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnManageSuppliers, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnManageSuppliers1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnManageSuppliers2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addComponent(btnManageSuppliers2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnManageSuppliers1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(btnManageManufacturer)
-                .addGap(18, 18, 18)
-                .addComponent(btnManageSuppliers, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(19, 19, 19)
                 .addComponent(btnManageSuppliers1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnManageSuppliers2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(167, Short.MAX_VALUE))
+                .addContainerGap(289, Short.MAX_VALUE))
         );
-
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnManageManufacturer, btnManageSuppliers});
 
         jSplitPane.setLeftComponent(jPanel1);
 
@@ -195,13 +162,6 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         add(jSplitPane, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnManageManufacturerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageManufacturerActionPerformed
-        ManageManufacturersJPanel actionPanel = new ManageManufacturersJPanel(innerContainer, ecosystem);
-        innerContainer.add("manageManufacturersJPanel", actionPanel);
-        CardLayout layout=(CardLayout)innerContainer.getLayout();
-        layout.next(innerContainer);
-    }//GEN-LAST:event_btnManageManufacturerActionPerformed
-
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         // TODO add your handling code here:
         userProcessContainer.removeAll();
@@ -210,15 +170,8 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         userProcessContainer.add("blank", ls);
         CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
         crdLyt.next(userProcessContainer);
+        dB4OUtil.storeSystem(ecosystem);
     }//GEN-LAST:event_btnLogoutActionPerformed
-
-    private void btnManageSuppliersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageSuppliersActionPerformed
-        // Redirect to manage suppliers
-        ManageSuppliersJPanel actionPanel = new ManageSuppliersJPanel(innerContainer, ecosystem);
-        innerContainer.add("manageSuppliersJPanel", actionPanel);
-        CardLayout layout=(CardLayout)innerContainer.getLayout();
-        layout.next(innerContainer);
-    }//GEN-LAST:event_btnManageSuppliersActionPerformed
 
     private void btnManageSuppliers1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageSuppliers1ActionPerformed
         // TODO add your handling code here:
@@ -235,8 +188,6 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogout;
-    private javax.swing.JButton btnManageManufacturer;
-    private javax.swing.JButton btnManageSuppliers;
     private javax.swing.JButton btnManageSuppliers1;
     private javax.swing.JButton btnManageSuppliers2;
     private javax.swing.JPanel innerContainer;

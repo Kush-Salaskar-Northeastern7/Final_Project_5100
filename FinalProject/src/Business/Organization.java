@@ -17,6 +17,11 @@ import java.util.ArrayList;
 public abstract class Organization {
 
     private String name;
+    private String orgtype;
+    private String location;
+    private String email;
+    private String phone;
+    
     private WorkQueue workQueue;
     private EmployeeDirectory employeeDirectory;
     private UserAccountDirectory userAccountDirectory;
@@ -44,8 +49,13 @@ public abstract class Organization {
         }
     }
 
-    public Organization(String name) {
+    public Organization(String name, String orgtype, String location, String email, String phone) {
         this.name = name;
+        this.orgtype = orgtype;
+        this.location = location;
+        this.email = email;
+        this.phone = phone;
+        
         workQueue = new WorkQueue();
         employeeDirectory = new EmployeeDirectory();
         userAccountDirectory = new UserAccountDirectory();
@@ -80,6 +90,48 @@ public abstract class Organization {
     public void setName(String name) {
         this.name = name;
     }
+
+    public String getOrgtype() {
+        return orgtype;
+    }
+
+    public void setOrgtype(String orgtype) {
+        this.orgtype = orgtype;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public static int getCounter() {
+        return counter;
+    }
+
+    public static void setCounter(int counter) {
+        Organization.counter = counter;
+    }
+    
+    
 
     public void setWorkQueue(WorkQueue workQueue) {
         this.workQueue = workQueue;
