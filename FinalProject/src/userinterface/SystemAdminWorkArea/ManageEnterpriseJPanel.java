@@ -6,6 +6,7 @@
 package userinterface.SystemAdminWorkArea;
 
 import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -27,6 +28,16 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.system = system;
         initComponents();
+        // populate enterprise list
+        populateEnterprises();
+    }
+    
+    private void populateEnterprises() {
+        selectEnterpriseType.removeAllItems();
+        //loop through the enterprise type
+        for (Enterprise.EnterpriseType enterprisetype : Enterprise.EnterpriseType.values()) {
+            selectEnterpriseType.addItem(enterprisetype.toString());
+        }
     }
 
     /**
@@ -163,6 +174,11 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         jLabel6.setText("Phone");
 
         selectEnterpriseType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        selectEnterpriseType.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectEnterpriseTypeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -340,6 +356,10 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void selectEnterpriseTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectEnterpriseTypeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selectEnterpriseTypeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
