@@ -187,14 +187,14 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtEnterpriseName, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -203,14 +203,14 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(selectEnterpriseType, 0, 161, Short.MAX_VALUE)
                         .addComponent(txtEnterpriseEmail))
                     .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -241,7 +241,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jPanel6Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel1, jLabel2, jLabel4, jLabel5, selectEnterpriseType, txtEnterpriseLoc, txtEnterpriseName});
+        jPanel6Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel1, jLabel2, jLabel4, jLabel5, jLabel6, selectEnterpriseType, txtEnterpriseLoc, txtEnterpriseName});
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -356,21 +356,40 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
 //        System.out.println(system.getEnterpriseDirectory().getEnterpriseList().get(0).getLocation());
     }    
     
+    public boolean checkEmptyFields() {
+            
+        String enterpriseName = txtEnterpriseName.getText();
+        String enterpriseEmail = txtEnterpriseEmail.getText();
+        String enterpriseLoc = txtEnterpriseLoc.getText();
+        String enterprisePhone = txtEnterprisePhone.getText();
+        
+        if (enterpriseName.trim().equals("") || enterpriseEmail.trim().equals("") || enterpriseLoc.trim().equals("") || enterprisePhone.trim().equals("")) {
+            JOptionPane.showMessageDialog(this, "Fields cannot be empty");
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+    
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
         // Submit button action performed
         // take the enterprise type from dropdown
-        Enterprise.EnterpriseType enterprisetype = (Enterprise.EnterpriseType) selectEnterpriseType.getSelectedItem();
-        System.out.println(enterprisetype);
         
-        String enterpriseName = txtEnterpriseName.getText();
-        String enterpriseLoc = txtEnterpriseLoc.getText();
-        String enterpriseEmail = txtEnterpriseEmail.getText();
-        String enterprisePhone = txtEnterprisePhone.getText();
-        
-        Enterprise enterprise = system.getEnterpriseDirectory().createEnterprise(enterpriseName, enterprisetype, enterpriseLoc, enterpriseEmail, enterprisePhone);
-        JOptionPane.showMessageDialog(this, "Enterprise is added");
-        
-        populateTable();
+        if (checkEmptyFields()) {
+            Enterprise.EnterpriseType enterprisetype = (Enterprise.EnterpriseType) selectEnterpriseType.getSelectedItem();
+            System.out.println(enterprisetype);
+
+            String enterpriseName = txtEnterpriseName.getText();
+            String enterpriseLoc = txtEnterpriseLoc.getText();
+            String enterpriseEmail = txtEnterpriseEmail.getText();
+            String enterprisePhone = txtEnterprisePhone.getText();
+
+            Enterprise enterprise = system.getEnterpriseDirectory().createEnterprise(enterpriseName, enterprisetype, enterpriseLoc, enterpriseEmail, enterprisePhone);
+            JOptionPane.showMessageDialog(this, "Enterprise is added");
+
+            populateTable();
+        }
     }//GEN-LAST:event_submitBtnActionPerformed
 
     private void btnDeleteEnterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteEnterpriseActionPerformed
