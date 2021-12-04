@@ -45,7 +45,8 @@ public class EcoSystem extends Organization{
         return roleList;
     }
     private EcoSystem(){
-        super(null);
+        // name, type, location, email, phone
+        super(null, null, null, null, null);
        // networkList=new ArrayList<Network>();
     }
 
