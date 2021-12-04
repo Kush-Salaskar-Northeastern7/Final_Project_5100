@@ -16,6 +16,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import userinterface.LoginScreen;
 import javax.swing.border.Border;
+import Business.DB4OUtil.DB4OUtil;
 
 /**
  *
@@ -29,11 +30,13 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     JPanel userProcessContainer;
     EcoSystem ecosystem;
     UserAccount account;
+    private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     public SystemAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem ecosystem) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.ecosystem=ecosystem;
         this.account = account;
+        ecosystem = dB4OUtil.retrieveSystem();
     }
     
     /**
@@ -167,6 +170,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         userProcessContainer.add("blank", ls);
         CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
         crdLyt.next(userProcessContainer);
+        dB4OUtil.storeSystem(ecosystem);
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnManageSuppliers1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageSuppliers1ActionPerformed

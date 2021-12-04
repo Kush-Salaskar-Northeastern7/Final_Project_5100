@@ -235,9 +235,9 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="txtEnterpriseLoc" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="txtEnterpriseEmail" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="txtEnterprisePhone" alignment="0" max="32767" attributes="0"/>
                                           <Component id="selectEnterpriseType" alignment="0" pref="161" max="32767" attributes="0"/>
+                                          <Component id="txtEnterprisePhone" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="txtEnterpriseEmail" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -267,12 +267,12 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel5" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtEnterpriseEmail" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtEnterpriseEmail" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtEnterprisePhone" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtEnterprisePhone" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="submitBtn" min="-2" pref="32" max="-2" attributes="0"/>
@@ -309,22 +309,12 @@
                     <Property name="text" type="java.lang.String" value="Email"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JPasswordField" name="txtEnterpriseEmail">
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEnterpriseEmailActionPerformed"/>
-                  </Events>
-                </Component>
                 <Component class="javax.swing.JButton" name="submitBtn">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Add Enterprise"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="submitBtnActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JPasswordField" name="txtEnterprisePhone">
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEnterprisePhoneActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel6">
@@ -347,8 +337,12 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selectEnterpriseTypeActionPerformed"/>
                   </Events>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
                   </AuxValues>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtEnterprisePhone">
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtEnterpriseEmail">
                 </Component>
               </SubComponents>
             </Container>

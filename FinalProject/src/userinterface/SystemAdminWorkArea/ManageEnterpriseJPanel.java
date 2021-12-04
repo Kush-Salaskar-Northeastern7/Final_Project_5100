@@ -11,6 +11,7 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.util.Random;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -30,16 +31,11 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         initComponents();
         // populate enterprise list
         populateEnterprises();
+//        populateTable();
     }
-    
-    private void populateEnterprises() {
-        selectEnterpriseType.removeAllItems();
-        //loop through the enterprise type
-        for (Enterprise.EnterpriseType enterprisetype : Enterprise.EnterpriseType.values()) {
-            selectEnterpriseType.addItem(enterprisetype.toString());
-        }
-    }
+   
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -64,11 +60,11 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txtEnterpriseEmail = new javax.swing.JPasswordField();
         submitBtn = new javax.swing.JButton();
-        txtEnterprisePhone = new javax.swing.JPasswordField();
         jLabel6 = new javax.swing.JLabel();
-        selectEnterpriseType = new javax.swing.JComboBox<>();
+        selectEnterpriseType = new javax.swing.JComboBox();
+        txtEnterprisePhone = new javax.swing.JTextField();
+        txtEnterpriseEmail = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
 
@@ -152,12 +148,6 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
 
         jLabel5.setText("Email");
 
-        txtEnterpriseEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEnterpriseEmailActionPerformed(evt);
-            }
-        });
-
         submitBtn.setText("Add Enterprise");
         submitBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -165,15 +155,9 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
             }
         });
 
-        txtEnterprisePhone.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEnterprisePhoneActionPerformed(evt);
-            }
-        });
-
         jLabel6.setText("Phone");
 
-        selectEnterpriseType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        selectEnterpriseType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         selectEnterpriseType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 selectEnterpriseTypeActionPerformed(evt);
@@ -204,9 +188,9 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(txtEnterpriseLoc)
-                                .addComponent(txtEnterpriseEmail)
+                                .addComponent(selectEnterpriseType, 0, 161, Short.MAX_VALUE)
                                 .addComponent(txtEnterprisePhone)
-                                .addComponent(selectEnterpriseType, 0, 161, Short.MAX_VALUE)))))
+                                .addComponent(txtEnterpriseEmail)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -227,17 +211,17 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtEnterpriseEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEnterpriseEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(txtEnterprisePhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEnterprisePhone, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        jPanel6Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel1, jLabel2, jLabel4, jLabel5, selectEnterpriseType, txtEnterpriseEmail, txtEnterpriseLoc, txtEnterpriseName, txtEnterprisePhone});
+        jPanel6Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel1, jLabel2, jLabel4, jLabel5, selectEnterpriseType, txtEnterpriseLoc, txtEnterpriseName});
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -341,17 +325,33 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEnterpriseNameActionPerformed
 
-    private void txtEnterpriseEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnterpriseEmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEnterpriseEmailActionPerformed
-
+    private void populateEnterprises() {
+        selectEnterpriseType.removeAllItems();
+        //loop through the enterprise type
+        // in ui custom code, remove type parameter as string
+        for(Enterprise.EnterpriseType type : Enterprise.EnterpriseType.values()) {
+            selectEnterpriseType.addItem(type);
+        }
+        
+//        System.out.println(system.getEnterpriseDirectory().getEnterpriseList().get(0).getLocation());
+    }    
+    
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
         // Submit button action performed
+        // take the enterprise type from dropdown
+        Enterprise.EnterpriseType enterprisetype = (Enterprise.EnterpriseType) selectEnterpriseType.getSelectedItem();
+        System.out.println(enterprisetype);
+        
+        String enterpriseName = txtEnterpriseName.getText();
+        String enterpriseLoc = txtEnterpriseLoc.getText();
+        String enterpriseEmail = txtEnterpriseEmail.getText();
+        String enterprisePhone = txtEnterprisePhone.getText();
+        
+        Enterprise enterprise = system.getEnterpriseDirectory().createEnterprise(enterpriseName, enterprisetype, enterpriseLoc, enterpriseEmail, enterprisePhone);
+        JOptionPane.showMessageDialog(this, "Enterprise is added");
+        
+//        populateTable();
     }//GEN-LAST:event_submitBtnActionPerformed
-
-    private void txtEnterprisePhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnterprisePhoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEnterprisePhoneActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
@@ -387,11 +387,11 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblSelectedNode;
     private javax.swing.JLabel lblSelectedNode1;
     private javax.swing.JLabel lblSelectedNode2;
-    private javax.swing.JComboBox<String> selectEnterpriseType;
+    private javax.swing.JComboBox selectEnterpriseType;
     private javax.swing.JButton submitBtn;
-    private javax.swing.JPasswordField txtEnterpriseEmail;
+    private javax.swing.JTextField txtEnterpriseEmail;
     private javax.swing.JTextField txtEnterpriseLoc;
     private javax.swing.JTextField txtEnterpriseName;
-    private javax.swing.JPasswordField txtEnterprisePhone;
+    private javax.swing.JTextField txtEnterprisePhone;
     // End of variables declaration//GEN-END:variables
 }
