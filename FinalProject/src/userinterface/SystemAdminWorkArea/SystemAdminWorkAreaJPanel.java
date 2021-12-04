@@ -183,6 +183,10 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnManageSuppliers2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageSuppliers2ActionPerformed
         // TODO add your handling code here:
+        ManagePatientsJPanel actionPanel = new ManagePatientsJPanel(innerContainer, ecosystem);
+        innerContainer.add("managePatientsJPanel", actionPanel);
+        CardLayout layout = (CardLayout)innerContainer.getLayout();
+        layout.next(innerContainer);
     }//GEN-LAST:event_btnManageSuppliers2ActionPerformed
 
 
