@@ -256,10 +256,6 @@ public class LoginScreen extends javax.swing.JPanel {
         container.add("signup", ls);
         CardLayout crdLyt = (CardLayout) container.getLayout();
         crdLyt.next(container);
-
-//        CardLayout layout= (CardLayout) container.getLayout();
-//        container.add("workArea", account.getRole().createWorkArea(container, account, system));
-//        layout.next(container);
     }//GEN-LAST:event_btnPatientSignupActionPerformed
 
 

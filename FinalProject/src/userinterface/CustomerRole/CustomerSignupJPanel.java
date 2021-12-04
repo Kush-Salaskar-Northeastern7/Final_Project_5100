@@ -6,12 +6,15 @@
 package userinterface.CustomerRole;
 
 import Business.Customer.Customer;
+import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
 import Business.Employee.Employee;
 import Business.Role.CustomerRole;
 import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import userinterface.LoginScreen;
 
 /**
  *
@@ -26,11 +29,13 @@ public class CustomerSignupJPanel extends javax.swing.JPanel {
     private UserAccount userAccount;
     private EcoSystem ecosystem;
     private Customer customer;
+    private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     public CustomerSignupJPanel(JPanel userProcessContainer, EcoSystem ecosystem) {
         initComponents();
         this.userProcessContainer = userProcessContainer;        
         this.userAccount = new UserAccount();
         this.ecosystem = ecosystem;
+        ecosystem = dB4OUtil.retrieveSystem();
         //populateTable();
     }
 
@@ -64,6 +69,7 @@ public class CustomerSignupJPanel extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         txtPtnPassword = new javax.swing.JTextField();
         btnCreatePtn = new javax.swing.JButton();
+        btnLogout = new javax.swing.JButton();
 
         jLabel1.setText("Name");
 
@@ -110,6 +116,13 @@ public class CustomerSignupJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnLogout.setText("Logout");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -140,19 +153,27 @@ public class CustomerSignupJPanel extends javax.swing.JPanel {
                             .addComponent(txtPtnName, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtPtnUsername, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
                             .addComponent(txtPtnPassword, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
-                            .addComponent(txtPtnPhoneNum)))
+                            .addComponent(txtPtnPhoneNum))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 231, Short.MAX_VALUE)
+                        .addComponent(btnLogout))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(208, 208, 208)
-                        .addComponent(btnCreatePtn)))
-                .addContainerGap(325, Short.MAX_VALUE))
+                        .addComponent(btnCreatePtn)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(txtPtnUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(txtPtnUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnLogout)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
@@ -214,9 +235,22 @@ public class CustomerSignupJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnCreatePtnActionPerformed
 
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        // TODO add your handling code here:
+        // TODO add your handling code here:
+        userProcessContainer.removeAll();
+        JPanel blankJP = new JPanel();
+        LoginScreen ls = new LoginScreen(userProcessContainer, ecosystem);
+        userProcessContainer.add("blank", ls);
+        CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
+        crdLyt.next(userProcessContainer);
+        dB4OUtil.storeSystem(ecosystem);
+    }//GEN-LAST:event_btnLogoutActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreatePtn;
+    private javax.swing.JButton btnLogout;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
