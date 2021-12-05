@@ -32,11 +32,18 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         initComponents();
         // populate enterprise list
 //        populateEnterprises();
-        populateTable();
+        for(Enterprise.EnterpriseType type : Enterprise.EnterpriseType.values()){
+            populateTable(type.toString());
+        }
+        
     }
    
-    private void populateTable() {
-        DefaultTableModel model = (DefaultTableModel) tblHospEnterpriseTable.getModel();
+    private void populateTable(String enterprise) {
+        DefaultTableModel model; 
+        if(enterprise.equals("Hospital")) model = (DefaultTableModel) tblHospEnterpriseTable.getModel();
+        else if(enterprise.equals("Manufacturer")) model = (DefaultTableModel) tblManufacturerEnterpriseTable.getModel();
+        else if(enterprise.equals("Supplier")) model = (DefaultTableModel) tblSupplierEnterpriseTable.getModel();
+        else model = (DefaultTableModel) tblLabEnterpriseTable.getModel();
         model.setRowCount(0);
         for (Enterprise en : system.getEnterpriseDirectory().getEnterpriseList()) {
             Object[] row = new Object[5];
@@ -539,17 +546,20 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         // take the enterprise type from dropdown
         
         if (checkEmptyFields()) {
-            Enterprise.EnterpriseType enterprisetype = (Enterprise.EnterpriseType) selectEnterpriseType.getSelectedItem();
+            String enterprisetype = (String) selectEnterpriseType.getSelectedItem();
 
             String enterpriseName = txtEnterpriseName.getText();
             String enterpriseLoc = txtEnterpriseLoc.getText();
             String enterpriseEmail = txtEnterpriseUsername.getText();
             String enterprisePhone = txtEnterprisePhone.getText();
 
-            Enterprise enterprise = system.getEnterpriseDirectory().createEnterprise(enterpriseName, enterprisetype, enterpriseLoc, enterpriseEmail, enterprisePhone);
+            if(enterprisetype.equals("Hospital")){
+                
+            }
+//            Enterprise enterprise = system.getEnterpriseDirectory().createEnterprise(enterpriseName, enterprisetype, enterpriseLoc, enterpriseEmail, enterprisePhone);
             JOptionPane.showMessageDialog(this, "Enterprise is added");
 
-            populateTable();
+            populateTable(enterprisetype);
         }
     }//GEN-LAST:event_submitBtnActionPerformed
 
@@ -568,7 +578,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
             // Delete enterprise and his account
 //            system.getUserAccountDirectory().deleteUserAccount(useracc);
             system.getEnterpriseDirectory().deleteEnterprise(selectedEnterprise);
-            populateTable();
+//            populateTable();
         }
         
         
@@ -576,14 +586,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
 
     private void selectEnterpriseTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectEnterpriseTypeActionPerformed
         // TODO add your handling code here:
-        String enterprisetype = (String) selectEnterpriseType.getSelectedItem();
-
-        if(enterprisetype.equals("Hospital")){
-//            ManageDoctorJPanel actionPanel = new ManageDoctorJPanel(plTest, system);
-//            plTest.add("manageDoctorsJPanel", actionPanel);
-//            CardLayout layout = (CardLayout)plTest.getLayout();
-//            layout.next(plTest);
-        }
+        
     }//GEN-LAST:event_selectEnterpriseTypeActionPerformed
 
     private void selectEnterpriseTypePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_selectEnterpriseTypePropertyChange
