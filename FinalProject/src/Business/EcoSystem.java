@@ -5,7 +5,6 @@
  */
 package Business;
 
-
 //import Business.Restaurant.RestaurantDirectory;
 import Business.Customer.CustomerDirectory;
 import Business.DeliveryMan.DeliveryManDirectory;
@@ -18,8 +17,8 @@ import java.util.ArrayList;
  *
  * @author MyPC1
  */
-public class EcoSystem extends Organization{
-    
+public class EcoSystem extends Organization {
+
     private static EcoSystem business;
 //    private RestaurantDirectory restaurantDirectory;
     private CustomerDirectory customerDirectory;
@@ -34,44 +33,50 @@ public class EcoSystem extends Organization{
         this.enterpriseDirectory = enterpriseDirectory;
         enterpriseDirectory = new EnterpriseDirectory();
     }
-    
-    public static EcoSystem getInstance(){
-        if(business==null){
-            business=new EcoSystem();
+
+    public static EcoSystem getInstance() {
+        if (business == null) {
+            business = new EcoSystem();
         }
         return business;
     }
+    
+    public CustomerDirectory getCustomerDirectory() {
+        if (customerDirectory == null) {
+            customerDirectory = new CustomerDirectory();
+        }
+        return customerDirectory;
+    }
 
     public DeliveryManDirectory getDeliveryManDirectory() {
-        if(deliveryManDirectory == null){
+        if (deliveryManDirectory == null) {
             deliveryManDirectory = new DeliveryManDirectory();
         }
         return deliveryManDirectory;
     }
 
     public EnterpriseDirectory getEnterpriseDirectory() {
-        if(enterpriseDirectory == null){
+        if (enterpriseDirectory == null) {
             enterpriseDirectory = new EnterpriseDirectory();
         }
         return enterpriseDirectory;
     }
 
-    
     @Override
     public ArrayList<Role> getSupportedRole() {
-        ArrayList<Role> roleList=new ArrayList<Role>();
+        ArrayList<Role> roleList = new ArrayList<Role>();
         roleList.add(new SystemAdminRole());
         return roleList;
     }
-    private EcoSystem(){
+
+    private EcoSystem() {
         // name, type, location, email, phone
         super(null, null, null, null, null);
-       // networkList=new ArrayList<Network>();
+        // networkList=new ArrayList<Network>();
     }
 
-    
-    public boolean checkIfUserIsUnique(String userName){
-       //
-       return false;
+    public boolean checkIfUserIsUnique(String userName) {
+        //
+        return false;
     }
 }
