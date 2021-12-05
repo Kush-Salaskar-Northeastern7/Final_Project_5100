@@ -12,8 +12,10 @@ import Business.Doctor.DoctorDirectory;
 import Business.Enterprise.EnterpriseDirectory;
 import Business.LabTechnician.LabTechnicianDirectory;
 import Business.LabSupervisor.LabSupervisorDirectory;
+import Business.Manager.ManagerDirectory;
 import Business.Role.Role;
 import Business.Role.SystemAdminRole;
+import Business.SupplyManager.SupplyManagerDirectory;
 import java.util.ArrayList;
 
 /**
@@ -29,17 +31,21 @@ public class EcoSystem extends Organization {
     private EnterpriseDirectory enterpriseDirectory;
     private LabTechnicianDirectory labTechnicianDirectory;
     private DoctorDirectory doctorList;
-    private LabSupervisorDirectory labSupervisorDirectory; 
+    private LabSupervisorDirectory labSupervisorDirectory;
+    private ManagerDirectory managerDirectory;
+    private SupplyManagerDirectory supplyManagerDirectory;
 
-    public EcoSystem(CustomerDirectory customerDirectory, DeliveryManDirectory deliveryManDirectory, EnterpriseDirectory enterpriseDirectory, DoctorDirectory doctorList, LabSupervisorDirectory labSupervisorDirectory) {
+    public EcoSystem(CustomerDirectory customerDirectory, DeliveryManDirectory deliveryManDirectory, EnterpriseDirectory enterpriseDirectory, DoctorDirectory doctorList, LabSupervisorDirectory labSupervisorDirectory, LabTechnicianDirectory labTechnicianDirectory, ManagerDirectory managerDirectory, SupplyManagerDirectory supplyManagerDirectory) {
 
 //        this.restaurantDirectory = restaurantDirectory;
         this.customerDirectory = customerDirectory;
         this.deliveryManDirectory = deliveryManDirectory;
         this.enterpriseDirectory = enterpriseDirectory;
-        this.labTechnicianDirectory = new LabTechnicianDirectory();
+        this.labTechnicianDirectory = labTechnicianDirectory;
         this.doctorList = doctorList;
         this.labSupervisorDirectory = labSupervisorDirectory;
+        this.managerDirectory = managerDirectory;
+        this.supplyManagerDirectory = supplyManagerDirectory;
     }
 
     public static EcoSystem getInstance() {
@@ -47,6 +53,20 @@ public class EcoSystem extends Organization {
             business = new EcoSystem();
         }
         return business;
+    }
+    
+    public SupplyManagerDirectory getSupplyManagerDirectory(){
+        if(supplyManagerDirectory == null){
+            supplyManagerDirectory = new SupplyManagerDirectory();
+        }
+        return supplyManagerDirectory;
+    }
+    
+    public ManagerDirectory getManagerDirectory(){
+        if(managerDirectory == null){
+            managerDirectory = new ManagerDirectory();
+        }
+        return managerDirectory;
     }
     
     public LabSupervisorDirectory getLabSupervisorDirectory() {
