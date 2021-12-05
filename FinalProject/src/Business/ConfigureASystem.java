@@ -1,6 +1,7 @@
 package Business;
 
 import Business.Employee.Employee;
+import Business.Role.AdminRole;
 import Business.Role.SystemAdminRole;
 import Business.UserAccount.UserAccount;
 
@@ -24,7 +25,8 @@ public class ConfigureASystem {
         Employee employee = system.getEmployeeDirectory().createEmployee("RRH");
         
         UserAccount ua = system.getUserAccountDirectory().createUserAccount("sysadmin", 1, "sysadmin", employee, new SystemAdminRole());
-        
+        UserAccount ub = system.getUserAccountDirectory().createUserAccount("manager", 2, "manager", null, new AdminRole());
+
         return system;
     }
     
