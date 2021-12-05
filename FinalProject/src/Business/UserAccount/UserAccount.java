@@ -7,6 +7,7 @@ package Business.UserAccount;
 import Business.Employee.Employee;
 import Business.Role.Role;
 import Business.WorkQueue.WorkQueue;
+import java.util.Random;
 
 /**
  *
@@ -20,12 +21,14 @@ public class UserAccount {
     private Role role;
     private WorkQueue workQueue;
     private int uid;
-    private static int count = 1;
-
+    
+    public static Random rand = new Random();
+//    private static int count = rand.nextInt(1000000);
+    
     public UserAccount() {
         workQueue = new WorkQueue();
-        uid = count;
-        count++;
+        uid = rand.nextInt(1000000);
+//        rand.nextInt(1000000);
     }
 
     public int getUid() {

@@ -60,7 +60,7 @@ public class ManagePatientsJPanel extends javax.swing.JPanel {
 
         model.setRowCount(0);
         for (Customer customer : ecosystem.getCustomerDirectory().getCustomerList()) {
-            Object[] row = new Object[10];
+            Object[] row = new Object[9];
             row[0] = customer;
             row[1] = customer.getCustAddress();
             row[2] = customer.getCustCommunity();
