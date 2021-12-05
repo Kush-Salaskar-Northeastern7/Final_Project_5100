@@ -68,6 +68,7 @@ public class LabSupervisorCreateTechnicianJPanel extends javax.swing.JPanel {
         btnLogout = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         btnViewLt = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
 
         tblLabTechs.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -122,6 +123,13 @@ public class LabSupervisorCreateTechnicianJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -150,7 +158,9 @@ public class LabSupervisorCreateTechnicianJPanel extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnViewLt)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnDelete)))))
+                                .addComponent(btnUpdate)))
+                        .addGap(5, 5, 5)
+                        .addComponent(btnDelete)))
                 .addContainerGap(17, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -179,7 +189,8 @@ public class LabSupervisorCreateTechnicianJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCreate)
                     .addComponent(btnDelete)
-                    .addComponent(btnViewLt))
+                    .addComponent(btnViewLt)
+                    .addComponent(btnUpdate))
                 .addContainerGap(99, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -264,12 +275,33 @@ public class LabSupervisorCreateTechnicianJPanel extends javax.swing.JPanel {
         txtLtpassword.setText("");
         populateTable(); 
     }//GEN-LAST:event_btnViewLtActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+        if(txtLtname.getText().isEmpty() || txtLtusername.getText().isEmpty() || txtLtpassword.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please fill all details.", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        for (LabTechnician lt : ecosystem.getLabTechnicianDirectory().getLabTechnicianList()) {
+            if (labtech.getUserAccount().getUsername().equalsIgnoreCase(lt.getUserAccount().getUsername())){
+                lt.setLtName(txtLtname.getText());
+            }
+        }
+        
+        txtLtname.setText("");
+        txtLtusername.setText("");
+        txtLtpassword.setText("");
+        populateTable();
+        JOptionPane.showMessageDialog(null, "Lab Technician Updated Successfully.");
+    }//GEN-LAST:event_btnUpdateActionPerformed
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnLogout;
+    private javax.swing.JButton btnUpdate;
     private javax.swing.JButton btnViewLt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
