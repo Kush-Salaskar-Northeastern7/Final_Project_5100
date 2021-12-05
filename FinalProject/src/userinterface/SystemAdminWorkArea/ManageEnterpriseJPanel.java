@@ -73,7 +73,15 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 model.addRow(row);
            }
         } else if(enterprise.equals("Manufacturer")){
-                
+//            for (Admin en : system.getDoctorDirectory().getDoctorList()) {
+//                Object[] row = new Object[5];
+//                row[0] = en;
+//                row[1] = en.getUserAccount().getUid();
+//                row[2] = en.getUserAccount().getUsername();
+//                row[3] = en.getDocName();
+//                row[4] = "hi";
+//                model.addRow(row);
+//           }
         } else if(enterprise.equals("Supplier")) {
                 
         } else {
