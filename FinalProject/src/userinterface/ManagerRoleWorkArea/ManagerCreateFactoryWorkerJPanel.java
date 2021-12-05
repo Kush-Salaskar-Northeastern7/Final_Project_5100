@@ -270,18 +270,18 @@ public class ManagerCreateFactoryWorkerJPanel extends javax.swing.JPanel {
 
     private void btnViewLtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewLtActionPerformed
         // TODO add your handling code here:
-//        int selectedRow = tblFactoryWorkers.getSelectedRow();
-//
-//        if (selectedRow < 0) {
-//            JOptionPane.showMessageDialog(null, "Please select a row", "Error", JOptionPane.WARNING_MESSAGE);
-//        }
-//        else {
-//            LabTechnician lt = (LabTechnician) tblFactoryWorkers.getValueAt(selectedRow, 0);
-//            labtech = lt;
-//            txtFwname.setText(lt.getLtName());
-//            txtFwusername.setText(lt.getUserAccount().getUsername());
-//            txtFwpassword.setText(lt.getUserAccount().getPassword());
-//        }
+        int selectedRow = tblFactoryWorkers.getSelectedRow();
+
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row", "Error", JOptionPane.WARNING_MESSAGE);
+        }
+        else {
+            FactoryWorker lt = (FactoryWorker) tblFactoryWorkers.getValueAt(selectedRow, 0);
+            factoryworker = lt;
+            txtFwname.setText(lt.getFwName());
+            txtFwusername.setText(lt.getUserAccount().getUsername());
+            txtFwpassword.setText(lt.getUserAccount().getPassword());
+        }
 
         
         //IGNORREEEEE
