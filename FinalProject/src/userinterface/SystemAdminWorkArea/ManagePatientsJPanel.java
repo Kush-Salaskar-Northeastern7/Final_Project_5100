@@ -69,10 +69,10 @@ public class ManagePatientsJPanel extends javax.swing.JPanel {
             row[5] = customer.isDiagnosed();
             row[6] = customer.getTypeDiabetes();
             row[7] = customer.getGlucoseLvl();
-            row[8] = customer.getCustPhoneNumber();
-            //row[8] = customer.getUserAccount().getUid();
+            //row[8] = customer.getCustPhoneNumber();
+            row[8] = customer.getUserAccount().getUid();
             
-            row[9] = customer.getUserAccount().getUsername();
+//            row[9] = customer.getUserAccount().getUsername();
 
             model.addRow(row);
          }  
