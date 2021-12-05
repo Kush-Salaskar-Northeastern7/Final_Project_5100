@@ -54,7 +54,7 @@ public class SupplyManagerCreateDeliveryManJPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblFactoryWorkers = new javax.swing.JTable();
+        tblDeliveryMen = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -67,7 +67,7 @@ public class SupplyManagerCreateDeliveryManJPanel extends javax.swing.JPanel {
         btnUpdate = new javax.swing.JButton();
         btnLogout3 = new javax.swing.JButton();
 
-        tblFactoryWorkers.setModel(new javax.swing.table.DefaultTableModel(
+        tblDeliveryMen.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -78,7 +78,7 @@ public class SupplyManagerCreateDeliveryManJPanel extends javax.swing.JPanel {
                 "Name", "Username", "Password"
             }
         ));
-        jScrollPane1.setViewportView(tblFactoryWorkers);
+        jScrollPane1.setViewportView(tblDeliveryMen);
 
         jLabel1.setText("Name");
 
@@ -291,44 +291,44 @@ public class SupplyManagerCreateDeliveryManJPanel extends javax.swing.JPanel {
 
     private void btnViewLtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewLtActionPerformed
         // TODO add your handling code here:
-//        int selectedRow = tblFactoryWorkers.getSelectedRow();
-//
-//        if (selectedRow < 0) {
-//            JOptionPane.showMessageDialog(null, "Please select a row", "Error", JOptionPane.WARNING_MESSAGE);
-//        }
-//        else {
-//            FactoryWorker lt = (FactoryWorker) tblFactoryWorkers.getValueAt(selectedRow, 0);
-//            factoryworker = lt;
-//            txtDmname.setText(lt.getFwName());
-//            txtDmusername.setText(lt.getUserAccount().getUsername());
-//            txtDmpassword.setText(lt.getUserAccount().getPassword());
-//        }
+        int selectedRow = tblDeliveryMen.getSelectedRow();
+
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row", "Error", JOptionPane.WARNING_MESSAGE);
+        }
+        else {
+            DeliveryMan lt = (DeliveryMan) tblDeliveryMen.getValueAt(selectedRow, 0);
+            deliveryman = lt;
+            txtDmname.setText(lt.getDeliveryManName());
+            txtDmusername.setText(lt.getUserAccount().getUsername());
+            txtDmpassword.setText(lt.getUserAccount().getPassword());
+        }
     }//GEN-LAST:event_btnViewLtActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-//        if(txtDmname.getText().isEmpty() || txtDmusername.getText().isEmpty() || txtDmpassword.getText().isEmpty()) {
-//            JOptionPane.showMessageDialog(this, "Please fill all details.", "Error", JOptionPane.WARNING_MESSAGE);
-//            return;
-//        }
-//
-//        String name = txtDmname.getText();
-//        String username = txtDmusername.getText();
-//
-//        for(FactoryWorker lt : ecosystem.getFactoryWorkerDirectory().getFactoryWorkerList()){
-//            if(lt.getFwName() == null) continue;
-//            if(lt.getUserAccount().getUid() == factoryworker.getUserAccount().getUid()){
-//                lt.setFwName(name);
-//                lt.getUserAccount().setUsername(username);
-//            }
-//        }
-//
-//        txtDmname.setText("");
-//        txtDmusername.setText("");
-//        txtDmpassword.setText("");
-//
-//        populateTable();
-//        JOptionPane.showMessageDialog(null, "Factory Worker Updated Successfully.");
+        if(txtDmname.getText().isEmpty() || txtDmusername.getText().isEmpty() || txtDmpassword.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please fill all details.", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        String name = txtDmname.getText();
+        String username = txtDmusername.getText();
+
+        for(DeliveryMan lt : ecosystem.getDeliveryManDirectory().getDeliveryManList()){
+            if(lt.getDeliveryManName() == null) continue;
+            if(lt.getUserAccount().getUid() == deliveryman.getUserAccount().getUid()){
+                lt.setDeliveryManName(name);
+                lt.getUserAccount().setUsername(username);
+            }
+        }
+
+        txtDmname.setText("");
+        txtDmusername.setText("");
+        txtDmpassword.setText("");
+
+        populateTable();
+        JOptionPane.showMessageDialog(null, "Delivery Man Updated Successfully.");
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnLogout3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogout3ActionPerformed
@@ -344,7 +344,7 @@ public class SupplyManagerCreateDeliveryManJPanel extends javax.swing.JPanel {
 
 
     private void populateTable() {
-        DefaultTableModel model = (DefaultTableModel) tblFactoryWorkers.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblDeliveryMen.getModel();
         model.setRowCount(0);
         for (DeliveryMan deliveryman : ecosystem.getDeliveryManDirectory().getDeliveryManList()) {
             Object[] row = new Object[2];
@@ -372,7 +372,7 @@ public class SupplyManagerCreateDeliveryManJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblFactoryWorkers;
+    private javax.swing.JTable tblDeliveryMen;
     private javax.swing.JTextField txtDmname;
     private javax.swing.JPasswordField txtDmpassword;
     private javax.swing.JTextField txtDmusername;
