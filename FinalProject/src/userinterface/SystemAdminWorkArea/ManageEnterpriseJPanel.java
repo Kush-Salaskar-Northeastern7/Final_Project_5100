@@ -555,6 +555,12 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
 
             if(enterprisetype.equals("Hospital")){
                 
+            } else if(enterprisetype.equals("Manufacturer")){
+                
+            } else if(enterprisetype.equals("Supplier")){
+                
+            } else {
+                
             }
 //            Enterprise enterprise = system.getEnterpriseDirectory().createEnterprise(enterpriseName, enterprisetype, enterpriseLoc, enterpriseEmail, enterprisePhone);
             JOptionPane.showMessageDialog(this, "Enterprise is added");
