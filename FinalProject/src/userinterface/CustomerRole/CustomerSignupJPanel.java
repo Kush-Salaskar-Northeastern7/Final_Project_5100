@@ -267,11 +267,14 @@ public class CustomerSignupJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Username already exists, select a new username", "Error", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
-        Employee employee = ecosystem.getEmployeeDirectory().createEmployee(name);       
-        UserAccount userAccount = ecosystem.getUserAccountDirectory().createUserAccount(username, password, employee, new CustomerRole());        
+//        
+//        Employee employee = ecosystem.getEmployeeDirectory().createEmployee(name);       
+//        UserAccount userAccount = ecosystem.getUserAccountDirectory().createUserAccount(username, password, employee, new CustomerRole());        
         Customer c = ecosystem.getCustomerDirectory().addCustomer(name, age, address, 
-                                                            community, zip, "sk", phonenumber, userAccount);      
+                                                            community, zip, "sk", phonenumber, null);  
+        System.out.println(ecosystem.getCustomerDirectory().getCustomerList().size());
+
+        
                 
         txtPtnAddress.setText("");
         txtPtnAge.setText("");
