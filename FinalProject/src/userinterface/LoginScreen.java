@@ -215,12 +215,12 @@ public class LoginScreen extends javax.swing.JPanel {
     }//GEN-LAST:event_inputUserNameActionPerformed
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
-//        String userName = inputUserName.getText();
-//        char[] passwordArr = inputPassword.getPassword();
-//        String password = String.valueOf(passwordArr);
+        String userName = inputUserName.getText();
+        char[] passwordArr = inputPassword.getPassword();
+        String password = String.valueOf(passwordArr);
 //        SystemAdminRole adminRole = new SystemAdminRole();
-        String userName = "sysadmin";
-        String password = "sysadmin";
+//        String userName = "sysadmin";
+//        String password = "sysadmin";
         UserAccount userAccount = system.getUserAccountDirectory().authenticateUser(userName, password);
        
 //        System.out.println("User is Admin " +userAccount.getRole().toString().equals(SystemAdminRole.class.getName()));

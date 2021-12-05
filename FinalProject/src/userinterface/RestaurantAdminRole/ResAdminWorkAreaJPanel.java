@@ -10,12 +10,12 @@ import javax.swing.JPanel;
  *
  * @author  raunak
  */
-public class AdminWorkAreaJPanel extends javax.swing.JPanel {
+public class ResAdminWorkAreaJPanel extends javax.swing.JPanel {
     
     JPanel userProcessContainer;
     
     /** Creates new form AdminWorkAreaJPanel */
-    public AdminWorkAreaJPanel(JPanel userProcessContainer) {
+    public ResAdminWorkAreaJPanel(JPanel userProcessContainer) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
       

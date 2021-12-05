@@ -260,7 +260,11 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(panelInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
+<<<<<<< HEAD
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE))
+=======
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+>>>>>>> 16c3d7452b722fb49c181b805d9524b5720bca73
                 .addContainerGap())
         );
 
@@ -324,9 +328,13 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+<<<<<<< HEAD
         jPanel7Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel2, selectEnterpriseType});
 
         tblHospEnterpriseTable.setModel(new javax.swing.table.DefaultTableModel(
+=======
+        tblEnterpriseTable.setModel(new javax.swing.table.DefaultTableModel(
+>>>>>>> 16c3d7452b722fb49c181b805d9524b5720bca73
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -479,13 +487,13 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 954, Short.MAX_VALUE)
+            .addGap(0, 970, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 865, Short.MAX_VALUE)
+            .addGap(0, 763, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
