@@ -10,6 +10,7 @@ import Business.Customer.CustomerDirectory;
 import Business.DeliveryMan.DeliveryManDirectory;
 import Business.Doctor.DoctorDirectory;
 import Business.Enterprise.EnterpriseDirectory;
+import Business.FactoryWorker.FactoryWorkerDirectory;
 import Business.LabTechnician.LabTechnicianDirectory;
 import Business.LabSupervisor.LabSupervisorDirectory;
 import Business.Role.Role;
@@ -30,8 +31,11 @@ public class EcoSystem extends Organization {
     private LabTechnicianDirectory labTechnicianDirectory;
     private DoctorDirectory doctorList;
     private LabSupervisorDirectory labSupervisorDirectory; 
+    private FactoryWorkerDirectory factoryWorkerDirectory; 
 
-    public EcoSystem(CustomerDirectory customerDirectory, DeliveryManDirectory deliveryManDirectory, EnterpriseDirectory enterpriseDirectory, DoctorDirectory doctorList, LabSupervisorDirectory labSupervisorDirectory) {
+    public EcoSystem(CustomerDirectory customerDirectory, DeliveryManDirectory deliveryManDirectory, 
+            EnterpriseDirectory enterpriseDirectory, DoctorDirectory doctorList, 
+            LabSupervisorDirectory labSupervisorDirectory, FactoryWorkerDirectory factoryWorkerDirectory) {
 
 //        this.restaurantDirectory = restaurantDirectory;
         this.customerDirectory = customerDirectory;
@@ -40,6 +44,7 @@ public class EcoSystem extends Organization {
         this.labTechnicianDirectory = new LabTechnicianDirectory();
         this.doctorList = doctorList;
         this.labSupervisorDirectory = labSupervisorDirectory;
+        this.factoryWorkerDirectory = factoryWorkerDirectory;
     }
 
     public static EcoSystem getInstance() {
@@ -54,6 +59,13 @@ public class EcoSystem extends Organization {
             labSupervisorDirectory = new LabSupervisorDirectory();
         }
         return labSupervisorDirectory;
+    }
+    
+    public FactoryWorkerDirectory getFactoryWorkerDirectory() {
+        if(factoryWorkerDirectory == null){
+            factoryWorkerDirectory= new FactoryWorkerDirectory();
+        }
+        return factoryWorkerDirectory;
     }
     
     public DoctorDirectory getDoctorDirectory(){

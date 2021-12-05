@@ -251,7 +251,7 @@ public class LabSupervisorCreateTechnicianJPanel extends javax.swing.JPanel {
             UserAccount ua = lt.getUserAccount();
             ecosystem.getUserAccountDirectory().deleteUserAccount(ua); //need to delete useraccount of lab technician as well
             ecosystem.getLabTechnicianDirectory().deleteLabTechnician(lt);
-            JOptionPane.showMessageDialog(null, "Customer removed Successfully.");
+            JOptionPane.showMessageDialog(null, "Lab Technician removed Successfully.");
             populateTable();
     }//GEN-LAST:event_btnDeleteActionPerformed
     }
