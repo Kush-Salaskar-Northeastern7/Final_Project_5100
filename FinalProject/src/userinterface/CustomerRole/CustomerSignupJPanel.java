@@ -10,9 +10,12 @@ import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
 import Business.Employee.Employee;
 import Business.LabSupervisor.LabSupervisor;
+import Business.LabTechnician.LabTechnician;
 import Business.Role.CustomerRole;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.LabApprovalWorkRequest;
 import java.awt.CardLayout;
+import java.util.Random;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -249,6 +252,15 @@ public class CustomerSignupJPanel extends javax.swing.JPanel {
             return;
         }
         
+        int selectedRow = tblLabs.getSelectedRow();
+        
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        LabSupervisor ls = (LabSupervisor) tblLabs.getValueAt(selectedRow, 0);
+        
+        
         String name = txtPtnName.getText();
         long phonenumber = Long.parseLong(txtPtnPhoneNum.getText());
         String address = txtPtnAddress.getText();        
@@ -271,9 +283,16 @@ public class CustomerSignupJPanel extends javax.swing.JPanel {
 //        Employee employee = ecosystem.getEmployeeDirectory().createEmployee(name);       
 //        UserAccount userAccount = ecosystem.getUserAccountDirectory().createUserAccount(username, password, employee, new CustomerRole());        
         Customer c = ecosystem.getCustomerDirectory().addCustomer(name, age, address, 
-                                                            community, zip, "sk", phonenumber, null);  
-        System.out.println(ecosystem.getCustomerDirectory().getCustomerList().size());
-
+                                                            community, zip, "sk", phonenumber, null);
+        
+        LabApprovalWorkRequest req = new LabApprovalWorkRequest();
+        req.setCustomer(c);
+        req.setMessage("Request to be reviewed");
+        req.setReceiver(ls.getUserAccount());
+        req.setStatus("PENDING");
+        ls.getUserAccount().getWorkQueue().getWorkRequestList().add(req);
+        
+        JOptionPane.showMessageDialog(null, "Your Req is sent to your Lab for review.");
         
                 
         txtPtnAddress.setText("");
@@ -286,6 +305,7 @@ public class CustomerSignupJPanel extends javax.swing.JPanel {
         txtPtnPhoneNum.setText("");
         txtPtnUsername.setText("");
         txtPtnZip.setText("");
+        populateLabsTable();
         
         
         
