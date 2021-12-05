@@ -5,10 +5,12 @@
  */
 package userinterface.LabSupervisorWorkArea;
 
+import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import userinterface.LoginScreen;
 
 /**
  *
@@ -19,9 +21,13 @@ public class LabSupervisorWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form LabSupervisorWorkAreaJPanel
      */
+    
+    private JPanel userProcessContainer;
+    private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     private JPanel container;
     private EcoSystem system;
     private UserAccount account;
+    
     
     public LabSupervisorWorkAreaJPanel(JPanel container, UserAccount account, EcoSystem system) {
         initComponents();
@@ -40,11 +46,25 @@ public class LabSupervisorWorkAreaJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         btnManageLabTechs = new javax.swing.JButton();
+        btnLogout3 = new javax.swing.JButton();
 
         btnManageLabTechs.setText("Manage Lab Technicians");
         btnManageLabTechs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnManageLabTechsActionPerformed(evt);
+            }
+        });
+
+        btnLogout3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logout.png"))); // NOI18N
+        btnLogout3.setAlignmentX(0.5F);
+        btnLogout3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnLogout3.setBorderPainted(false);
+        btnLogout3.setContentAreaFilled(false);
+        btnLogout3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLogout3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hoveredlogin.png"))); // NOI18N
+        btnLogout3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogout3ActionPerformed(evt);
             }
         });
 
@@ -56,11 +76,17 @@ public class LabSupervisorWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(108, 108, 108)
                 .addComponent(btnManageLabTechs, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(461, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnLogout3)
+                .addGap(26, 26, 26))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(217, 217, 217)
+                .addGap(15, 15, 15)
+                .addComponent(btnLogout3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(170, 170, 170)
                 .addComponent(btnManageLabTechs)
                 .addContainerGap(254, Short.MAX_VALUE))
         );
@@ -76,8 +102,20 @@ public class LabSupervisorWorkAreaJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnManageLabTechsActionPerformed
 
+    private void btnLogout3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogout3ActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.removeAll();
+        JPanel blankJP = new JPanel();
+        LoginScreen ls = new LoginScreen(userProcessContainer, system);
+        userProcessContainer.add("blank", ls);
+        CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
+        crdLyt.next(userProcessContainer);
+        dB4OUtil.storeSystem(system);
+    }//GEN-LAST:event_btnLogout3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLogout3;
     private javax.swing.JButton btnManageLabTechs;
     // End of variables declaration//GEN-END:variables
 }

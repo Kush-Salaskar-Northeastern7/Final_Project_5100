@@ -65,10 +65,10 @@ public class LabSupervisorCreateTechnicianJPanel extends javax.swing.JPanel {
         txtLtusername = new javax.swing.JTextField();
         txtLtpassword = new javax.swing.JPasswordField();
         btnCreate = new javax.swing.JButton();
-        btnLogout = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         btnViewLt = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
+        btnLogout3 = new javax.swing.JButton();
 
         tblLabTechs.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -102,13 +102,6 @@ public class LabSupervisorCreateTechnicianJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnLogout.setText("Logout");
-        btnLogout.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLogoutActionPerformed(evt);
-            }
-        });
-
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,6 +120,19 @@ public class LabSupervisorCreateTechnicianJPanel extends javax.swing.JPanel {
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpdateActionPerformed(evt);
+            }
+        });
+
+        btnLogout3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logout.png"))); // NOI18N
+        btnLogout3.setAlignmentX(0.5F);
+        btnLogout3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnLogout3.setBorderPainted(false);
+        btnLogout3.setContentAreaFilled(false);
+        btnLogout3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLogout3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hoveredlogin.png"))); // NOI18N
+        btnLogout3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogout3ActionPerformed(evt);
             }
         });
 
@@ -164,14 +170,15 @@ public class LabSupervisorCreateTechnicianJPanel extends javax.swing.JPanel {
                 .addContainerGap(17, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnLogout)
-                .addGap(27, 27, 27))
+                .addComponent(btnLogout3)
+                .addGap(35, 35, 35))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(btnLogout)
-                .addGap(15, 15, 15)
+                .addContainerGap()
+                .addComponent(btnLogout3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -227,17 +234,6 @@ public class LabSupervisorCreateTechnicianJPanel extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(null, "Lab Technician Created");
         
     }//GEN-LAST:event_btnCreateActionPerformed
-
-    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
-        // TODO add your handling code here:
-        userProcessContainer.removeAll();
-        JPanel blankJP = new JPanel();
-        LoginScreen ls = new LoginScreen(userProcessContainer, ecosystem);
-        userProcessContainer.add("blank", ls);
-        CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
-        crdLyt.next(userProcessContainer);
-        dB4OUtil.storeSystem(ecosystem);
-    }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
@@ -301,12 +297,23 @@ public class LabSupervisorCreateTechnicianJPanel extends javax.swing.JPanel {
         populateTable();
         JOptionPane.showMessageDialog(null, "Lab Technician Updated Successfully.");
     }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void btnLogout3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogout3ActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.removeAll();
+        JPanel blankJP = new JPanel();
+        LoginScreen ls = new LoginScreen(userProcessContainer, ecosystem);
+        userProcessContainer.add("blank", ls);
+        CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
+        crdLyt.next(userProcessContainer);
+        dB4OUtil.storeSystem(ecosystem);
+    }//GEN-LAST:event_btnLogout3ActionPerformed
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnDelete;
-    private javax.swing.JButton btnLogout;
+    private javax.swing.JButton btnLogout3;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JButton btnViewLt;
     private javax.swing.JLabel jLabel1;
