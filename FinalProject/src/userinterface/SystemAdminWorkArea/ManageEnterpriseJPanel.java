@@ -11,9 +11,12 @@ import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Doctor.Doctor;
 import Business.LabSupervisor.LabSupervisor;
+import Business.Manager.Manager;
+import Business.Role.AdminRole;
 import Business.Role.CustomerRole;
 import Business.Role.DoctorRole;
 import Business.Role.LabSupervisorRole;
+import Business.SupplyManager.SupplyManager;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -73,17 +76,25 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 model.addRow(row);
            }
         } else if(enterprise.equals("Manufacturer")){
-//            for (Admin en : system.getDoctorDirectory().getDoctorList()) {
-//                Object[] row = new Object[5];
-//                row[0] = en;
-//                row[1] = en.getUserAccount().getUid();
-//                row[2] = en.getUserAccount().getUsername();
-//                row[3] = en.getDocName();
-//                row[4] = "hi";
-//                model.addRow(row);
-//           }
+            for (Manager en : system.getManagerDirectory().getManagerList()) {
+                Object[] row = new Object[5];
+                row[0] = en;
+                row[1] = en.getUserAccount().getUid();
+                row[2] = en.getUserAccount().getUsername();
+                row[3] = en.getManagerName();
+                row[4] = "hi";
+                model.addRow(row);
+           }
         } else if(enterprise.equals("Supplier")) {
-                
+            for (SupplyManager en : system.getSupplyManagerDirectory().getSupplyManagerList()) {
+                Object[] row = new Object[5];
+                row[0] = en;
+                row[1] = en.getUserAccount().getUid();
+                row[2] = en.getUserAccount().getUsername();
+                row[3] = en.getSmName();
+                row[4] = "hi";
+                model.addRow(row);
+           } 
         } else {
             for(LabSupervisor ls: system.getLabSupervisorDirectory().getLabSupervisorList()){
                 Object[] row = new Object[5];
@@ -603,9 +614,13 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
 //                                                           community, zip, "sk", phonenumber, userAccount); 
                 Doctor doc = system.getDoctorDirectory().addDoctor(name, userAccount);
             } else if(enterprisetype.equals("Manufacturer")){
-                
+                Employee employee = system.getEmployeeDirectory().createEmployee(name);       
+                UserAccount userAccount = system.getUserAccountDirectory().createUserAccount(username, password, employee, new AdminRole());        
+                Manager m = system.getManagerDirectory().addManager(name, userAccount);
             } else if(enterprisetype.equals("Supplier")){
-                
+                Employee employee = system.getEmployeeDirectory().createEmployee(name);       
+                UserAccount userAccount = system.getUserAccountDirectory().createUserAccount(username, password, employee, new DoctorRole());        
+                SupplyManager sm = system.getSupplyManagerDirectory().createSupplyManager(name, userAccount);
             } else {
                 Employee employee = system.getEmployeeDirectory().createEmployee(name);       
                 UserAccount userAccount = system.getUserAccountDirectory().createUserAccount(username, password, employee, new LabSupervisorRole());
