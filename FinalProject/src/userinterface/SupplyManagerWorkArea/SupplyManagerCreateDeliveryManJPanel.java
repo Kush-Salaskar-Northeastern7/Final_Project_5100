@@ -275,18 +275,18 @@ public class SupplyManagerCreateDeliveryManJPanel extends javax.swing.JPanel {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-//        int selectedRow = tblFactoryWorkers.getSelectedRow();
-//
-//        if (selectedRow < 0) {
-//            JOptionPane.showMessageDialog(null, "Please select any row.", "Error", JOptionPane.WARNING_MESSAGE);
-//        }
-//        else {
-//            FactoryWorker lt = (FactoryWorker) tblFactoryWorkers.getValueAt(selectedRow, 0);
-//            UserAccount ua = lt.getUserAccount();
-//            ecosystem.getUserAccountDirectory().deleteUserAccount(ua); //need to delete useraccount of lab technician as well
-//            ecosystem.getFactoryWorkerDirectory().deleteFactoryWorker(lt);
-//            JOptionPane.showMessageDialog(null, "Factory Worker removed Successfully.");
-//            populateTable();}
+        int selectedRow = tblDeliveryMen.getSelectedRow();
+
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select any row.", "Error", JOptionPane.WARNING_MESSAGE);
+        }
+        else {
+            DeliveryMan lt = (DeliveryMan) tblDeliveryMen.getValueAt(selectedRow, 0);
+            UserAccount ua = lt.getUserAccount();
+            ecosystem.getUserAccountDirectory().deleteUserAccount(ua); //need to delete useraccount of lab technician as well
+            ecosystem.getDeliveryManDirectory().deleteDeliveryMan(lt);
+            JOptionPane.showMessageDialog(null, "Delivery Man removed Successfully.");
+            populateTable();}
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnViewLtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewLtActionPerformed
