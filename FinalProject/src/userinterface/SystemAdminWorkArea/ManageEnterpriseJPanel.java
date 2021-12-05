@@ -9,7 +9,9 @@ import Business.Customer.Customer;
 import Business.EcoSystem;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
+import Business.Doctor.Doctor;
 import Business.Role.CustomerRole;
+import Business.Role.DoctorRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -184,8 +186,6 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         });
 
         jLabel7.setText("Password");
-
-        txtPasswordField.setText("jPasswordField1");
 
         javax.swing.GroupLayout panelInputLayout = new javax.swing.GroupLayout(panelInput);
         panelInput.setLayout(panelInputLayout);
@@ -562,10 +562,11 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
             String password = String.valueOf(passwordArr);
 
             if(enterprisetype.equals("Hospital")){
-                Employee employee = ecosystem.getEmployeeDirectory().createEmployee(name);       
-                UserAccount userAccount = ecosystem.getUserAccountDirectory().createUserAccount(username, password, employee, new DoctorRole());        
+                Employee employee = system.getEmployeeDirectory().createEmployee(name);       
+                UserAccount userAccount = system.getUserAccountDirectory().createUserAccount(username, password, employee, new DoctorRole());        
 //                Customer c = ecosystem.getCustomerDirectory().addCustomer(name, age, address, 
-//                                                            community, zip, "sk", phonenumber, userAccount);      
+//                                                           community, zip, "sk", phonenumber, userAccount); 
+                Doctor doc = system.getDoctorDirectory().addDoctor(name, userAccount);
             } else if(enterprisetype.equals("Manufacturer")){
                 
             } else if(enterprisetype.equals("Supplier")){

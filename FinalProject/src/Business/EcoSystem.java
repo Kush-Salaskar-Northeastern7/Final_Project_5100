@@ -10,6 +10,7 @@ import Business.Customer.CustomerDirectory;
 import Business.DeliveryMan.DeliveryManDirectory;
 import Business.Doctor.DoctorDirectory;
 import Business.Enterprise.EnterpriseDirectory;
+import Business.LabSupervisor.LabSupervisorDirectory;
 import Business.Role.Role;
 import Business.Role.SystemAdminRole;
 import java.util.ArrayList;
@@ -26,8 +27,9 @@ public class EcoSystem extends Organization {
     private DeliveryManDirectory deliveryManDirectory;
     private EnterpriseDirectory enterpriseDirectory;
     private DoctorDirectory doctorList;
+    private LabSupervisorDirectory labSupervisorDirectory; 
 
-    public EcoSystem(CustomerDirectory customerDirectory, DeliveryManDirectory deliveryManDirectory, EnterpriseDirectory enterpriseDirectory, DoctorDirectory doctorList) {
+    public EcoSystem(CustomerDirectory customerDirectory, DeliveryManDirectory deliveryManDirectory, EnterpriseDirectory enterpriseDirectory, DoctorDirectory doctorList, LabSupervisorDirectory labSupervisorDirectory) {
 
 //        this.restaurantDirectory = restaurantDirectory;
         this.customerDirectory = customerDirectory;
@@ -35,6 +37,7 @@ public class EcoSystem extends Organization {
         this.enterpriseDirectory = enterpriseDirectory;
         enterpriseDirectory = new EnterpriseDirectory();
         this.doctorList = doctorList;
+        this.labSupervisorDirectory = labSupervisorDirectory;
     }
 
     public static EcoSystem getInstance() {
@@ -42,6 +45,13 @@ public class EcoSystem extends Organization {
             business = new EcoSystem();
         }
         return business;
+    }
+    
+    public LabSupervisorDirectory getLabSupervisorDirectory() {
+        if(labSupervisorDirectory == null){
+            labSupervisorDirectory = new LabSupervisorDirectory();
+        }
+        return labSupervisorDirectory;
     }
     
     public DoctorDirectory getDoctorDirectory(){
