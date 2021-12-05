@@ -254,18 +254,18 @@ public class ManagerCreateFactoryWorkerJPanel extends javax.swing.JPanel {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-//        int selectedRow = tblFactoryWorkers.getSelectedRow();
-//
-//        if (selectedRow < 0) {
-//            JOptionPane.showMessageDialog(null, "Please select any row.", "Error", JOptionPane.WARNING_MESSAGE);
-//        }
-//        else {
-//            LabTechnician lt = (LabTechnician) tblFactoryWorkers.getValueAt(selectedRow, 0);
-//            UserAccount ua = lt.getUserAccount();
-//            ecosystem.getUserAccountDirectory().deleteUserAccount(ua); //need to delete useraccount of lab technician as well
-//            ecosystem.getLabTechnicianDirectory().deleteLabTechnician(lt);
-//            JOptionPane.showMessageDialog(null, "Lab Technician removed Successfully.");
-//            populateTable();
+        int selectedRow = tblFactoryWorkers.getSelectedRow();
+
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select any row.", "Error", JOptionPane.WARNING_MESSAGE);
+        }
+        else {
+            FactoryWorker lt = (FactoryWorker) tblFactoryWorkers.getValueAt(selectedRow, 0);
+            UserAccount ua = lt.getUserAccount();
+            ecosystem.getUserAccountDirectory().deleteUserAccount(ua); //need to delete useraccount of lab technician as well
+            ecosystem.getFactoryWorkerDirectory().deleteFactoryWorker(lt);
+            JOptionPane.showMessageDialog(null, "Factory Worker removed Successfully.");
+            populateTable();}
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnViewLtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewLtActionPerformed
@@ -282,39 +282,32 @@ public class ManagerCreateFactoryWorkerJPanel extends javax.swing.JPanel {
             txtFwusername.setText(lt.getUserAccount().getUsername());
             txtFwpassword.setText(lt.getUserAccount().getPassword());
         }
-
-        
-        //IGNORREEEEE
-        //        txtLtname.setText("");
-        //        txtLtusername.setText("");
-        //        txtLtpassword.setText("");
-        //populateTable();
     }//GEN-LAST:event_btnViewLtActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-//        if(txtFwname.getText().isEmpty() || txtFwusername.getText().isEmpty() || txtFwpassword.getText().isEmpty()) {
-//            JOptionPane.showMessageDialog(this, "Please fill all details.", "Error", JOptionPane.WARNING_MESSAGE);
-//            return;
-//        }
-//
-//        String name = txtFwname.getText();
-//        String username = txtFwusername.getText();
-//
-//        for(LabTechnician lt : ecosystem.getLabTechnicianDirectory().getLabTechnicianList()){
-//            if(lt.getLtName() == null) continue;
-//            if(lt.getUserAccount().getUid() == labtech.getUserAccount().getUid()){
-//                lt.setLtName(name);
-//                lt.getUserAccount().setUsername(username);
-//            }
-//        }
-//
-//        txtFwname.setText("");
-//        txtFwusername.setText("");
-//        txtFwpassword.setText("");
-//
-//        populateTable();
-//        JOptionPane.showMessageDialog(null, "Lab Technician Updated Successfully.");
+        if(txtFwname.getText().isEmpty() || txtFwusername.getText().isEmpty() || txtFwpassword.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please fill all details.", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        String name = txtFwname.getText();
+        String username = txtFwusername.getText();
+
+        for(FactoryWorker lt : ecosystem.getFactoryWorkerDirectory().getFactoryWorkerList()){
+            if(lt.getFwName() == null) continue;
+            if(lt.getUserAccount().getUid() == factoryworker.getUserAccount().getUid()){
+                lt.setFwName(name);
+                lt.getUserAccount().setUsername(username);
+            }
+        }
+
+        txtFwname.setText("");
+        txtFwusername.setText("");
+        txtFwpassword.setText("");
+
+        populateTable();
+        JOptionPane.showMessageDialog(null, "Factory Worker Updated Successfully.");
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnLogout3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogout3ActionPerformed
