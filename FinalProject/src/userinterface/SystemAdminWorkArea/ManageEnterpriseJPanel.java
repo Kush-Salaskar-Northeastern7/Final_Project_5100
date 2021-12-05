@@ -78,8 +78,6 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         submitBtn = new javax.swing.JButton();
         txtEnterpriseUsername1 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        plTest = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         btnDeleteEnterprise = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -153,7 +151,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/networking (1).png"))); // NOI18N
 
-        jLabel1.setText("Doctor name");
+        jLabel1.setText("Name");
 
         jLabel4.setText("Location");
 
@@ -167,7 +165,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
 
         jLabel5.setText("Username");
 
-        submitBtn.setText("Add Doctor");
+        submitBtn.setText("Add");
         submitBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitBtnActionPerformed(evt);
@@ -236,25 +234,14 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
 
         panelInputLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel1, jLabel4, jLabel5, jLabel6, txtEnterpriseLoc, txtEnterpriseName});
 
-        plTest.setLayout(new java.awt.CardLayout());
-
-        jLabel8.setText("Hi");
-        plTest.add(jLabel8, "card2");
-
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(panelInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(61, 61, 61))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(180, 180, 180)
-                        .addComponent(plTest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(24, 24, 24)
+                .addComponent(panelInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(61, 61, 61)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -265,8 +252,6 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(panelInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(74, 74, 74)
-                        .addComponent(plTest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE))
                 .addContainerGap())
@@ -594,10 +579,10 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         String enterprisetype = (String) selectEnterpriseType.getSelectedItem();
 
         if(enterprisetype.equals("Hospital")){
-            ManageDoctorJPanel actionPanel = new ManageDoctorJPanel(plTest, system);
-            plTest.add("manageDoctorsJPanel", actionPanel);
-            CardLayout layout = (CardLayout)plTest.getLayout();
-            layout.next(plTest);
+//            ManageDoctorJPanel actionPanel = new ManageDoctorJPanel(plTest, system);
+//            plTest.add("manageDoctorsJPanel", actionPanel);
+//            CardLayout layout = (CardLayout)plTest.getLayout();
+//            layout.next(plTest);
         }
     }//GEN-LAST:event_selectEnterpriseTypeActionPerformed
 
@@ -624,7 +609,6 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -640,7 +624,6 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblSelectedNode;
     private javax.swing.JPanel panelInput;
-    private javax.swing.JPanel plTest;
     private javax.swing.JComboBox selectEnterpriseType;
     private javax.swing.JButton submitBtn;
     private javax.swing.JTable tblHospEnterpriseTable;
