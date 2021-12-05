@@ -9,11 +9,13 @@ import Business.Customer.Customer;
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
 import Business.Employee.Employee;
+import Business.LabSupervisor.LabSupervisor;
 import Business.Role.CustomerRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 import userinterface.LoginScreen;
 
 /**
@@ -36,7 +38,7 @@ public class CustomerSignupJPanel extends javax.swing.JPanel {
         this.userAccount = new UserAccount();
         this.ecosystem = ecosystem;
         ecosystem = dB4OUtil.retrieveSystem();
-        //populateTable();
+        populateLabsTable();
     }
 
     /**
@@ -70,6 +72,8 @@ public class CustomerSignupJPanel extends javax.swing.JPanel {
         btnCreatePtn = new javax.swing.JButton();
         btnLogout = new javax.swing.JButton();
         txtPtnPassword = new javax.swing.JPasswordField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblLabs = new javax.swing.JTable();
 
         jLabel1.setText("Name");
 
@@ -117,57 +121,66 @@ public class CustomerSignupJPanel extends javax.swing.JPanel {
             }
         });
 
+        tblLabs.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Lab Name", "Lab Address"
+            }
+        ));
+        jScrollPane1.setViewportView(tblLabs);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(208, 208, 208)
+                .addComponent(btnCreatePtn)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(124, 124, 124)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6))
+                .addGap(104, 104, 104)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(txtPtnGlucoseLvl)
+                    .addComponent(txtPtnDiabetesType, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtPtnAge, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtPtnZip, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtPtnCommunity, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtPtnAddress, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtPtnName, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtPtnUsername, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                    .addComponent(txtPtnPhoneNum)
+                    .addComponent(txtPtnPassword))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(124, 124, 124)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addGap(104, 104, 104)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtPtnGlucoseLvl)
-                            .addComponent(txtPtnDiabetesType, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtPtnAge, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtPtnZip, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtPtnCommunity, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtPtnAddress, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtPtnName, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtPtnUsername, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
-                            .addComponent(txtPtnPhoneNum)
-                            .addComponent(txtPtnPassword))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 231, Short.MAX_VALUE)
-                        .addComponent(btnLogout))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(208, 208, 208)
-                        .addComponent(btnCreatePtn)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addComponent(btnLogout, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(165, 165, 165))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9)
-                            .addComponent(txtPtnUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnLogout)))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(txtPtnUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
@@ -207,6 +220,12 @@ public class CustomerSignupJPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addComponent(btnCreatePtn)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnLogout)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -293,6 +312,20 @@ public class CustomerSignupJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnLogoutActionPerformed
 
 
+    public void populateLabsTable(){
+        DefaultTableModel model = (DefaultTableModel) tblLabs.getModel();
+        model.setRowCount(0);
+        if(ecosystem.getLabSupervisorDirectory().getLabSupervisorList().size() == 0) return;
+        for (LabSupervisor ls : ecosystem.getLabSupervisorDirectory().getLabSupervisorList()) {
+            Object[] row = new Object[2];
+            row[0] = ls;
+            row[1] = ls.getUserAccount().getUsername();
+            
+            model.addRow(row);       
+        }
+        
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreatePtn;
     private javax.swing.JButton btnLogout;
@@ -306,6 +339,8 @@ public class CustomerSignupJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblLabs;
     private javax.swing.JTextField txtPtnAddress;
     private javax.swing.JTextField txtPtnAge;
     private javax.swing.JTextField txtPtnCommunity;
