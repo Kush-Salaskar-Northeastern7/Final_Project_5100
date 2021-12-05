@@ -47,6 +47,7 @@ public class LabSupervisorWorkAreaJPanel extends javax.swing.JPanel {
 
         btnManageLabTechs = new javax.swing.JButton();
         btnLogout3 = new javax.swing.JButton();
+        btnWorkRqst = new javax.swing.JButton();
 
         btnManageLabTechs.setText("Manage Lab Technicians");
         btnManageLabTechs.addActionListener(new java.awt.event.ActionListener() {
@@ -68,6 +69,8 @@ public class LabSupervisorWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnWorkRqst.setText("Assign Work to Lab Technicians");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -75,7 +78,9 @@ public class LabSupervisorWorkAreaJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(108, 108, 108)
                 .addComponent(btnManageLabTechs, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(461, Short.MAX_VALUE))
+                .addGap(69, 69, 69)
+                .addComponent(btnWorkRqst, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(136, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnLogout3)
@@ -87,7 +92,9 @@ public class LabSupervisorWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(15, 15, 15)
                 .addComponent(btnLogout3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(170, 170, 170)
-                .addComponent(btnManageLabTechs)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnManageLabTechs)
+                    .addComponent(btnWorkRqst))
                 .addContainerGap(254, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -117,5 +124,6 @@ public class LabSupervisorWorkAreaJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogout3;
     private javax.swing.JButton btnManageLabTechs;
+    private javax.swing.JButton btnWorkRqst;
     // End of variables declaration//GEN-END:variables
 }

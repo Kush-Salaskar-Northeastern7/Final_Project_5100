@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.ManagerRoleWorkArea;
+package userinterface.SupplyManagerWorkArea;
 
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
@@ -16,20 +16,19 @@ import userinterface.LoginScreen;
  *
  * @author anushka
  */
-public class ManagerRoleWorkAreaJPanel extends javax.swing.JPanel {
+public class SupplyManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form ManagerRoleWorkAreaJPanel
+     * Creates new form SupplyManagerWorkAreaJPanel
      */
     
-   
     private JPanel userProcessContainer;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     private JPanel container;
     private EcoSystem system;
     private UserAccount account;
     
-    public ManagerRoleWorkAreaJPanel(JPanel container, UserAccount account, EcoSystem system) {
+    public SupplyManagerWorkAreaJPanel(JPanel container, UserAccount account, EcoSystem system) {
         initComponents();
         this.container = container;
         this.account = account;
@@ -46,15 +45,17 @@ public class ManagerRoleWorkAreaJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         btnManageFactoryWorkers = new javax.swing.JButton();
-        btnLogout3 = new javax.swing.JButton();
         btnWorkRqst = new javax.swing.JButton();
+        btnLogout3 = new javax.swing.JButton();
 
-        btnManageFactoryWorkers.setText("Manage Factory Workers");
+        btnManageFactoryWorkers.setText("Manage Delivery Men");
         btnManageFactoryWorkers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnManageFactoryWorkersActionPerformed(evt);
             }
         });
+
+        btnWorkRqst.setText("Assign Work to Factory Workers");
 
         btnLogout3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logout.png"))); // NOI18N
         btnLogout3.setAlignmentX(0.5F);
@@ -69,44 +70,46 @@ public class ManagerRoleWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnWorkRqst.setText("Assign Work to Factory Workers");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(108, 108, 108)
+                .addGap(87, 87, 87)
                 .addComponent(btnManageFactoryWorkers, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addComponent(btnWorkRqst, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(164, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnLogout3)
-                .addGap(24, 24, 24))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnWorkRqst, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnLogout3)))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnLogout3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(179, 179, 179)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnManageFactoryWorkers)
-                    .addComponent(btnWorkRqst))
-                .addContainerGap(254, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnLogout3, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+                        .addGap(179, 179, 179)
+                        .addComponent(btnWorkRqst))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnManageFactoryWorkers)))
+                .addGap(216, 216, 216))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnManageFactoryWorkersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageFactoryWorkersActionPerformed
         // TODO add your handling code here:
         container.removeAll();
-        ManagerCreateFactoryWorkerJPanel ls = new ManagerCreateFactoryWorkerJPanel(container, system);
+        SupplyManagerCreateDeliveryManJPanel ls = new SupplyManagerCreateDeliveryManJPanel(container, system);
         container.add("signup", ls);
         CardLayout crdLyt = (CardLayout) container.getLayout();
         crdLyt.next(container);
-
     }//GEN-LAST:event_btnManageFactoryWorkersActionPerformed
 
     private void btnLogout3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogout3ActionPerformed
