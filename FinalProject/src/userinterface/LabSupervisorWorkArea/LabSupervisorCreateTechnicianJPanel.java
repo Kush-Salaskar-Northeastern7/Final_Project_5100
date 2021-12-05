@@ -263,17 +263,17 @@ public class LabSupervisorCreateTechnicianJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select a row", "Error", JOptionPane.WARNING_MESSAGE);
         }
         else {
-            LabTechnician lt = (LabTechnician)tblLabTechs.getValueAt(selectedRow, 0);
+            LabTechnician lt = (LabTechnician) tblLabTechs.getValueAt(selectedRow, 0);
             labtech = lt;
             txtLtname.setText(lt.getLtName());
             txtLtusername.setText(lt.getUserAccount().getUsername());
             txtLtpassword.setText(lt.getUserAccount().getPassword());
         }
         
-        txtLtname.setText("");
-        txtLtusername.setText("");
-        txtLtpassword.setText("");
-        populateTable(); 
+//        txtLtname.setText("");
+//        txtLtusername.setText("");
+//        txtLtpassword.setText("");
+        //populateTable(); 
     }//GEN-LAST:event_btnViewLtActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
@@ -283,15 +283,21 @@ public class LabSupervisorCreateTechnicianJPanel extends javax.swing.JPanel {
             return;
         }
         
-        for (LabTechnician lt : ecosystem.getLabTechnicianDirectory().getLabTechnicianList()) {
-            if (labtech.getUserAccount().getUsername().equalsIgnoreCase(lt.getUserAccount().getUsername())){
-                lt.setLtName(txtLtname.getText());
+        String name = txtLtname.getText();
+        String username = txtLtusername.getText();
+        
+        for(LabTechnician lt : ecosystem.getLabTechnicianDirectory().getLabTechnicianList()){
+            if(lt.getLtName() == null) continue;
+            if(lt.getUserAccount().getUid() == labtech.getUserAccount().getUid()){
+                lt.setLtName(name);
+                lt.getUserAccount().setUsername(username);
             }
         }
         
         txtLtname.setText("");
         txtLtusername.setText("");
         txtLtpassword.setText("");
+        
         populateTable();
         JOptionPane.showMessageDialog(null, "Lab Technician Updated Successfully.");
     }//GEN-LAST:event_btnUpdateActionPerformed
@@ -317,18 +323,12 @@ public class LabSupervisorCreateTechnicianJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblLabTechs.getModel();
         model.setRowCount(0);
         for (LabTechnician labtech : ecosystem.getLabTechnicianDirectory().getLabTechnicianList()) {
-            Object[] row = new Object[9];
-//            row[0] = customer;
-//            row[1] = customer.getCustAddress();
-//            row[2] = customer.getCustCommunity();
-//            row[3] = customer.getCustZip();
-//            row[4] = customer.getAge();
-//            row[5] = customer.isDiagnosed();
-//            row[6] = customer.getTypeDiabetes();
-//            row[7] = customer.getGlucoseLvl();
-//            row[8] = customer.getUserAccount().getUid();
+            Object[] row = new Object[2];
+            row[0] = labtech;
+            row[1] = labtech.getLtName();
+
             
-//            row[9] = customer.getUserAccount().getUsername();
+
 
             model.addRow(row);
          }  

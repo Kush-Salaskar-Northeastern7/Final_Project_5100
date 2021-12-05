@@ -19,13 +19,14 @@ public class LabSupervisorWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form LabSupervisorWorkAreaJPanel
      */
-    JPanel container;
+    private JPanel container;
     private EcoSystem system;
-    UserAccount account;
+    private UserAccount account;
     
-    public LabSupervisorWorkAreaJPanel() {
+    public LabSupervisorWorkAreaJPanel(JPanel container, UserAccount account, EcoSystem system) {
         initComponents();
         this.container = container;
+        this.account = account;
         this.system = system;
     }
 
