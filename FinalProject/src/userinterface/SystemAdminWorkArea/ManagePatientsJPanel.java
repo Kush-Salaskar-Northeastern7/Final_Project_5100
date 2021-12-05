@@ -6,7 +6,9 @@
 package userinterface.SystemAdminWorkArea;
 
 
+import Business.Customer.Customer;
 import Business.EcoSystem;
+import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -14,6 +16,7 @@ import java.util.Random;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author rolwy
@@ -23,14 +26,57 @@ public class ManagePatientsJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ManagePatientsJPanel
      */
-    JPanel userProcessContainer;
-    EcoSystem system;
-    public ManagePatientsJPanel(JPanel userProcessContainer, EcoSystem system) {
-        this.userProcessContainer = userProcessContainer;
-        this.system = system;
+    
+    private JPanel userProcessContainer;
+    private UserAccount userAccount;
+    private EcoSystem ecosystem;
+    private Customer customer;
+    public ManagePatientsJPanel(JPanel userProcessContainer, EcoSystem ecosystem) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;        
+//        this.userAccount = account;
+        this.ecosystem = ecosystem;
+        populateTable();
+        
+       
     }
 
+    
+    public void populateTable(){
+        DefaultTableModel model = (DefaultTableModel) tblPatients.getModel();
+        
+        
+//        private String custName;
+//        private String custAddress;
+//        private String custCommunity;
+//        private String custZip;
+//        private int age;
+//        private boolean diagnosed;
+//        private String typeDiabetes;
+//        private int glucoseLvl;
+//        private String custImage;
+//        private long custPhoneNumber; 
+//        private UserAccount userAccount;
+
+        model.setRowCount(0);
+        for (Customer customer : ecosystem.getCustomerDirectory().getCustomerList()) {
+            Object[] row = new Object[10];
+            row[0] = customer;
+            row[1] = customer.getCustAddress();
+            row[2] = customer.getCustCommunity();
+            row[3] = customer.getCustZip();
+            row[4] = customer.getAge();
+            row[5] = customer.isDiagnosed();
+            row[6] = customer.getTypeDiabetes();
+            row[7] = customer.getGlucoseLvl();
+            row[8] = customer.getCustPhoneNumber();
+            //row[8] = customer.getUserAccount().getUid();
+            
+            row[9] = customer.getUserAccount().getUsername();
+
+            model.addRow(row);
+         }  
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,6 +90,8 @@ public class ManagePatientsJPanel extends javax.swing.JPanel {
         lblSelectedNode = new javax.swing.JLabel();
         btnBack2 = new javax.swing.JButton();
         btnHome2 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblPatients = new javax.swing.JTable();
 
         jPanel3.setBackground(new java.awt.Color(102, 102, 102));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
@@ -95,17 +143,35 @@ public class ManagePatientsJPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        tblPatients.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Name", "Address", "Community", "Zip", "Age", "Diagnosed", "Diabetes Type", "Glucose lvl", "Phone No."
+            }
+        ));
+        jScrollPane1.setViewportView(tblPatients);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(598, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(361, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -133,6 +199,8 @@ public class ManagePatientsJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnBack2;
     private javax.swing.JButton btnHome2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblSelectedNode;
+    private javax.swing.JTable tblPatients;
     // End of variables declaration//GEN-END:variables
 }
