@@ -10,8 +10,10 @@ import Business.EcoSystem;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Doctor.Doctor;
+import Business.LabSupervisor.LabSupervisor;
 import Business.Role.CustomerRole;
 import Business.Role.DoctorRole;
+import Business.Role.LabSupervisorRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -51,16 +53,41 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         else if(enterprise.equals("Supplier")) model = (DefaultTableModel) tblSupplierEnterpriseTable.getModel();
         else model = (DefaultTableModel) tblLabEnterpriseTable.getModel();
         model.setRowCount(0);
-        for (Enterprise en : system.getEnterpriseDirectory().getEnterpriseList()) {
-            Object[] row = new Object[5];
-            row[0] = en;
-            row[1] = en.getEnterpriseType();
-            row[2] = en.getEmail();
-            row[3] = en.getLocation();
-            row[4] = "hi";
-            model.addRow(row);
+//        for (Enterprise en : system.getEnterpriseDirectory().getEnterpriseList()) {
+//            Object[] row = new Object[5];
+//            row[0] = en;
+//            row[1] = en.getEnterpriseType();
+//            row[2] = en.getEmail();
+//            row[3] = en.getLocation();
+//            row[4] = "hi";
+//            model.addRow(row);
+//        }
+        if(enterprise.equals("Hospital")){
+           for (Doctor en : system.getDoctorDirectory().getDoctorList()) {
+                Object[] row = new Object[5];
+                row[0] = en;
+                row[1] = en.getUserAccount().getUid();
+                row[2] = en.getUserAccount().getUsername();
+                row[3] = en.getDocName();
+                row[4] = "hi";
+                model.addRow(row);
+           }
+        } else if(enterprise.equals("Manufacturer")){
+                
+        } else if(enterprise.equals("Supplier")) {
+                
+        } else {
+            for(LabSupervisor ls: system.getLabSupervisorDirectory().getLabSupervisorList()){
+                Object[] row = new Object[5];
+                row[0] = ls;
+                row[1] = ls.getUserAccount().getUid();
+                row[2] = ls.getUserAccount().getUsername();
+                row[3] = ls.getLsName();
+                row[4] = "hi";
+                model.addRow(row);
+            }    
         }
-    }
+        }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -572,7 +599,9 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
             } else if(enterprisetype.equals("Supplier")){
                 
             } else {
-                
+                Employee employee = system.getEmployeeDirectory().createEmployee(name);       
+                UserAccount userAccount = system.getUserAccountDirectory().createUserAccount(username, password, employee, new LabSupervisorRole());
+                LabSupervisor ls = system.getLabSupervisorDirectory().addLabSupervisor(name, userAccount);
             }
 //            Enterprise enterprise = system.getEnterpriseDirectory().createEnterprise(enterpriseName, enterprisetype, enterpriseLoc, enterpriseEmail, enterprisePhone);
             JOptionPane.showMessageDialog(this, "Enterprise is added");
