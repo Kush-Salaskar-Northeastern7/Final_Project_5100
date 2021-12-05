@@ -67,9 +67,9 @@ public class CustomerSignupJPanel extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         txtPtnUsername = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        txtPtnPassword = new javax.swing.JTextField();
         btnCreatePtn = new javax.swing.JButton();
         btnLogout = new javax.swing.JButton();
+        txtPtnPassword = new javax.swing.JPasswordField();
 
         jLabel1.setText("Name");
 
@@ -102,12 +102,6 @@ public class CustomerSignupJPanel extends javax.swing.JPanel {
         });
 
         jLabel10.setText("Password");
-
-        txtPtnPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPtnPasswordActionPerformed(evt);
-            }
-        });
 
         btnCreatePtn.setText("Signup");
         btnCreatePtn.addActionListener(new java.awt.event.ActionListener() {
@@ -152,8 +146,8 @@ public class CustomerSignupJPanel extends javax.swing.JPanel {
                             .addComponent(txtPtnAddress, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtPtnName, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtPtnUsername, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
-                            .addComponent(txtPtnPassword, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
-                            .addComponent(txtPtnPhoneNum))
+                            .addComponent(txtPtnPhoneNum)
+                            .addComponent(txtPtnPassword))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 231, Short.MAX_VALUE)
                         .addComponent(btnLogout))
                     .addGroup(layout.createSequentialGroup()
@@ -224,13 +218,64 @@ public class CustomerSignupJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPtnUsernameActionPerformed
 
-    private void txtPtnPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPtnPasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPtnPasswordActionPerformed
-
     private void btnCreatePtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreatePtnActionPerformed
         // TODO add your handling code here:
+        if(txtPtnName.getText().isEmpty() || txtPtnPhoneNum.getText().isEmpty() || txtPtnAddress.getText().isEmpty() || 
+           txtPtnUsername.getText().isEmpty() || txtPtnPassword.getText().isEmpty() ||
+                txtPtnAge.getText().isEmpty() || txtPtnCommunity.getText().isEmpty() ||
+                txtPtnDiabetesType.getText().isEmpty() || txtPtnGlucoseLvl.getText().isEmpty() ||
+                txtPtnZip.getText().isEmpty()
+                ) {
+            JOptionPane.showMessageDialog(this, "Please fill all details.", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         
+        String name = txtPtnName.getText();
+        long phonenumber = Long.parseLong(txtPtnPhoneNum.getText());
+        String address = txtPtnAddress.getText();        
+        String username = txtPtnUsername.getText();
+        String password = String.valueOf(txtPtnPassword.getPassword());
+        String community = txtPtnCommunity.getText();
+        String diabetestype = txtPtnDiabetesType.getText();
+        String glucoselvl = txtPtnGlucoseLvl.getText();
+        String zip = txtPtnZip.getText();
+        int age = Integer.parseInt(txtPtnAge.getText());
+        
+        
+        
+        
+        if(!ecosystem.getUserAccountDirectory().checkIfUsernameIsUnique(username)){
+            JOptionPane.showMessageDialog(null, "Username already exists, select a new username", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        Employee employee = ecosystem.getEmployeeDirectory().createEmployee(name);       
+        UserAccount userAccount = ecosystem.getUserAccountDirectory().createUserAccount(username, password, employee, new CustomerRole());        
+        Customer c = ecosystem.getCustomerDirectory().addCustomer(name, age, address, 
+                                                            community, zip, "sk", phonenumber, userAccount);      
+                
+        txtPtnAddress.setText("");
+        txtPtnAge.setText("");
+        txtPtnCommunity.setText("");
+        txtPtnDiabetesType.setText("");
+        txtPtnGlucoseLvl.setText("");
+        txtPtnName.setText("");
+        txtPtnPassword.setText("");
+        txtPtnPhoneNum.setText("");
+        txtPtnUsername.setText("");
+        txtPtnZip.setText("");
+        
+        
+        
+        
+                                                         
+//        txtName.setText("");
+//        txtMobile.setText("");
+//        txtAddress.setText("");
+//        txtUsername.setText("");
+//        txtPassword.setText("");
+//        populateTable();
+        JOptionPane.showMessageDialog(null, "Customer Created");
         
         
     }//GEN-LAST:event_btnCreatePtnActionPerformed
@@ -267,7 +312,7 @@ public class CustomerSignupJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtPtnDiabetesType;
     private javax.swing.JTextField txtPtnGlucoseLvl;
     private javax.swing.JTextField txtPtnName;
-    private javax.swing.JTextField txtPtnPassword;
+    private javax.swing.JPasswordField txtPtnPassword;
     private javax.swing.JTextField txtPtnPhoneNum;
     private javax.swing.JTextField txtPtnUsername;
     private javax.swing.JTextField txtPtnZip;

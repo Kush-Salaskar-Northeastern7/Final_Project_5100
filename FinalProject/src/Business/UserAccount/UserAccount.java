@@ -20,9 +20,12 @@ public class UserAccount {
     private Role role;
     private WorkQueue workQueue;
     private int uid;
+    private static int count = 1;
 
     public UserAccount() {
         workQueue = new WorkQueue();
+        uid = count;
+        count++;
     }
 
     public int getUid() {

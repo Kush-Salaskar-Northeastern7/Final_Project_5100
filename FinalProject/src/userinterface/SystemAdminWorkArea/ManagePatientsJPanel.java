@@ -60,7 +60,7 @@ public class ManagePatientsJPanel extends javax.swing.JPanel {
 
         model.setRowCount(0);
         for (Customer customer : ecosystem.getCustomerDirectory().getCustomerList()) {
-            Object[] row = new Object[4];
+            Object[] row = new Object[10];
             row[0] = customer;
             row[1] = customer.getCustAddress();
             row[2] = customer.getCustCommunity();
@@ -69,8 +69,8 @@ public class ManagePatientsJPanel extends javax.swing.JPanel {
             row[5] = customer.isDiagnosed();
             row[6] = customer.getTypeDiabetes();
             row[7] = customer.getGlucoseLvl();
-            //row[8] = customer.getCustPhoneNumber();
-            row[8] = "Hi";
+            row[8] = customer.getCustPhoneNumber();
+            //row[8] = customer.getUserAccount().getUid();
             
             row[9] = customer.getUserAccount().getUsername();
 
