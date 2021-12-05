@@ -5,8 +5,19 @@
  */
 package userinterface.SystemAdminWorkArea;
 
+import Business.Customer.Customer;
 import Business.EcoSystem;
+import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
+import Business.Doctor.Doctor;
+import Business.LabSupervisor.LabSupervisor;
+import Business.Manager.Manager;
+import Business.Role.AdminRole;
+import Business.Role.CustomerRole;
+import Business.Role.DoctorRole;
+import Business.Role.LabSupervisorRole;
+import Business.SupplyManager.SupplyManager;
+import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -45,16 +56,57 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         else if(enterprise.equals("Supplier")) model = (DefaultTableModel) tblSupplierEnterpriseTable.getModel();
         else model = (DefaultTableModel) tblLabEnterpriseTable.getModel();
         model.setRowCount(0);
-        for (Enterprise en : system.getEnterpriseDirectory().getEnterpriseList()) {
-            Object[] row = new Object[5];
-            row[0] = en;
-            row[1] = en.getEnterpriseType();
-            row[2] = en.getEmail();
-            row[3] = en.getLocation();
-            row[4] = "hi";
-            model.addRow(row);
+//        for (Enterprise en : system.getEnterpriseDirectory().getEnterpriseList()) {
+//            Object[] row = new Object[5];
+//            row[0] = en;
+//            row[1] = en.getEnterpriseType();
+//            row[2] = en.getEmail();
+//            row[3] = en.getLocation();
+//            row[4] = "hi";
+//            model.addRow(row);
+//        }
+        if(enterprise.equals("Hospital")){
+           for (Doctor en : system.getDoctorDirectory().getDoctorList()) {
+                Object[] row = new Object[5];
+                row[0] = en;
+                row[1] = en.getUserAccount().getUid();
+                row[2] = en.getUserAccount().getUsername();
+                row[3] = en.getDocName();
+                row[4] = "hi";
+                model.addRow(row);
+           }
+        } else if(enterprise.equals("Manufacturer")){
+            for (Manager en : system.getManagerDirectory().getManagerList()) {
+                Object[] row = new Object[5];
+                row[0] = en;
+                row[1] = en.getUserAccount().getUid();
+                row[2] = en.getUserAccount().getUsername();
+                row[3] = en.getManagerName();
+                row[4] = "hi";
+                model.addRow(row);
+           }
+        } else if(enterprise.equals("Supplier")) {
+            for (SupplyManager en : system.getSupplyManagerDirectory().getSupplyManagerList()) {
+                Object[] row = new Object[5];
+                row[0] = en;
+                row[1] = en.getUserAccount().getUid();
+                row[2] = en.getUserAccount().getUsername();
+                row[3] = en.getSmName();
+                row[4] = "hi";
+                model.addRow(row);
+           } 
+        } else {
+            for(LabSupervisor ls: system.getLabSupervisorDirectory().getLabSupervisorList()){
+                Object[] row = new Object[5];
+                row[0] = ls;
+                row[1] = ls.getUserAccount().getUid();
+                row[2] = ls.getUserAccount().getUsername();
+                row[3] = ls.getLsName();
+                row[4] = "hi";
+                model.addRow(row);
+            }    
         }
-    }
+        }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -83,8 +135,8 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         txtEnterpriseName = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         submitBtn = new javax.swing.JButton();
-        txtEnterpriseUsername1 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        txtPasswordField = new javax.swing.JPasswordField();
         jPanel7 = new javax.swing.JPanel();
         btnDeleteEnterprise = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -201,36 +253,38 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                             .addComponent(txtEnterpriseLoc)
                             .addComponent(txtEnterprisePhone, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
-                .addGroup(panelInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInputLayout.createSequentialGroup()
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtPasswordField))
                     .addGroup(panelInputLayout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtEnterpriseUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInputLayout.createSequentialGroup()
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtEnterpriseUsername1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         panelInputLayout.setVerticalGroup(
             panelInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelInputLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtEnterpriseName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
+                .addGroup(panelInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel5)
-                        .addComponent(txtEnterpriseUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(24, 24, 24)
-                .addGroup(panelInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtEnterpriseLoc, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtEnterpriseUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtEnterpriseName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1)))
+                .addGap(19, 19, 19)
+                .addGroup(panelInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel7)
-                        .addComponent(txtEnterpriseUsername1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)
+                        .addComponent(txtEnterpriseLoc, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(panelInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -546,19 +600,31 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         if (checkEmptyFields()) {
             String enterprisetype = (String) selectEnterpriseType.getSelectedItem();
 
-            String enterpriseName = txtEnterpriseName.getText();
-            String enterpriseLoc = txtEnterpriseLoc.getText();
-            String enterpriseEmail = txtEnterpriseUsername.getText();
-            String enterprisePhone = txtEnterprisePhone.getText();
+            String name = txtEnterpriseName.getText();
+            String address = txtEnterpriseLoc.getText();
+            String username = txtEnterpriseUsername.getText();
+            String phone = txtEnterprisePhone.getText();
+            char[] passwordArr = txtPasswordField.getPassword();
+            String password = String.valueOf(passwordArr);
 
             if(enterprisetype.equals("Hospital")){
-                
+                Employee employee = system.getEmployeeDirectory().createEmployee(name);       
+                UserAccount userAccount = system.getUserAccountDirectory().createUserAccount(username, password, employee, new DoctorRole());        
+//                Customer c = ecosystem.getCustomerDirectory().addCustomer(name, age, address, 
+//                                                           community, zip, "sk", phonenumber, userAccount); 
+                Doctor doc = system.getDoctorDirectory().addDoctor(name, userAccount);
             } else if(enterprisetype.equals("Manufacturer")){
-                
+                Employee employee = system.getEmployeeDirectory().createEmployee(name);       
+                UserAccount userAccount = system.getUserAccountDirectory().createUserAccount(username, password, employee, new AdminRole());        
+                Manager m = system.getManagerDirectory().addManager(name, userAccount);
             } else if(enterprisetype.equals("Supplier")){
-                
+                Employee employee = system.getEmployeeDirectory().createEmployee(name);       
+                UserAccount userAccount = system.getUserAccountDirectory().createUserAccount(username, password, employee, new DoctorRole());        
+                SupplyManager sm = system.getSupplyManagerDirectory().createSupplyManager(name, userAccount);
             } else {
-                
+                Employee employee = system.getEmployeeDirectory().createEmployee(name);       
+                UserAccount userAccount = system.getUserAccountDirectory().createUserAccount(username, password, employee, new LabSupervisorRole());
+                LabSupervisor ls = system.getLabSupervisorDirectory().addLabSupervisor(name, userAccount);
             }
 //            Enterprise enterprise = system.getEnterpriseDirectory().createEnterprise(enterpriseName, enterprisetype, enterpriseLoc, enterpriseEmail, enterprisePhone);
             JOptionPane.showMessageDialog(this, "Enterprise is added");
@@ -641,6 +707,6 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtEnterpriseName;
     private javax.swing.JTextField txtEnterprisePhone;
     private javax.swing.JTextField txtEnterpriseUsername;
-    private javax.swing.JTextField txtEnterpriseUsername1;
+    private javax.swing.JPasswordField txtPasswordField;
     // End of variables declaration//GEN-END:variables
 }
