@@ -198,11 +198,7 @@
                                   <Component id="panelInput" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
-<<<<<<< HEAD
-                              <Component id="jLabel3" pref="387" max="32767" attributes="0"/>
-=======
                               <Component id="jLabel3" max="32767" attributes="0"/>
->>>>>>> 16c3d7452b722fb49c181b805d9524b5720bca73
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
