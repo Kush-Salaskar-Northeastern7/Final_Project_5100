@@ -249,7 +249,6 @@ public class LoginScreen extends javax.swing.JPanel {
 
     private void btnPatientSignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPatientSignupActionPerformed
         // TODO add your handling code here:
- 
         
         container.removeAll();
         CustomerSignupJPanel ls = new CustomerSignupJPanel(container, system);

@@ -3,12 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
             <file>file:/Users/kushsalaskar/Desktop/INFO_5100/Final_Project_5100/FinalProject/src/Business/Role/CustomerRole.java</file>
             <file>file:/Users/kushsalaskar/Desktop/INFO_5100/Final_Project_5100/FinalProject/src/userinterface/SystemAdminWorkArea/SystemAdminWorkAreaJPanel.java</file>
             <file>file:/Users/kushsalaskar/Desktop/INFO_5100/Final_Project_5100/FinalProject/src/Business/UserAccount/UserAccount.java</file>
             <file>file:/Users/kushsalaskar/Desktop/INFO_5100/Final_Project_5100/FinalProject/src/Business/Employee/Employee.java</file>
+            <file>file:/Users/kushsalaskar/Desktop/INFO_5100/Final_Project_5100/FinalProject/src/userinterface/CustomerRole/CustomerSignupJPanel.java</file>
             <file>file:/Users/kushsalaskar/Desktop/INFO_5100/Final_Project_5100/FinalProject/src/Business/Role/Role.java</file>
+            <file>file:/Users/kushsalaskar/Desktop/INFO_5100/Final_Project_5100/FinalProject/src/userinterface/LoginScreen.java</file>
             <file>file:/Users/kushsalaskar/Desktop/INFO_5100/Final_Project_5100/FinalProject/src/userinterface/MainJFrame.java</file>
             <file>file:/Users/kushsalaskar/Desktop/INFO_5100/Final_Project_5100/FinalProject/src/Business/DB4OUtil/DB4OUtil.java</file>
             <file>file:/Users/kushsalaskar/Desktop/INFO_5100/Final_Project_5100/FinalProject/src/userinterface/CustomerRole/CustomerAreaJPanel.java</file>
@@ -18,16 +19,6 @@
             <file>file:/Users/kushsalaskar/Desktop/INFO_5100/Final_Project_5100/FinalProject/src/Business/Enterprise/Enterprise.java</file>
             <file>file:/Users/kushsalaskar/Desktop/INFO_5100/Final_Project_5100/FinalProject/src/Business/Enterprise/ManufacturerEnterprise.java</file>
             <file>file:/Users/kushsalaskar/Desktop/INFO_5100/Final_Project_5100/FinalProject/src/Business/Role/AdminRole.java</file>
-=======
-            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/Business/Role/AdminRole.java</file>
-            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/SystemAdminWorkArea/ManageEnterpriseJPanel.java</file>
-            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/AdminRole/AdminWorkAreaJPanel.java</file>
-            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/Business/ConfigureASystem.java</file>
-            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/Business/UserAccount/UserAccountDirectory.java</file>
-            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/Business/Role/SystemAdminRole.java</file>
-            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/SystemAdminWorkArea/SystemAdminWorkAreaJPanel.java</file>
-            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/LoginScreen.java</file>
->>>>>>> 16c3d7452b722fb49c181b805d9524b5720bca73
         </group>
     </open-files>
 </project-private>
