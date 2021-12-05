@@ -8,6 +8,7 @@ package Business;
 //import Business.Restaurant.RestaurantDirectory;
 import Business.Customer.CustomerDirectory;
 import Business.DeliveryMan.DeliveryManDirectory;
+import Business.Doctor.DoctorDirectory;
 import Business.Enterprise.EnterpriseDirectory;
 import Business.Role.Role;
 import Business.Role.SystemAdminRole;
@@ -24,14 +25,16 @@ public class EcoSystem extends Organization {
     private CustomerDirectory customerDirectory;
     private DeliveryManDirectory deliveryManDirectory;
     private EnterpriseDirectory enterpriseDirectory;
+    private DoctorDirectory doctorList;
 
-    public EcoSystem(CustomerDirectory customerDirectory, DeliveryManDirectory deliveryManDirectory, EnterpriseDirectory enterpriseDirectory) {
+    public EcoSystem(CustomerDirectory customerDirectory, DeliveryManDirectory deliveryManDirectory, EnterpriseDirectory enterpriseDirectory, DoctorDirectory doctorList) {
 
 //        this.restaurantDirectory = restaurantDirectory;
         this.customerDirectory = customerDirectory;
         this.deliveryManDirectory = deliveryManDirectory;
         this.enterpriseDirectory = enterpriseDirectory;
         enterpriseDirectory = new EnterpriseDirectory();
+        this.doctorList = doctorList;
     }
 
     public static EcoSystem getInstance() {
@@ -39,6 +42,13 @@ public class EcoSystem extends Organization {
             business = new EcoSystem();
         }
         return business;
+    }
+    
+    public DoctorDirectory getDoctorDirectory(){
+        if(doctorList == null){
+            doctorList = new DoctorDirectory();
+        }
+        return doctorList;
     }
     
     public CustomerDirectory getCustomerDirectory() {
