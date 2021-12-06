@@ -5,6 +5,13 @@
  */
 package userinterface.LabSupervisorWorkArea;
 
+import Business.EcoSystem;
+import Business.LabSupervisor.LabSupervisor;
+import Business.UserAccount.UserAccount;
+import Business.WorkQueue.WorkRequest;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author rolwy
@@ -14,8 +21,37 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
     /**
      * Creates new form LabSupervisorWorkRequestJPanel
      */
-    public LabSupervisorWorkRequestJPanel() {
+    private JPanel userProcessContainer;
+    private EcoSystem system;
+    UserAccount account;
+    public LabSupervisorWorkRequestJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem system) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.system = system;
+        this.account = account;
+        populateWorkReqTable();
+    }
+    
+    public void populateWorkReqTable() {
+        DefaultTableModel model = (DefaultTableModel)labWorkRequestJTable.getModel();
+        
+        model.setRowCount(0);
+        if(system.getLabSupervisorDirectory().getLabSupervisorList().size() == 0) return;
+        for (LabSupervisor ls : system.getLabSupervisorDirectory().getLabSupervisorList()) {
+//            account.getUsername()
+            if (ls.getUserAccount().getUsername() == account.getUsername()) {
+                System.out.println(ls.getUserAccount().getWorkQueue().getWorkRequestList());
+                for(WorkRequest request : ls.getUserAccount().getWorkQueue().getWorkRequestList()){
+                    Object[] row = new Object[4];
+                    row[0] = request;
+                    row[1] = request.getMessage();
+                    row[2] = request.getReceiver();
+                    row[3] = request.getStatus();
+
+                    model.addRow(row);
+                }
+            }
+        }
     }
 
     /**
@@ -31,7 +67,7 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
         btnLogout = new javax.swing.JButton();
         lblSelectedNode = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        workRequestJTable = new javax.swing.JTable();
+        labWorkRequestJTable = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         workRequestJTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
@@ -78,7 +114,7 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
+        labWorkRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -86,7 +122,7 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Message", "Sender", "Receiver", "Status"
+                "Customer", "Message", "Receiver", "Status"
             }
         ) {
             Class[] types = new Class [] {
@@ -104,15 +140,10 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        workRequestJTable.setSelectionBackground(new java.awt.Color(255, 204, 204));
-        workRequestJTable.setShowGrid(false);
-        workRequestJTable.setShowVerticalLines(false);
-        jScrollPane1.setViewportView(workRequestJTable);
-        if (workRequestJTable.getColumnModel().getColumnCount() > 0) {
-            workRequestJTable.getColumnModel().getColumn(1).setHeaderValue("Sender");
-            workRequestJTable.getColumnModel().getColumn(2).setHeaderValue("Receiver");
-            workRequestJTable.getColumnModel().getColumn(3).setHeaderValue("Status");
-        }
+        labWorkRequestJTable.setSelectionBackground(new java.awt.Color(51, 153, 255));
+        labWorkRequestJTable.setShowGrid(false);
+        labWorkRequestJTable.setShowVerticalLines(false);
+        jScrollPane1.setViewportView(labWorkRequestJTable);
 
         workRequestJTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -190,8 +221,8 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable labWorkRequestJTable;
     private javax.swing.JLabel lblSelectedNode;
-    private javax.swing.JTable workRequestJTable;
     private javax.swing.JTable workRequestJTable1;
     // End of variables declaration//GEN-END:variables
 }
