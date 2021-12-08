@@ -306,7 +306,20 @@ public class DoctorCreateNurseJPanel extends javax.swing.JPanel {
     }
     
     private void btnViewNursesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewNursesActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:int selectedRow = tblFactoryWorkers.getSelectedRow();
+
+        int selectedRow = tblNurses.getSelectedRow();
+
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row", "Error", JOptionPane.WARNING_MESSAGE);
+        }
+        else {
+            Nurse lt = (Nurse) tblNurses.getValueAt(selectedRow, 0);
+            nurse = lt;
+            txtNursename.setText(lt.getNurseName());
+            txtNurseUsername.setText(lt.getUserAccount().getUsername());
+            txtNursePassword.setText(lt.getUserAccount().getPassword());
+        }
 
     }//GEN-LAST:event_btnViewNursesActionPerformed
 
