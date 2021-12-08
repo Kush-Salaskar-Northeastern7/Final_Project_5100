@@ -619,7 +619,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 Manager m = system.getManagerDirectory().addManager(name, userAccount);
             } else if(enterprisetype.equals("Supplier")){
                 Employee employee = system.getEmployeeDirectory().createEmployee(name);       
-                UserAccount userAccount = system.getUserAccountDirectory().createUserAccount(username, password, employee, new DoctorRole());        
+                UserAccount userAccount = system.getUserAccountDirectory().createUserAccount(username, password, employee, new SupplyManagerRole());        
                 SupplyManager sm = system.getSupplyManagerDirectory().createSupplyManager(name, userAccount);
             } else {
                 Employee employee = system.getEmployeeDirectory().createEmployee(name);       
