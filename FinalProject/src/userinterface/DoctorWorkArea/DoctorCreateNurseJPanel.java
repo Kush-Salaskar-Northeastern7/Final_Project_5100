@@ -7,10 +7,14 @@ package userinterface.DoctorWorkArea;
 
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
+import Business.Employee.Employee;
 import Business.Nurse.Nurse;
+import Business.Role.NurseRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 import userinterface.LoginScreen;
 
 /**
@@ -25,6 +29,7 @@ public class DoctorCreateNurseJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
 //    private UserAccount userAccount;
     private EcoSystem system;
+    private Employee employee;
     private Nurse nurse;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     public DoctorCreateNurseJPanel(JPanel userProcessContainer, EcoSystem system) {
@@ -102,13 +107,13 @@ public class DoctorCreateNurseJPanel extends javax.swing.JPanel {
 
         tblNurses.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Name", "Username", "Password"
+                "Name", "Username"
             }
         ));
         jScrollPane1.setViewportView(tblNurses);
@@ -251,13 +256,55 @@ public class DoctorCreateNurseJPanel extends javax.swing.JPanel {
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
 
-        String name = txtNursename.getText();
-        String username = txtNurseUsername.getText();
-        String password = String.valueOf(txtNursePassword.getPassword());
+        if (checkEmptyFields()) {
+            String nurseName = txtNursename.getText();
+            String username = txtNurseUsername.getText();
+            String password = String.valueOf(txtNursePassword.getPassword());
 
+            if(!system.getUserAccountDirectory().checkIfUsernameIsUnique(username)){
+                JOptionPane.showMessageDialog(null, "Username already exists, select a new username", "Error", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            Employee employee = system.getEmployeeDirectory().createEmployee(nurseName);       
+            UserAccount userAccount = system.getUserAccountDirectory().createUserAccount(username, password, employee, new NurseRole());
+            Nurse nurse = system.getNurseDirectory().createNurse(nurseName,userAccount);   
+
+            txtNursename.setText("");
+            txtNurseUsername.setText("");
+            txtNursePassword.setText("");
+            populateTable();
+            JOptionPane.showMessageDialog(null, "Nurse is Created");
+        }
 
     }//GEN-LAST:event_btnCreateActionPerformed
 
+    private void populateTable() {
+        DefaultTableModel model = (DefaultTableModel) tblNurses.getModel();
+        model.setRowCount(0);
+        for (Nurse nurse : system.getNurseDirectory().getNurseList()) {
+            Object[] row = new Object[2];
+            row[0] = nurse;
+            row[1] = nurse.getNurseName();
+            model.addRow(row);
+         }  
+    }
+    
+    public boolean checkEmptyFields() {
+            
+        String nurseName = txtNursename.getText();
+        String username = txtNurseUsername.getText();
+        String password = txtNursePassword.getText();
+        
+        if (nurseName.trim().equals("") || username.trim().equals("") || password.trim().equals("")) {
+            JOptionPane.showMessageDialog(this, "Fields cannot be empty.", "Error", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+    
     private void btnViewNursesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewNursesActionPerformed
         // TODO add your handling code here:
 
