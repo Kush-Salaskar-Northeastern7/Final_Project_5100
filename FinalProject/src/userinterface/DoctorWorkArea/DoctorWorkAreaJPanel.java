@@ -45,7 +45,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         btnLogout = new javax.swing.JButton();
         lblSelectedNode = new javax.swing.JLabel();
-        button1 = new java.awt.Button();
+        btnManageNurses = new java.awt.Button();
         button2 = new java.awt.Button();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -91,7 +91,12 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        button1.setLabel("Manage Nurses");
+        btnManageNurses.setLabel("Manage Nurses");
+        btnManageNurses.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageNursesActionPerformed(evt);
+            }
+        });
 
         button2.setLabel("Assign Work to Nurses");
 
@@ -102,7 +107,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
             .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(166, 166, 166)
-                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnManageNurses, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(86, 86, 86)
                 .addComponent(button2, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -113,7 +118,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(163, 163, 163)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(button1, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                    .addComponent(btnManageNurses, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
                     .addComponent(button2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 234, Short.MAX_VALUE))
         );
@@ -130,10 +135,18 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         dB4OUtil.storeSystem(system);
     }//GEN-LAST:event_btnLogoutActionPerformed
 
+    private void btnManageNursesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageNursesActionPerformed
+        userProcessContainer.removeAll();
+        DoctorCreateNurseJPanel ls = new DoctorCreateNurseJPanel(userProcessContainer, system);
+        userProcessContainer.add("nursearea", ls);
+        CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
+        crdLyt.next(userProcessContainer);
+    }//GEN-LAST:event_btnManageNursesActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogout;
-    private java.awt.Button button1;
+    private java.awt.Button btnManageNurses;
     private java.awt.Button button2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lblSelectedNode;

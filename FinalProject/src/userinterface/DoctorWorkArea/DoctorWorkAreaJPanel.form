@@ -24,7 +24,7 @@
           <Component id="jPanel3" alignment="1" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="166" max="-2" attributes="0"/>
-              <Component id="button1" min="-2" pref="175" max="-2" attributes="0"/>
+              <Component id="btnManageNurses" min="-2" pref="175" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
               <Component id="button2" min="-2" pref="186" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
@@ -37,7 +37,7 @@
               <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="163" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="button1" pref="41" max="32767" attributes="0"/>
+                  <Component id="btnManageNurses" pref="41" max="32767" attributes="0"/>
                   <Component id="button2" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="0" pref="234" max="32767" attributes="0"/>
@@ -123,10 +123,13 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="java.awt.Button" name="button1">
+    <Component class="java.awt.Button" name="btnManageNurses">
       <Properties>
         <Property name="label" type="java.lang.String" value="Manage Nurses"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnManageNursesActionPerformed"/>
+      </Events>
     </Component>
     <Component class="java.awt.Button" name="button2">
       <Properties>
