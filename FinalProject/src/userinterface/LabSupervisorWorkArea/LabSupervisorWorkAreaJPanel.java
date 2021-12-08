@@ -70,6 +70,11 @@ public class LabSupervisorWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         btnWorkRqst.setText("Assign Work to Lab Technicians");
+        btnWorkRqst.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnWorkRqstActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -119,6 +124,14 @@ public class LabSupervisorWorkAreaJPanel extends javax.swing.JPanel {
         crdLyt.next(userProcessContainer);
         dB4OUtil.storeSystem(system);
     }//GEN-LAST:event_btnLogout3ActionPerformed
+
+    private void btnWorkRqstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWorkRqstActionPerformed
+        container.removeAll();
+        LabSupervisorWorkRequestJPanel ls = new LabSupervisorWorkRequestJPanel(container, account, system);
+        container.add("signup", ls);
+        CardLayout crdLyt = (CardLayout) container.getLayout();
+        crdLyt.next(container);
+    }//GEN-LAST:event_btnWorkRqstActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

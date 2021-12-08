@@ -34,6 +34,10 @@ public class Nurse {
     public void setUserAccount(UserAccount userAccount) {
         this.userAccount = userAccount;
     }
-    
+
+    @Override
+    public String toString() {
+        return nurseName;
+    }
     
 }
