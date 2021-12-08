@@ -39,7 +39,7 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
         if(system.getLabSupervisorDirectory().getLabSupervisorList().size() == 0) return;
         for (LabSupervisor ls : system.getLabSupervisorDirectory().getLabSupervisorList()) {
 //            account.getUsername()
-            if (ls.getUserAccount().getUsername() == account.getUsername()) {
+            if (ls.getUserAccount().getUid() == account.getUid()) {
                 System.out.println(ls.getUserAccount().getWorkQueue().getWorkRequestList());
                 for(WorkRequest request : ls.getUserAccount().getWorkQueue().getWorkRequestList()){
                     Object[] row = new Object[4];
