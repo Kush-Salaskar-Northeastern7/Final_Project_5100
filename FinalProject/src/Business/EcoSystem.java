@@ -13,8 +13,11 @@ import Business.Enterprise.EnterpriseDirectory;
 import Business.FactoryWorker.FactoryWorkerDirectory;
 import Business.LabTechnician.LabTechnicianDirectory;
 import Business.LabSupervisor.LabSupervisorDirectory;
+import Business.Manager.ManagerDirectory;
+import Business.Nurse.NurseDirectory;
 import Business.Role.Role;
 import Business.Role.SystemAdminRole;
+import Business.SupplyManager.SupplyManagerDirectory;
 import java.util.ArrayList;
 
 /**
@@ -30,20 +33,24 @@ public class EcoSystem extends Organization {
     private EnterpriseDirectory enterpriseDirectory;
     private LabTechnicianDirectory labTechnicianDirectory;
     private DoctorDirectory doctorList;
-    private LabSupervisorDirectory labSupervisorDirectory; 
-    private FactoryWorkerDirectory factoryWorkerDirectory; 
-
-    public EcoSystem(CustomerDirectory customerDirectory, DeliveryManDirectory deliveryManDirectory, 
-            EnterpriseDirectory enterpriseDirectory, DoctorDirectory doctorList, 
-            LabSupervisorDirectory labSupervisorDirectory, FactoryWorkerDirectory factoryWorkerDirectory) {
-
+    private LabSupervisorDirectory labSupervisorDirectory;
+    private ManagerDirectory managerDirectory;
+    private SupplyManagerDirectory supplyManagerDirectory;
+    private FactoryWorkerDirectory factoryWorkerDirectory;
+    private NurseDirectory nurseDirectory;
+    
+    public EcoSystem(FactoryWorkerDirectory factoryWorkerDirectory, CustomerDirectory customerDirectory, DeliveryManDirectory deliveryManDirectory, EnterpriseDirectory enterpriseDirectory, DoctorDirectory doctorList, LabSupervisorDirectory labSupervisorDirectory, LabTechnicianDirectory labTechnicianDirectory, ManagerDirectory managerDirectory, SupplyManagerDirectory supplyManagerDirectory, NurseDirectory nurseDirectory) { 
+        
 //        this.restaurantDirectory = restaurantDirectory;
         this.customerDirectory = customerDirectory;
         this.deliveryManDirectory = deliveryManDirectory;
         this.enterpriseDirectory = enterpriseDirectory;
-        this.labTechnicianDirectory = new LabTechnicianDirectory();
+        this.labTechnicianDirectory = labTechnicianDirectory;
         this.doctorList = doctorList;
+        this.nurseDirectory = nurseDirectory;
         this.labSupervisorDirectory = labSupervisorDirectory;
+        this.managerDirectory = managerDirectory;
+        this.supplyManagerDirectory = supplyManagerDirectory;
         this.factoryWorkerDirectory = factoryWorkerDirectory;
     }
 
@@ -52,6 +59,20 @@ public class EcoSystem extends Organization {
             business = new EcoSystem();
         }
         return business;
+    }
+    
+    public SupplyManagerDirectory getSupplyManagerDirectory(){
+        if(supplyManagerDirectory == null){
+            supplyManagerDirectory = new SupplyManagerDirectory();
+        }
+        return supplyManagerDirectory;
+    }
+    
+    public ManagerDirectory getManagerDirectory(){
+        if(managerDirectory == null){
+            managerDirectory = new ManagerDirectory();
+        }
+        return managerDirectory;
     }
     
     public LabSupervisorDirectory getLabSupervisorDirectory() {
@@ -102,6 +123,15 @@ public class EcoSystem extends Organization {
         }
         return labTechnicianDirectory;
     }
+
+    public NurseDirectory getNurseDirectory() {
+        if (nurseDirectory == null) {
+            nurseDirectory = new NurseDirectory();
+        }
+        return nurseDirectory;
+    }
+    
+    
 
     @Override
     public ArrayList<Role> getSupportedRole() {
