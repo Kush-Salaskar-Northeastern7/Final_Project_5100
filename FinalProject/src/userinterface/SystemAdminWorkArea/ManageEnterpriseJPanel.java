@@ -16,6 +16,7 @@ import Business.Role.AdminRole;
 import Business.Role.CustomerRole;
 import Business.Role.DoctorRole;
 import Business.Role.LabSupervisorRole;
+import Business.Role.SupplyManagerRole;
 import Business.SupplyManager.SupplyManager;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
