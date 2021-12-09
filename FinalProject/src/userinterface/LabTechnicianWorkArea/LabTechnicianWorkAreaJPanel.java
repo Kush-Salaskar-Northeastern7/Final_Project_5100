@@ -8,7 +8,9 @@ package userinterface.LabTechnicianWorkArea;
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
 import javax.swing.JPanel;
+import userinterface.LabSupervisorWorkArea.LabSupervisorWorkRequestJPanel;
 
 /**
  *
@@ -42,12 +44,12 @@ public class LabTechnicianWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        btnAcceptPatients = new javax.swing.JButton();
 
-        jButton1.setText("Accept Patients");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnAcceptPatients.setText("Accept Patients");
+        btnAcceptPatients.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnAcceptPatientsActionPerformed(evt);
             }
         });
 
@@ -57,24 +59,29 @@ public class LabTechnicianWorkAreaJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(198, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btnAcceptPatients)
                 .addGap(61, 61, 61))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(132, 132, 132)
-                .addComponent(jButton1)
+                .addComponent(btnAcceptPatients)
                 .addContainerGap(139, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnAcceptPatientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptPatientsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        container.removeAll();
+        LabTechnicianAcceptPatientsJPanel ls = new LabTechnicianAcceptPatientsJPanel(container,account, system);
+        container.add("signup", ls);
+        CardLayout crdLyt = (CardLayout) container.getLayout();
+        crdLyt.next(container);
+    }//GEN-LAST:event_btnAcceptPatientsActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnAcceptPatients;
     // End of variables declaration//GEN-END:variables
 }

@@ -26,8 +26,8 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
      */
     private JPanel userProcessContainer;
     private EcoSystem system;
-    UserAccount account;
-    LabApprovalWorkRequest req;
+    private UserAccount account;
+    private LabApprovalWorkRequest req;
     public LabSupervisorWorkRequestJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem system) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
