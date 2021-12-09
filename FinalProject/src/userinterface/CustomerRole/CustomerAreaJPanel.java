@@ -21,15 +21,17 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
 
     private UserAccount userAccount;
+    private EcoSystem system;
     /**
      * Creates new form DoctorWorkAreaJPanel
      */
-    public CustomerAreaJPanel(JPanel userProcessContainer, UserAccount account) {
+    public CustomerAreaJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem system) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
       
         this.userAccount = account;
+        this.system = system;
         //valueLabel.setText(enterprise.getName());
         populateRequestTable();
     }
@@ -59,6 +61,11 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
         valueLabel.setText("<value>");
 
         btnOrder.setText("Place Order");
+        btnOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrderActionPerformed(evt);
+            }
+        });
 
         btnAppointment.setText("Schedule Appointment");
 
@@ -93,6 +100,15 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
                 .addContainerGap(234, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.removeAll();
+        CustomerPlaceOrderJPanel ls = new CustomerPlaceOrderJPanel(userProcessContainer, system);
+        userProcessContainer.add("signup", ls);
+        CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
+        crdLyt.next(userProcessContainer);
+    }//GEN-LAST:event_btnOrderActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAppointment;
