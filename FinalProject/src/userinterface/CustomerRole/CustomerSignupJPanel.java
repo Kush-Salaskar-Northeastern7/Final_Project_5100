@@ -17,6 +17,7 @@ import Business.WorkQueue.LabApprovalWorkRequest;
 import java.awt.CardLayout;
 import java.util.Random;
 import javax.swing.JOptionPane;
+import javax.mail.Message;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import userinterface.LoginScreen;
