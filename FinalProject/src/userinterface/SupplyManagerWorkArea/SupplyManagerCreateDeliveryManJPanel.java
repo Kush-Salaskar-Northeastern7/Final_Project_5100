@@ -29,13 +29,15 @@ public class SupplyManagerCreateDeliveryManJPanel extends javax.swing.JPanel {
      */
     private JPanel userProcessContainer;
     private UserAccount userAccount;
+    private UserAccount userAcc;
     private EcoSystem ecosystem;
     private DeliveryMan deliveryman;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     
-    public SupplyManagerCreateDeliveryManJPanel(JPanel userProcessContainer, EcoSystem ecosystem) {
+    public SupplyManagerCreateDeliveryManJPanel(JPanel userProcessContainer, UserAccount userAcc, EcoSystem ecosystem) {
         initComponents();
-        this.userProcessContainer = userProcessContainer;        
+        this.userProcessContainer = userProcessContainer;   
+        this.userAcc = userAcc;
 //        this.userAccount = account;
         this.ecosystem = ecosystem;
         
@@ -264,7 +266,7 @@ public class SupplyManagerCreateDeliveryManJPanel extends javax.swing.JPanel {
 
         Employee employee = ecosystem.getEmployeeDirectory().createEmployee(name);
         UserAccount userAccount = ecosystem.getUserAccountDirectory().createUserAccount(username, password, employee, new DeliveryManRole());
-        DeliveryMan lt = ecosystem.getDeliveryManDirectory().createDeliveryMan(name,userAccount);
+        DeliveryMan lt = ecosystem.getDeliveryManDirectory().createDeliveryMan(name,userAccount,userAcc.getUid());
 
         txtDmname.setText("");
         txtDmpassword.setText("");
@@ -347,14 +349,13 @@ public class SupplyManagerCreateDeliveryManJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblDeliveryMen.getModel();
         model.setRowCount(0);
         for (DeliveryMan deliveryman : ecosystem.getDeliveryManDirectory().getDeliveryManList()) {
-            Object[] row = new Object[2];
-            row[0] = deliveryman;
-            row[1] = deliveryman.getDeliveryManName();
+            if(deliveryman.getSupplyManagerId() == userAcc.getUid()){
+                Object[] row = new Object[2];
+                 row[0] = deliveryman;
+                 row[1] = deliveryman.getDeliveryManName(); 
 
-            
-
-
-            model.addRow(row);
+                 model.addRow(row);
+             }
          }  
     }
     
