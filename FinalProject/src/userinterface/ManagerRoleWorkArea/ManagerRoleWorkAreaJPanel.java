@@ -51,6 +51,8 @@ public class ManagerRoleWorkAreaJPanel extends javax.swing.JPanel {
         btnManageFactoryWorker = new java.awt.Button();
         buttonWorkRqst = new java.awt.Button();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
         jPanel3.setBackground(new java.awt.Color(51, 51, 51));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
 
@@ -131,8 +133,6 @@ public class ManagerRoleWorkAreaJPanel extends javax.swing.JPanel {
                     .addComponent(buttonWorkRqst, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(235, 235, 235))
         );
-
-        buttonWorkRqst.getAccessibleContext().setAccessibleName("Assign Work to Factory Workers");
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed

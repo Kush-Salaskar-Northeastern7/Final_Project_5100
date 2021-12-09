@@ -68,10 +68,11 @@ public class LabSupervisorCreateTechnicianJPanel extends javax.swing.JPanel {
         btnDelete = new javax.swing.JButton();
         btnViewLt = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
-        btnLogout3 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         btnLogout4 = new javax.swing.JButton();
         lblSelectedNode = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(255, 255, 255));
 
         tblLabTechs.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -98,6 +99,8 @@ public class LabSupervisorCreateTechnicianJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnCreate.setBackground(new java.awt.Color(0, 153, 153));
+        btnCreate.setForeground(new java.awt.Color(255, 255, 255));
         btnCreate.setText("Create ");
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,6 +108,8 @@ public class LabSupervisorCreateTechnicianJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnDelete.setBackground(new java.awt.Color(0, 153, 153));
+        btnDelete.setForeground(new java.awt.Color(255, 255, 255));
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,6 +117,8 @@ public class LabSupervisorCreateTechnicianJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnViewLt.setBackground(new java.awt.Color(0, 153, 153));
+        btnViewLt.setForeground(new java.awt.Color(255, 255, 255));
         btnViewLt.setText("View");
         btnViewLt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,23 +126,12 @@ public class LabSupervisorCreateTechnicianJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnUpdate.setBackground(new java.awt.Color(0, 153, 153));
+        btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
         btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpdateActionPerformed(evt);
-            }
-        });
-
-        btnLogout3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logout.png"))); // NOI18N
-        btnLogout3.setAlignmentX(0.5F);
-        btnLogout3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnLogout3.setBorderPainted(false);
-        btnLogout3.setContentAreaFilled(false);
-        btnLogout3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnLogout3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hoveredlogin.png"))); // NOI18N
-        btnLogout3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLogout3ActionPerformed(evt);
             }
         });
 
@@ -157,7 +153,7 @@ public class LabSupervisorCreateTechnicianJPanel extends javax.swing.JPanel {
 
         lblSelectedNode.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblSelectedNode.setForeground(new java.awt.Color(255, 255, 255));
-        lblSelectedNode.setText("Create Factory Worker");
+        lblSelectedNode.setText("Create Lab Technician");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -183,10 +179,6 @@ public class LabSupervisorCreateTechnicianJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnLogout3)
-                .addGap(35, 35, 35))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -223,9 +215,7 @@ public class LabSupervisorCreateTechnicianJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnLogout3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(44, 44, 44)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -345,17 +335,6 @@ public class LabSupervisorCreateTechnicianJPanel extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(null, "Lab Technician Updated Successfully.");
     }//GEN-LAST:event_btnUpdateActionPerformed
 
-    private void btnLogout3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogout3ActionPerformed
-        // TODO add your handling code here:
-        userProcessContainer.removeAll();
-        JPanel blankJP = new JPanel();
-        LoginScreen ls = new LoginScreen(userProcessContainer, ecosystem);
-        userProcessContainer.add("blank", ls);
-        CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
-        crdLyt.next(userProcessContainer);
-        dB4OUtil.storeSystem(ecosystem);
-    }//GEN-LAST:event_btnLogout3ActionPerformed
-
     private void btnLogout4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogout4ActionPerformed
         // TODO add your handling code here:
         userProcessContainer.removeAll();
@@ -371,7 +350,6 @@ public class LabSupervisorCreateTechnicianJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnDelete;
-    private javax.swing.JButton btnLogout3;
     private javax.swing.JButton btnLogout4;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JButton btnViewLt;
