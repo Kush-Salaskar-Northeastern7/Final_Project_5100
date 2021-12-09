@@ -28,10 +28,11 @@ public class NurseDirectory {
         this.nurseList = nurseList;
     }
     
-    public Nurse createNurse(String name, UserAccount ua){
+    public Nurse createNurse(String name, UserAccount ua,int docid){
         Nurse nurse = new Nurse();
         nurse.setNurseName(name);
         nurse.setUserAccount(ua);
+        nurse.setDoctorId(docid);
         nurseList.add(nurse);
         return nurse;
     }

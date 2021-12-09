@@ -14,6 +14,15 @@ import Business.UserAccount.UserAccount;
 public class Nurse {
     private String nurseName;
     private UserAccount userAccount;
+    private int DoctorId;
+
+    public int getDoctorId() {
+        return DoctorId;
+    }
+
+    public void setDoctorId(int DoctorId) {
+        this.DoctorId = DoctorId;
+    }
     
     public Nurse(){
         userAccount = new UserAccount();     

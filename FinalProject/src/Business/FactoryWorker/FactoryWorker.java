@@ -14,6 +14,15 @@ import Business.UserAccount.UserAccount;
 public class FactoryWorker {
     private String fwName;
     private UserAccount userAccount;
+    private int ManagerId;
+
+    public int getManagerId() {
+        return ManagerId;
+    }
+
+    public void setManagerId(int ManagerId) {
+        this.ManagerId = ManagerId;
+    }
     
     public FactoryWorker(){
         userAccount = new UserAccount();
@@ -35,5 +44,9 @@ public class FactoryWorker {
         this.userAccount = userAccount;
     }
     
+    @Override
+    public String toString() {
+        return fwName;
+    }
     
 }

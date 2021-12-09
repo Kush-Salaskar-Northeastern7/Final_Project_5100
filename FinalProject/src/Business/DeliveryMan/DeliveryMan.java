@@ -14,6 +14,15 @@ import Business.UserAccount.UserAccount;
 public class DeliveryMan {
     private String deliveryManName;
     private UserAccount userAccount;
+    private int SupplyManagerId;
+
+    public int getSupplyManagerId() {
+        return SupplyManagerId;
+    }
+
+    public void setSupplyManagerId(int SupplyManagerId) {
+        this.SupplyManagerId = SupplyManagerId;
+    }
     
     public DeliveryMan(){
         userAccount = new UserAccount();
@@ -34,9 +43,10 @@ public class DeliveryMan {
     public void setUserAccount(UserAccount userAccount) {
         this.userAccount = userAccount;
     }
-
+    
     @Override
     public String toString() {
         return deliveryManName;
     }
+    
 }

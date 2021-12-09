@@ -29,13 +29,15 @@ public class ManagerCreateFactoryWorkerJPanel extends javax.swing.JPanel {
     
     private JPanel userProcessContainer;
     private UserAccount userAccount;
+    private UserAccount userAcc;
     private EcoSystem ecosystem;
     private FactoryWorker factoryworker;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     
-    public ManagerCreateFactoryWorkerJPanel(JPanel userProcessContainer, EcoSystem ecosystem) {
+    public ManagerCreateFactoryWorkerJPanel(JPanel userProcessContainer, UserAccount userAcc, EcoSystem ecosystem) {
         initComponents();
-        this.userProcessContainer = userProcessContainer;        
+        this.userProcessContainer = userProcessContainer;  
+        this.userAcc = userAcc;
 //        this.userAccount = account;
         this.ecosystem = ecosystem;
         
@@ -242,7 +244,7 @@ public class ManagerCreateFactoryWorkerJPanel extends javax.swing.JPanel {
 
         Employee employee = ecosystem.getEmployeeDirectory().createEmployee(name);  
         UserAccount userAccount = ecosystem.getUserAccountDirectory().createUserAccount(username, password, employee, new FactoryWorkerRole());
-        FactoryWorker lt = ecosystem.getFactoryWorkerDirectory().createFactoryWorker(name,userAccount);
+        FactoryWorker lt = ecosystem.getFactoryWorkerDirectory().createFactoryWorker(name,userAccount,userAccount.getUid());
 
         txtFwname.setText("");
         txtFwpassword.setText("");
@@ -326,14 +328,13 @@ public class ManagerCreateFactoryWorkerJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblFactoryWorkers.getModel();
         model.setRowCount(0);
         for (FactoryWorker factoryworker : ecosystem.getFactoryWorkerDirectory().getFactoryWorkerList()) {
-            Object[] row = new Object[2];
-            row[0] = factoryworker;
-            row[1] = factoryworker.getFwName();
+            if(factoryworker.getManagerId() == userAcc.getUid()){
+                Object[] row = new Object[2];
+                 row[0] = factoryworker;
+                 row[1] = factoryworker.getFwName(); 
 
-            
-
-
-            model.addRow(row);
+                 model.addRow(row);
+             }
          }  
     }
     
