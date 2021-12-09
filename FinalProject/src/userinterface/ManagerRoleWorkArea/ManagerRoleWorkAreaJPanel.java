@@ -45,71 +45,97 @@ public class ManagerRoleWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnManageFactoryWorkers = new javax.swing.JButton();
-        btnLogout3 = new javax.swing.JButton();
-        btnWorkRqst = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        btnLogout = new javax.swing.JButton();
+        lblSelectedNode = new javax.swing.JLabel();
+        btnManageFactoryWorker = new java.awt.Button();
+        buttonWorkRqst = new java.awt.Button();
 
-        btnManageFactoryWorkers.setText("Manage Factory Workers");
-        btnManageFactoryWorkers.addActionListener(new java.awt.event.ActionListener() {
+        jPanel3.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+
+        btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logout.png"))); // NOI18N
+        btnLogout.setAlignmentX(0.5F);
+        btnLogout.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnLogout.setBorderPainted(false);
+        btnLogout.setContentAreaFilled(false);
+        btnLogout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLogout.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hoveredlogin.png"))); // NOI18N
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnManageFactoryWorkersActionPerformed(evt);
+                btnLogoutActionPerformed(evt);
             }
         });
 
-        btnLogout3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logout.png"))); // NOI18N
-        btnLogout3.setAlignmentX(0.5F);
-        btnLogout3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnLogout3.setBorderPainted(false);
-        btnLogout3.setContentAreaFilled(false);
-        btnLogout3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnLogout3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hoveredlogin.png"))); // NOI18N
-        btnLogout3.addActionListener(new java.awt.event.ActionListener() {
+        lblSelectedNode.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblSelectedNode.setForeground(new java.awt.Color(255, 255, 255));
+        lblSelectedNode.setText("Manager Work Area");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblSelectedNode, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnLogout)
+                .addGap(19, 19, 19))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnLogout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addComponent(lblSelectedNode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        btnManageFactoryWorker.setLabel("Manage Factory Workers");
+        btnManageFactoryWorker.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLogout3ActionPerformed(evt);
+                btnManageFactoryWorkerActionPerformed(evt);
             }
         });
 
-        btnWorkRqst.setText("Assign Work to Factory Workers");
+        buttonWorkRqst.setLabel("Assign Work to Factory Workers");
+        buttonWorkRqst.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonWorkRqstActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(108, 108, 108)
-                .addComponent(btnManageFactoryWorkers, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addComponent(btnWorkRqst, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(164, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnLogout3)
-                .addGap(24, 24, 24))
+                .addGap(127, 127, 127)
+                .addComponent(btnManageFactoryWorker, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(78, 78, 78)
+                .addComponent(buttonWorkRqst, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(185, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnLogout3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(179, 179, 179)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnManageFactoryWorkers)
-                    .addComponent(btnWorkRqst))
-                .addContainerGap(254, Short.MAX_VALUE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnManageFactoryWorker, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+                    .addComponent(buttonWorkRqst, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(235, 235, 235))
         );
+
+        buttonWorkRqst.getAccessibleContext().setAccessibleName("Assign Work to Factory Workers");
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnManageFactoryWorkersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageFactoryWorkersActionPerformed
-        // TODO add your handling code here:
-        container.removeAll();
-        ManagerCreateFactoryWorkerJPanel ls = new ManagerCreateFactoryWorkerJPanel(container, system);
-        container.add("signup", ls);
-        CardLayout crdLyt = (CardLayout) container.getLayout();
-        crdLyt.next(container);
-
-    }//GEN-LAST:event_btnManageFactoryWorkersActionPerformed
-
-    private void btnLogout3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogout3ActionPerformed
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         // TODO add your handling code here:
         userProcessContainer.removeAll();
         JPanel blankJP = new JPanel();
@@ -118,12 +144,26 @@ public class ManagerRoleWorkAreaJPanel extends javax.swing.JPanel {
         CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
         crdLyt.next(userProcessContainer);
         dB4OUtil.storeSystem(system);
-    }//GEN-LAST:event_btnLogout3ActionPerformed
+    }//GEN-LAST:event_btnLogoutActionPerformed
+
+    private void btnManageFactoryWorkerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageFactoryWorkerActionPerformed
+        container.removeAll();
+        ManagerCreateFactoryWorkerJPanel ls = new ManagerCreateFactoryWorkerJPanel(container, system);
+        container.add("signup", ls);
+        CardLayout crdLyt = (CardLayout) container.getLayout();
+        crdLyt.next(container);
+    }//GEN-LAST:event_btnManageFactoryWorkerActionPerformed
+
+    private void buttonWorkRqstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonWorkRqstActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonWorkRqstActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnLogout3;
-    private javax.swing.JButton btnManageFactoryWorkers;
-    private javax.swing.JButton btnWorkRqst;
+    private javax.swing.JButton btnLogout;
+    private java.awt.Button btnManageFactoryWorker;
+    private java.awt.Button buttonWorkRqst;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel lblSelectedNode;
     // End of variables declaration//GEN-END:variables
 }

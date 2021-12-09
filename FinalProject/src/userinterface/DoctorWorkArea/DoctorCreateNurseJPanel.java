@@ -306,18 +306,64 @@ public class DoctorCreateNurseJPanel extends javax.swing.JPanel {
     }
     
     private void btnViewNursesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewNursesActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:int selectedRow = tblFactoryWorkers.getSelectedRow();
+
+        int selectedRow = tblNurses.getSelectedRow();
+
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row", "Error", JOptionPane.WARNING_MESSAGE);
+        }
+        else {
+            Nurse lt = (Nurse) tblNurses.getValueAt(selectedRow, 0);
+            nurse = lt;
+            txtNursename.setText(lt.getNurseName());
+            txtNurseUsername.setText(lt.getUserAccount().getUsername());
+            txtNursePassword.setText(lt.getUserAccount().getPassword());
+        }
 
     }//GEN-LAST:event_btnViewNursesActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
+        if(txtNursename.getText().isEmpty() || txtNurseUsername.getText().isEmpty() || txtNursePassword.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please fill all details.", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        String name = txtNursename.getText();
+        String username = txtNurseUsername.getText();
+
+        for(Nurse lt : system.getNurseDirectory().getNurseList()){
+            if(lt.getNurseName() == null) continue;
+            if(lt.getUserAccount().getUid() == nurse.getUserAccount().getUid()){
+                lt.setNurseName(name);
+                lt.getUserAccount().setUsername(username);
+            }
+        }
+
+        txtNursename.setText("");
+        txtNurseUsername.setText("");
+        txtNursePassword.setText("");
+
+        populateTable();
+        JOptionPane.showMessageDialog(null, "Nurse Updated Successfully.");
 
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
+        int selectedRow = tblNurses.getSelectedRow();
 
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select any row.", "Error", JOptionPane.WARNING_MESSAGE);
+        }
+        else {
+            Nurse lt = (Nurse) tblNurses.getValueAt(selectedRow, 0);
+            UserAccount ua = lt.getUserAccount();
+            system.getUserAccountDirectory().deleteUserAccount(ua); //need to delete useraccount of lab technician as well
+            system.getNurseDirectory().deleteNurse(lt);
+            JOptionPane.showMessageDialog(null, "Nurse removed Successfully.");
+            populateTable();}
     }//GEN-LAST:event_btnDeleteActionPerformed
 
 
