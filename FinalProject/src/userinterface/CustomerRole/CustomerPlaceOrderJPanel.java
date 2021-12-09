@@ -59,7 +59,7 @@ public class CustomerPlaceOrderJPanel extends javax.swing.JPanel {
     }
     
     public void populateInvTable(){
-        DefaultTableModel model = (DefaultTableModel) tblSupplier.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblSupplierInv.getModel();
         model.setRowCount(0);
         
         if(supManager.getType1() == 0 || supManager.getType2() == 0) return;
@@ -69,7 +69,7 @@ public class CustomerPlaceOrderJPanel extends javax.swing.JPanel {
             
         model.addRow(row); 
         
-        row[0] = "Type1";
+        row[0] = "Type2";
         row[1] = supManager.getType2();
             
         model.addRow(row);  
