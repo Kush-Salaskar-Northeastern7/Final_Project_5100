@@ -148,7 +148,7 @@ public class ManagerRoleWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnManageFactoryWorkerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageFactoryWorkerActionPerformed
         container.removeAll();
-        ManagerCreateFactoryWorkerJPanel ls = new ManagerCreateFactoryWorkerJPanel(container, system);
+        ManagerCreateFactoryWorkerJPanel ls = new ManagerCreateFactoryWorkerJPanel(container, account, system);
         container.add("signup", ls);
         CardLayout crdLyt = (CardLayout) container.getLayout();
         crdLyt.next(container);

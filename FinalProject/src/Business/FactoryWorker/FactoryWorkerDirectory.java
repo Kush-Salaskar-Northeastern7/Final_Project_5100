@@ -23,10 +23,11 @@ public class FactoryWorkerDirectory {
         return factoryWorkerList;
     }
     
-    public FactoryWorker createFactoryWorker(String fwName, UserAccount ua){
+    public FactoryWorker createFactoryWorker(String fwName, UserAccount ua, int mgrId){
         FactoryWorker factoryworker = new FactoryWorker();
         factoryworker.setFwName(fwName);
         factoryworker.setUserAccount(ua);
+        factoryworker.setManagerId(mgrId);
         factoryWorkerList.add(factoryworker);
         return factoryworker;
     }
