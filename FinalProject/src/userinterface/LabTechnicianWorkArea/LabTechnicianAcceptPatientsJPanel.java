@@ -149,22 +149,22 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
             }
         });
 
-        lblName.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblName.setText("a");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Name");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Glucose Level");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Diabetes type");
 
-        lblGlucoseLevel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblGlucoseLevel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblGlucoseLevel.setText("w");
 
-        lblDiabetesType.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblDiabetesType.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblDiabetesType.setText("s");
 
         btnAccept.setBackground(new java.awt.Color(0, 153, 153));
@@ -239,13 +239,13 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText(":");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText(":");
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setText(":");
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/labtechnician-min.jpg"))); // NOI18N
