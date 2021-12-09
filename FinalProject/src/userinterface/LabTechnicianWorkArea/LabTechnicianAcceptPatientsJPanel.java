@@ -7,8 +7,10 @@ package userinterface.LabTechnicianWorkArea;
 
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
+import Business.Employee.Employee;
 import Business.LabSupervisor.LabSupervisor;
 import Business.LabTechnician.LabTechnician;
+import Business.Role.CustomerRole;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.LabApprovalWorkRequest;
 import Business.WorkQueue.WorkRequest;
@@ -257,7 +259,11 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here
+        Employee employee = system.getEmployeeDirectory().createEmployee(req.getCustomer().getCustName());       
+        UserAccount userAccount = system.getUserAccountDirectory().createUserAccount(req.getUsername(), req.getPassword(), employee, new CustomerRole());
+        req.getCustomer().setUserAccount(userAccount);
+        
     }//GEN-LAST:event_btnAcceptActionPerformed
 
     private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed

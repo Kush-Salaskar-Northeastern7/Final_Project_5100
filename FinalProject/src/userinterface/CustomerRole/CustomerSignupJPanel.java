@@ -290,6 +290,8 @@ public class CustomerSignupJPanel extends javax.swing.JPanel {
         req.setMessage("Request to be reviewed");
         req.setReceiver(ls.getUserAccount());
         req.setStatus("PENDING");
+        req.setPassword(password);
+        req.setUsername(username);
         ls.getUserAccount().getWorkQueue().getWorkRequestList().add(req);
         
         JOptionPane.showMessageDialog(null, "Your Req is sent to your Lab for review.");
