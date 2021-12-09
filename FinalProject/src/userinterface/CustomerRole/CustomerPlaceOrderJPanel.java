@@ -11,7 +11,9 @@ import Business.EcoSystem;
 import Business.LabSupervisor.LabSupervisor;
 import Business.SupplyManager.SupplyManager;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.LabApprovalWorkRequest;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import userinterface.LoginScreen;
@@ -29,7 +31,7 @@ public class CustomerPlaceOrderJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private UserAccount userAccount;
     private EcoSystem ecosystem;
-    private Customer customer;
+    private SupplyManager supManager;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     
     public CustomerPlaceOrderJPanel(JPanel userProcessContainer, EcoSystem ecosystem) {
@@ -60,6 +62,12 @@ public class CustomerPlaceOrderJPanel extends javax.swing.JPanel {
         jScrollPane2.setVisible(false);
         tblSupplierInv.setVisible(false);
         btnPlaceOrder.setVisible(false);
+    }
+    
+    public void showTable(){
+        jScrollPane2.setVisible(true);
+        tblSupplierInv.setVisible(true);
+        btnPlaceOrder.setVisible(true);
     }
     
 
@@ -227,6 +235,19 @@ public class CustomerPlaceOrderJPanel extends javax.swing.JPanel {
 
     private void btnSelectSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectSupplierActionPerformed
         // TODO add your handling code here:
+        showTable();
+        
+        int selectedRow = tblSupplier.getSelectedRow();
+        
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row", "Error", JOptionPane.NO_OPTION);
+        }
+        else {
+            SupplyManager sm = (SupplyManager) tblSupplier.getValueAt(selectedRow, 0);
+            supManager = sm;
+            showTable();
+        
+        }
     }//GEN-LAST:event_btnSelectSupplierActionPerformed
 
     private void btnPlaceOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlaceOrderActionPerformed
