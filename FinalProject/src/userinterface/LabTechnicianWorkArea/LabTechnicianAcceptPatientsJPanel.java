@@ -13,6 +13,7 @@ import Business.UserAccount.UserAccount;
 import Business.WorkQueue.LabApprovalWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import userinterface.LoginScreen;
@@ -31,6 +32,7 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
     private EcoSystem system;
     private UserAccount account;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
+    private LabApprovalWorkRequest req;
     
     public LabTechnicianAcceptPatientsJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem system) {
         initComponents();
@@ -122,6 +124,11 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(labWorkRequestJTable);
 
         btnView.setText("View");
+        btnView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Name");
 
@@ -267,6 +274,23 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
         crdLyt.next(userProcessContainer);
         dB4OUtil.storeSystem(system);
     }//GEN-LAST:event_btnLogout20ActionPerformed
+
+    private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = labWorkRequestJTable.getSelectedRow();
+        
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row", "Error", JOptionPane.NO_OPTION);
+        }
+        else {
+            LabApprovalWorkRequest wr = (LabApprovalWorkRequest) labWorkRequestJTable.getValueAt(selectedRow, 0);
+            req = wr;
+            lblName.setText(wr.getCustomer().getCustName());
+            lblGlucoseLevel.setText(String.valueOf(wr.getCustomer().getGlucoseLvl()));
+            lblDiabetesType.setText(wr.getCustomer().getTypeDiabetes());
+        
+        }
+    }//GEN-LAST:event_btnViewActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

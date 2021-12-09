@@ -268,7 +268,7 @@ public class CustomerSignupJPanel extends javax.swing.JPanel {
         String password = String.valueOf(txtPtnPassword.getPassword());
         String community = txtPtnCommunity.getText();
         String diabetestype = txtPtnDiabetesType.getText();
-        String glucoselvl = txtPtnGlucoseLvl.getText();
+        int glucoselvl = Integer.parseInt(txtPtnGlucoseLvl.getText());
         String zip = txtPtnZip.getText();
         int age = Integer.parseInt(txtPtnAge.getText());
         
@@ -283,7 +283,7 @@ public class CustomerSignupJPanel extends javax.swing.JPanel {
 //        Employee employee = ecosystem.getEmployeeDirectory().createEmployee(name);       
 //        UserAccount userAccount = ecosystem.getUserAccountDirectory().createUserAccount(username, password, employee, new CustomerRole());        
         Customer c = ecosystem.getCustomerDirectory().addCustomer(name, age, address, 
-                                                            community, zip, "sk", phonenumber, null);
+                                                            community, zip, "sk", phonenumber, glucoselvl, diabetestype, null);
         
         LabApprovalWorkRequest req = new LabApprovalWorkRequest();
         req.setCustomer(c);
