@@ -23,6 +23,7 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.util.Random;
+import java.util.function.Supplier;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -139,21 +140,24 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         txtPasswordField = new javax.swing.JPasswordField();
         jPanel7 = new javax.swing.JPanel();
-        btnDeleteManufacturer = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         selectEnterpriseType = new javax.swing.JComboBox();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblHospEnterpriseTable = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblManufacturerEnterpriseTable = new javax.swing.JTable();
+        btnDeleteManufacturer = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblSupplierEnterpriseTable = new javax.swing.JTable();
+        btnDeleteSupplier = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         tblLabEnterpriseTable = new javax.swing.JTable();
+        btnDeleteLaboratory = new javax.swing.JButton();
+        jPanel9 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tblHospEnterpriseTable = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(255, 102, 102));
 
@@ -330,13 +334,6 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        btnDeleteManufacturer.setText("Delete");
-        btnDeleteManufacturer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteManufacturerActionPerformed(evt);
-            }
-        });
-
         jLabel2.setText("Enterprise Type");
 
         selectEnterpriseType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Hospital", "Manufacturer", "Supplier", "Laboratory" }));
@@ -365,34 +362,16 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(selectEnterpriseType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(559, 559, 559)
-                .addComponent(btnDeleteManufacturer, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(658, 658, 658))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(selectEnterpriseType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jLabel2))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnDeleteManufacturer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(selectEnterpriseType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
-
-        tblHospEnterpriseTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Enterprise Name", "Type", "Email", "Location", "Username"
-            }
-        ));
-        jScrollPane1.setViewportView(tblHospEnterpriseTable);
-
-        jTabbedPane1.addTab("Hospitals", jScrollPane1);
 
         tblManufacturerEnterpriseTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -407,11 +386,21 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(tblManufacturerEnterpriseTable);
 
+        btnDeleteManufacturer.setText("Delete");
+        btnDeleteManufacturer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteManufacturerActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 921, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(856, Short.MAX_VALUE)
+                .addComponent(btnDeleteManufacturer, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel4Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -420,7 +409,9 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 285, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGap(0, 323, Short.MAX_VALUE)
+                .addComponent(btnDeleteManufacturer))
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel4Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -443,11 +434,21 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         ));
         jScrollPane3.setViewportView(tblSupplierEnterpriseTable);
 
+        btnDeleteSupplier.setText("Delete");
+        btnDeleteSupplier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteSupplierActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 921, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(843, Short.MAX_VALUE)
+                .addComponent(btnDeleteSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel5Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -456,7 +457,9 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 285, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addGap(0, 323, Short.MAX_VALUE)
+                .addComponent(btnDeleteSupplier))
             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel5Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -479,11 +482,21 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         ));
         jScrollPane5.setViewportView(tblLabEnterpriseTable);
 
+        btnDeleteLaboratory.setText("Delete");
+        btnDeleteLaboratory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteLaboratoryActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 921, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addContainerGap(880, Short.MAX_VALUE)
+                .addComponent(btnDeleteLaboratory)
+                .addGap(22, 22, 22))
             .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel8Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -492,7 +505,9 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 285, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addGap(0, 323, Short.MAX_VALUE)
+                .addComponent(btnDeleteLaboratory))
             .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel8Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -501,6 +516,42 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         );
 
         jTabbedPane1.addTab("Laboratory", jPanel8);
+
+        tblHospEnterpriseTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Enterprise Name", "Type", "Email", "Location", "Username"
+            }
+        ));
+        jScrollPane4.setViewportView(tblHospEnterpriseTable);
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 965, Short.MAX_VALUE)
+            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 945, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 346, Short.MAX_VALUE)
+            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(66, Short.MAX_VALUE)))
+        );
+
+        jTabbedPane1.addTab("Hospitals", jPanel9);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -520,8 +571,8 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -532,13 +583,13 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 970, Short.MAX_VALUE)
+            .addGap(0, 990, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 763, Short.MAX_VALUE)
+            .addGap(0, 787, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -634,26 +685,6 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_submitBtnActionPerformed
 
-    private void btnDeleteManufacturerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteManufacturerActionPerformed
-        // TODO add your handling code here:
-        int selectedManufacturerRowIndex = tblManufacturerEnterpriseTable.getSelectedRow();
-
-        if (selectedManufacturerRowIndex < 0) {
-            JOptionPane.showMessageDialog(this, "Please select an enterprise to delete");
-            return;
-        } else {
-            DefaultTableModel model = (DefaultTableModel) tblManufacturerEnterpriseTable.getModel();
-            Manager selectedManagerEnterprise = (Manager) model.getValueAt(selectedManufacturerRowIndex, 0);
-            system.getManagerDirectory().deleteManager(selectedManagerEnterprise); 
-            system.getUserAccountDirectory().deleteUserAccount(selectedManagerEnterprise.getUserAccount());              
-            JOptionPane.showMessageDialog(this, "Deleted");
-            
-            populateTable("Manufacturer");
-        }
-        
-        
-    }//GEN-LAST:event_btnDeleteManufacturerActionPerformed
-
     private void selectEnterpriseTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectEnterpriseTypeActionPerformed
         // TODO add your handling code here:
         
@@ -670,10 +701,54 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_selectEnterpriseTypeItemStateChanged
 
+    private void btnDeleteManufacturerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteManufacturerActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = tblManufacturerEnterpriseTable.getSelectedRow();
+
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select an Manufacturer to delete");
+            return;
+        } else {
+            DefaultTableModel model = (DefaultTableModel) tblManufacturerEnterpriseTable.getModel();
+            Manager selectedEnterprise = (Manager) model.getValueAt(selectedRowIndex, 0);
+            system.getManagerDirectory().deleteManager(selectedEnterprise);
+            system.getUserAccountDirectory().deleteUserAccount(selectedEnterprise.getUserAccount());
+            JOptionPane.showMessageDialog(this, "Manufacturer Deleted");
+
+            populateTable("Manufacturer");
+        }
+
+    }//GEN-LAST:event_btnDeleteManufacturerActionPerformed
+
+    private void btnDeleteSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteSupplierActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = tblSupplierEnterpriseTable.getSelectedRow();
+
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select an Supplier to delete");
+            return;
+        } else {
+            DefaultTableModel model = (DefaultTableModel) tblSupplierEnterpriseTable.getModel();
+            SupplyManager selectedEnterprise = (SupplyManager) model.getValueAt(selectedRowIndex, 0);
+            system.getSupplyManagerDirectory().deleteSupplyManager(selectedEnterprise);
+            system.getUserAccountDirectory().deleteUserAccount(selectedEnterprise.getUserAccount());
+            JOptionPane.showMessageDialog(this, "Supplier Deleted");
+
+            populateTable("Supplier");
+        }
+    }//GEN-LAST:event_btnDeleteSupplierActionPerformed
+
+    private void btnDeleteLaboratoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteLaboratoryActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnDeleteLaboratoryActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack2;
+    private javax.swing.JButton btnDeleteLaboratory;
     private javax.swing.JButton btnDeleteManufacturer;
+    private javax.swing.JButton btnDeleteSupplier;
     private javax.swing.JButton btnHome2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -690,9 +765,10 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblSelectedNode;
