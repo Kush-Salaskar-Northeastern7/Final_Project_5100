@@ -265,6 +265,19 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
 
     private void btnFinalSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalSubmitActionPerformed
         // TODO add your handling code here:
+        int selectedRow = tblLabTech.getSelectedRow();
+        
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row", "Error", JOptionPane.WARNING_MESSAGE);
+        }
+        else {
+            LabTechnician lt = (LabTechnician) tblLabTech.getValueAt(selectedRow, 0);
+            lt.getUserAccount().getWorkQueue().getWorkRequestList().add(req);
+            account.getWorkQueue().getWorkRequestList().remove(req);
+            JOptionPane.showMessageDialog(null, "Task assigned to Lab Technician", "Error", JOptionPane.WARNING_MESSAGE);
+            populateWorkReqTable();
+            populateTechTable();
+        }
     }//GEN-LAST:event_btnFinalSubmitActionPerformed
 
     private void btnRefresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefresActionPerformed
@@ -278,10 +291,10 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
         int selectedRow = labWorkRequestJTable.getSelectedRow();
         
         if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select a row", "Error", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please select a row", "Error", JOptionPane.NO_OPTION);
         }
         else {
-            LabApprovalWorkRequest wr = (LabApprovalWorkRequest) tblLabTech.getValueAt(selectedRow, 0);
+            LabApprovalWorkRequest wr = (LabApprovalWorkRequest) labWorkRequestJTable.getValueAt(selectedRow, 0);
             req = wr;
             tblLabTech.setVisible(true);
             btnFinalSubmit.setVisible(true);
