@@ -101,6 +101,7 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
         jPanel23 = new javax.swing.JPanel();
         btnLogout20 = new javax.swing.JButton();
         lblSelectedNode20 = new javax.swing.JLabel();
+        btnDelete = new javax.swing.JButton();
 
         labWorkRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -199,6 +200,13 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
             .addComponent(lblSelectedNode20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -225,7 +233,10 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
                         .addGap(31, 31, 31)
                         .addComponent(btnReject))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnView)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(btnDelete)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btnView))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
@@ -239,7 +250,9 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
                 .addGap(63, 63, 63)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnView)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnView)
+                    .addComponent(btnDelete))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(2, 2, 2)
@@ -272,7 +285,7 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
         req.getCustomer().setUserAccount(userAccount);
         
         account.getWorkQueue().getWorkRequestList().remove(req);
-        JOptionPane.showMessageDialog(null, "Your Req is sent to your Lab for review.");
+        JOptionPane.showMessageDialog(null, "You accepted this user.");
         populateTable();
         clearFields();
         
@@ -281,6 +294,7 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
     private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
         // TODO add your handling code here:
         req.setStatus("REJECTED");
+        JOptionPane.showMessageDialog(null, "You rejected this user.");
         populateTable();
         clearFields();
     }//GEN-LAST:event_btnRejectActionPerformed
@@ -313,9 +327,32 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnViewActionPerformed
 
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = labWorkRequestJTable.getSelectedRow();
+        
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row", "Error", JOptionPane.NO_OPTION);
+        }
+        else{
+           LabApprovalWorkRequest wr = (LabApprovalWorkRequest) labWorkRequestJTable.getValueAt(selectedRow, 0);
+           if(wr.getStatus().equals("REJECTED")) {
+                account.getWorkQueue().getWorkRequestList().remove(wr);
+                JOptionPane.showMessageDialog(null, "Request Deleted.");
+                populateTable();
+                clearFields();
+           }else{
+               JOptionPane.showMessageDialog(null, "Please Accept or Reject the Request first");
+                populateTable();
+                clearFields();
+           }
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAccept;
+    private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnLogout1;
     private javax.swing.JButton btnLogout10;
