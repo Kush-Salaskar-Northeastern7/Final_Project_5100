@@ -34,5 +34,9 @@ public class DeliveryMan {
     public void setUserAccount(UserAccount userAccount) {
         this.userAccount = userAccount;
     }
-    
+
+    @Override
+    public String toString() {
+        return deliveryManName;
+    }
 }
