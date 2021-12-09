@@ -27,17 +27,17 @@ public class LabSupervisorCreateTechnicianJPanel extends javax.swing.JPanel {
      * Creates new form LabSupervisorCreateTechnicianJPanel
      */
     private JPanel userProcessContainer;
-    private UserAccount userAccount;
+    private UserAccount userAcc;
     private EcoSystem ecosystem;
     private LabTechnician labtech;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     
-    public LabSupervisorCreateTechnicianJPanel(JPanel userProcessContainer, EcoSystem ecosystem) {
+    public LabSupervisorCreateTechnicianJPanel(JPanel userProcessContainer, UserAccount userAcc, EcoSystem ecosystem) {
         initComponents();
         //private JPanel userProcessContainer;
         
         this.userProcessContainer = userProcessContainer;        
-//        this.userAccount = account;
+        this.userAcc = userAcc;
         this.ecosystem = ecosystem;
         populateTable();
         
@@ -225,7 +225,7 @@ public class LabSupervisorCreateTechnicianJPanel extends javax.swing.JPanel {
         
         Employee employee = ecosystem.getEmployeeDirectory().createEmployee(name);       
         UserAccount userAccount = ecosystem.getUserAccountDirectory().createUserAccount(username, password, employee, new LabTechnicianRole());
-        LabTechnician lt = ecosystem.getLabTechnicianDirectory().addLabTechnician(name,userAccount);    
+        LabTechnician lt = ecosystem.getLabTechnicianDirectory().addLabTechnician(name,userAccount, userAcc.getUid());    
         
         txtLtname.setText("");
         txtLtpassword.setText("");
@@ -330,14 +330,14 @@ public class LabSupervisorCreateTechnicianJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblLabTechs.getModel();
         model.setRowCount(0);
         for (LabTechnician labtech : ecosystem.getLabTechnicianDirectory().getLabTechnicianList()) {
-            Object[] row = new Object[2];
-            row[0] = labtech;
-            row[1] = labtech.getLtName();
-
+            if(labtech.getSupervisorId() == userAcc.getUid()){
+               Object[] row = new Object[2];
+                row[0] = labtech;
+                row[1] = labtech.getLtName(); 
+                
+                model.addRow(row);
+            }
             
-
-
-            model.addRow(row);
          }  
     }
 }
