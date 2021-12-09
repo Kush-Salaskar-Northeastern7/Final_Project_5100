@@ -139,7 +139,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         txtPasswordField = new javax.swing.JPasswordField();
         jPanel7 = new javax.swing.JPanel();
-        btnDeleteEnterprise = new javax.swing.JButton();
+        btnDeleteManufacturer = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         selectEnterpriseType = new javax.swing.JComboBox();
         jTabbedPane1 = new javax.swing.JTabbedPane();
@@ -330,10 +330,10 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        btnDeleteEnterprise.setText("Delete");
-        btnDeleteEnterprise.addActionListener(new java.awt.event.ActionListener() {
+        btnDeleteManufacturer.setText("Delete");
+        btnDeleteManufacturer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteEnterpriseActionPerformed(evt);
+                btnDeleteManufacturerActionPerformed(evt);
             }
         });
 
@@ -366,7 +366,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(selectEnterpriseType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(559, 559, 559)
-                .addComponent(btnDeleteEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnDeleteManufacturer, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -375,7 +375,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 .addComponent(jLabel2))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnDeleteEnterprise, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnDeleteManufacturer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -634,26 +634,25 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_submitBtnActionPerformed
 
-    private void btnDeleteEnterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteEnterpriseActionPerformed
+    private void btnDeleteManufacturerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteManufacturerActionPerformed
         // TODO add your handling code here:
-        int selectedRowIndex = tblHospEnterpriseTable.getSelectedRow();
+        int selectedManufacturerRowIndex = tblManufacturerEnterpriseTable.getSelectedRow();
 
-        if (selectedRowIndex < 0) {
+        if (selectedManufacturerRowIndex < 0) {
             JOptionPane.showMessageDialog(this, "Please select an enterprise to delete");
             return;
         } else {
-            DefaultTableModel model = (DefaultTableModel) tblHospEnterpriseTable.getModel();
-            Enterprise selectedEnterprise = (Enterprise) model.getValueAt(selectedRowIndex, 0);
-            // get the manager account of the selected restaurant
-//            UserAccount useracc = ecosystem.getUserAccountDirectory().authenticateUser(userName.toString(), password.toString());
-            // Delete enterprise and his account
-//            system.getUserAccountDirectory().deleteUserAccount(useracc);
-            system.getEnterpriseDirectory().deleteEnterprise(selectedEnterprise);
-//            populateTable();
+            DefaultTableModel model = (DefaultTableModel) tblManufacturerEnterpriseTable.getModel();
+            Manager selectedManagerEnterprise = (Manager) model.getValueAt(selectedManufacturerRowIndex, 0);
+            system.getManagerDirectory().deleteManager(selectedManagerEnterprise); 
+            system.getUserAccountDirectory().deleteUserAccount(selectedManagerEnterprise.getUserAccount());              
+            JOptionPane.showMessageDialog(this, "Deleted");
+            
+            populateTable("Manufacturer");
         }
         
         
-    }//GEN-LAST:event_btnDeleteEnterpriseActionPerformed
+    }//GEN-LAST:event_btnDeleteManufacturerActionPerformed
 
     private void selectEnterpriseTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectEnterpriseTypeActionPerformed
         // TODO add your handling code here:
@@ -674,7 +673,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack2;
-    private javax.swing.JButton btnDeleteEnterprise;
+    private javax.swing.JButton btnDeleteManufacturer;
     private javax.swing.JButton btnHome2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -13,24 +13,31 @@ import java.util.regex.Pattern;
  * @author rolwy
  */
 public class ValidationUtil {
+    // validation function for name
      public static boolean validateName(String name) {
         String RegexPattern = "^[a-zA-Z ]{3,20}$";
         Pattern textPattern = Pattern.compile(RegexPattern);
         Matcher match = textPattern.matcher(name);
         return match.matches();
     }
-     
-    public static boolean validateUsername(String name) {
+    
+    // validation function for username
+    public static boolean validateUsername(String uname) {
         String RegexPattern = "^[a-zA-Z]$";
         Pattern textPattern = Pattern.compile(RegexPattern);
-        Matcher match = textPattern.matcher(name);
+        Matcher match = textPattern.matcher(uname);
         return match.matches();
     }
     
-    public static boolean validatePassword(String name) {
-        String RegexPattern = "^[a-zA-Z]$";
+    // validation function for email
+    public static boolean emailValidation(String emailid) {
+        String RegexPattern = "^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$*";
         Pattern textPattern = Pattern.compile(RegexPattern);
-        Matcher match = textPattern.matcher(name);
+        Matcher match = textPattern.matcher(emailid);
         return match.matches();
     }
+    
+//    public static boolean lengthValidation(int digit, String digitlength) {
+//        if (digit )
+//    }
 }
