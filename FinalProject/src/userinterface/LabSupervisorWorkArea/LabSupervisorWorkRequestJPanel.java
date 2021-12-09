@@ -8,6 +8,7 @@ package userinterface.LabSupervisorWorkArea;
 import Business.EcoSystem;
 import Business.LabSupervisor.LabSupervisor;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.LabApprovalWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -42,13 +43,15 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
             if (ls.getUserAccount().getUid() == account.getUid()) {
                 System.out.println(ls.getUserAccount().getWorkQueue().getWorkRequestList());
                 for(WorkRequest request : ls.getUserAccount().getWorkQueue().getWorkRequestList()){
-                    Object[] row = new Object[4];
-                    row[0] = request;
-                    row[1] = request.getMessage();
-                    row[2] = request.getReceiver();
-                    row[3] = request.getStatus();
+                    if(request instanceof LabApprovalWorkRequest){
+                        Object[] row = new Object[4];
+                        row[0] = ((LabApprovalWorkRequest)request).getCustomer();
+                        row[1] = ((LabApprovalWorkRequest)request).getMessage();
+                        row[2] = ((LabApprovalWorkRequest)request).getReceiver();
+                        row[3] = ((LabApprovalWorkRequest)request).getStatus();
 
-                    model.addRow(row);
+                        model.addRow(row);
+                    }
                 }
             }
         }
