@@ -14,10 +14,30 @@ import Business.UserAccount.UserAccount;
 public class SupplyManager {
     private String smName;
     private UserAccount userAccount;
+    private int type1 = 0;
+    private int type2 = 0;
     
     public SupplyManager(){
         userAccount = new UserAccount();
     }
+
+    public int getType1() {
+        return type1;
+    }
+
+    public void setType1(int type1) {
+        this.type1 += type1;
+    }
+
+    public int getType2() {
+        return type2;
+    }
+
+    public void setType2(int type2) {
+        this.type2 += type2;
+    }
+    
+    
 
     public String getSmName() {
         return smName;
