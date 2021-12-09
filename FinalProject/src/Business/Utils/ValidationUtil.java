@@ -5,10 +5,18 @@
  */
 package Business.Utils;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  *
  * @author rolwy
  */
 public class ValidationUtil {
-    
+     public static boolean validateName(String name) {
+        String RegexPattern = "^[a-zA-Z ]{3,20}$";
+        Pattern textPattern = Pattern.compile(RegexPattern);
+        Matcher match = textPattern.matcher(name);
+        return match.matches();
+    }
 }
