@@ -141,7 +141,7 @@ public class SupplyManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnManageDeliveryMenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageDeliveryMenActionPerformed
        container.removeAll();
-        SupplyManagerCreateDeliveryManJPanel ls = new SupplyManagerCreateDeliveryManJPanel(container, system);
+        SupplyManagerCreateDeliveryManJPanel ls = new SupplyManagerCreateDeliveryManJPanel(container,account, system);
         container.add("signup", ls);
         CardLayout crdLyt = (CardLayout) container.getLayout();
         crdLyt.next(container);
