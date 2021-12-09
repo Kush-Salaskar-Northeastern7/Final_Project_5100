@@ -131,8 +131,6 @@ public class ManagerRoleWorkAreaJPanel extends javax.swing.JPanel {
                     .addComponent(buttonWorkRqst, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(235, 235, 235))
         );
-
-        buttonWorkRqst.getAccessibleContext().setAccessibleName("Assign Work to Factory Workers");
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
