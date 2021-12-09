@@ -12,6 +12,7 @@ import Business.LabSupervisor.LabSupervisor;
 import Business.LabTechnician.LabTechnician;
 import Business.Role.CustomerRole;
 import Business.UserAccount.UserAccount;
+import Business.Utils.BusinessEmail;
 import Business.WorkQueue.LabApprovalWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
@@ -283,6 +284,7 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
         Employee employee = system.getEmployeeDirectory().createEmployee(req.getCustomer().getCustName());       
         UserAccount userAccount = system.getUserAccountDirectory().createUserAccount(req.getUsername(), req.getPassword(), employee, new CustomerRole());
         req.getCustomer().setUserAccount(userAccount);
+//        BusinessEmail.sendBusinessEmail(req.getCustomer().getCustImage(), TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY);
         
         account.getWorkQueue().getWorkRequestList().remove(req);
         JOptionPane.showMessageDialog(null, "You accepted this user.");
