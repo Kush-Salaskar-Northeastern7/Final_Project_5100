@@ -70,6 +70,13 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
         }
     }
     
+    public void clearFields(){
+        lblName.setText("");
+        lblGlucoseLevel.setText("");
+        lblDiabetesType.setText("");
+        lblImage.setText("");
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -264,10 +271,18 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
         UserAccount userAccount = system.getUserAccountDirectory().createUserAccount(req.getUsername(), req.getPassword(), employee, new CustomerRole());
         req.getCustomer().setUserAccount(userAccount);
         
+        account.getWorkQueue().getWorkRequestList().remove(req);
+        JOptionPane.showMessageDialog(null, "Your Req is sent to your Lab for review.");
+        populateTable();
+        clearFields();
+        
     }//GEN-LAST:event_btnAcceptActionPerformed
 
     private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
         // TODO add your handling code here:
+        req.setStatus("REJECTED");
+        populateTable();
+        clearFields();
     }//GEN-LAST:event_btnRejectActionPerformed
 
     private void btnLogout20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogout20ActionPerformed
