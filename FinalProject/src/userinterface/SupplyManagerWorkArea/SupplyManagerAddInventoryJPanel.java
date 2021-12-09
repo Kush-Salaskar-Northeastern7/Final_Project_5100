@@ -158,8 +158,6 @@ public class SupplyManagerAddInventoryJPanel extends javax.swing.JPanel {
             if(sm.getUserAccount().getUid() == account.getUid()){
                 sm.setType1(Integer.parseInt(type1));
                 sm.setType2(Integer.parseInt(type2));
-                System.out.println(sm.getType1());
-                System.out.println(sm.getType2());
             }
         }
         JOptionPane.showMessageDialog(null, "Inventory Updated Successfully.");

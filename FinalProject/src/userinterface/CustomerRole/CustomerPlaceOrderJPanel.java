@@ -58,6 +58,23 @@ public class CustomerPlaceOrderJPanel extends javax.swing.JPanel {
         
     }
     
+    public void populateInvTable(){
+        DefaultTableModel model = (DefaultTableModel) tblSupplier.getModel();
+        model.setRowCount(0);
+        
+        if(supManager.getType1() == 0 || supManager.getType2() == 0) return;
+        Object[] row = new Object[2];
+        row[0] = "Type1";
+        row[1] = supManager.getType1();
+            
+        model.addRow(row); 
+        
+        row[0] = "Type1";
+        row[1] = supManager.getType2();
+            
+        model.addRow(row);  
+    }
+    
     public void hideTable(){
         jScrollPane2.setVisible(false);
         tblSupplierInv.setVisible(false);
@@ -246,7 +263,7 @@ public class CustomerPlaceOrderJPanel extends javax.swing.JPanel {
             SupplyManager sm = (SupplyManager) tblSupplier.getValueAt(selectedRow, 0);
             supManager = sm;
             showTable();
-        
+            populateInvTable();
         }
     }//GEN-LAST:event_btnSelectSupplierActionPerformed
 
