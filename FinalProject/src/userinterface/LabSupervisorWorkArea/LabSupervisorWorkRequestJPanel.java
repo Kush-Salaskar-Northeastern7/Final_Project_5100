@@ -7,6 +7,7 @@ package userinterface.LabSupervisorWorkArea;
 
 import Business.EcoSystem;
 import Business.LabSupervisor.LabSupervisor;
+import Business.LabTechnician.LabTechnician;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.LabApprovalWorkRequest;
 import Business.WorkQueue.WorkRequest;
@@ -41,6 +42,22 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
         tblLabTech.setVisible(false);
         btnFinalSubmit.setVisible(false);
         jScrollPane2.setVisible(false);
+    }
+    
+    public void populateTechTable(){
+        DefaultTableModel model = (DefaultTableModel)tblLabTech.getModel();
+        
+        model.setRowCount(0);
+        if(system.getLabTechnicianDirectory().getLabTechnicianList().size() == 0) return;
+        for(LabTechnician lt : system.getLabTechnicianDirectory().getLabTechnicianList()){
+            if(account.getUid() == lt.getSupervisorId()){
+                Object[] row = new Object[2];
+                row[0] = lt;
+                row[1] = lt.getLtName();
+                
+                model.addRow(row);
+            }
+        }
     }
     
     public void populateWorkReqTable() {
@@ -257,11 +274,8 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
 
     private void btnAssignLabTechActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignLabTechActionPerformed
         // TODO add your handling code here:
-        tblLabTech.setVisible(true);
-        btnFinalSubmit.setVisible(true);
-        jScrollPane2.setVisible(true);
         
-        int selectedRow = tblLabTech.getSelectedRow();
+        int selectedRow = labWorkRequestJTable.getSelectedRow();
         
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select a row", "Error", JOptionPane.WARNING_MESSAGE);
@@ -269,9 +283,13 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
         else {
             LabApprovalWorkRequest wr = (LabApprovalWorkRequest) tblLabTech.getValueAt(selectedRow, 0);
             req = wr;
+            tblLabTech.setVisible(true);
+            btnFinalSubmit.setVisible(true);
+            jScrollPane2.setVisible(true);
+        
         }
          
-
+        populateTechTable();
     }//GEN-LAST:event_btnAssignLabTechActionPerformed
 
 

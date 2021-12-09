@@ -27,10 +27,11 @@ public class LabTechnicianDirectory {
         this.labTechnicianList = labTechnicianList;
     }
     
-    public LabTechnician addLabTechnician(String name, UserAccount ua){
+    public LabTechnician addLabTechnician(String name, UserAccount ua, int supervisorId){
         LabTechnician lt = new LabTechnician();
         lt.setLtName(name);
         lt.setUserAccount(ua);
+        lt.setSupervisorId(supervisorId);
         labTechnicianList.add(lt);
         return lt;
     }

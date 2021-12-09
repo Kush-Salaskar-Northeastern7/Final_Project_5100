@@ -14,10 +14,21 @@ import Business.UserAccount.UserAccount;
 public class LabTechnician {
     private String ltName;
     private UserAccount userAccount;
+    private int supervisorId;
     
     public LabTechnician(){
         userAccount = new UserAccount();
     }
+
+    public int getSupervisorId() {
+        return supervisorId;
+    }
+
+    public void setSupervisorId(int supervisorId) {
+        this.supervisorId = supervisorId;
+    }
+    
+    
 
     public String getLtName() {
         return ltName;
