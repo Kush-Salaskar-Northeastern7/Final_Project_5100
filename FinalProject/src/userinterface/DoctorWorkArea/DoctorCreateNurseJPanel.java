@@ -28,13 +28,15 @@ public class DoctorCreateNurseJPanel extends javax.swing.JPanel {
      */
     private JPanel userProcessContainer;
 //    private UserAccount userAccount;
+    private UserAccount userAcc;
     private EcoSystem system;
     private Employee employee;
     private Nurse nurse;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
-    public DoctorCreateNurseJPanel(JPanel userProcessContainer, EcoSystem system) {
+    public DoctorCreateNurseJPanel(JPanel userProcessContainer,UserAccount userAcc, EcoSystem system) {
         initComponents();
-        this.userProcessContainer = userProcessContainer;        
+        this.userProcessContainer = userProcessContainer;    
+        this.userAcc = userAcc;
         this.system = system;
     }
 
@@ -260,6 +262,7 @@ public class DoctorCreateNurseJPanel extends javax.swing.JPanel {
             String nurseName = txtNursename.getText();
             String username = txtNurseUsername.getText();
             String password = String.valueOf(txtNursePassword.getPassword());
+            
 
             if(!system.getUserAccountDirectory().checkIfUsernameIsUnique(username)){
                 JOptionPane.showMessageDialog(null, "Username already exists, select a new username", "Error", JOptionPane.WARNING_MESSAGE);
@@ -268,7 +271,7 @@ public class DoctorCreateNurseJPanel extends javax.swing.JPanel {
 
             Employee employee = system.getEmployeeDirectory().createEmployee(nurseName);       
             UserAccount userAccount = system.getUserAccountDirectory().createUserAccount(username, password, employee, new NurseRole());
-            Nurse nurse = system.getNurseDirectory().createNurse(nurseName,userAccount);   
+            Nurse nurse = system.getNurseDirectory().createNurse(nurseName,userAccount,userAccount.getUid());   
 
             txtNursename.setText("");
             txtNurseUsername.setText("");
@@ -283,10 +286,13 @@ public class DoctorCreateNurseJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblNurses.getModel();
         model.setRowCount(0);
         for (Nurse nurse : system.getNurseDirectory().getNurseList()) {
-            Object[] row = new Object[2];
-            row[0] = nurse;
-            row[1] = nurse.getNurseName();
-            model.addRow(row);
+            if(nurse.getDoctorId() == userAcc.getUid()){
+                Object[] row = new Object[2];
+                 row[0] = nurse;
+                 row[1] = nurse.getNurseName(); 
+
+                 model.addRow(row);
+             }
          }  
     }
     

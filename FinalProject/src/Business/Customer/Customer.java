@@ -16,12 +16,13 @@ public class Customer {
     private String custAddress;
     private String custCommunity;
     private String custZip;
+    private String emailId;
     private int age;
     private boolean diagnosed;
     private String typeDiabetes;
     private int glucoseLvl;
     private String custImage;
-    private long custPhoneNumber; 
+    private long custPhoneNumber;
     private UserAccount userAccount;
 
     public String getCustCommunity() {
@@ -39,6 +40,16 @@ public class Customer {
     public void setCustZip(String custZip) {
         this.custZip = custZip;
     }
+
+    public String getEmailId() {
+        return emailId;
+    }
+
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
+    }
+    
+    
 
     public String getCustImage() {
         return custImage;

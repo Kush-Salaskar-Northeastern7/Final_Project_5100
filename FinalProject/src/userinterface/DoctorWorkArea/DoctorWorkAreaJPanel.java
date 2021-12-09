@@ -137,7 +137,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnManageNursesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageNursesActionPerformed
         userProcessContainer.removeAll();
-        DoctorCreateNurseJPanel ls = new DoctorCreateNurseJPanel(userProcessContainer, system);
+        DoctorCreateNurseJPanel ls = new DoctorCreateNurseJPanel(userProcessContainer,account, system);
         userProcessContainer.add("nursearea", ls);
         CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
         crdLyt.next(userProcessContainer);
