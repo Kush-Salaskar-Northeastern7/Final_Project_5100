@@ -5,15 +5,18 @@
  */
 package userinterface.LabSupervisorWorkArea;
 
+import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
 import Business.LabSupervisor.LabSupervisor;
 import Business.LabTechnician.LabTechnician;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.LabApprovalWorkRequest;
 import Business.WorkQueue.WorkRequest;
+import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import userinterface.LoginScreen;
 
 /**
  *
@@ -26,8 +29,10 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
      */
     private JPanel userProcessContainer;
     private EcoSystem system;
-    UserAccount account;
-    LabApprovalWorkRequest req;
+    private UserAccount account;
+    private LabApprovalWorkRequest req;
+    private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
+    
     public LabSupervisorWorkRequestJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem system) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
@@ -254,17 +259,30 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         // TODO add your handling code here:
-//        userProcessContainer.removeAll();
-//        JPanel blankJP = new JPanel();
-//        LoginScreen ls = new LoginScreen(userProcessContainer, ecosystem);
-//        userProcessContainer.add("blank", ls);
-//        CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
-//        crdLyt.next(userProcessContainer);
-//        dB4OUtil.storeSystem(ecosystem);
+        userProcessContainer.removeAll();
+        JPanel blankJP = new JPanel();
+        LoginScreen ls = new LoginScreen(userProcessContainer, system);
+        userProcessContainer.add("blank", ls);
+        CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
+        crdLyt.next(userProcessContainer);
+        dB4OUtil.storeSystem(system);
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnFinalSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalSubmitActionPerformed
         // TODO add your handling code here:
+        int selectedRow = tblLabTech.getSelectedRow();
+        
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row", "Error", JOptionPane.WARNING_MESSAGE);
+        }
+        else {
+            LabTechnician lt = (LabTechnician) tblLabTech.getValueAt(selectedRow, 0);
+            lt.getUserAccount().getWorkQueue().getWorkRequestList().add(req);
+            account.getWorkQueue().getWorkRequestList().remove(req);
+            JOptionPane.showMessageDialog(null, "Task assigned to Lab Technician", "Error", JOptionPane.WARNING_MESSAGE);
+            populateWorkReqTable();
+            populateTechTable();
+        }
     }//GEN-LAST:event_btnFinalSubmitActionPerformed
 
     private void btnRefresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefresActionPerformed
@@ -278,10 +296,10 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
         int selectedRow = labWorkRequestJTable.getSelectedRow();
         
         if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select a row", "Error", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please select a row", "Error", JOptionPane.NO_OPTION);
         }
         else {
-            LabApprovalWorkRequest wr = (LabApprovalWorkRequest) tblLabTech.getValueAt(selectedRow, 0);
+            LabApprovalWorkRequest wr = (LabApprovalWorkRequest) labWorkRequestJTable.getValueAt(selectedRow, 0);
             req = wr;
             tblLabTech.setVisible(true);
             btnFinalSubmit.setVisible(true);
