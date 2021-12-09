@@ -298,8 +298,8 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
     private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
         // TODO add your handling code here:
         req.setStatus("REJECTED");
-//        String emailBody = "You are not diabetic and hence cannot buy Insulin from our App. Happy Sugar free life";
-//        BusinessEmail.sendBusinessEmail(req.getCustomer().getEmailId(), "Account Created at Insumax", emailBody);
+        String emailBody = "You are not diabetic and hence cannot buy Insulin from our App. Happy Sugar free life";
+        BusinessEmail.sendBusinessEmail(req.getCustomer().getEmailId(), "Account Created at Insumax", emailBody);
         System.out.println("reached hereee" +req.getStatus());
         JOptionPane.showMessageDialog(null, "You rejected this user.");
         populateTable();
