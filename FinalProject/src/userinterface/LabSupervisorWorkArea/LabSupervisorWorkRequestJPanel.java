@@ -7,8 +7,11 @@ package userinterface.LabSupervisorWorkArea;
 
 import Business.EcoSystem;
 import Business.LabSupervisor.LabSupervisor;
+import Business.LabTechnician.LabTechnician;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.LabApprovalWorkRequest;
 import Business.WorkQueue.WorkRequest;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -24,12 +27,37 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private EcoSystem system;
     UserAccount account;
+    LabApprovalWorkRequest req;
     public LabSupervisorWorkRequestJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem system) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.system = system;
         this.account = account;
+        hideLabTechTable();
         populateWorkReqTable();
+    }
+    
+    
+    public void hideLabTechTable(){
+        tblLabTech.setVisible(false);
+        btnFinalSubmit.setVisible(false);
+        jScrollPane2.setVisible(false);
+    }
+    
+    public void populateTechTable(){
+        DefaultTableModel model = (DefaultTableModel)tblLabTech.getModel();
+        
+        model.setRowCount(0);
+        if(system.getLabTechnicianDirectory().getLabTechnicianList().size() == 0) return;
+        for(LabTechnician lt : system.getLabTechnicianDirectory().getLabTechnicianList()){
+            if(account.getUid() == lt.getSupervisorId()){
+                Object[] row = new Object[2];
+                row[0] = lt;
+                row[1] = lt.getLtName();
+                
+                model.addRow(row);
+            }
+        }
     }
     
     public void populateWorkReqTable() {
@@ -40,15 +68,17 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
         for (LabSupervisor ls : system.getLabSupervisorDirectory().getLabSupervisorList()) {
 //            account.getUsername()
             if (ls.getUserAccount().getUid() == account.getUid()) {
-                System.out.println(ls.getUserAccount().getWorkQueue().getWorkRequestList());
                 for(WorkRequest request : ls.getUserAccount().getWorkQueue().getWorkRequestList()){
-                    Object[] row = new Object[4];
-                    row[0] = request;
-                    row[1] = request.getMessage();
-                    row[2] = request.getReceiver();
-                    row[3] = request.getStatus();
+                    if(request instanceof LabApprovalWorkRequest){
+                        Object[] row = new Object[5];
+                        row[0] = (LabApprovalWorkRequest)request;
+                        row[1] = ((LabApprovalWorkRequest)request).getCustomer();
+                        row[2] = ((LabApprovalWorkRequest)request).getMessage();
+                        row[3] = ((LabApprovalWorkRequest)request).getReceiver();
+                        row[4] = ((LabApprovalWorkRequest)request).getStatus();
 
-                    model.addRow(row);
+                        model.addRow(row);
+                    }
                 }
             }
         }
@@ -69,9 +99,10 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         labWorkRequestJTable = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
-        workRequestJTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        tblLabTech = new javax.swing.JTable();
+        btnRefres = new javax.swing.JButton();
+        btnFinalSubmit = new javax.swing.JButton();
+        btnAssignLabTech = new javax.swing.JButton();
 
         jPanel3.setBackground(new java.awt.Color(51, 51, 51));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
@@ -116,20 +147,20 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
 
         labWorkRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Customer", "Message", "Receiver", "Status"
+                "RequestId", "Customer", "Message", "Receiver", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true, true, false
+                false, false, true, true, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -144,7 +175,7 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
         labWorkRequestJTable.setShowGrid(false);
         jScrollPane1.setViewportView(labWorkRequestJTable);
 
-        workRequestJTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblLabTech.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null},
                 {null},
@@ -163,18 +194,30 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        workRequestJTable1.setSelectionBackground(new java.awt.Color(255, 204, 204));
-        workRequestJTable1.setShowGrid(false);
-        jScrollPane2.setViewportView(workRequestJTable1);
+        tblLabTech.setSelectionBackground(new java.awt.Color(255, 204, 204));
+        tblLabTech.setShowGrid(false);
+        jScrollPane2.setViewportView(tblLabTech);
 
-        jButton1.setText("Refresh");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnRefres.setText("Refresh");
+        btnRefres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnRefresActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Assign");
+        btnFinalSubmit.setText("Assign");
+        btnFinalSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFinalSubmitActionPerformed(evt);
+            }
+        });
+
+        btnAssignLabTech.setText("Assign to Lab Tech");
+        btnAssignLabTech.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAssignLabTechActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -184,8 +227,9 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAssignLabTech)
+                    .addComponent(btnFinalSubmit)
+                    .addComponent(btnRefres, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(293, Short.MAX_VALUE))
@@ -195,14 +239,16 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(btnRefres)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAssignLabTech)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addGap(0, 127, Short.MAX_VALUE))
+                .addComponent(btnFinalSubmit)
+                .addGap(47, 47, 47))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -217,20 +263,46 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
 //        dB4OUtil.storeSystem(ecosystem);
     }//GEN-LAST:event_btnLogoutActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnFinalSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalSubmitActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnFinalSubmitActionPerformed
+
+    private void btnRefresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefresActionPerformed
+        // TODO add your handling code here:
+        populateWorkReqTable();
+    }//GEN-LAST:event_btnRefresActionPerformed
+
+    private void btnAssignLabTechActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignLabTechActionPerformed
+        // TODO add your handling code here:
+        
+        int selectedRow = labWorkRequestJTable.getSelectedRow();
+        
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row", "Error", JOptionPane.WARNING_MESSAGE);
+        }
+        else {
+            LabApprovalWorkRequest wr = (LabApprovalWorkRequest) tblLabTech.getValueAt(selectedRow, 0);
+            req = wr;
+            tblLabTech.setVisible(true);
+            btnFinalSubmit.setVisible(true);
+            jScrollPane2.setVisible(true);
+        
+        }
+         
+        populateTechTable();
+    }//GEN-LAST:event_btnAssignLabTechActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAssignLabTech;
+    private javax.swing.JButton btnFinalSubmit;
     private javax.swing.JButton btnLogout;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnRefres;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable labWorkRequestJTable;
     private javax.swing.JLabel lblSelectedNode;
-    private javax.swing.JTable workRequestJTable1;
+    private javax.swing.JTable tblLabTech;
     // End of variables declaration//GEN-END:variables
 }

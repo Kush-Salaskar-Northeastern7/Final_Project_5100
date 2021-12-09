@@ -145,7 +145,7 @@ public class LabSupervisorWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnManageLabTechsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageLabTechsActionPerformed
         container.removeAll();
-        LabSupervisorCreateTechnicianJPanel ls = new LabSupervisorCreateTechnicianJPanel(container, system);
+        LabSupervisorCreateTechnicianJPanel ls = new LabSupervisorCreateTechnicianJPanel(container, account, system);
         container.add("signup", ls);
         CardLayout crdLyt = (CardLayout) container.getLayout();
         crdLyt.next(container);
