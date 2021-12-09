@@ -463,7 +463,7 @@ public class CustomerSignupJPanel extends javax.swing.JPanel {
            txtPtnUsername.getText().isEmpty() || txtPtnPassword.getText().isEmpty() ||
                 txtPtnAge.getText().isEmpty() || txtPtnCommunity.getText().isEmpty() ||
                 txtPtnDiabetesType.getText().isEmpty() || txtPtnGlucoseLvl.getText().isEmpty() ||
-                txtPtnZip.getText().isEmpty()
+                txtPtnZip.getText().isEmpty() || txtPtnEmailId.getText().isEmpty()
                 ) {
             JOptionPane.showMessageDialog(this, "Please fill all details.", "Error", JOptionPane.WARNING_MESSAGE);
             return;
@@ -488,9 +488,8 @@ public class CustomerSignupJPanel extends javax.swing.JPanel {
         int glucoselvl = Integer.parseInt(txtPtnGlucoseLvl.getText());
         String zip = txtPtnZip.getText();
         int age = Integer.parseInt(txtPtnAge.getText());
-        
-        
-        
+        String emailid = txtPtnEmailId.getText();
+
         
         if(!ecosystem.getUserAccountDirectory().checkIfUsernameIsUnique(username)){
             JOptionPane.showMessageDialog(null, "Username already exists, select a new username", "Error", JOptionPane.WARNING_MESSAGE);
@@ -500,7 +499,7 @@ public class CustomerSignupJPanel extends javax.swing.JPanel {
 //        Employee employee = ecosystem.getEmployeeDirectory().createEmployee(name);       
 //        UserAccount userAccount = ecosystem.getUserAccountDirectory().createUserAccount(username, password, employee, new CustomerRole());        
         Customer c = ecosystem.getCustomerDirectory().addCustomer(name, age, address, 
-                                                            community, zip, "sk", phonenumber, glucoselvl, diabetestype, null);
+                                                            community, zip, "sk", phonenumber, glucoselvl, diabetestype, emailid, null);
         
         LabApprovalWorkRequest req = new LabApprovalWorkRequest();
         req.setCustomer(c);
@@ -524,6 +523,7 @@ public class CustomerSignupJPanel extends javax.swing.JPanel {
         txtPtnPhoneNum.setText("");
         txtPtnUsername.setText("");
         txtPtnZip.setText("");
+        txtPtnEmailId.setText("");
         populateLabsTable();
         dB4OUtil.storeSystem(ecosystem);
         JOptionPane.showMessageDialog(null, "Customer Created");

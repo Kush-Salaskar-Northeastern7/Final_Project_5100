@@ -284,7 +284,9 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
         Employee employee = system.getEmployeeDirectory().createEmployee(req.getCustomer().getCustName());       
         UserAccount userAccount = system.getUserAccountDirectory().createUserAccount(req.getUsername(), req.getPassword(), employee, new CustomerRole());
         req.getCustomer().setUserAccount(userAccount);
-//        BusinessEmail.sendBusinessEmail(req.getCustomer().getCustImage(), TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY);
+        String emailBody = "Congratulations!! Your account at Insumax has been created with \n Username= " +userAccount.getUsername() 
+                +" User same password to login when you signed up";
+        BusinessEmail.sendBusinessEmail(req.getCustomer().getEmailId(), "Account Created at Insumax", emailBody);
         
         account.getWorkQueue().getWorkRequestList().remove(req);
         JOptionPane.showMessageDialog(null, "You accepted this user.");
@@ -296,6 +298,9 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
     private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
         // TODO add your handling code here:
         req.setStatus("REJECTED");
+//        String emailBody = "You are not diabetic and hence cannot buy Insulin from our App. Happy Sugar free life";
+//        BusinessEmail.sendBusinessEmail(req.getCustomer().getEmailId(), "Account Created at Insumax", emailBody);
+        System.out.println("reached hereee" +req.getStatus());
         JOptionPane.showMessageDialog(null, "You rejected this user.");
         populateTable();
         clearFields();

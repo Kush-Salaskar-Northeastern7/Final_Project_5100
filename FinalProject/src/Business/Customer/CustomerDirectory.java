@@ -27,7 +27,7 @@ public class CustomerDirectory {
         this.customerList = customerList;
     }
     
-    public Customer addCustomer(String name, int age, String address, String community, String zip, String img, long phoneNum, int glucLvl, String diabetesType, UserAccount ua){
+    public Customer addCustomer(String name, int age, String address, String community, String zip, String img, long phoneNum, int glucLvl, String diabetesType, String emailid, UserAccount ua){
         Customer cu = new Customer();
         cu.setAge(age);
         cu.setCustName(name);
@@ -38,6 +38,7 @@ public class CustomerDirectory {
         cu.setCustPhoneNumber(phoneNum);
         cu.setGlucoseLvl(glucLvl);
         cu.setTypeDiabetes(diabetesType);
+        cu.setEmailId(emailid);
         cu.setUserAccount(ua);
         customerList.add(cu);
         return cu;
