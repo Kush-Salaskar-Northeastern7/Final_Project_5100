@@ -142,7 +142,6 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
         });
         labWorkRequestJTable.setSelectionBackground(new java.awt.Color(51, 153, 255));
         labWorkRequestJTable.setShowGrid(false);
-        labWorkRequestJTable.setShowVerticalLines(false);
         jScrollPane1.setViewportView(labWorkRequestJTable);
 
         workRequestJTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -169,6 +168,11 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
         jScrollPane2.setViewportView(workRequestJTable1);
 
         jButton1.setText("Refresh");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Assign");
 
@@ -212,6 +216,10 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
 //        crdLyt.next(userProcessContainer);
 //        dB4OUtil.storeSystem(ecosystem);
     }//GEN-LAST:event_btnLogoutActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
