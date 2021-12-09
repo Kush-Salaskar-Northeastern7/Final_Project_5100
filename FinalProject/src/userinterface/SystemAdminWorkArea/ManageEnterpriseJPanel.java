@@ -158,6 +158,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         jPanel9 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblHospEnterpriseTable = new javax.swing.JTable();
+        btnDeleteHospital = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 102, 102));
 
@@ -499,9 +500,9 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 .addGap(22, 22, 22))
             .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel8Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 921, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addContainerGap()
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 945, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -509,10 +510,10 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 .addGap(0, 323, Short.MAX_VALUE)
                 .addComponent(btnDeleteLaboratory))
             .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel8Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                    .addContainerGap(30, Short.MAX_VALUE)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addContainerGap(31, Short.MAX_VALUE)))
         );
 
         jTabbedPane1.addTab("Laboratory", jPanel8);
@@ -530,11 +531,21 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         ));
         jScrollPane4.setViewportView(tblHospEnterpriseTable);
 
+        btnDeleteHospital.setText("Delete");
+        btnDeleteHospital.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteHospitalActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 965, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap(892, Short.MAX_VALUE)
+                .addComponent(btnDeleteHospital)
+                .addContainerGap())
             .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -543,7 +554,10 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 346, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap(294, Short.MAX_VALUE)
+                .addComponent(btnDeleteHospital)
+                .addGap(29, 29, 29))
             .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -740,12 +754,45 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
 
     private void btnDeleteLaboratoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteLaboratoryActionPerformed
         // TODO add your handling code here:
+        int selectedRowIndex = tblLabEnterpriseTable.getSelectedRow();
+
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select an Laboratory to delete");
+            return;
+        } else {
+            DefaultTableModel model = (DefaultTableModel) tblLabEnterpriseTable.getModel();
+            LabSupervisor selectedEnterprise = (LabSupervisor) model.getValueAt(selectedRowIndex, 0);
+            system.getLabSupervisorDirectory().deleteLabSupervisor(selectedEnterprise);
+            system.getUserAccountDirectory().deleteUserAccount(selectedEnterprise.getUserAccount());
+            JOptionPane.showMessageDialog(this, "Laboratory Deleted");
+
+            populateTable("Laboratory");
+        }
         
     }//GEN-LAST:event_btnDeleteLaboratoryActionPerformed
+
+    private void btnDeleteHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteHospitalActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = tblHospEnterpriseTable.getSelectedRow();
+
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select an Hospital to delete");
+            return;
+        } else {
+            DefaultTableModel model = (DefaultTableModel) tblHospEnterpriseTable.getModel();
+            Doctor selectedEnterprise = (Doctor) model.getValueAt(selectedRowIndex, 0);
+            system.getDoctorDirectory().deleteDoctor(selectedEnterprise);
+            system.getUserAccountDirectory().deleteUserAccount(selectedEnterprise.getUserAccount());
+            JOptionPane.showMessageDialog(this, "Hospital Deleted");
+
+            populateTable("Hospital");
+        }
+    }//GEN-LAST:event_btnDeleteHospitalActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack2;
+    private javax.swing.JButton btnDeleteHospital;
     private javax.swing.JButton btnDeleteLaboratory;
     private javax.swing.JButton btnDeleteManufacturer;
     private javax.swing.JButton btnDeleteSupplier;
