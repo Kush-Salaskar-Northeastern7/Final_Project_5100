@@ -19,4 +19,18 @@ public class ValidationUtil {
         Matcher match = textPattern.matcher(name);
         return match.matches();
     }
+     
+    public static boolean validateUsername(String name) {
+        String RegexPattern = "^[a-zA-Z]$";
+        Pattern textPattern = Pattern.compile(RegexPattern);
+        Matcher match = textPattern.matcher(name);
+        return match.matches();
+    }
+    
+    public static boolean validatePassword(String name) {
+        String RegexPattern = "^[a-zA-Z]$";
+        Pattern textPattern = Pattern.compile(RegexPattern);
+        Matcher match = textPattern.matcher(name);
+        return match.matches();
+    }
 }
