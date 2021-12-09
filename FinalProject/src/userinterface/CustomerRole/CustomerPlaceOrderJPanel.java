@@ -8,9 +8,12 @@ package userinterface.CustomerRole;
 import Business.Customer.Customer;
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
+import Business.LabSupervisor.LabSupervisor;
+import Business.SupplyManager.SupplyManager;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 import userinterface.LoginScreen;
 
 /**
@@ -33,7 +36,32 @@ public class CustomerPlaceOrderJPanel extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.ecosystem = ecosystem;
+        hideTable();
+        populateSupplierTable();
     }
+    
+    
+    public void populateSupplierTable(){
+        DefaultTableModel model = (DefaultTableModel) tblSupplier.getModel();
+        model.setRowCount(0);
+        
+        if(ecosystem.getSupplyManagerDirectory().getSupplyManagerList().size() == 0) return;
+        for (SupplyManager sm : ecosystem.getSupplyManagerDirectory().getSupplyManagerList()) {
+            Object[] row = new Object[2];
+            row[0] = sm;
+            row[1] = sm.getUserAccount().getUsername();
+            
+            model.addRow(row);       
+        }
+        
+    }
+    
+    public void hideTable(){
+        jScrollPane2.setVisible(false);
+        tblSupplierInv.setVisible(false);
+        btnPlaceOrder.setVisible(false);
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -145,6 +173,11 @@ public class CustomerPlaceOrderJPanel extends javax.swing.JPanel {
         jScrollPane2.setViewportView(tblSupplierInv);
 
         btnPlaceOrder.setText("Place Order");
+        btnPlaceOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPlaceOrderActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -153,15 +186,18 @@ public class CustomerPlaceOrderJPanel extends javax.swing.JPanel {
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 683, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(102, 102, 102)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnPlaceOrder)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnPlaceOrder)
+                        .addGap(156, 156, 156))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnSelectSupplier)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(254, 254, 254))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(127, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(btnSelectSupplier)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(141, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,9 +209,9 @@ public class CustomerPlaceOrderJPanel extends javax.swing.JPanel {
                 .addComponent(btnSelectSupplier)
                 .addGap(91, 91, 91)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addGap(34, 34, 34)
                 .addComponent(btnPlaceOrder)
-                .addContainerGap(180, Short.MAX_VALUE))
+                .addContainerGap(175, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -192,6 +228,10 @@ public class CustomerPlaceOrderJPanel extends javax.swing.JPanel {
     private void btnSelectSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectSupplierActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSelectSupplierActionPerformed
+
+    private void btnPlaceOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlaceOrderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPlaceOrderActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
