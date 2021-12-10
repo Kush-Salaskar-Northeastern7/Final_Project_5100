@@ -310,6 +310,15 @@ public class SupplyManagerAssignDeliveryManJPanel extends javax.swing.JPanel {
         }
         else {
             DeliveryMan dm = (DeliveryMan) tblDeliveryMan.getValueAt(selectedRow, 0);
+            for(SupplyManager sm : system.getSupplyManagerDirectory().getSupplyManagerList()){
+                if(sm.getUserAccount().getUid() == account.getUid()){
+                    if(req.isType1()){
+                        sm.setType1(-req.getQuantity());
+                    } else {
+                        sm.setType2(-req.getQuantity());
+                    }
+                }
+            }
             req.setStatus("OUT FOR DELIVERY");
             dm.getUserAccount().getWorkQueue().getWorkRequestList().add(req);
             account.getWorkQueue().getWorkRequestList().remove(req);

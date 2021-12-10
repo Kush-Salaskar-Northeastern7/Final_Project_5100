@@ -4,6 +4,8 @@
  */
 package userinterface.DeliveryManRole;
 
+import Business.UserAccount.UserAccount;
+import Business.WorkQueue.PatientOrderWorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JPanel;
@@ -16,13 +18,17 @@ import javax.swing.JPanel;
 
 public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
 
-    JPanel userProcessContainer;
+    private JPanel userProcessContainer;
+    private PatientOrderWorkRequest request;
+    private UserAccount userAccount;
     /**
      * Creates new form ProcessWorkRequestJPanel
      */
-    public ProcessWorkRequestJPanel(JPanel userProcessContainer) {
+    public ProcessWorkRequestJPanel(JPanel userProcessContainer, PatientOrderWorkRequest request, UserAccount userAccount) {
         initComponents();
-        
+        this.userAccount = userAccount;
+        this.request = request;
+        this.userProcessContainer = userProcessContainer;
     }
 
     /**
