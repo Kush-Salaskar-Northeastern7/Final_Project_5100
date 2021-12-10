@@ -36,6 +36,7 @@ public class CustomerScheduleAppmtJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.ecosystem = ecosystem;
         this.account = account;
+        ecosystem = dB4OUtil.retrieveSystem();
         populateDoctorsTable();
     }
 
@@ -169,7 +170,7 @@ public class CustomerScheduleAppmtJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblDoctors.getModel();
         model.setRowCount(0);
         
-        if(ecosystem.getSupplyManagerDirectory().getSupplyManagerList().size() == 0) return;
+        if(ecosystem.getDoctorDirectory().getDoctorList().size() == 0) return;
         for (Doctor doc : ecosystem.getDoctorDirectory().getDoctorList()) {
             Object[] row = new Object[2];
             row[0] = doc;
@@ -186,6 +187,7 @@ public class CustomerScheduleAppmtJPanel extends javax.swing.JPanel {
         userProcessContainer.add("custarea", ca);
         CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
         crdLyt.previous(userProcessContainer);
+        dB4OUtil.storeSystem(ecosystem);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnScheduleApptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnScheduleApptActionPerformed
@@ -207,8 +209,10 @@ public class CustomerScheduleAppmtJPanel extends javax.swing.JPanel {
                 }
             }
             wr.setSender(account);
+            wr.setMessage("Appointment to be reviewed");
             wr.setStatus("APPOINTMENT REQUEST");
             wr.setReceiver(doctor.getUserAccount());
+            doctor.getUserAccount().getWorkQueue().getWorkRequestList().add(wr);
         }
     }//GEN-LAST:event_btnScheduleApptActionPerformed
 

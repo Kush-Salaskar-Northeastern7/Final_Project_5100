@@ -6,10 +6,15 @@
 package userinterface.DoctorWorkArea;
 
 import Business.DB4OUtil.DB4OUtil;
+import Business.Doctor.Doctor;
 import Business.EcoSystem;
+import Business.Nurse.Nurse;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.PatientAppointmentWorkRequest;
+import Business.WorkQueue.WorkRequest;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -30,7 +35,10 @@ public class DoctorWorkRequestJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.account = account;
         this.system = system;
+        hideNursesTable();
+        populateWorkRequestTable();
     }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,13 +52,13 @@ public class DoctorWorkRequestJPanel extends javax.swing.JPanel {
         jPanel5 = new javax.swing.JPanel();
         lblSelectedNode2 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
-        btnRefres = new javax.swing.JButton();
+        btnFinalSubmit = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         patientApmtWorkRequestJTable = new javax.swing.JTable();
-        btnAssignLabTech = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        nursesSPane = new javax.swing.JScrollPane();
         tblNurses = new javax.swing.JTable();
-        btnFinalSubmit = new javax.swing.JButton();
+        btnRefres = new javax.swing.JButton();
+        btnAssignToNurse = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -92,12 +100,12 @@ public class DoctorWorkRequestJPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        btnRefres.setBackground(new java.awt.Color(0, 153, 153));
-        btnRefres.setForeground(new java.awt.Color(255, 255, 255));
-        btnRefres.setText("Refresh");
-        btnRefres.addActionListener(new java.awt.event.ActionListener() {
+        btnFinalSubmit.setBackground(new java.awt.Color(0, 153, 153));
+        btnFinalSubmit.setForeground(new java.awt.Color(255, 255, 255));
+        btnFinalSubmit.setText("Assign");
+        btnFinalSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRefresActionPerformed(evt);
+                btnFinalSubmitActionPerformed(evt);
             }
         });
 
@@ -133,15 +141,6 @@ public class DoctorWorkRequestJPanel extends javax.swing.JPanel {
         patientApmtWorkRequestJTable.setShowGrid(false);
         jScrollPane1.setViewportView(patientApmtWorkRequestJTable);
 
-        btnAssignLabTech.setBackground(new java.awt.Color(0, 153, 153));
-        btnAssignLabTech.setForeground(new java.awt.Color(255, 255, 255));
-        btnAssignLabTech.setText("Assign to a Nurse");
-        btnAssignLabTech.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAssignLabTechActionPerformed(evt);
-            }
-        });
-
         tblNurses.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null},
@@ -163,14 +162,23 @@ public class DoctorWorkRequestJPanel extends javax.swing.JPanel {
         });
         tblNurses.setSelectionBackground(new java.awt.Color(255, 204, 204));
         tblNurses.setShowGrid(false);
-        jScrollPane2.setViewportView(tblNurses);
+        nursesSPane.setViewportView(tblNurses);
 
-        btnFinalSubmit.setBackground(new java.awt.Color(0, 153, 153));
-        btnFinalSubmit.setForeground(new java.awt.Color(255, 255, 255));
-        btnFinalSubmit.setText("Assign");
-        btnFinalSubmit.addActionListener(new java.awt.event.ActionListener() {
+        btnRefres.setBackground(new java.awt.Color(0, 153, 153));
+        btnRefres.setForeground(new java.awt.Color(255, 255, 255));
+        btnRefres.setText("Refresh");
+        btnRefres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFinalSubmitActionPerformed(evt);
+                btnRefresActionPerformed(evt);
+            }
+        });
+
+        btnAssignToNurse.setBackground(new java.awt.Color(0, 153, 153));
+        btnAssignToNurse.setForeground(new java.awt.Color(255, 255, 255));
+        btnAssignToNurse.setText("Assign to a Nurse");
+        btnAssignToNurse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAssignToNurseActionPerformed(evt);
             }
         });
 
@@ -191,13 +199,13 @@ public class DoctorWorkRequestJPanel extends javax.swing.JPanel {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(btnRefres, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnAssignLabTech))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnAssignToNurse))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 666, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnFinalSubmit))))
-                .addContainerGap(103, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nursesSPane, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnFinalSubmit, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,15 +214,14 @@ public class DoctorWorkRequestJPanel extends javax.swing.JPanel {
                 .addGap(34, 34, 34)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnAssignLabTech)
-                        .addComponent(btnRefres))
-                    .addComponent(btnFinalSubmit))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nursesSPane, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnFinalSubmit)
+                    .addComponent(btnAssignToNurse)
+                    .addComponent(btnRefres))
                 .addGap(148, 148, 148))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -232,25 +239,40 @@ public class DoctorWorkRequestJPanel extends javax.swing.JPanel {
 //        populateWorkReqTable();
     }//GEN-LAST:event_btnRefresActionPerformed
 
-    private void btnAssignLabTechActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignLabTechActionPerformed
+    public void populateNursesTable(){
+        DefaultTableModel model = (DefaultTableModel) tblNurses.getModel();
+        
+        model.setRowCount(0);
+        if(system.getNurseDirectory().getNurseList().size() == 0) return;
+        for(Nurse ns : system.getNurseDirectory().getNurseList()){
+            if(account.getUid() == ns.getDoctorId()){
+                Object[] row = new Object[2];
+                row[0] = ns;
+                row[1] = ns.getNurseName();
+                
+                model.addRow(row);
+            }
+        }
+    }
+    
+    private void btnAssignToNurseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToNurseActionPerformed
         // TODO add your handling code here:
 
-//        int selectedRow = labWorkRequestJTable.getSelectedRow();
-//
-//        if (selectedRow < 0) {
-//            JOptionPane.showMessageDialog(null, "Please select a row", "Error", JOptionPane.NO_OPTION);
-//        }
-//        else {
-//            LabApprovalWorkRequest wr = (LabApprovalWorkRequest) labWorkRequestJTable.getValueAt(selectedRow, 0);
-//            req = wr;
-//            tblLabTech.setVisible(true);
-//            btnFinalSubmit.setVisible(true);
-//            jScrollPane2.setVisible(true);
-//
-//        }
-//
-//        populateTechTable();
-    }//GEN-LAST:event_btnAssignLabTechActionPerformed
+        int selectedRow = patientApmtWorkRequestJTable.getSelectedRow();
+
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row", "Error", JOptionPane.NO_OPTION);
+        }
+        else {
+            PatientAppointmentWorkRequest wr = (PatientAppointmentWorkRequest) patientApmtWorkRequestJTable.getValueAt(selectedRow, 0);
+            req = wr;
+            tblNurses.setVisible(true);
+            btnFinalSubmit.setVisible(true);
+            nursesSPane.setVisible(true);
+        }
+
+        populateNursesTable();
+    }//GEN-LAST:event_btnAssignToNurseActionPerformed
 
     private void btnFinalSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalSubmitActionPerformed
         // TODO add your handling code here:
@@ -269,23 +291,49 @@ public class DoctorWorkRequestJPanel extends javax.swing.JPanel {
 //        }
     }//GEN-LAST:event_btnFinalSubmitActionPerformed
 
+    public void populateWorkRequestTable() {
+        // populate doctorworkreqtable
+        System.out.println("fffff");
+        DefaultTableModel model = (DefaultTableModel) patientApmtWorkRequestJTable.getModel();
+        
+        model.setRowCount(0);
+        if(system.getDoctorDirectory().getDoctorList().size() == 0) return;
+        for (Doctor doc : system.getDoctorDirectory().getDoctorList()) {
+//            account.getUsername()
+            if (doc.getUserAccount().getUid() == account.getUid()) {
+                for(WorkRequest request : doc.getUserAccount().getWorkQueue().getWorkRequestList()){
+                    if(request instanceof PatientAppointmentWorkRequest){
+                        Object[] row = new Object[5];
+                        row[0] = (PatientAppointmentWorkRequest)request;
+                        row[1] = ((PatientAppointmentWorkRequest)request).getCustomer();
+                        row[2] = ((PatientAppointmentWorkRequest)request).getMessage();
+                        row[3] = ((PatientAppointmentWorkRequest)request).getReceiver();
+                        row[4] = ((PatientAppointmentWorkRequest)request).getStatus();
+
+                        model.addRow(row);
+                    }
+                }
+            }
+        }
+        
+    }
+    
+    public void hideNursesTable(){
+        tblNurses.setVisible(false);
+        btnFinalSubmit.setVisible(false);
+        nursesSPane.setVisible(false);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAssignLabTech;
+    private javax.swing.JButton btnAssignToNurse;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnFinalSubmit;
-    private javax.swing.JButton btnLogout;
-    private javax.swing.JButton btnLogout1;
     private javax.swing.JButton btnRefres;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel lblSelectedNode;
-    private javax.swing.JLabel lblSelectedNode1;
     private javax.swing.JLabel lblSelectedNode2;
+    private javax.swing.JScrollPane nursesSPane;
     private javax.swing.JTable patientApmtWorkRequestJTable;
     private javax.swing.JTable tblNurses;
     // End of variables declaration//GEN-END:variables

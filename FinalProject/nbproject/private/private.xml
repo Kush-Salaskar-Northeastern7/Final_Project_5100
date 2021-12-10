@@ -5,7 +5,6 @@
         <group>
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/Business/Utils/ValidationUtil.java</file>
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/Business/EcoSystem.java</file>
-            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/SupplyManagerWorkArea/SupplyManagerWorkAreaJPanel.java</file>
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/LabSupervisorWorkArea/LabSupervisorWorkAreaJPanel.java</file>
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/Business/Enterprise/EnterpriseDirectory.java</file>
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/SupplyManagerWorkArea/SupplyManagerAssignDeliveryManJPanel.java</file>
@@ -13,19 +12,16 @@
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/Business/Customer/Customer.java</file>
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/CustomerRole/CustomerScheduleAppmtJPanel.java</file>
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/Business/SupplyManager/SupplyManagerDirectory.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/DoctorWorkArea/DoctorWorkAreaJPanel.java</file>
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/ManagerRoleWorkArea/ManagerRoleWorkAreaJPanel.java</file>
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/Business/Utils/BusinessEmail.java</file>
-            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/Business/SupplyManager/SupplyManager.java</file>
-            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/CustomerRole/CustomerSignupJPanel.java</file>
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/Business/Manager/ManagerDirectory.java</file>
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/SystemAdminWorkArea/SystemAdminWorkAreaJPanel.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/CustomerRole/CustomerSignupJPanel.java</file>
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/Business/Customer/CustomerDirectory.java</file>
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/LabSupervisorWorkArea/LabSupervisorWorkRequestJPanel.java</file>
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/SystemAdminWorkArea/ManagePatientsJPanel.java</file>
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/Business/WorkQueue/WorkQueue.java</file>
-            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/Business/Doctor/Doctor.java</file>
-            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/LabSupervisorWorkArea/LabSupervisorCreateTechnicianJPanel.java</file>
-            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/Business/WorkQueue/LabApprovalWorkRequest.java</file>
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/ManagerRoleWorkArea/ManagerCreateFactoryWorkerJPanel.java</file>
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/CustomerRole/CustomerPlaceOrderJPanel.java</file>
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/Business/Manager/Manager.java</file>
@@ -33,6 +29,7 @@
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/Business/WorkQueue/WorkRequest.java</file>
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/CustomerRole/RequestLabTestJPanel.java</file>
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/Business/UserAccount/UserAccountDirectory.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/DoctorWorkArea/DoctorWorkRequestJPanel.java</file>
         </group>
     </open-files>
 </project-private>
