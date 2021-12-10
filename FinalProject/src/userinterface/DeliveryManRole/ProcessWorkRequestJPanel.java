@@ -120,6 +120,7 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
             }
         }
         request.setStatus("DELIVERED");
+        request.getCustomer().getUserAccount().getWorkQueue().getWorkRequestList().add(request);
         
         JOptionPane.showMessageDialog(null, "Delivery Complete");
         
