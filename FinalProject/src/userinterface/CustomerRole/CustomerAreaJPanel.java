@@ -104,7 +104,7 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
     private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
         // TODO add your handling code here:
         userProcessContainer.removeAll();
-        CustomerPlaceOrderJPanel ls = new CustomerPlaceOrderJPanel(userProcessContainer, system);
+        CustomerPlaceOrderJPanel ls = new CustomerPlaceOrderJPanel(userProcessContainer, userAccount, system);
         userProcessContainer.add("signup", ls);
         CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
         crdLyt.next(userProcessContainer);
