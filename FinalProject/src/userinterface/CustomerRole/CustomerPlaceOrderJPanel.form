@@ -98,7 +98,7 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btnBackBtn" alignment="0" pref="45" max="32767" attributes="0"/>
+                      <Component id="btnBackBtn" alignment="0" max="32767" attributes="0"/>
                       <Component id="lblSelectedNode" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
