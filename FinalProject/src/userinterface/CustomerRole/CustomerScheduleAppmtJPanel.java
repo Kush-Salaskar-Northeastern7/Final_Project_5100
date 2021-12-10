@@ -5,12 +5,15 @@
  */
 package userinterface.CustomerRole;
 
+import Business.Customer.Customer;
 import Business.DB4OUtil.DB4OUtil;
 import Business.Doctor.Doctor;
 import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.PatientAppointmentWorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -50,7 +53,7 @@ public class CustomerScheduleAppmtJPanel extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         lblSelectedNode = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnScheduleAppt = new javax.swing.JButton();
         refreshList = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -113,13 +116,13 @@ public class CustomerScheduleAppmtJPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jButton1.setBackground(new java.awt.Color(0, 153, 153));
-        jButton1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Schedule");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnScheduleAppt.setBackground(new java.awt.Color(0, 153, 153));
+        btnScheduleAppt.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        btnScheduleAppt.setForeground(new java.awt.Color(255, 255, 255));
+        btnScheduleAppt.setText("Schedule");
+        btnScheduleAppt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnScheduleApptActionPerformed(evt);
             }
         });
 
@@ -144,7 +147,7 @@ public class CustomerScheduleAppmtJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(refreshList, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnScheduleAppt, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -156,7 +159,7 @@ public class CustomerScheduleAppmtJPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnScheduleAppt, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(refreshList, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(419, Short.MAX_VALUE))
         );
@@ -185,9 +188,29 @@ public class CustomerScheduleAppmtJPanel extends javax.swing.JPanel {
         crdLyt.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnScheduleApptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnScheduleApptActionPerformed
+        // schedule an appointment
+        int selectedRow = tblDoctors.getSelectedRow();
+        
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row", "Error", JOptionPane.NO_OPTION);
+            return;
+        }
+        else {
+            // selected doctor
+            Doctor doc = (Doctor) tblDoctors.getValueAt(selectedRow, 0);
+            doctor = doc;
+            PatientAppointmentWorkRequest wr = new PatientAppointmentWorkRequest();
+            for(Customer c : ecosystem.getCustomerDirectory().getCustomerList()){
+                if(c.getUserAccount().getUid() == account.getUid()){
+                    wr.setCustomer(c);
+                }
+            }
+            wr.setSender(account);
+            wr.setStatus("APPOINTMENT REQUEST");
+            wr.setReceiver(doctor.getUserAccount());
+        }
+    }//GEN-LAST:event_btnScheduleApptActionPerformed
 
     private void refreshListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshListActionPerformed
         // TODO add your handling code here:
@@ -197,7 +220,7 @@ public class CustomerScheduleAppmtJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnScheduleAppt;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblSelectedNode;
