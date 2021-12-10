@@ -175,16 +175,19 @@
                                                       <Component id="txtPtnPhoneNum" min="-2" pref="155" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
-                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                              <EmptySpace min="0" pref="65" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="viewProfileImage" min="-2" pref="149" max="-2" attributes="0"/>
+                                          <Component id="viewProfileImage" alignment="1" min="-2" pref="149" max="-2" attributes="0"/>
                                           <Group type="102" alignment="1" attributes="0">
                                               <Component id="jLabel12" min="-2" pref="39" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                                              <Component id="btnProfileImage" min="-2" pref="123" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="jLabel16" max="32767" attributes="0"/>
+                                                  <Component id="btnProfileImage" pref="123" max="32767" attributes="0"/>
+                                              </Group>
                                               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -326,7 +329,10 @@
                                   <Component id="btnProfileImage" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="viewProfileImage" min="-2" pref="108" max="-2" attributes="0"/>
@@ -597,6 +603,11 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtPtnEmailId">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel16">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="path"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
