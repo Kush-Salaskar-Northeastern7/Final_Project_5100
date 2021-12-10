@@ -12,6 +12,7 @@ import Business.LabSupervisor.LabSupervisor;
 import Business.SupplyManager.SupplyManager;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.LabApprovalWorkRequest;
+import Business.WorkQueue.PatientOrderWorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -29,15 +30,16 @@ public class CustomerPlaceOrderJPanel extends javax.swing.JPanel {
      */
     
     private JPanel userProcessContainer;
-    private UserAccount userAccount;
+    private UserAccount account;
     private EcoSystem ecosystem;
     private SupplyManager supManager;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     
-    public CustomerPlaceOrderJPanel(JPanel userProcessContainer, EcoSystem ecosystem) {
+    public CustomerPlaceOrderJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem ecosystem) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.ecosystem = ecosystem;
+        this.account = account;
         hideTable();
         populateSupplierTable();
     }
@@ -79,12 +81,20 @@ public class CustomerPlaceOrderJPanel extends javax.swing.JPanel {
         jScrollPane2.setVisible(false);
         tblSupplierInv.setVisible(false);
         btnPlaceOrder.setVisible(false);
+        btnRefresh.setVisible(false);
+        btnPlaceOrder.setVisible(false);
+        txtQuantity.setVisible(false);
+        lblQuantity.setVisible(false);
     }
     
     public void showTable(){
         jScrollPane2.setVisible(true);
         tblSupplierInv.setVisible(true);
         btnPlaceOrder.setVisible(true);
+        btnRefresh.setVisible(true);
+        btnPlaceOrder.setVisible(true);
+        txtQuantity.setVisible(true);
+        lblQuantity.setVisible(true);
     }
     
 
@@ -106,6 +116,9 @@ public class CustomerPlaceOrderJPanel extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblSupplierInv = new javax.swing.JTable();
         btnPlaceOrder = new javax.swing.JButton();
+        lblQuantity = new javax.swing.JLabel();
+        txtQuantity = new javax.swing.JTextField();
+        btnRefresh = new javax.swing.JButton();
 
         jPanel3.setBackground(new java.awt.Color(51, 51, 51));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
@@ -204,6 +217,15 @@ public class CustomerPlaceOrderJPanel extends javax.swing.JPanel {
             }
         });
 
+        lblQuantity.setText("Quantity");
+
+        btnRefresh.setText("Refresh");
+        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -211,18 +233,20 @@ public class CustomerPlaceOrderJPanel extends javax.swing.JPanel {
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 683, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(102, 102, 102)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnPlaceOrder)
-                        .addGap(156, 156, 156))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(btnSelectSupplier)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(141, Short.MAX_VALUE))))
+                        .addComponent(lblQuantity)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(111, 111, 111)
+                        .addComponent(btnPlaceOrder))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnSelectSupplier)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnRefresh))
+                .addContainerGap(141, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -232,11 +256,16 @@ public class CustomerPlaceOrderJPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSelectSupplier)
-                .addGap(91, 91, 91)
+                .addGap(56, 56, 56)
+                .addComponent(btnRefresh)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addComponent(btnPlaceOrder)
-                .addContainerGap(175, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblQuantity)
+                    .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPlaceOrder))
+                .addContainerGap(191, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -269,18 +298,63 @@ public class CustomerPlaceOrderJPanel extends javax.swing.JPanel {
 
     private void btnPlaceOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlaceOrderActionPerformed
         // TODO add your handling code here:
+        int selectedRow = tblSupplierInv.getSelectedRow();
+        
+        
+        if(txtQuantity.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Please enter the amount of insulin to order", "Error", JOptionPane.NO_OPTION);
+            return;
+        }
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row", "Error", JOptionPane.NO_OPTION);
+            return;
+        }
+        else {
+            String type = (String) tblSupplierInv.getValueAt(selectedRow, 0);
+            int availQuantity = (int) tblSupplierInv.getValueAt(selectedRow, 1);
+            if(Integer.parseInt(txtQuantity.getText()) > availQuantity){
+                JOptionPane.showMessageDialog(null, "The Suppliers inventory doesnt have the stock available. Please enter lower value", "Error", JOptionPane.NO_OPTION);
+                return;
+            }
+            PatientOrderWorkRequest wr = new PatientOrderWorkRequest();
+            for(Customer c : ecosystem.getCustomerDirectory().getCustomerList()){
+               if(c.getUserAccount().getUid() == account.getUid()){
+                    wr.setCustomer(c);
+                   }
+            }
+            wr.setSender(account);
+            wr.setStatus("DELIVERY REQUEST");
+            wr.setReceiver(supManager.getUserAccount());
+            wr.setQuantity(Integer.parseInt(txtQuantity.getText()));
+            if(type.equals("Type1")){
+                wr.setType1(true);  
+            } else {
+                wr.setType1(false);
+            }
+            supManager.getUserAccount().getWorkQueue().getWorkRequestList().add(wr);
+        }
+        JOptionPane.showMessageDialog(null, "Your Order has been placed");
+        hideTable();
     }//GEN-LAST:event_btnPlaceOrderActionPerformed
+
+    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
+        // TODO add your handling code here:
+        populateInvTable();
+    }//GEN-LAST:event_btnRefreshActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBackBtn;
     private javax.swing.JButton btnPlaceOrder;
+    private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnSelectSupplier;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblQuantity;
     private javax.swing.JLabel lblSelectedNode;
     private javax.swing.JTable tblSupplier;
     private javax.swing.JTable tblSupplierInv;
+    private javax.swing.JTextField txtQuantity;
     // End of variables declaration//GEN-END:variables
 }

@@ -345,7 +345,7 @@ public class SupplyManagerCreateDeliveryManJPanel extends javax.swing.JPanel {
 
         Employee employee = ecosystem.getEmployeeDirectory().createEmployee(name);
         UserAccount userAccount = ecosystem.getUserAccountDirectory().createUserAccount(username, password, employee, new DeliveryManRole());
-        DeliveryMan lt = ecosystem.getDeliveryManDirectory().createDeliveryMan(name,userAccount, userAccount.getUid());
+        DeliveryMan lt = ecosystem.getDeliveryManDirectory().createDeliveryMan(name, userAccount, userAcc.getUid());
 
         txtDmname.setText("");
         txtDmpassword.setText("");
