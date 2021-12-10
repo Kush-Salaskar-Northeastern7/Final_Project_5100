@@ -5,6 +5,9 @@
         <group>
             <file>file:/Users/anushka/Final_Project_5100/FinalProject/src/userinterface/SystemAdminWorkArea/SystemAdminWorkAreaJPanel.java</file>
             <file>file:/Users/anushka/Final_Project_5100/FinalProject/src/userinterface/SystemAdminWorkArea/ManageEnterpriseJPanel.java</file>
+            <file>file:/Users/anushka/Final_Project_5100/FinalProject/src/userinterface/DeliveryManRole/DeliveryManWorkAreaJPanel.java</file>
+            <file>file:/Users/anushka/Final_Project_5100/FinalProject/src/userinterface/LabTechnicianWorkArea/LabTechnicianAcceptPatientsJPanel.java</file>
+            <file>file:/Users/anushka/Final_Project_5100/FinalProject/src/userinterface/DeliveryManRole/ProcessWorkRequestJPanel.java</file>
         </group>
     </open-files>
 </project-private>
