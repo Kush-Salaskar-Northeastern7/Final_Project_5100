@@ -51,6 +51,8 @@ public class LabSupervisorWorkAreaJPanel extends javax.swing.JPanel {
         btnManageLabTechs = new java.awt.Button();
         buttonWorkRqst = new java.awt.Button();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
         jPanel3.setBackground(new java.awt.Color(51, 51, 51));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
 
