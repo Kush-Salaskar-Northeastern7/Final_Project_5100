@@ -243,12 +243,16 @@ public class DoctorWorkRequestJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblNurses.getModel();
         
         model.setRowCount(0);
+                    System.out.println("account id is " +account.getUid());
+
         if(system.getNurseDirectory().getNurseList().size() == 0) return;
         for(Nurse ns : system.getNurseDirectory().getNurseList()){
+            System.out.println("doccc id is " +ns.getDoctorId());
+            
             if(account.getUid() == ns.getDoctorId()){
-                Object[] row = new Object[2];
+                Object[] row = new Object[1];
                 row[0] = ns;
-                row[1] = ns.getNurseName();
+//                row[1] = ns.getNurseName();
                 
                 model.addRow(row);
             }

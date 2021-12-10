@@ -38,6 +38,7 @@ public class DoctorCreateNurseJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;    
         this.userAcc = userAcc;
         this.system = system;
+        system = dB4OUtil.retrieveSystem();
     }
 
     /**
@@ -281,13 +282,14 @@ public class DoctorCreateNurseJPanel extends javax.swing.JPanel {
 
             Employee employee = system.getEmployeeDirectory().createEmployee(nurseName);       
             UserAccount userAccount = system.getUserAccountDirectory().createUserAccount(username, password, employee, new NurseRole());
-            Nurse nurse = system.getNurseDirectory().createNurse(nurseName,userAccount,userAccount.getUid());   
+            Nurse nurse = system.getNurseDirectory().createNurse(nurseName,userAccount,userAcc.getUid());   
 
             txtNursename.setText("");
             txtNurseUsername.setText("");
             txtNursePassword.setText("");
             populateTable();
             JOptionPane.showMessageDialog(null, "Nurse is Created");
+            dB4OUtil.storeSystem(system);
         }
 
     }//GEN-LAST:event_btnCreateActionPerformed
