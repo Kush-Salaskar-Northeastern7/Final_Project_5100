@@ -268,27 +268,31 @@ public class DoctorCreateNurseJPanel extends javax.swing.JPanel {
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
 
-        if (checkEmptyFields()) {
-            String nurseName = txtNursename.getText();
-            String username = txtNurseUsername.getText();
-            String password = String.valueOf(txtNursePassword.getPassword());
-            
-
-            if(!system.getUserAccountDirectory().checkIfUsernameIsUnique(username)){
-                JOptionPane.showMessageDialog(null, "Username already exists, select a new username", "Error", JOptionPane.WARNING_MESSAGE);
-                return;
-            }
-
-            Employee employee = system.getEmployeeDirectory().createEmployee(nurseName);       
-            UserAccount userAccount = system.getUserAccountDirectory().createUserAccount(username, password, employee, new NurseRole());
-            Nurse nurse = system.getNurseDirectory().createNurse(nurseName,userAccount,userAccount.getUid());   
-
-            txtNursename.setText("");
-            txtNurseUsername.setText("");
-            txtNursePassword.setText("");
-            populateTable();
-            JOptionPane.showMessageDialog(null, "Nurse is Created");
+        if(txtNursename.getText().isEmpty() || txtNurseUsername.getText().isEmpty() || txtNursePassword.getText().isEmpty() ) {
+            JOptionPane.showMessageDialog(this, "Please fill all details.", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
         }
+        
+        String name = txtNursename.getText();
+        String username = txtNurseUsername.getText();
+        String password = String.valueOf(txtNursePassword.getPassword());
+        
+        if(!system.getUserAccountDirectory().checkIfUsernameIsUnique(username)){
+            JOptionPane.showMessageDialog(null, "Username already exists, select a new username", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        Employee employee = system.getEmployeeDirectory().createEmployee(name);       
+        UserAccount userAccount = system.getUserAccountDirectory().createUserAccount(username, password, employee, new NurseRole());
+        Nurse lt = system.getNurseDirectory().createNurse(name,userAccount, userAcc.getUid());    
+        
+        txtNursename.setText("");
+        txtNursePassword.setText("");
+        txtNurseUsername.setText("");
+        populateTable();
+        JOptionPane.showMessageDialog(null, "Nurse Created");
+        
+
 
     }//GEN-LAST:event_btnCreateActionPerformed
 
