@@ -101,6 +101,7 @@ public class CustomerSignupJPanel extends javax.swing.JPanel {
         jLabel15 = new javax.swing.JLabel();
         txtPtnEmailId = new javax.swing.JTextField();
         lblProfileImg = new javax.swing.JLabel();
+        lblPrescriptionImg = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
 
         jPanel3.setBackground(new java.awt.Color(51, 51, 51));
@@ -261,6 +262,8 @@ public class CustomerSignupJPanel extends javax.swing.JPanel {
 
         lblProfileImg.setText("jLabel16");
 
+        lblPrescriptionImg.setText("jLabel16");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -276,11 +279,6 @@ public class CustomerSignupJPanel extends javax.swing.JPanel {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnPrescriptionImg, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(69, 69, 69))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(viewPrescriptionImage, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -291,7 +289,14 @@ public class CustomerSignupJPanel extends javax.swing.JPanel {
                                                 .addComponent(jLabel8)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(txtPtnPhoneNum, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(0, 65, Short.MAX_VALUE)))
+                                        .addGap(0, 65, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(lblPrescriptionImg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(btnPrescriptionImg, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE))
+                                        .addGap(69, 69, 69)))
                                 .addGap(32, 32, 32)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(viewProfileImage, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -396,7 +401,9 @@ public class CustomerSignupJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel15)
                     .addComponent(txtPtnEmailId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
-                .addComponent(lblProfileImg)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblProfileImg)
+                    .addComponent(lblPrescriptionImg))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -499,6 +506,7 @@ public class CustomerSignupJPanel extends javax.swing.JPanel {
         int age = Integer.parseInt(txtPtnAge.getText());
         String emailid = txtPtnEmailId.getText();
         String custImage = lblProfileImg.getText();
+        String presImage = lblPrescriptionImg.getText();
 
         
         if(!ecosystem.getUserAccountDirectory().checkIfUsernameIsUnique(username)){
@@ -509,7 +517,7 @@ public class CustomerSignupJPanel extends javax.swing.JPanel {
 //        Employee employee = ecosystem.getEmployeeDirectory().createEmployee(name);       
 //        UserAccount userAccount = ecosystem.getUserAccountDirectory().createUserAccount(username, password, employee, new CustomerRole());        
         Customer c = ecosystem.getCustomerDirectory().addCustomer(name, age, address, 
-                                                            community, zip, custImage, phonenumber, glucoselvl, diabetestype, emailid, null);
+                                                            community, zip, custImage, presImage, phonenumber, glucoselvl, diabetestype, emailid, null);
         
         LabApprovalWorkRequest req = new LabApprovalWorkRequest();
         req.setCustomer(c);
@@ -610,7 +618,7 @@ public class CustomerSignupJPanel extends javax.swing.JPanel {
         if (fileChosenStatus == fileChooser.APPROVE_OPTION) {
             File selectedPresImg = fileChooser.getSelectedFile();
             String img_path = selectedPresImg.getAbsolutePath();
-//            lblImgPath.setText(img_path);
+            lblPrescriptionImg.setText(img_path);
 //            profile.setBiometricIdentifier(selectedBioImg);
 //            biometricErrMsg.setVisible(false); // file is selected, no error
 
@@ -667,6 +675,7 @@ public class CustomerSignupJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblPrescriptionImg;
     private javax.swing.JLabel lblProfileImg;
     private javax.swing.JLabel lblSelectedNode;
     private javax.swing.JTable tblLabs;
