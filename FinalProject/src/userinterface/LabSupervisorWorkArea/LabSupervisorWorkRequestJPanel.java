@@ -109,6 +109,8 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
         btnFinalSubmit = new javax.swing.JButton();
         btnAssignLabTech = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
         jPanel3.setBackground(new java.awt.Color(51, 51, 51));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
 
@@ -203,6 +205,8 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
         tblLabTech.setShowGrid(false);
         jScrollPane2.setViewportView(tblLabTech);
 
+        btnRefres.setBackground(new java.awt.Color(0, 153, 153));
+        btnRefres.setForeground(new java.awt.Color(255, 255, 255));
         btnRefres.setText("Refresh");
         btnRefres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -210,6 +214,8 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnFinalSubmit.setBackground(new java.awt.Color(0, 153, 153));
+        btnFinalSubmit.setForeground(new java.awt.Color(255, 255, 255));
         btnFinalSubmit.setText("Assign");
         btnFinalSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -217,6 +223,8 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnAssignLabTech.setBackground(new java.awt.Color(0, 153, 153));
+        btnAssignLabTech.setForeground(new java.awt.Color(255, 255, 255));
         btnAssignLabTech.setText("Assign to Lab Tech");
         btnAssignLabTech.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
