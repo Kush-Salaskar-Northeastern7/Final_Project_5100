@@ -134,16 +134,16 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
         int selectedRow = tblOrders.getSelectedRow();
         
         if (selectedRow < 0){
-            JOptionPane.showMessageDialog(null, "Your Req is sent to your Lab for review.");
+            JOptionPane.showMessageDialog(null, "Please Select a row");
             return;
         }
 
-        PatientOrderWorkRequest request = new PatientOrderWorkRequest() ;
+       PatientOrderWorkRequest wr = (PatientOrderWorkRequest) tblOrders.getValueAt(selectedRow, 0);
 //        request.setTestResult(workRequestJTable.getValueAt(selectedRow, 0).toString());
 //        request.setStatus("Processing");
         
         
-        ProcessWorkRequestJPanel processWorkRequestJPanel = new ProcessWorkRequestJPanel(userProcessContainer, request, account);
+        ProcessWorkRequestJPanel processWorkRequestJPanel = new ProcessWorkRequestJPanel(userProcessContainer, wr, account, system);
         userProcessContainer.add("processWorkRequestJPanel", processWorkRequestJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
