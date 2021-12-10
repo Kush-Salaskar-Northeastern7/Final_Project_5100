@@ -12,6 +12,7 @@ import Business.Nurse.Nurse;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.PatientAppointmentWorkRequest;
 import Business.WorkQueue.WorkRequest;
+import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -227,11 +228,11 @@ public class DoctorWorkRequestJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-//        userProcessContainer.removeAll();
-//        CustomerAreaJPanel ca = new CustomerAreaJPanel(userProcessContainer, account, ecosystem);
-//        userProcessContainer.add("custarea", ca);
-//        CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
-//        crdLyt.previous(userProcessContainer);
+        userProcessContainer.removeAll();
+        DoctorWorkAreaJPanel dw = new DoctorWorkAreaJPanel(userProcessContainer, account, system);
+        userProcessContainer.add("custarea", dw);
+        CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
+        crdLyt.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnRefresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefresActionPerformed
@@ -280,19 +281,19 @@ public class DoctorWorkRequestJPanel extends javax.swing.JPanel {
 
     private void btnFinalSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalSubmitActionPerformed
         // TODO add your handling code here:
-//        int selectedRow = tblLabTech.getSelectedRow();
-//
-//        if (selectedRow < 0) {
-//            JOptionPane.showMessageDialog(null, "Please select a row", "Error", JOptionPane.WARNING_MESSAGE);
-//        }
-//        else {
-//            LabTechnician lt = (LabTechnician) tblLabTech.getValueAt(selectedRow, 0);
-//            lt.getUserAccount().getWorkQueue().getWorkRequestList().add(req);
-//            account.getWorkQueue().getWorkRequestList().remove(req);
-//            JOptionPane.showMessageDialog(null, "Task assigned to Lab Technician", "Error", JOptionPane.WARNING_MESSAGE);
-//            populateWorkReqTable();
-//            populateTechTable();
-//        }
+        int selectedRow = tblNurses.getSelectedRow();
+
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row", "Error", JOptionPane.WARNING_MESSAGE);
+        }
+        else {
+            Nurse ns = (Nurse) tblNurses.getValueAt(selectedRow, 0);
+            ns.getUserAccount().getWorkQueue().getWorkRequestList().add(req);
+            account.getWorkQueue().getWorkRequestList().remove(req);
+            JOptionPane.showMessageDialog(null, "Task assigned to Lab Technician", "Error", JOptionPane.WARNING_MESSAGE);
+            populateWorkRequestTable();
+            populateNursesTable();
+        }
     }//GEN-LAST:event_btnFinalSubmitActionPerformed
 
     public void populateWorkRequestTable() {

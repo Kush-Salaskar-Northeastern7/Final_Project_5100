@@ -13,6 +13,8 @@ import Business.Customer.Customer;
  */
 public class PatientAppointmentWorkRequest extends WorkRequest {
     private Customer customer;
+    private boolean type1;
+    private int quantity;
 
     public Customer getCustomer() {
         return customer;
@@ -21,4 +23,22 @@ public class PatientAppointmentWorkRequest extends WorkRequest {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
+
+    public boolean isType1() {
+        return type1;
+    }
+
+    public void setType1(boolean type1) {
+        this.type1 = type1;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+    
+    
 }
