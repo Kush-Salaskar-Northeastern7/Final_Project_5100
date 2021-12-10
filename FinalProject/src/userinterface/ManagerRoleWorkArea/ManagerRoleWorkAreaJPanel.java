@@ -156,6 +156,11 @@ public class ManagerRoleWorkAreaJPanel extends javax.swing.JPanel {
 
     private void buttonWorkRqstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonWorkRqstActionPerformed
         // TODO add your handling code here:
+        container.removeAll();
+        ManagerAssignWorkJPanel ls = new ManagerAssignWorkJPanel(container, account, system);
+        container.add("signup", ls);
+        CardLayout crdLyt = (CardLayout) container.getLayout();
+        crdLyt.next(container);
     }//GEN-LAST:event_buttonWorkRqstActionPerformed
 
 

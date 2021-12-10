@@ -10,6 +10,7 @@ import Business.EcoSystem;
 import Business.Manager.Manager;
 import Business.SupplyManager.SupplyManager;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.ReStockWorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -198,6 +199,8 @@ public class SupplyManagerAddInventoryJPanel extends javax.swing.JPanel {
         String type1 = txtType1.getText();
         String type2 = txtType2.getText();
         
+        
+        
         if(type1.length() == 0 && type2.length() == 0){
             JOptionPane.showMessageDialog(this, "Please fill all details.", "Error", JOptionPane.WARNING_MESSAGE);
             return;
@@ -208,13 +211,28 @@ public class SupplyManagerAddInventoryJPanel extends javax.swing.JPanel {
             return;
         }
         else {
+            Manager m = (Manager) tblFactory.getValueAt(selectedRow, 0);
             for(SupplyManager sm : system.getSupplyManagerDirectory().getSupplyManagerList()){
                 if(sm.getUserAccount().getUid() == account.getUid()){
-                    sm.setType1(Integer.parseInt(type1));
-                    sm.setType2(Integer.parseInt(type2));
+                    ReStockWorkRequest wr = new ReStockWorkRequest();
+                    for(SupplyManager c : system.getSupplyManagerDirectory().getSupplyManagerList()){
+                        if(c.getUserAccount().getUid() == account.getUid()){
+                        wr.setSm(c);
+                    }
                 }
+                wr.setSender(account);
+                wr.setStatus("DELIVERY REQUEST");
+                wr.setReceiver(m.getUserAccount());
+                wr.setQuantity1(Integer.parseInt(txtType1.getText()));
+                wr.setQuantity2(Integer.parseInt(txtType2.getText()));
+                
+//                    sm.setType1(Integer.parseInt(type1));
+//                    sm.setType2(Integer.parseInt(type2));
+                m.getUserAccount().getWorkQueue().getWorkRequestList().add(wr);
+                }
+                break;
             }
-            JOptionPane.showMessageDialog(null, "Inventory Updated Successfully.");
+            JOptionPane.showMessageDialog(null, "Inventory Order placed Successfully.");
         }
         
     }//GEN-LAST:event_btnAddActionPerformed

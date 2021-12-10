@@ -15,8 +15,8 @@ import Business.SupplyManager.SupplyManager;
 public class ReStockWorkRequest extends WorkRequest{
     private Doctor doc;
     private SupplyManager sm;
-    private boolean isType1;
-    private int quantity;
+    private int quantity1;
+    private int quantity2;
 
     public Doctor getDoc() {
         return doc;
@@ -34,20 +34,22 @@ public class ReStockWorkRequest extends WorkRequest{
         this.sm = sm;
     }
 
-    public boolean isIsType1() {
-        return isType1;
+    public int getQuantity2() {
+        return quantity2;
     }
 
-    public void setIsType1(boolean isType1) {
-        this.isType1 = isType1;
+    public void setQuantity2(int quantity2) {
+        this.quantity2 = quantity2;
     }
 
-    public int getQuantity() {
-        return quantity;
+    
+
+    public int getQuantity1() {
+        return quantity1;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setQuantity1(int quantity) {
+        this.quantity1 = quantity;
     }
     
     
