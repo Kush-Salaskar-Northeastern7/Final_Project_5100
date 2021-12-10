@@ -12,6 +12,7 @@ import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -32,6 +33,7 @@ public class CustomerScheduleAppmtJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.ecosystem = ecosystem;
         this.account = account;
+        populateDoctorsTable();
     }
 
     /**
@@ -44,7 +46,7 @@ public class CustomerScheduleAppmtJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblHospitals = new javax.swing.JTable();
+        tblDoctors = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         lblSelectedNode = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
@@ -52,7 +54,7 @@ public class CustomerScheduleAppmtJPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        tblHospitals.setModel(new javax.swing.table.DefaultTableModel(
+        tblDoctors.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null},
                 {null},
@@ -71,7 +73,7 @@ public class CustomerScheduleAppmtJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblHospitals);
+        jScrollPane1.setViewportView(tblDoctors);
 
         jPanel3.setBackground(new java.awt.Color(51, 51, 51));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
@@ -139,6 +141,21 @@ public class CustomerScheduleAppmtJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public void populateDoctorsTable(){
+        DefaultTableModel model = (DefaultTableModel) tblDoctors.getModel();
+        model.setRowCount(0);
+        
+        if(ecosystem.getSupplyManagerDirectory().getSupplyManagerList().size() == 0) return;
+        for (Doctor doc : ecosystem.getDoctorDirectory().getDoctorList()) {
+            Object[] row = new Object[2];
+            row[0] = doc;
+            row[1] = doc.getUserAccount().getUsername();
+            
+            model.addRow(row);       
+        }
+        
+    }
+    
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         userProcessContainer.removeAll();
         CustomerAreaJPanel ca = new CustomerAreaJPanel(userProcessContainer, account, ecosystem);
@@ -154,6 +171,6 @@ public class CustomerScheduleAppmtJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblSelectedNode;
-    private javax.swing.JTable tblHospitals;
+    private javax.swing.JTable tblDoctors;
     // End of variables declaration//GEN-END:variables
 }
