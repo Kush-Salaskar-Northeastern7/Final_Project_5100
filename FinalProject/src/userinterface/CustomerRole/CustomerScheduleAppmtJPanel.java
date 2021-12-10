@@ -51,6 +51,7 @@ public class CustomerScheduleAppmtJPanel extends javax.swing.JPanel {
         lblSelectedNode = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        refreshList = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -116,6 +117,21 @@ public class CustomerScheduleAppmtJPanel extends javax.swing.JPanel {
         jButton1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Schedule");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        refreshList.setBackground(new java.awt.Color(51, 153, 255));
+        refreshList.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        refreshList.setForeground(new java.awt.Color(255, 255, 255));
+        refreshList.setText("Reset");
+        refreshList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshListActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -124,8 +140,11 @@ public class CustomerScheduleAppmtJPanel extends javax.swing.JPanel {
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(refreshList, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -136,7 +155,9 @@ public class CustomerScheduleAppmtJPanel extends javax.swing.JPanel {
                 .addGap(22, 22, 22)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(refreshList, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(419, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -164,6 +185,15 @@ public class CustomerScheduleAppmtJPanel extends javax.swing.JPanel {
         crdLyt.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void refreshListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshListActionPerformed
+        // TODO add your handling code here:
+        populateDoctorsTable();
+    }//GEN-LAST:event_refreshListActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
@@ -171,6 +201,7 @@ public class CustomerScheduleAppmtJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblSelectedNode;
+    private javax.swing.JButton refreshList;
     private javax.swing.JTable tblDoctors;
     // End of variables declaration//GEN-END:variables
 }
