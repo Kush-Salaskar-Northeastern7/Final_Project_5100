@@ -284,7 +284,7 @@ public class ManagerCreateFactoryWorkerJPanel extends javax.swing.JPanel {
 
         Employee employee = ecosystem.getEmployeeDirectory().createEmployee(name);  
         UserAccount userAccount = ecosystem.getUserAccountDirectory().createUserAccount(username, password, employee, new FactoryWorkerRole());
-        FactoryWorker lt = ecosystem.getFactoryWorkerDirectory().createFactoryWorker(name,userAccount,userAccount.getUid());
+        FactoryWorker lt = ecosystem.getFactoryWorkerDirectory().createFactoryWorker(name,userAccount,userAcc.getUid());
 
         txtFwname.setText("");
         txtFwpassword.setText("");
