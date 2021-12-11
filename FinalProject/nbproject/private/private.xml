@@ -3,9 +3,6 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/Users/anushka/Final_Project_5100/FinalProject/src/userinterface/CustomerRole/CustomerAreaJPanel.java</file>
-=======
             <file>file:/Users/kushsalaskar/Desktop/INFO_5100/Final_Project_5100/FinalProject/src/Business/WorkQueue/WorkRequest.java</file>
             <file>file:/Users/kushsalaskar/Desktop/INFO_5100/Final_Project_5100/FinalProject/src/Business/Role/CustomerRole.java</file>
             <file>file:/Users/kushsalaskar/Desktop/INFO_5100/Final_Project_5100/FinalProject/src/userinterface/SystemAdminWorkArea/SystemAdminWorkAreaJPanel.java</file>
@@ -52,7 +49,6 @@
             <file>file:/Users/kushsalaskar/Desktop/INFO_5100/Final_Project_5100/FinalProject/src/Business/ConfigureASystem.java</file>
             <file>file:/Users/kushsalaskar/Desktop/INFO_5100/Final_Project_5100/FinalProject/src/userinterface/ManagerRoleWorkArea/ManagerRoleWorkAreaJPanel.java</file>
             <file>file:/Users/kushsalaskar/Desktop/INFO_5100/Final_Project_5100/FinalProject/src/Business/FactoryWorker/FactoryWorkerDirectory.java</file>
->>>>>>> 30f5e09ef7f951014c833201dc0cb5b45ffeef20
         </group>
     </open-files>
 </project-private>

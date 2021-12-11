@@ -46,8 +46,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         btnLogout = new javax.swing.JButton();
         lblSelectedNode = new javax.swing.JLabel();
         btnManageNurses = new java.awt.Button();
-        buttonAddInventory = new java.awt.Button();
-        buttonAssignWorkRqst1 = new java.awt.Button();
+        buttonAssignWorkRqst = new java.awt.Button();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -78,7 +77,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(lblSelectedNode, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 457, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 456, Short.MAX_VALUE)
                 .addComponent(btnLogout)
                 .addGap(19, 19, 19))
         );
@@ -99,17 +98,10 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        buttonAddInventory.setLabel("Add Inventory");
-        buttonAddInventory.addActionListener(new java.awt.event.ActionListener() {
+        buttonAssignWorkRqst.setLabel("Assign Work to Nurses");
+        buttonAssignWorkRqst.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonAddInventoryActionPerformed(evt);
-            }
-        });
-
-        buttonAssignWorkRqst1.setLabel("Assign Work to Nurses");
-        buttonAssignWorkRqst1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonAssignWorkRqst1ActionPerformed(evt);
+                buttonAssignWorkRqstActionPerformed(evt);
             }
         });
 
@@ -121,25 +113,19 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(166, 166, 166)
                 .addComponent(btnManageNurses, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(94, 94, 94)
-                .addComponent(buttonAssignWorkRqst1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(86, 86, 86)
+                .addComponent(buttonAssignWorkRqst, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(buttonAddInventory, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(300, 300, 300))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(163, 163, 163)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnManageNurses, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonAssignWorkRqst1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addComponent(buttonAddInventory, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 175, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnManageNurses, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                    .addComponent(buttonAssignWorkRqst, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 234, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -162,25 +148,20 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         crdLyt.next(userProcessContainer);
     }//GEN-LAST:event_btnManageNursesActionPerformed
 
-    private void buttonAddInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddInventoryActionPerformed
+    private void buttonAssignWorkRqstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAssignWorkRqstActionPerformed
         // TODO add your handling code here:
         userProcessContainer.removeAll();
-        DoctorAddInventoryJPanel dwj = new DoctorAddInventoryJPanel(userProcessContainer, account, system);
+        DoctorWorkRequestJPanel dwj = new DoctorWorkRequestJPanel(userProcessContainer, account, system);
         userProcessContainer.add("doctorwkreqarea", dwj);
         CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
         crdLyt.next(userProcessContainer);
-    }//GEN-LAST:event_buttonAddInventoryActionPerformed
-
-    private void buttonAssignWorkRqst1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAssignWorkRqst1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonAssignWorkRqst1ActionPerformed
+    }//GEN-LAST:event_buttonAssignWorkRqstActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogout;
     private java.awt.Button btnManageNurses;
-    private java.awt.Button buttonAddInventory;
-    private java.awt.Button buttonAssignWorkRqst1;
+    private java.awt.Button buttonAssignWorkRqst;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lblSelectedNode;
     // End of variables declaration//GEN-END:variables
