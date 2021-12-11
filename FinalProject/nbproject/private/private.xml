@@ -3,29 +3,35 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/Business/Utils/ValidationUtil.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/LabTechnicianWorkArea/LabTechnicianWorkAreaJPanel.java</file>
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/Business/EcoSystem.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/SupplyManagerWorkArea/SupplyManagerWorkAreaJPanel.java</file>
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/LabSupervisorWorkArea/LabSupervisorWorkAreaJPanel.java</file>
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/Business/Enterprise/EnterpriseDirectory.java</file>
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/SupplyManagerWorkArea/SupplyManagerAssignDeliveryManJPanel.java</file>
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/Business/WorkQueue/PatientOrderWorkRequest.java</file>
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/Business/Customer/Customer.java</file>
-            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/CustomerRole/CustomerScheduleAppmtJPanel.java</file>
-            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/Business/SupplyManager/SupplyManagerDirectory.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/SupplyManagerWorkArea/SupplyManagerCreateDeliveryManJPanel.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/Business/Nurse/Nurse.java</file>
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/DoctorWorkArea/DoctorWorkAreaJPanel.java</file>
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/ManagerRoleWorkArea/ManagerRoleWorkAreaJPanel.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/DoctorWorkArea/DoctorCreateNurseJPanel.java</file>
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/Business/Utils/BusinessEmail.java</file>
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/Business/Manager/ManagerDirectory.java</file>
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/SystemAdminWorkArea/SystemAdminWorkAreaJPanel.java</file>
-            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/CustomerRole/CustomerSignupJPanel.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/LabTechnicianWorkArea/LabTechnicianAcceptPatientsJPanel.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/Business/WorkQueue/PatientAppointmentWorkRequest.java</file>
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/Business/Customer/CustomerDirectory.java</file>
-            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/LabSupervisorWorkArea/LabSupervisorWorkRequestJPanel.java</file>
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/SystemAdminWorkArea/ManagePatientsJPanel.java</file>
-            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/Business/WorkQueue/WorkQueue.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/Business/Doctor/Doctor.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/LabSupervisorWorkArea/LabSupervisorCreateTechnicianJPanel.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/NurseWorkArea/NurseAdministerInsulinJPanel.java</file>
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/ManagerRoleWorkArea/ManagerCreateFactoryWorkerJPanel.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/Business/UserAccount/UserAccount.java</file>
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/CustomerRole/CustomerPlaceOrderJPanel.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/SupplyManagerWorkArea/SupplyManagerAddInventoryJPanel.java</file>
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/Business/Manager/Manager.java</file>
-            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/CustomerRole/CustomerAreaJPanel.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/SystemAdminWorkArea/ManageEnterpriseJPanel.java</file>
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/Business/WorkQueue/WorkRequest.java</file>
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/CustomerRole/RequestLabTestJPanel.java</file>
             <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/Business/UserAccount/UserAccountDirectory.java</file>
