@@ -10,8 +10,7 @@
     <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
-    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-  </AuxValues>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer"   </AuxValues>
 
   <Layout>
     <DimensionLayout dim="0">
@@ -83,6 +82,12 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Schedule Appointment"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAppointmentActionPerformed"/>
+      </Events>
+ <AbsoluteConstraints x="172" y="185" width="-1" height="-1"/>
+        </Constraint>
+      </Constraints>
     </Component>
     <Component class="javax.swing.JButton" name="btnRecentOrders">
       <Properties>
