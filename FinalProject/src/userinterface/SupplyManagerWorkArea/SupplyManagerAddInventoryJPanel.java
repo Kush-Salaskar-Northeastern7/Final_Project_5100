@@ -232,7 +232,7 @@ public class SupplyManagerAddInventoryJPanel extends javax.swing.JPanel {
 //                    sm.setType2(Integer.parseInt(type2));
                 m.getUserAccount().getWorkQueue().getWorkRequestList().add(wr);
                 }
-                break;
+                
             }
             JOptionPane.showMessageDialog(null, "Inventory Order placed Successfully.");
         }
