@@ -8,8 +8,8 @@ package userinterface.DoctorWorkArea;
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
 import Business.Employee.Employee;
-import Business.Nurse.Nurse;
-import Business.Role.NurseRole;
+import Business.Pharmacist.Pharmacist;
+import Business.Role.PharmacistRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -19,26 +19,27 @@ import userinterface.LoginScreen;
 
 /**
  *
- * @author rolwy
+ * @author anushka
  */
-public class DoctorCreateNurseJPanel extends javax.swing.JPanel {
+public class DoctorCreatePharmacistJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form DoctorCreateNurseJPanel
+     * Creates new form DoctorCreatePharmacistJPanel
      */
     private JPanel userProcessContainer;
-//    private UserAccount userAccount;
     private UserAccount userAcc;
     private EcoSystem system;
     private Employee employee;
-    private Nurse nurse;
+    private Pharmacist pharmacist;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
-    public DoctorCreateNurseJPanel(JPanel userProcessContainer,UserAccount userAcc, EcoSystem system) {
+    
+    public DoctorCreatePharmacistJPanel(JPanel userProcessContainer,UserAccount userAcc, EcoSystem system) {
         initComponents();
         this.userProcessContainer = userProcessContainer;    
         this.userAcc = userAcc;
         this.system = system;
         system = dB4OUtil.retrieveSystem();
+        populateTable();
     }
 
     /**
@@ -54,18 +55,20 @@ public class DoctorCreateNurseJPanel extends javax.swing.JPanel {
         btnLogout = new javax.swing.JButton();
         lblSelectedNode = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblNurses = new javax.swing.JTable();
+        tblPharmacists = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        txtNursename = new javax.swing.JTextField();
+        txtPharmacistname = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        txtNurseUsername = new javax.swing.JTextField();
+        txtPharmacistUsername = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtNursePassword = new javax.swing.JPasswordField();
+        txtPharmacistPassword = new javax.swing.JPasswordField();
         btnCreate = new javax.swing.JButton();
         btnViewNurses = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel3.setBackground(new java.awt.Color(51, 51, 51));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
@@ -85,7 +88,7 @@ public class DoctorCreateNurseJPanel extends javax.swing.JPanel {
 
         lblSelectedNode.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblSelectedNode.setForeground(new java.awt.Color(255, 255, 255));
-        lblSelectedNode.setText("Create Nurses");
+        lblSelectedNode.setText("Create Pharmacist");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -96,7 +99,7 @@ public class DoctorCreateNurseJPanel extends javax.swing.JPanel {
                 .addComponent(lblSelectedNode, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnLogout)
-                .addGap(358, 358, 358))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,7 +111,7 @@ public class DoctorCreateNurseJPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        tblNurses.setModel(new javax.swing.table.DefaultTableModel(
+        tblPharmacists.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -119,7 +122,7 @@ public class DoctorCreateNurseJPanel extends javax.swing.JPanel {
                 "Name", "Username"
             }
         ));
-        jScrollPane1.setViewportView(tblNurses);
+        jScrollPane1.setViewportView(tblPharmacists);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -127,9 +130,9 @@ public class DoctorCreateNurseJPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Username");
 
-        txtNurseUsername.addActionListener(new java.awt.event.ActionListener() {
+        txtPharmacistUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNurseUsernameActionPerformed(evt);
+                txtPharmacistUsernameActionPerformed(evt);
             }
         });
 
@@ -176,17 +179,18 @@ public class DoctorCreateNurseJPanel extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(9, 9, 9)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnCreate))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(btnCreate)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addContainerGap()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnViewNurses)
@@ -195,36 +199,33 @@ public class DoctorCreateNurseJPanel extends javax.swing.JPanel {
                         .addGap(13, 13, 13)
                         .addComponent(btnDelete))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtNursePassword)
-                        .addComponent(txtNurseUsername)
-                        .addComponent(txtNursename, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtPharmacistPassword)
+                        .addComponent(txtPharmacistUsername)
+                        .addComponent(txtPharmacistname, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(1493, Short.MAX_VALUE))
         );
-
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel1, jLabel2, jLabel3});
-
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtNursename, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPharmacistname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtNurseUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPharmacistUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtNursePassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPharmacistPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCreate)
                     .addComponent(btnDelete)
                     .addComponent(btnViewNurses)
                     .addComponent(btnUpdate))
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -232,24 +233,22 @@ public class DoctorCreateNurseJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1884, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(20, 20, 20))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -264,73 +263,15 @@ public class DoctorCreateNurseJPanel extends javax.swing.JPanel {
         dB4OUtil.storeSystem(system);
     }//GEN-LAST:event_btnLogoutActionPerformed
 
-    private void txtNurseUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNurseUsernameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNurseUsernameActionPerformed
-
-    private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
-        // TODO add your handling code here:
-
-
-        if(txtNursename.getText().isEmpty() || txtNurseUsername.getText().isEmpty() || txtNursePassword.getText().isEmpty() ) {
-            JOptionPane.showMessageDialog(this, "Please fill all details.", "Error", JOptionPane.WARNING_MESSAGE);
-            return;}
-
-        if (checkEmptyFields()) {
-            String nurseName = txtNursename.getText();
-            String username = txtNurseUsername.getText();
-            String password = String.valueOf(txtNursePassword.getPassword());
-            
-
-            if(!system.getUserAccountDirectory().checkIfUsernameIsUnique(username)){
-                JOptionPane.showMessageDialog(null, "Username already exists, select a new username", "Error", JOptionPane.WARNING_MESSAGE);
-                return;
-            }
-
-            Employee employee = system.getEmployeeDirectory().createEmployee(nurseName);       
-            UserAccount userAccount = system.getUserAccountDirectory().createUserAccount(username, password, employee, new NurseRole());
-            Nurse nurse = system.getNurseDirectory().createNurse(nurseName,userAccount,userAcc.getUid());   
-
-            txtNursename.setText("");
-            txtNurseUsername.setText("");
-            txtNursePassword.setText("");
-            populateTable();
-            JOptionPane.showMessageDialog(null, "Nurse is Created");
-            dB4OUtil.storeSystem(system);
-
-        }
-        
-        String name = txtNursename.getText();
-        String username = txtNurseUsername.getText();
-        String password = String.valueOf(txtNursePassword.getPassword());
-        
-        if(!system.getUserAccountDirectory().checkIfUsernameIsUnique(username)){
-            JOptionPane.showMessageDialog(null, "Username already exists, select a new username", "Error", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        
-        Employee employee = system.getEmployeeDirectory().createEmployee(name);       
-        UserAccount userAccount = system.getUserAccountDirectory().createUserAccount(username, password, employee, new NurseRole());
-        Nurse lt = system.getNurseDirectory().createNurse(name,userAccount, userAcc.getUid());    
-        
-        txtNursename.setText("");
-        txtNursePassword.setText("");
-        txtNurseUsername.setText("");
-        populateTable();
-        JOptionPane.showMessageDialog(null, "Nurse Created");
-        
-
-
-    }//GEN-LAST:event_btnCreateActionPerformed
-
+    
     private void populateTable() {
-        DefaultTableModel model = (DefaultTableModel) tblNurses.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblPharmacists.getModel();
         model.setRowCount(0);
-        for (Nurse nurse : system.getNurseDirectory().getNurseList()) {
-            if(nurse.getDoctorId() == userAcc.getUid()){
+        for (Pharmacist pharmacist : system.getPharmacistDirectory().getPharmacistList()) {
+            if(pharmacist.getDoctorId() == userAcc.getUid()){
                 Object[] row = new Object[2];
-                 row[0] = nurse;
-                 row[1] = nurse.getNurseName(); 
+                 row[0] = pharmacist;
+                 row[1] = pharmacist.getPharmacistName(); 
 
                  model.addRow(row);
              }
@@ -339,9 +280,9 @@ public class DoctorCreateNurseJPanel extends javax.swing.JPanel {
     
     public boolean checkEmptyFields() {
             
-        String nurseName = txtNursename.getText();
-        String username = txtNurseUsername.getText();
-        String password = txtNursePassword.getText();
+        String nurseName = txtPharmacistname.getText();
+        String username = txtPharmacistUsername.getText();
+        String password = txtPharmacistPassword.getText();
         
         if (nurseName.trim().equals("") || username.trim().equals("") || password.trim().equals("")) {
             JOptionPane.showMessageDialog(this, "Fields cannot be empty.", "Error", JOptionPane.WARNING_MESSAGE);
@@ -352,65 +293,79 @@ public class DoctorCreateNurseJPanel extends javax.swing.JPanel {
         }
     }
     
+    
+    private void txtPharmacistUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPharmacistUsernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPharmacistUsernameActionPerformed
+
+    private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
+        // TODO add your handling code here:
+
+        if(txtPharmacistname.getText().isEmpty() || txtPharmacistUsername.getText().isEmpty() || txtPharmacistPassword.getText().isEmpty() ) {
+            JOptionPane.showMessageDialog(this, "Please fill all details.", "Error", JOptionPane.WARNING_MESSAGE);
+            return;}
+
+        if (checkEmptyFields()) {
+            String pharmacistName = txtPharmacistname.getText();
+            String username = txtPharmacistUsername.getText();
+            String password = String.valueOf(txtPharmacistPassword.getPassword());
+
+            if(!system.getUserAccountDirectory().checkIfUsernameIsUnique(username)){
+                JOptionPane.showMessageDialog(null, "Username already exists, select a new username", "Error", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            Employee employee = system.getEmployeeDirectory().createEmployee(pharmacistName);
+            UserAccount userAccount = system.getUserAccountDirectory().createUserAccount(username, password, employee, new PharmacistRole());
+            Pharmacist pharmacist = system.getPharmacistDirectory().createPharmacist(pharmacistName,userAccount,userAcc.getUid());
+
+            txtPharmacistname.setText("");
+            txtPharmacistUsername.setText("");
+            txtPharmacistPassword.setText("");
+            populateTable();
+            JOptionPane.showMessageDialog(null, "Pharmacist is Created");
+            dB4OUtil.storeSystem(system);
+
+        }
+        
+//        String name = txtPharmacistname.getText();
+//        String username = txtPharmacistUsername.getText();
+//        String password = String.valueOf(txtPharmacistPassword.getPassword());
+//        
+//        if(!system.getUserAccountDirectory().checkIfUsernameIsUnique(username)){
+//            JOptionPane.showMessageDialog(null, "Username already exists, select a new username", "Error", JOptionPane.WARNING_MESSAGE);
+//            return;
+//        }
+//        
+//        Employee employee = system.getEmployeeDirectory().createEmployee(name);       
+//        UserAccount userAccount = system.getUserAccountDirectory().createUserAccount(username, password, employee, new PharmacistRole());
+//        Nurse lt = system.getNurseDirectory().createNurse(name,userAccount, userAcc.getUid());    
+//        
+//        txtPharmacistname.setText("");
+//        txtPharmacistPassword.setText("");
+//        txtPharmacistUsername.setText("");
+//        populateTable();
+//        JOptionPane.showMessageDialog(null, "Pharmacist Created");
+
+
+    }//GEN-LAST:event_btnCreateActionPerformed
+
     private void btnViewNursesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewNursesActionPerformed
         // TODO add your handling code here:int selectedRow = tblFactoryWorkers.getSelectedRow();
 
-        int selectedRow = tblNurses.getSelectedRow();
-
-        if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select a row", "Error", JOptionPane.WARNING_MESSAGE);
-        }
-        else {
-            Nurse lt = (Nurse) tblNurses.getValueAt(selectedRow, 0);
-            nurse = lt;
-            txtNursename.setText(lt.getNurseName());
-            txtNurseUsername.setText(lt.getUserAccount().getUsername());
-            txtNursePassword.setText(lt.getUserAccount().getPassword());
-        }
-
+        
     }//GEN-LAST:event_btnViewNursesActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-        if(txtNursename.getText().isEmpty() || txtNurseUsername.getText().isEmpty() || txtNursePassword.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please fill all details.", "Error", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
 
-        String name = txtNursename.getText();
-        String username = txtNurseUsername.getText();
-
-        for(Nurse lt : system.getNurseDirectory().getNurseList()){
-            if(lt.getNurseName() == null) continue;
-            if(lt.getUserAccount().getUid() == nurse.getUserAccount().getUid()){
-                lt.setNurseName(name);
-                lt.getUserAccount().setUsername(username);
-            }
-        }
-
-        txtNursename.setText("");
-        txtNurseUsername.setText("");
-        txtNursePassword.setText("");
-
-        populateTable();
-        JOptionPane.showMessageDialog(null, "Nurse Updated Successfully.");
-
+        
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-        int selectedRow = tblNurses.getSelectedRow();
 
-        if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select any row.", "Error", JOptionPane.WARNING_MESSAGE);
-        }
-        else {
-            Nurse lt = (Nurse) tblNurses.getValueAt(selectedRow, 0);
-            UserAccount ua = lt.getUserAccount();
-            system.getUserAccountDirectory().deleteUserAccount(ua); //need to delete useraccount of lab technician as well
-            system.getNurseDirectory().deleteNurse(lt);
-            JOptionPane.showMessageDialog(null, "Nurse removed Successfully.");
-            populateTable();}
+        
     }//GEN-LAST:event_btnDeleteActionPerformed
 
 
@@ -427,9 +382,9 @@ public class DoctorCreateNurseJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblSelectedNode;
-    private javax.swing.JTable tblNurses;
-    private javax.swing.JPasswordField txtNursePassword;
-    private javax.swing.JTextField txtNurseUsername;
-    private javax.swing.JTextField txtNursename;
+    private javax.swing.JTable tblPharmacists;
+    private javax.swing.JPasswordField txtPharmacistPassword;
+    private javax.swing.JTextField txtPharmacistUsername;
+    private javax.swing.JTextField txtPharmacistname;
     // End of variables declaration//GEN-END:variables
 }

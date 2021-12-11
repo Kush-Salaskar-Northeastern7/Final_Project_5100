@@ -15,6 +15,7 @@ import Business.LabTechnician.LabTechnicianDirectory;
 import Business.LabSupervisor.LabSupervisorDirectory;
 import Business.Manager.ManagerDirectory;
 import Business.Nurse.NurseDirectory;
+import Business.Pharmacist.PharmacistDirectory;
 import Business.Role.Role;
 import Business.Role.SystemAdminRole;
 import Business.SupplyManager.SupplyManagerDirectory;
@@ -38,8 +39,14 @@ public class EcoSystem extends Organization {
     private SupplyManagerDirectory supplyManagerDirectory;
     private FactoryWorkerDirectory factoryWorkerDirectory;
     private NurseDirectory nurseDirectory;
+    private PharmacistDirectory pharmacistDirectory;
     
-    public EcoSystem(FactoryWorkerDirectory factoryWorkerDirectory, CustomerDirectory customerDirectory, DeliveryManDirectory deliveryManDirectory, EnterpriseDirectory enterpriseDirectory, DoctorDirectory doctorList, LabSupervisorDirectory labSupervisorDirectory, LabTechnicianDirectory labTechnicianDirectory, ManagerDirectory managerDirectory, SupplyManagerDirectory supplyManagerDirectory, NurseDirectory nurseDirectory) { 
+    public EcoSystem(FactoryWorkerDirectory factoryWorkerDirectory, CustomerDirectory customerDirectory, 
+            DeliveryManDirectory deliveryManDirectory, EnterpriseDirectory enterpriseDirectory, 
+            DoctorDirectory doctorList, LabSupervisorDirectory labSupervisorDirectory, 
+            LabTechnicianDirectory labTechnicianDirectory, ManagerDirectory managerDirectory, 
+            SupplyManagerDirectory supplyManagerDirectory, NurseDirectory nurseDirectory,
+            PharmacistDirectory pharmacistDirectory) { 
         
 //        this.restaurantDirectory = restaurantDirectory;
         this.customerDirectory = customerDirectory;
@@ -52,6 +59,7 @@ public class EcoSystem extends Organization {
         this.managerDirectory = managerDirectory;
         this.supplyManagerDirectory = supplyManagerDirectory;
         this.factoryWorkerDirectory = factoryWorkerDirectory;
+        this.pharmacistDirectory = pharmacistDirectory;
     }
 
     public static EcoSystem getInstance() {
@@ -66,6 +74,13 @@ public class EcoSystem extends Organization {
             supplyManagerDirectory = new SupplyManagerDirectory();
         }
         return supplyManagerDirectory;
+    }
+    
+    public PharmacistDirectory getPharmacistDirectory(){
+        if(pharmacistDirectory == null){
+            pharmacistDirectory = new PharmacistDirectory();
+        }
+        return pharmacistDirectory;
     }
     
     public ManagerDirectory getManagerDirectory(){
