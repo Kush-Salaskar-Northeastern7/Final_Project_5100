@@ -48,7 +48,6 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         btnManageNurses = new java.awt.Button();
         buttonAddInventory = new java.awt.Button();
         buttonAssignWorkRqst1 = new java.awt.Button();
-        btnViewInv = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -114,13 +113,6 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnViewInv.setText("View Inventory");
-        btnViewInv.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnViewInvActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -135,9 +127,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(buttonAddInventory, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(94, 94, 94)
-                .addComponent(btnViewInv)
-                .addGap(109, 109, 109))
+                .addGap(300, 300, 300))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,9 +138,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
                     .addComponent(btnManageNurses, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonAssignWorkRqst1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(buttonAddInventory, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnViewInv))
+                .addComponent(buttonAddInventory, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 175, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -187,20 +175,10 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonAssignWorkRqst1ActionPerformed
 
-    private void btnViewInvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewInvActionPerformed
-        // TODO add your handling code here:
-        userProcessContainer.removeAll();
-        DoctorViewInventoryJPanel dwj = new DoctorViewInventoryJPanel(userProcessContainer, account, system);
-        userProcessContainer.add("doctorwkreqarea", dwj);
-        CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
-        crdLyt.next(userProcessContainer);
-    }//GEN-LAST:event_btnViewInvActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogout;
     private java.awt.Button btnManageNurses;
-    private javax.swing.JButton btnViewInv;
     private java.awt.Button buttonAddInventory;
     private java.awt.Button buttonAssignWorkRqst1;
     private javax.swing.JPanel jPanel3;
