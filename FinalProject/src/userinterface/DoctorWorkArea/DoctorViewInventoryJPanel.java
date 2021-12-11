@@ -165,12 +165,11 @@ public class DoctorViewInventoryJPanel extends javax.swing.JPanel {
 
     private void btnBackBtn7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackBtn7ActionPerformed
         // TODO add your handling code here:
-        container.removeAll();
-        JPanel blankJP = new JPanel();
-        LoginScreen ls = new LoginScreen(container, system);
-        container.add("blank", ls);
-        CardLayout crdLyt = (CardLayout) container.getLayout();
-        crdLyt.next(container);
+        userProcessContainer.removeAll();
+        DoctorWorkAreaJPanel dw = new DoctorWorkAreaJPanel(userProcessContainer, account, system);
+        userProcessContainer.add("custarea", dw);
+        CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
+        crdLyt.previous(userProcessContainer);
 
         dB4OUtil.storeSystem(system);
     }//GEN-LAST:event_btnBackBtn7ActionPerformed
