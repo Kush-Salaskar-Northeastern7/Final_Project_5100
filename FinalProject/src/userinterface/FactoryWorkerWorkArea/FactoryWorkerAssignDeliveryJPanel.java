@@ -3,13 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.ManagerRoleWorkArea;
+package userinterface.FactoryWorkerWorkArea;
 
 import Business.DB4OUtil.DB4OUtil;
+import Business.DeliveryMan.DeliveryMan;
 import Business.EcoSystem;
 import Business.FactoryWorker.FactoryWorker;
-import Business.Manager.Manager;
+import Business.SupplyManager.SupplyManager;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.PatientOrderWorkRequest;
 import Business.WorkQueue.ReStockWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
@@ -22,21 +24,21 @@ import userinterface.LoginScreen;
  *
  * @author kushsalaskar
  */
-public class ManagerAssignWorkJPanel extends javax.swing.JPanel {
+public class FactoryWorkerAssignDeliveryJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form ManagerAssignWorkJPanel
+     * Creates new form FactoryWorkerAssignDeliveryJPanel
      */
     
-    private JPanel container;
+    private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
+    private JPanel userProcessContainer;
     private UserAccount account;
     private EcoSystem system;
-    private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     private ReStockWorkRequest req;
     
-    public ManagerAssignWorkJPanel(JPanel container, UserAccount account, EcoSystem system) {
+    public FactoryWorkerAssignDeliveryJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem system) {
         initComponents();
-        this.container = container;
+        this.userProcessContainer = userProcessContainer;
         this.account = account;
         this.system = system;
         populateWorkReqTable();
@@ -48,16 +50,44 @@ public class ManagerAssignWorkJPanel extends javax.swing.JPanel {
         btnFinalSubmit.setVisible(false);
         jScrollPane2.setVisible(false);
     }
-
-    public void populateWorkReqTable(){
+    
+    public void populateTechTable(){
+        DefaultTableModel model = (DefaultTableModel)tblDeliveryMan.getModel();
+        
+        model.setRowCount(0);
+        
+        int managerID = -1;
+        for(FactoryWorker fw : system.getFactoryWorkerDirectory().getFactoryWorkerList()){
+            if(fw.getUserAccount().getUid() == account.getUid()){
+                managerID = fw.getManagerId();
+            }
+        }
+        if(managerID == -1){
+            JOptionPane.showMessageDialog(null, "Manager not found", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        if(system.getDeliveryManDirectory().getDeliveryManList().size() == 0) return;
+        for(DeliveryMan dm : system.getDeliveryManDirectory().getDeliveryManList()){
+            if(managerID == dm.getSupplyManagerId()){
+                Object[] row = new Object[2];
+                row[0] = dm;
+                row[1] = dm.getDeliveryManName();
+                
+                model.addRow(row);
+            }
+        }
+    }
+    
+    public void populateWorkReqTable() {
         DefaultTableModel model = (DefaultTableModel)tblOrders.getModel();
         
         model.setRowCount(0);
-        if(system.getManagerDirectory().getManagerList().size() == 0) return;
-        for (Manager m : system.getManagerDirectory().getManagerList()) {
+        if(system.getFactoryWorkerDirectory().getFactoryWorkerList().size() == 0) return;
+        for (FactoryWorker fw : system.getFactoryWorkerDirectory().getFactoryWorkerList()) {
 //            account.getUsername()
-            if (m.getUserAccount().getUid() == account.getUid()) {
-                for(WorkRequest request : m.getUserAccount().getWorkQueue().getWorkRequestList()){
+            if (fw.getUserAccount().getUid() == account.getUid()) {
+                for(WorkRequest request : fw.getUserAccount().getWorkQueue().getWorkRequestList()){
                     if(request instanceof ReStockWorkRequest){
                         Object[] row = new Object[5];
                         row[0] = (ReStockWorkRequest)request;
@@ -72,24 +102,8 @@ public class ManagerAssignWorkJPanel extends javax.swing.JPanel {
             }
         }
     }
-    
-    
-    public void populateTechTable(){
-        DefaultTableModel model = (DefaultTableModel)tblDeliveryMan.getModel();
-        
-        model.setRowCount(0);
-        if(system.getFactoryWorkerDirectory().getFactoryWorkerList().size() == 0) return;
-        for(FactoryWorker dm : system.getFactoryWorkerDirectory().getFactoryWorkerList()){
-            if(account.getUid() == dm.getManagerId()){
-                Object[] row = new Object[2];
-                row[0] = dm;
-                row[1] = dm.getFwName();
-                
-                model.addRow(row);
-            }
-        }     
-    }
-    
+
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -168,7 +182,7 @@ public class ManagerAssignWorkJPanel extends javax.swing.JPanel {
                 java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, true, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -191,7 +205,7 @@ public class ManagerAssignWorkJPanel extends javax.swing.JPanel {
                 {null}
             },
             new String [] {
-                "Factory Workers"
+                "Delivery Men"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -220,7 +234,7 @@ public class ManagerAssignWorkJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnAssignLabTech.setText("Assign to FactoryWorkers");
+        btnAssignLabTech.setText("Assign to Delivery Man");
         btnAssignLabTech.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAssignLabTechActionPerformed(evt);
@@ -304,12 +318,12 @@ public class ManagerAssignWorkJPanel extends javax.swing.JPanel {
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         // TODO add your handling code here:
-        container.removeAll();
+        userProcessContainer.removeAll();
         JPanel blankJP = new JPanel();
-        LoginScreen ls = new LoginScreen(container, system);
-        container.add("blank", ls);
-        CardLayout crdLyt = (CardLayout) container.getLayout();
-        crdLyt.next(container);
+        LoginScreen ls = new LoginScreen(userProcessContainer, system);
+        userProcessContainer.add("blank", ls);
+        CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
+        crdLyt.next(userProcessContainer);
         dB4OUtil.storeSystem(system);
     }//GEN-LAST:event_btnLogoutActionPerformed
 
@@ -326,25 +340,16 @@ public class ManagerAssignWorkJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select a row", "Error", JOptionPane.WARNING_MESSAGE);
         }
         else {
-//            DeliveryMan dm = (DeliveryMan) tblDeliveryMan.getValueAt(selectedRow, 0);
-//            for(SupplyManager sm : system.getSupplyManagerDirectory().getSupplyManagerList()){
-//                if(sm.getUserAccount().getUid() == account.getUid()){
-//                    if(req.isType1()){
-//                        sm.setType1(-req.getQuantity());
-//                    } else {
-//                        sm.setType2(-req.getQuantity());
-//                    }
-//                }
-//            }
-            FactoryWorker fw = (FactoryWorker) tblDeliveryMan.getValueAt(selectedRow, 0);
-//            for()
+            DeliveryMan dm = (DeliveryMan) tblDeliveryMan.getValueAt(selectedRow, 0);
+
             
-            req.setStatus("ASSIGNED FOR DELIVERY");
-            fw.getUserAccount().getWorkQueue().getWorkRequestList().add(req);
+            req.setStatus("OUT FOR DELIVERY");
+            dm.getUserAccount().getWorkQueue().getWorkRequestList().add(req);
             account.getWorkQueue().getWorkRequestList().remove(req);
-            JOptionPane.showMessageDialog(null, "Task assigned to Factory Worker", "Error", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Task assigned to Delivery Men", "Error", JOptionPane.WARNING_MESSAGE);
             populateWorkReqTable();
             populateTechTable();
+
         }
     }//GEN-LAST:event_btnFinalSubmitActionPerformed
 
