@@ -61,6 +61,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Schedule Appointment"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAppointmentActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnRecentOrders">
       <Properties>
@@ -106,7 +109,7 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btnBackBtn" alignment="0" pref="46" max="32767" attributes="0"/>
+                      <Component id="btnBackBtn" alignment="0" pref="36" max="32767" attributes="0"/>
                       <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                           <Component id="lblSelectedNode" alignment="3" max="32767" attributes="0"/>
                           <Component id="valueLabel" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>

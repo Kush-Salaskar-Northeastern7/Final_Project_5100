@@ -185,6 +185,11 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
 
     private void buttonAssignWorkRqst1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAssignWorkRqst1ActionPerformed
         // TODO add your handling code here:
+        userProcessContainer.removeAll();
+        DoctorWorkRequestJPanel dwj = new DoctorWorkRequestJPanel(userProcessContainer, account, system);
+        userProcessContainer.add("doctorwkreqarea", dwj);
+        CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
+        crdLyt.next(userProcessContainer);
     }//GEN-LAST:event_buttonAssignWorkRqst1ActionPerformed
 
     private void btnViewInvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewInvActionPerformed
