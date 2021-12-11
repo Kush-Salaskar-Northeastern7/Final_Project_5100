@@ -14,8 +14,8 @@ import Business.UserAccount.UserAccount;
 public class Doctor {
     private String docName;
     private UserAccount userAccount;
-    private int type1 = 0;
-    private int type2 = 0;
+    private int type1;
+    private int type2;
     
     public Doctor(){
         userAccount = new UserAccount();
