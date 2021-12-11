@@ -15,6 +15,17 @@ public class DeliveryMan {
     private String deliveryManName;
     private UserAccount userAccount;
     private int SupplyManagerId;
+    private boolean isSupplier;
+
+    public boolean isIsSupplier() {
+        return isSupplier;
+    }
+
+    public void setIsSupplier(boolean isSupplier) {
+        this.isSupplier = isSupplier;
+    }
+    
+    
 
     public int getSupplyManagerId() {
         return SupplyManagerId;
