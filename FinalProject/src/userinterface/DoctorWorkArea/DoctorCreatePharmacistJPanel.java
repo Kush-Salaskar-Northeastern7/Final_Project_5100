@@ -358,13 +358,15 @@ public class DoctorCreatePharmacistJPanel extends javax.swing.JPanel {
         String name = txtPharmacistname.getText();
         String username = txtPharmacistUsername.getText();
 
-        for(Pharmacist lt : system.getPharmacistDirectory().getPharmacistList()){
-            if(lt.getPharmacistName() == null) continue;
-            if(lt.getUserAccount().getUid() == pharmacist.getUserAccount().getUid()){
-                lt.setPharmacistName(name);
-                lt.getUserAccount().setUsername(username);
-            }
-        }
+//        for(Pharmacist lt : system.getPharmacistDirectory().getPharmacistList()){
+//            if(lt.getPharmacistName() == null) continue;
+//            if(lt.getUserAccount().getUid() == pharmacist.getUserAccount().getUid()){
+//                lt.setPharmacistName(name);
+//                lt.getUserAccount().setUsername(username);
+//            }
+//        }
+        pharmacist.setPharmacistName(name);
+            
 
         txtPharmacistname.setText("");
         txtPharmacistUsername.setText("");
@@ -372,12 +374,24 @@ public class DoctorCreatePharmacistJPanel extends javax.swing.JPanel {
 
         populateTable();
         JOptionPane.showMessageDialog(null, "Pharmacist Updated Successfully.");
+         dB4OUtil.storeSystem(system);
         
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
+        int selectedRow = tblPharmacists.getSelectedRow();
 
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select any row.", "Error", JOptionPane.WARNING_MESSAGE);
+        }
+        else {
+            Pharmacist lt = (Pharmacist) tblPharmacists.getValueAt(selectedRow, 0);
+            UserAccount ua = lt.getUserAccount();
+            system.getUserAccountDirectory().deleteUserAccount(ua); //need to delete useraccount of lab technician as well
+            system.getPharmacistDirectory().deletePharmacist(lt);
+            JOptionPane.showMessageDialog(null, "Pharmacist removed Successfully.");
+            populateTable();}
         
     }//GEN-LAST:event_btnDeleteActionPerformed
 

@@ -37,7 +37,7 @@ public class PharmacistDirectory {
         return pharmacist;
     }
     
-    public void deleteNurse(Pharmacist p){
+    public void deletePharmacist(Pharmacist p){
         pharmacistList.remove(p);
     }
     
