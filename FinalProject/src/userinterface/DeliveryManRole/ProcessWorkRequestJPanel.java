@@ -25,15 +25,17 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
     private PatientOrderWorkRequest request;
     private UserAccount userAccount;
     private EcoSystem system;
+    private DeliveryMan dm;
     /**
      * Creates new form ProcessWorkRequestJPanel
      */
-    public ProcessWorkRequestJPanel(JPanel userProcessContainer, PatientOrderWorkRequest request, UserAccount userAccount, EcoSystem system) {
+    public ProcessWorkRequestJPanel(JPanel userProcessContainer, PatientOrderWorkRequest request, UserAccount userAccount, EcoSystem system, DeliveryMan dm) {
         initComponents();
         this.userAccount = userAccount;
         this.request = request;
         this.userProcessContainer = userProcessContainer;
         this.system = system;
+        this.dm = dm;
     }
 
     /**
@@ -113,12 +115,9 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
-        for(DeliveryMan dm : system.getDeliveryManDirectory().getDeliveryManList()){
-           if(dm.getUserAccount().getUid() == userAccount.getUid()){
-               System.out.print(request.getCustomer());
-               dm.getUserAccount().getWorkQueue().getWorkRequestList().remove(request);
-            }
-        }
+        
+        dm.getUserAccount().getWorkQueue().getWorkRequestList().remove(request);
+            
         request.setStatus("DELIVERED");
         request.getCustomer().getUserAccount().getWorkQueue().getWorkRequestList().add(request);
         

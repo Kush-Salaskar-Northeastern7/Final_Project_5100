@@ -321,7 +321,7 @@ public class ManagerCreateDeliveryManJPanel extends javax.swing.JPanel {
 
         Employee employee = ecosystem.getEmployeeDirectory().createEmployee(name);
         UserAccount userAccount = ecosystem.getUserAccountDirectory().createUserAccount(username, password, employee, new DeliveryManRole());
-        DeliveryMan lt = ecosystem.getDeliveryManDirectory().createDeliveryMan(name, userAccount, userAcc.getUid());
+        DeliveryMan lt = ecosystem.getDeliveryManDirectory().createDeliveryMan(name, userAccount, userAcc.getUid(), false);
 
         txtDmname.setText("");
         txtDmpassword.setText("");
@@ -368,7 +368,7 @@ public class ManagerCreateDeliveryManJPanel extends javax.swing.JPanel {
 
         Employee employee = ecosystem.getEmployeeDirectory().createEmployee(name);
         UserAccount userAccount = ecosystem.getUserAccountDirectory().createUserAccount(username, password, employee, new DeliveryManRole());
-        DeliveryMan lt = ecosystem.getDeliveryManDirectory().createDeliveryMan(name,userAccount,userAcc.getUid());
+        DeliveryMan lt = ecosystem.getDeliveryManDirectory().createDeliveryMan(name,userAccount,userAcc.getUid(), false);
 
         txtDmname.setText("");
         txtDmusername.setText("");

@@ -10,6 +10,7 @@ import Business.EcoSystem;
 
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.PatientOrderWorkRequest;
+import Business.WorkQueue.ReStockWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -26,7 +27,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private EcoSystem system;
     private UserAccount account;
-    
+    private DeliveryMan delman;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     
     /**
@@ -39,8 +40,16 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
         this.account = account;
         this.system = system;
       
-        
+        setDM();
         populateTable();
+    }
+    
+    public void setDM(){
+        for(DeliveryMan dm : system.getDeliveryManDirectory().getDeliveryManList()){
+            if (dm.getUserAccount().getUid() == account.getUid()) {
+                delman = dm;
+            }
+        }
     }
     
     public void populateTable(){
@@ -51,20 +60,40 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
         for (DeliveryMan dm : system.getDeliveryManDirectory().getDeliveryManList()) {
 //            account.getUsername()
             if (dm.getUserAccount().getUid() == account.getUid()) {
-                for(WorkRequest request : dm.getUserAccount().getWorkQueue().getWorkRequestList()){
-                    if(request instanceof PatientOrderWorkRequest){
-                        Object[] row = new Object[5];
-                        row[0] = (PatientOrderWorkRequest)request;
-                        row[1] = ((PatientOrderWorkRequest)request).getCustomer();
-                        row[2] = ((PatientOrderWorkRequest)request).isType1() ? "Type1" : "Type2";
-                        row[3] = ((PatientOrderWorkRequest)request).getQuantity();
-                        row[4] = ((PatientOrderWorkRequest)request).getStatus();
+                if(dm.isIsSupplier()){
+                    tblOrders.getColumnModel().getColumn(2).setHeaderValue("Type");
+                    tblOrders.getColumnModel().getColumn(3).setHeaderValue("Quantity");
+                    for(WorkRequest request : dm.getUserAccount().getWorkQueue().getWorkRequestList()){
+                        if(request instanceof PatientOrderWorkRequest){
+                            Object[] row = new Object[5];
+                            row[0] = (PatientOrderWorkRequest)request;
+                            row[1] = ((PatientOrderWorkRequest)request).getCustomer();
+                            row[2] = ((PatientOrderWorkRequest)request).isType1() ? "Type1" : "Type2";
+                            row[3] = ((PatientOrderWorkRequest)request).getQuantity();
+                            row[4] = ((PatientOrderWorkRequest)request).getStatus();
 
-                        model.addRow(row);
+                            model.addRow(row);
+                        }
+                    } 
+                } else {
+                    tblOrders.getColumnModel().getColumn(2).setHeaderValue("Type1");
+                    tblOrders.getColumnModel().getColumn(3).setHeaderValue("Type2");
+                     for(WorkRequest request : dm.getUserAccount().getWorkQueue().getWorkRequestList()){
+                        if(request instanceof ReStockWorkRequest){
+                            Object[] row = new Object[5];
+                            row[0] = (ReStockWorkRequest)request;
+                            row[1] = ((ReStockWorkRequest)request).getSm() != null ? ((ReStockWorkRequest)request).getSm() : ((ReStockWorkRequest)request).getDoc();
+                            row[2] = ((ReStockWorkRequest)request).getQuantity1();
+                            row[3] = ((ReStockWorkRequest)request).getQuantity2();
+                            row[4] = ((ReStockWorkRequest)request).getStatus();
+
+                            model.addRow(row);
+                        }
                     }
                 }
+//                   
+                }
             }
-        }
     }
 
     /**
@@ -78,11 +107,12 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
 
         processJButton = new javax.swing.JButton();
         refreshJButton = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblOrders = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         btnBackBtn = new javax.swing.JButton();
         lblSelectedNode = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblOrders = new javax.swing.JTable();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -101,38 +131,6 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(refreshJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 90, -1, -1));
-
-        tblOrders.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "RequestId", "Customer", "Type", "Quantity", "Status"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, true, true, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tblOrders.setSelectionBackground(new java.awt.Color(51, 153, 255));
-        tblOrders.setShowGrid(false);
-        jScrollPane1.setViewportView(tblOrders);
-
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, -1, 140));
 
         jPanel3.setBackground(new java.awt.Color(51, 51, 51));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
@@ -176,6 +174,43 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
         );
 
         add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 60));
+
+        jPanel1.setMinimumSize(new java.awt.Dimension(100, 100));
+        jPanel1.setLayout(new java.awt.CardLayout());
+
+        tblOrders.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "RequestId", "Customer", "Type", "Quantity", "Status"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, true, true, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblOrders.setSelectionBackground(new java.awt.Color(51, 153, 255));
+        tblOrders.setShowGrid(false);
+        jScrollPane1.setViewportView(tblOrders);
+
+        jPanel1.add(jScrollPane1, "card2");
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 450, 140));
     }// </editor-fold>//GEN-END:initComponents
 
     private void processJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processJButtonActionPerformed
@@ -186,14 +221,23 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please Select a row");
             return;
         }
-
-       PatientOrderWorkRequest wr = (PatientOrderWorkRequest) tblOrders.getValueAt(selectedRow, 0);
+//        System.out.println(delman.isIsSupplier());
+        if(!delman.isIsSupplier()){
+            ReStockWorkRequest wr = (ReStockWorkRequest) tblOrders.getValueAt(selectedRow, 0);
+            ProcessSupplierWorkRequestJPanel processWorkRequestJPanel = new ProcessSupplierWorkRequestJPanel(userProcessContainer, wr, account, system, delman);
+            userProcessContainer.add("processWorkRequestJPanel", processWorkRequestJPanel);
+        } else {
+            PatientOrderWorkRequest wrp = (PatientOrderWorkRequest) tblOrders.getValueAt(selectedRow, 0);
+            ProcessWorkRequestJPanel processWorkRequestJPanel = new ProcessWorkRequestJPanel(userProcessContainer, wrp, account, system, delman);
+            userProcessContainer.add("processWorkRequestJPanel", processWorkRequestJPanel);
+        } 
+        
 //        request.setTestResult(workRequestJTable.getValueAt(selectedRow, 0).toString());
 //        request.setStatus("Processing");
         
         
-        ProcessWorkRequestJPanel processWorkRequestJPanel = new ProcessWorkRequestJPanel(userProcessContainer, wr, account, system);
-        userProcessContainer.add("processWorkRequestJPanel", processWorkRequestJPanel);
+//        ProcessWorkRequestJPanel processWorkRequestJPanel = new ProcessWorkRequestJPanel(userProcessContainer, wr, account, system);
+        
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_processJButtonActionPerformed
@@ -216,6 +260,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBackBtn;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblSelectedNode;
