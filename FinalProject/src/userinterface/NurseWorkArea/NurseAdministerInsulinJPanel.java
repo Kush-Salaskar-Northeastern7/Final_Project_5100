@@ -6,11 +6,16 @@
 package userinterface.NurseWorkArea;
 
 import Business.DB4OUtil.DB4OUtil;
+import Business.Doctor.Doctor;
 import Business.EcoSystem;
+import Business.Nurse.Nurse;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.PatientAppointmentWorkRequest;
+import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 import userinterface.LoginScreen;
 
 /**
@@ -26,12 +31,15 @@ public class NurseAdministerInsulinJPanel extends javax.swing.JPanel {
     private EcoSystem system;
     private UserAccount account;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
+    Doctor doctor;
     private PatientAppointmentWorkRequest req;
     public NurseAdministerInsulinJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem system) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.system = system;
         this.account = account;
+        populateWorkReqTable();
+        system = dB4OUtil.retrieveSystem();
     }
 
     /**
@@ -48,6 +56,14 @@ public class NurseAdministerInsulinJPanel extends javax.swing.JPanel {
         btnBack = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         nurseWorkRequestJTable = new javax.swing.JTable();
+        btnView = new javax.swing.JButton();
+        txtInsulinType = new javax.swing.JLabel();
+        lblInsulinType = new javax.swing.JLabel();
+        lblQuantity = new javax.swing.JLabel();
+        txtQuantity = new javax.swing.JLabel();
+        btnAdminister = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel23.setBackground(new java.awt.Color(51, 51, 51));
         jPanel23.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
@@ -56,7 +72,7 @@ public class NurseAdministerInsulinJPanel extends javax.swing.JPanel {
 
         lblSelectedNode20.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblSelectedNode20.setForeground(new java.awt.Color(255, 255, 255));
-        lblSelectedNode20.setText("Lab Technician Work Area");
+        lblSelectedNode20.setText("Nurse Work Area");
 
         btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.png"))); // NOI18N
         btnBack.setContentAreaFilled(false);
@@ -113,6 +129,35 @@ public class NurseAdministerInsulinJPanel extends javax.swing.JPanel {
         nurseWorkRequestJTable.setShowGrid(false);
         jScrollPane1.setViewportView(nurseWorkRequestJTable);
 
+        btnView.setBackground(new java.awt.Color(0, 153, 153));
+        btnView.setForeground(new java.awt.Color(255, 255, 255));
+        btnView.setText("View");
+        btnView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewActionPerformed(evt);
+            }
+        });
+
+        txtInsulinType.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+
+        lblInsulinType.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblInsulinType.setText("Insulin Type");
+
+        lblQuantity.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblQuantity.setText("Quantity to administer");
+
+        txtQuantity.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+
+        btnAdminister.setBackground(new java.awt.Color(0, 153, 153));
+        btnAdminister.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnAdminister.setForeground(new java.awt.Color(255, 255, 255));
+        btnAdminister.setText("Inject Insulin");
+        btnAdminister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdministerActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -120,7 +165,19 @@ public class NurseAdministerInsulinJPanel extends javax.swing.JPanel {
             .addComponent(jPanel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblInsulinType, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblQuantity, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAdminister, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtInsulinType, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(382, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -129,10 +186,47 @@ public class NurseAdministerInsulinJPanel extends javax.swing.JPanel {
                 .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 697, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblInsulinType)
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblQuantity)
+                            .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(txtInsulinType, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addComponent(btnAdminister, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 515, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public void populateWorkReqTable() {
+        DefaultTableModel model = (DefaultTableModel) nurseWorkRequestJTable.getModel();
+        
+        model.setRowCount(0);
+        if(system.getNurseDirectory().getNurseList().size() == 0) return;
+        for (Nurse ns : system.getNurseDirectory().getNurseList()) {
+//            account.getUsername()
+            if (ns.getUserAccount().getUid() == account.getUid()) {
+                for(WorkRequest request : ns.getUserAccount().getWorkQueue().getWorkRequestList()){
+                    if(request instanceof PatientAppointmentWorkRequest){
+                        Object[] row = new Object[5];
+                        row[0] = (PatientAppointmentWorkRequest)request;
+                        row[1] = ((PatientAppointmentWorkRequest)request).getCustomer();
+                        row[2] = ((PatientAppointmentWorkRequest)request).getMessage();
+                        row[3] = ((PatientAppointmentWorkRequest)request).getReceiver();
+                        row[4] = ((PatientAppointmentWorkRequest)request).getStatus();
+
+                        model.addRow(row);
+                    }
+                }
+            }
+        }
+}
+    
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         userProcessContainer.removeAll();
         NurseWorkAreaJPanel dw = new NurseWorkAreaJPanel(userProcessContainer, account, system);
@@ -142,12 +236,78 @@ public class NurseAdministerInsulinJPanel extends javax.swing.JPanel {
         dB4OUtil.storeSystem(system);
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = nurseWorkRequestJTable.getSelectedRow();
+        
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row", "Error", JOptionPane.NO_OPTION);
+        }
+        else {
+            PatientAppointmentWorkRequest wr = (PatientAppointmentWorkRequest) nurseWorkRequestJTable.getValueAt(selectedRow, 0);
+            req = wr;
+            if (wr.isType1())
+                txtInsulinType.setText("Type1");
+            else
+                txtInsulinType.setText("Type2");
+                
+            txtQuantity.setText(String.valueOf(wr.getQuantity()));
+        }
+    }//GEN-LAST:event_btnViewActionPerformed
+
+    private void btnAdministerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministerActionPerformed
+        // TODO add your handling code here
+        int selectedRow = nurseWorkRequestJTable.getSelectedRow();
+        
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row", "Error", JOptionPane.NO_OPTION);
+        }
+        else if (txtInsulinType.getText().trim().equals("")  ||  txtQuantity.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(null, "Please click on view first", "Error", JOptionPane.NO_OPTION);
+            return;
+        }
+        else {
+            account.getWorkQueue().getWorkRequestList().remove(req);
+            JOptionPane.showMessageDialog(null, "Insulin has been administered.");
+            for(Nurse ns : system.getNurseDirectory().getNurseList()){
+                System.out.println("noobs");
+                for(Doctor doc : system.getDoctorDirectory().getDoctorList()){
+                    if(doc.getUserAccount().getUid() == ns.getDoctorId()){
+                        System.out.println("same ids");
+                        if(req.isType1()){
+                            doc.setType1(-req.getQuantity());
+                        } else {
+                            doc.setType2(-req.getQuantity());
+                        }
+                        doctor = doc;
+                    }
+                }
+            }
+            System.out.println(doctor.getType1());
+            System.out.println(doctor.getType2());
+            populateWorkReqTable();
+            clearFields();
+            dB4OUtil.storeSystem(system);
+        }
+
+    }//GEN-LAST:event_btnAdministerActionPerformed
+
+    public void clearFields(){
+        txtInsulinType.setText("");
+        txtQuantity.setText("");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdminister;
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnView;
     private javax.swing.JPanel jPanel23;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblInsulinType;
+    private javax.swing.JLabel lblQuantity;
     private javax.swing.JLabel lblSelectedNode20;
     private javax.swing.JTable nurseWorkRequestJTable;
+    private javax.swing.JLabel txtInsulinType;
+    private javax.swing.JLabel txtQuantity;
     // End of variables declaration//GEN-END:variables
 }

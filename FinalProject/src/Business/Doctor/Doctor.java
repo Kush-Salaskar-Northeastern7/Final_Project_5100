@@ -38,7 +38,7 @@ public class Doctor {
     }
     
     public int getType1() {
-        return 20;
+        return type1;
     }
 
     public void setType1(int type1) {
@@ -46,7 +46,7 @@ public class Doctor {
     }
 
     public int getType2() {
-        return 10;
+        return type2;
     }
 
     public void setType2(int type2) {
