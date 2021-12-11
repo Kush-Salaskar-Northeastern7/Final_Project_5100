@@ -327,32 +327,24 @@ public class DoctorCreatePharmacistJPanel extends javax.swing.JPanel {
             dB4OUtil.storeSystem(system);
 
         }
-        
-//        String name = txtPharmacistname.getText();
-//        String username = txtPharmacistUsername.getText();
-//        String password = String.valueOf(txtPharmacistPassword.getPassword());
-//        
-//        if(!system.getUserAccountDirectory().checkIfUsernameIsUnique(username)){
-//            JOptionPane.showMessageDialog(null, "Username already exists, select a new username", "Error", JOptionPane.WARNING_MESSAGE);
-//            return;
-//        }
-//        
-//        Employee employee = system.getEmployeeDirectory().createEmployee(name);       
-//        UserAccount userAccount = system.getUserAccountDirectory().createUserAccount(username, password, employee, new PharmacistRole());
-//        Nurse lt = system.getNurseDirectory().createNurse(name,userAccount, userAcc.getUid());    
-//        
-//        txtPharmacistname.setText("");
-//        txtPharmacistPassword.setText("");
-//        txtPharmacistUsername.setText("");
-//        populateTable();
-//        JOptionPane.showMessageDialog(null, "Pharmacist Created");
 
 
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnViewNursesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewNursesActionPerformed
         // TODO add your handling code here:int selectedRow = tblFactoryWorkers.getSelectedRow();
+        int selectedRow = tblPharmacists.getSelectedRow();
 
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row", "Error", JOptionPane.WARNING_MESSAGE);
+        }
+        else {
+            Pharmacist lt = (Pharmacist) tblPharmacists.getValueAt(selectedRow, 0);
+            pharmacist = lt;
+            txtPharmacistname.setText(lt.getPharmacistName());
+            txtPharmacistUsername.setText(lt.getUserAccount().getUsername());
+            txtPharmacistPassword.setText(lt.getUserAccount().getPassword());
+        }
         
     }//GEN-LAST:event_btnViewNursesActionPerformed
 
