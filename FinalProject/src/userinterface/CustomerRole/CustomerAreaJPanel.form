@@ -21,7 +21,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel3" alignment="1" pref="886" max="32767" attributes="0"/>
+          <Component id="jPanel3" alignment="1" pref="800" max="32767" attributes="0"/>
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="btnAppointment" max="32767" attributes="0"/>
@@ -43,7 +43,7 @@
               <Component id="btnOrder" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnRecentOrders" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="220" max="32767" attributes="0"/>
+              <EmptySpace pref="272" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -95,7 +95,7 @@
                   <Component id="lblSelectedNode" min="-2" pref="273" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="valueLabel" min="-2" pref="158" max="-2" attributes="0"/>
-                  <EmptySpace pref="388" max="32767" attributes="0"/>
+                  <EmptySpace pref="302" max="32767" attributes="0"/>
                   <Component id="btnBackBtn" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
               </Group>
