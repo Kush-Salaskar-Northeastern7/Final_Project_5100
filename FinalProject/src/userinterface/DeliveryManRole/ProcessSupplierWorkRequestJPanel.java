@@ -127,8 +127,16 @@ public class ProcessSupplierWorkRequestJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
-//        
+//        for(DeliveryMan dm : system.getDeliveryManDirectory().getDeliveryManList()){
+//            if(dm.getUserAccount().getUid() == userAccount.getUid()){
+//                System.out.print(request.getCustomer());
+//                dm.getUserAccount().getWorkQueue().getWorkRequestList().remove(request);
+//            }
+//        }
         request.setStatus("DELIVERED");
+//        request.getCustomer().getUserAccount().getWorkQueue().getWorkRequestList().add(request);
+        System.out.println("BEFORE" + request.getSm().getType1());
+//        System.out.println("BEFORE DOC" + request.getDoc().getType1());
 
         dm.getUserAccount().getWorkQueue().getWorkRequestList().remove(request);
         if(request.getSm() != null){
@@ -139,7 +147,10 @@ public class ProcessSupplierWorkRequestJPanel extends javax.swing.JPanel {
             request.getDoc().setType2(request.getQuantity2());
         }
         
-      
+        System.out.println("AFTER" + request.getSm().getType1());
+        
+//        System.out.println("AFTER DOC" + request.getDoc().getType1());
+
         JOptionPane.showMessageDialog(null, "Delivery Complete");
 
         userProcessContainer.remove(this);
