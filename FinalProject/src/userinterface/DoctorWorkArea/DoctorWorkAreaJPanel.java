@@ -95,6 +95,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
 
         add(jPanel3);
 
+        btnManageNurses.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         btnManageNurses.setLabel("Manage Nurses");
         btnManageNurses.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
