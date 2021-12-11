@@ -26,7 +26,7 @@
               <EmptySpace min="-2" pref="166" max="-2" attributes="0"/>
               <Component id="btnManageNurses" min="-2" pref="175" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
-              <Component id="button2" min="-2" pref="186" max="-2" attributes="0"/>
+              <Component id="buttonAssignWorkRqst" min="-2" pref="186" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -38,7 +38,7 @@
               <EmptySpace min="-2" pref="163" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="btnManageNurses" pref="41" max="32767" attributes="0"/>
-                  <Component id="button2" max="32767" attributes="0"/>
+                  <Component id="buttonAssignWorkRqst" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="0" pref="234" max="32767" attributes="0"/>
           </Group>
@@ -131,10 +131,13 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnManageNursesActionPerformed"/>
       </Events>
     </Component>
-    <Component class="java.awt.Button" name="button2">
+    <Component class="java.awt.Button" name="buttonAssignWorkRqst">
       <Properties>
         <Property name="label" type="java.lang.String" value="Assign Work to Nurses"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAssignWorkRqstActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

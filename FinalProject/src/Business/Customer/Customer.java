@@ -22,6 +22,7 @@ public class Customer {
     private String typeDiabetes;
     private int glucoseLvl;
     private String custImage;
+    private String prescriptionImg;
     private long custPhoneNumber;
     private UserAccount userAccount;
 
@@ -58,6 +59,14 @@ public class Customer {
     public void setCustImage(String custImage) {
         this.custImage = custImage;
     }
+
+    public String getPrescriptionImg() {
+        return prescriptionImg;
+    }
+
+    public void setPrescriptionImg(String prescriptionImg) {
+        this.prescriptionImg = prescriptionImg;
+    }    
 
     public int getAge() {
         return age;

@@ -50,6 +50,7 @@ public class ManagerRoleWorkAreaJPanel extends javax.swing.JPanel {
         lblSelectedNode = new javax.swing.JLabel();
         btnManageFactoryWorker = new java.awt.Button();
         buttonWorkRqst = new java.awt.Button();
+        btnManageDeliveryMan = new java.awt.Button();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -107,20 +108,30 @@ public class ManagerRoleWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnManageDeliveryMan.setLabel("Manage Delivery Men");
+        btnManageDeliveryMan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageDeliveryManActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(127, 127, 127)
-                .addComponent(btnManageFactoryWorker, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(78, 78, 78)
-                .addComponent(buttonWorkRqst, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(185, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(127, 127, 127)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnManageDeliveryMan, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnManageFactoryWorker, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(78, 78, 78)
+                        .addComponent(buttonWorkRqst, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(185, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,7 +142,9 @@ public class ManagerRoleWorkAreaJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnManageFactoryWorker, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
                     .addComponent(buttonWorkRqst, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(235, 235, 235))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnManageDeliveryMan, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+                .addGap(178, 178, 178))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -156,11 +169,26 @@ public class ManagerRoleWorkAreaJPanel extends javax.swing.JPanel {
 
     private void buttonWorkRqstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonWorkRqstActionPerformed
         // TODO add your handling code here:
+        container.removeAll();
+        ManagerAssignWorkJPanel ls = new ManagerAssignWorkJPanel(container, account, system);
+        container.add("signup", ls);
+        CardLayout crdLyt = (CardLayout) container.getLayout();
+        crdLyt.next(container);
     }//GEN-LAST:event_buttonWorkRqstActionPerformed
+
+    private void btnManageDeliveryManActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageDeliveryManActionPerformed
+        // TODO add your handling code here:
+        container.removeAll();
+        ManagerCreateDeliveryManJPanel ls = new ManagerCreateDeliveryManJPanel(container, account, system);
+        container.add("signup", ls);
+        CardLayout crdLyt = (CardLayout) container.getLayout();
+        crdLyt.next(container);
+    }//GEN-LAST:event_btnManageDeliveryManActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogout;
+    private java.awt.Button btnManageDeliveryMan;
     private java.awt.Button btnManageFactoryWorker;
     private java.awt.Button buttonWorkRqst;
     private javax.swing.JPanel jPanel3;

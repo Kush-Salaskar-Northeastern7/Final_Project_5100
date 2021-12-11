@@ -54,11 +54,16 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
         valueLabel = new javax.swing.JLabel();
         btnOrder = new javax.swing.JButton();
         btnAppointment = new javax.swing.JButton();
+        btnRecentOrders = new javax.swing.JButton();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterpriseLabel.setText("Welcome");
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 27, 127, 30));
 
         valueLabel.setText("<value>");
+        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 27, 158, 26));
 
         btnOrder.setText("Place Order");
         btnOrder.addActionListener(new java.awt.event.ActionListener() {
@@ -66,8 +71,22 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
                 btnOrderActionPerformed(evt);
             }
         });
+        add(btnOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(378, 185, -1, -1));
 
         btnAppointment.setText("Schedule Appointment");
+        btnAppointment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAppointmentActionPerformed(evt);
+            }
+        });
+        add(btnAppointment, new org.netbeans.lib.awtextra.AbsoluteConstraints(172, 185, -1, -1));
+
+        btnRecentOrders.setText("View Recent Orders");
+        btnRecentOrders.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRecentOrdersActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -81,9 +100,12 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
                 .addGap(103, 354, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAppointment)
-                .addGap(63, 63, 63)
-                .addComponent(btnOrder)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnRecentOrders)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnAppointment)
+                        .addGap(63, 63, 63)
+                        .addComponent(btnOrder)))
                 .addGap(223, 223, 223))
         );
         layout.setVerticalGroup(
@@ -97,22 +119,43 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnOrder)
                     .addComponent(btnAppointment))
-                .addContainerGap(234, Short.MAX_VALUE))
+                .addGap(27, 27, 27)
+                .addComponent(btnRecentOrders)
+                .addContainerGap(178, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
         // TODO add your handling code here:
         userProcessContainer.removeAll();
-        CustomerPlaceOrderJPanel ls = new CustomerPlaceOrderJPanel(userProcessContainer, system);
+        CustomerPlaceOrderJPanel ls = new CustomerPlaceOrderJPanel(userProcessContainer, userAccount, system);
         userProcessContainer.add("signup", ls);
         CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
         crdLyt.next(userProcessContainer);
     }//GEN-LAST:event_btnOrderActionPerformed
 
+    private void btnAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAppointmentActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.removeAll();
+        CustomerScheduleAppmtJPanel ls = new CustomerScheduleAppmtJPanel(userProcessContainer, userAccount, system);
+        userProcessContainer.add("schedule", ls);
+        CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
+        crdLyt.next(userProcessContainer);
+    }//GEN-LAST:event_btnAppointmentActionPerformed
+
+    private void btnRecentOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecentOrdersActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.removeAll();
+        CustomerRecentOrdersJPanel ls = new CustomerRecentOrdersJPanel(userProcessContainer, userAccount, system);
+        userProcessContainer.add("signup", ls);
+        CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
+        crdLyt.next(userProcessContainer);
+    }//GEN-LAST:event_btnRecentOrdersActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAppointment;
     private javax.swing.JButton btnOrder;
+    private javax.swing.JButton btnRecentOrders;
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel valueLabel;
     // End of variables declaration//GEN-END:variables
