@@ -299,28 +299,7 @@ public class DoctorCreateNurseJPanel extends javax.swing.JPanel {
             dB4OUtil.storeSystem(system);
 
         }
-        
-        String name = txtNursename.getText();
-        String username = txtNurseUsername.getText();
-        String password = String.valueOf(txtNursePassword.getPassword());
-        
-        if(!system.getUserAccountDirectory().checkIfUsernameIsUnique(username)){
-            JOptionPane.showMessageDialog(null, "Username already exists, select a new username", "Error", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        
-        Employee employee = system.getEmployeeDirectory().createEmployee(name);       
-        UserAccount userAccount = system.getUserAccountDirectory().createUserAccount(username, password, employee, new NurseRole());
-        Nurse lt = system.getNurseDirectory().createNurse(name,userAccount, userAcc.getUid());    
-        
-        txtNursename.setText("");
-        txtNursePassword.setText("");
-        txtNurseUsername.setText("");
-        populateTable();
-        JOptionPane.showMessageDialog(null, "Nurse Created");
-        
-
-
+         
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void populateTable() {

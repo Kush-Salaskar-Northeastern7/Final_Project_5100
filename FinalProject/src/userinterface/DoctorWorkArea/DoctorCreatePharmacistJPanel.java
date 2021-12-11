@@ -350,7 +350,28 @@ public class DoctorCreatePharmacistJPanel extends javax.swing.JPanel {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
+        if(txtPharmacistname.getText().isEmpty() || txtPharmacistUsername.getText().isEmpty() || txtPharmacistPassword.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please fill all details.", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
 
+        String name = txtPharmacistname.getText();
+        String username = txtPharmacistUsername.getText();
+
+        for(Pharmacist lt : system.getPharmacistDirectory().getPharmacistList()){
+            if(lt.getPharmacistName() == null) continue;
+            if(lt.getUserAccount().getUid() == pharmacist.getUserAccount().getUid()){
+                lt.setPharmacistName(name);
+                lt.getUserAccount().setUsername(username);
+            }
+        }
+
+        txtPharmacistname.setText("");
+        txtPharmacistUsername.setText("");
+        txtPharmacistPassword.setText("");
+
+        populateTable();
+        JOptionPane.showMessageDialog(null, "Pharmacist Updated Successfully.");
         
     }//GEN-LAST:event_btnUpdateActionPerformed
 
