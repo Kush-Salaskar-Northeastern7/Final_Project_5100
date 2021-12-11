@@ -27,11 +27,12 @@ public class DeliveryManDirectory {
         this.deliveryManList = deliveryManList;
     }
     
-    public DeliveryMan createDeliveryMan(String name, UserAccount ua, int suppmgrId){
+    public DeliveryMan createDeliveryMan(String name, UserAccount ua, int suppmgrId, boolean isSupplier){
         DeliveryMan dm = new DeliveryMan();
         dm.setDeliveryManName(name);
         dm.setUserAccount(ua);
         dm.setSupplyManagerId(suppmgrId);
+        dm.setIsSupplier(isSupplier);
         deliveryManList.add(dm);
         return dm;
     }
