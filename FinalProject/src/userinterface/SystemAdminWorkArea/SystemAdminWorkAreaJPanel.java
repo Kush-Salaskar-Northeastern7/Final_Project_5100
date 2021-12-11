@@ -17,6 +17,7 @@ import javax.swing.tree.DefaultTreeModel;
 import userinterface.LoginScreen;
 import javax.swing.border.Border;
 import Business.DB4OUtil.DB4OUtil;
+import java.awt.Color;
 
 /**
  *
@@ -111,6 +112,14 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         btnManageSuppliers1.setContentAreaFilled(false);
         btnManageSuppliers1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnManageSuppliers1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnManageSuppliers1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnManageSuppliers1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnManageSuppliers1MouseExited(evt);
+            }
+        });
         btnManageSuppliers1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnManageSuppliers1ActionPerformed(evt);
@@ -124,6 +133,14 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         btnManageSuppliers2.setContentAreaFilled(false);
         btnManageSuppliers2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnManageSuppliers2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnManageSuppliers2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnManageSuppliers2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnManageSuppliers2MouseExited(evt);
+            }
+        });
         btnManageSuppliers2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnManageSuppliers2ActionPerformed(evt);
@@ -188,6 +205,26 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout)innerContainer.getLayout();
         layout.next(innerContainer);
     }//GEN-LAST:event_btnManageSuppliers2ActionPerformed
+
+    private void btnManageSuppliers1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnManageSuppliers1MouseEntered
+        // TODO add your handling code here:
+        btnManageSuppliers1.setForeground(new Color(204,204,204));
+    }//GEN-LAST:event_btnManageSuppliers1MouseEntered
+
+    private void btnManageSuppliers1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnManageSuppliers1MouseExited
+        // TODO add your handling code here:
+        btnManageSuppliers1.setForeground(new Color(240,240,240));
+    }//GEN-LAST:event_btnManageSuppliers1MouseExited
+
+    private void btnManageSuppliers2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnManageSuppliers2MouseEntered
+        // TODO add your handling code here:
+        btnManageSuppliers2.setForeground(new Color(204,204,204));
+    }//GEN-LAST:event_btnManageSuppliers2MouseEntered
+
+    private void btnManageSuppliers2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnManageSuppliers2MouseExited
+        // TODO add your handling code here:
+        btnManageSuppliers2.setForeground(new Color(240,240,240));
+    }//GEN-LAST:event_btnManageSuppliers2MouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
