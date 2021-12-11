@@ -208,6 +208,8 @@ public class CustomerScheduleAppmtJPanel extends javax.swing.JPanel {
                     wr.setCustomer(c);
                 }
             }
+            wr.setQuantity(0);
+            wr.setType1(true);
             wr.setSender(account);
             wr.setMessage("Appointment to be reviewed");
             wr.setStatus("APPOINTMENT REQUEST");

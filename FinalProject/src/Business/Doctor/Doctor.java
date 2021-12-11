@@ -14,6 +14,8 @@ import Business.UserAccount.UserAccount;
 public class Doctor {
     private String docName;
     private UserAccount userAccount;
+    private int type1 = 0;
+    private int type2 = 0;
     
     public Doctor(){
         userAccount = new UserAccount();
@@ -33,6 +35,22 @@ public class Doctor {
 
     public void setUserAccount(UserAccount userAccount) {
         this.userAccount = userAccount;
+    }
+    
+    public int getType1() {
+        return 20;
+    }
+
+    public void setType1(int type1) {
+        this.type1 += type1;
+    }
+
+    public int getType2() {
+        return 10;
+    }
+
+    public void setType2(int type2) {
+        this.type2 += type2;
     }
 
     @Override
