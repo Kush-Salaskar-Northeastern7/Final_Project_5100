@@ -76,6 +76,8 @@ public class SupplyManagerAddInventoryJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblFactory = new javax.swing.JTable();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
         lblType2.setText("Type 2");
 
         lblType1.setText("Type 1");
