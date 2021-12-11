@@ -25,14 +25,9 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="166" max="-2" attributes="0"/>
               <Component id="btnManageNurses" min="-2" pref="175" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
-              <Component id="buttonAssignWorkRqst1" min="-2" pref="187" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
+              <Component id="buttonAssignWorkRqst" min="-2" pref="186" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="buttonAddInventory" min="-2" pref="186" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="300" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -41,13 +36,11 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="163" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnManageNurses" min="-2" pref="41" max="-2" attributes="0"/>
-                  <Component id="buttonAssignWorkRqst1" min="-2" pref="49" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="btnManageNurses" pref="41" max="32767" attributes="0"/>
+                  <Component id="buttonAssignWorkRqst" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-              <Component id="buttonAddInventory" min="-2" pref="41" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="175" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="234" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -73,7 +66,7 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                   <Component id="lblSelectedNode" min="-2" pref="273" max="-2" attributes="0"/>
-                  <EmptySpace pref="457" max="32767" attributes="0"/>
+                  <EmptySpace pref="456" max="32767" attributes="0"/>
                   <Component id="btnLogout" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
               </Group>
@@ -138,20 +131,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnManageNursesActionPerformed"/>
       </Events>
     </Component>
-    <Component class="java.awt.Button" name="buttonAddInventory">
-      <Properties>
-        <Property name="label" type="java.lang.String" value="Add Inventory"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAddInventoryActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="java.awt.Button" name="buttonAssignWorkRqst1">
+    <Component class="java.awt.Button" name="buttonAssignWorkRqst">
       <Properties>
         <Property name="label" type="java.lang.String" value="Assign Work to Nurses"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAssignWorkRqst1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAssignWorkRqstActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
