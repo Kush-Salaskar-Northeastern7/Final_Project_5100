@@ -6,6 +6,8 @@
 package Business.SupplyManager;
 
 import Business.UserAccount.UserAccount;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -16,9 +18,38 @@ public class SupplyManager {
     private UserAccount userAccount;
     private int type1 = 0;
     private int type2 = 0;
+    private List<Integer> rating;
+    private float stars;
     
     public SupplyManager(){
         userAccount = new UserAccount();
+        rating = new ArrayList<>();
+    }
+
+    public float getStars() {
+        if(rating.size() == 0){
+            return -1;
+        } else {
+            int sum = 0;
+            for(int num : rating){
+                sum += num;
+            }
+            return sum/rating.size();
+        }
+    }
+    
+    
+
+    public List<Integer> getRating() {
+        return rating;
+    }
+
+    public void setRating(List<Integer> rating) {
+        this.rating = rating;
+    }
+    
+    public void addRating(int rate){
+        rating.add(rate);
     }
 
     public int getType1() {
