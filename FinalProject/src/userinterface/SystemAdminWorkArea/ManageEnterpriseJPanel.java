@@ -93,12 +93,11 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
            }
         } else if(enterprise.equals("Supplier")) {
             for (SupplyManager en : system.getSupplyManagerDirectory().getSupplyManagerList()) {
-                Object[] row = new Object[5];
+                Object[] row = new Object[4];
                 row[0] = en;
-                row[1] = en.getUserAccount().getUid();
-                row[2] = en.getUserAccount().getUsername();
-                row[3] = en.getSmName();
-                row[4] = "hi";
+                row[1] = en.getPhoneNum();
+                row[2] = en.getLocation();
+                row[3] = en.getUserAccount().getUsername();
                 model.addRow(row);
            } 
         } else {
@@ -669,7 +668,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
             } else if(enterprisetype.equals("Supplier")){
                 Employee employee = system.getEmployeeDirectory().createEmployee(name);       
                 UserAccount userAccount = system.getUserAccountDirectory().createUserAccount(username, password, employee, new SupplyManagerRole());        
-                SupplyManager sm = system.getSupplyManagerDirectory().createSupplyManager(name, userAccount);
+                SupplyManager sm = system.getSupplyManagerDirectory().createSupplyManager(name, userAccount,phone, address);
             } else {
                 Employee employee = system.getEmployeeDirectory().createEmployee(name);       
                 UserAccount userAccount = system.getUserAccountDirectory().createUserAccount(username, password, employee, new LabSupervisorRole());

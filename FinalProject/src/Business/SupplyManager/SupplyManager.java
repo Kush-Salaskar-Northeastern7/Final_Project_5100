@@ -16,6 +16,8 @@ public class SupplyManager {
     private UserAccount userAccount;
     private int type1 = 0;
     private int type2 = 0;
+    private String phoneNum;
+    private String location;
     
     public SupplyManager(){
         userAccount = new UserAccount();
