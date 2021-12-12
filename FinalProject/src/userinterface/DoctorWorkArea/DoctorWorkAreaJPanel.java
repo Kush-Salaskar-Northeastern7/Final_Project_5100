@@ -48,7 +48,6 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         btnManageNurses = new java.awt.Button();
         buttonManagePharmacists = new java.awt.Button();
         buttonAssignWorkRqst = new java.awt.Button();
-        buttonAddInventory1 = new java.awt.Button();
         btnViewInventory = new java.awt.Button();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -121,14 +120,6 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         });
         add(buttonAssignWorkRqst);
 
-        buttonAddInventory1.setLabel("Add Inventory");
-        buttonAddInventory1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonAddInventory1ActionPerformed(evt);
-            }
-        });
-        add(buttonAddInventory1);
-
         btnViewInventory.setLabel("View Inventory");
         btnViewInventory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -200,16 +191,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         crdLyt.next(userProcessContainer);
     }//GEN-LAST:event_buttonAssignWorkRqst1ActionPerformed
 
-    
-    private void buttonAddInventory1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddInventory1ActionPerformed
-        // TODO add your handling code here:
-        userProcessContainer.removeAll();
-        DoctorAddInventoryJPanel dwj = new DoctorAddInventoryJPanel(userProcessContainer, account, system);
-        userProcessContainer.add("doctorwkreqarea", dwj);
-        CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
-        crdLyt.next(userProcessContainer);
-    }//GEN-LAST:event_buttonAddInventory1ActionPerformed
-                                       
+                                           
     
     private void btnViewInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewInventoryActionPerformed
         // TODO add your handling code here:
@@ -225,7 +207,6 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnLogout;
     private java.awt.Button btnManageNurses;
     private java.awt.Button btnViewInventory;
-    private java.awt.Button buttonAddInventory1;
     private java.awt.Button buttonAssignWorkRqst;
     private java.awt.Button buttonManagePharmacists;
     private javax.swing.JPanel jPanel3;

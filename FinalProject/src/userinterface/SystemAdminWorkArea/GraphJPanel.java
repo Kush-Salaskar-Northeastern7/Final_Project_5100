@@ -7,6 +7,9 @@ package userinterface.SystemAdminWorkArea;
 import Business.Customer.Customer;
 import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.PatientAppointmentWorkRequest;
+import Business.WorkQueue.PatientOrderWorkRequest;
+import Business.WorkQueue.WorkRequest;
 import javax.swing.JFrame;  
 import javax.swing.SwingUtilities;  
   
@@ -41,7 +44,7 @@ public class GraphJPanel extends javax.swing.JPanel {
       this.ecosystem = ecosystem;
       
       SwingUtilities.invokeLater(() -> {  
-      PieChart_AWT example = new PieChart_AWT("Pie Chart Example");  
+      PieChart_AWT example = new PieChart_AWT("Pie Chart");  
       example.setAlwaysOnTop(true);  
       example.pack();  
       example.setSize(600, 400);  
@@ -80,18 +83,32 @@ public class GraphJPanel extends javax.swing.JPanel {
       setContentPane(createDemoPanel( ));
    }
    
+   
+   
    private PieDataset createDataset( ) {
+      int orderedQuantity = 0;
+      int apptQuantity = 0;
+      for(Customer c : ecosystem.getCustomerDirectory().getCustomerList()){
+          for(WorkRequest wr : c.getUserAccount().getWorkQueue().getWorkRequestList()){
+              if(wr instanceof PatientAppointmentWorkRequest){
+                  apptQuantity += ((PatientAppointmentWorkRequest) wr).getQuantity();
+              }
+              if(wr instanceof PatientOrderWorkRequest){
+                  orderedQuantity += ((PatientOrderWorkRequest) wr).getQuantity();
+              }
+          }
+      } 
+       
+       
       DefaultPieDataset dataset = new DefaultPieDataset( );
-      dataset.setValue( "IPhone 5s" , new Double( 20 ) );  
-      dataset.setValue( "SamSung Grand" , new Double( 20 ) );   
-      dataset.setValue( "MotoG" , new Double( 40 ) );    
-      dataset.setValue( "Nokia Lumia" , new Double( 10 ) );  
+      dataset.setValue( "Supplied Doses" , orderedQuantity );  
+      dataset.setValue( "Administered Doses" , apptQuantity );   
       return dataset;         
    }
    
    private JFreeChart createChart( PieDataset dataset ) {
       JFreeChart chart = ChartFactory.createPieChart(      
-         "Mobile Sales",   // chart title 
+         "Patient Requests",   // chart title 
          dataset,          // data    
          true,             // include legend   
          true, 
