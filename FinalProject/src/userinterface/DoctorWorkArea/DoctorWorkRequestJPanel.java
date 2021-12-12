@@ -367,10 +367,10 @@ public class DoctorWorkRequestJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select a type and set quantity from available", "Error", JOptionPane.NO_OPTION);
         }
         else {
-            String type = (String) tblDoctorInv.getValueAt(selectedRow, 0);
-            PatientAppointmentWorkRequest wr = (PatientAppointmentWorkRequest) patientApmtWorkRequestJTable.getValueAt(selectedRow, 0);
+            String type = (String) tblDoctorInv.getValueAt(selectedTypeRow, 0);
+            PatientAppointmentWorkRequest wr = (PatientAppointmentWorkRequest) patientApmtWorkRequestJTable.getValueAt(selectedTypeRow, 0);
             
-            int availQuantity = (int) tblDoctorInv.getValueAt(selectedRow, 1);
+            int availQuantity = (int) tblDoctorInv.getValueAt(selectedTypeRow, 1);
             if(Integer.parseInt(txtQuantity.getText()) > availQuantity){
                 JOptionPane.showMessageDialog(null, "The Hospital inventory doesn't have the stock available. Please enter lower value", "Error", JOptionPane.NO_OPTION);
                 return;
