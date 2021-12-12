@@ -27,10 +27,12 @@ public class DoctorDirectory {
         this.doctorList = doctorList;
     }
     
-    public Doctor addDoctor(String name, UserAccount ua){
+    public Doctor addDoctor(String name, UserAccount ua, String phoneNum, String location){
         Doctor d = new Doctor();
         d.setDocName(name);
         d.setUserAccount(ua);
+        d.setPhoneNum(phoneNum);
+        d.setLocation(location);
         doctorList.add(d);
         return d;
     }
