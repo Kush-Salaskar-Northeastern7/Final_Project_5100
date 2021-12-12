@@ -9,12 +9,14 @@ import Business.Customer.Customer;
 import Business.DB4OUtil.DB4OUtil;
 import Business.Doctor.Doctor;
 import Business.EcoSystem;
+import Business.Nurse.Nurse;
 import Business.SupplyManager.SupplyManager;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.PatientAppointmentWorkRequest;
 import Business.WorkQueue.PatientOrderWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import userinterface.LoginScreen;
@@ -34,6 +36,8 @@ public class CustomerRecentAppointmentsJPanel extends javax.swing.JPanel {
     private UserAccount account;
     private EcoSystem system;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
+    private Doctor selDoc;
+    private PatientAppointmentWorkRequest selReq;
     
     public CustomerRecentAppointmentsJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem system) {
         initComponents();
@@ -67,12 +71,14 @@ public class CustomerRecentAppointmentsJPanel extends javax.swing.JPanel {
                                 break;
                             }
                         }
-                        Object[] row = new Object[5];
+                        Object[] row = new Object[6];
                         row[0] = doc != null ? doc : "Supplier doesnt exist";
                         row[1] = ((PatientAppointmentWorkRequest)request).isType1() ? "Type1" : "Type2";
                         row[2] = ((PatientAppointmentWorkRequest)request).getQuantity();
                         row[3] = ((PatientAppointmentWorkRequest)request).getResolveDate();
-                        row[4] = ((PatientAppointmentWorkRequest)request).getStatus();
+//                        row[4] = ((PatientAppointmentWorkRequest)request).getStatus();
+                        row[4] = (PatientAppointmentWorkRequest) request;
+                        
 
                         model.addRow(row);
                     }
@@ -91,6 +97,7 @@ public class CustomerRecentAppointmentsJPanel extends javax.swing.JPanel {
         btnRefresh = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblRecentOrders = new javax.swing.JTable();
+        btnView = new javax.swing.JButton();
 
         jPanel3.setBackground(new java.awt.Color(51, 51, 51));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
@@ -161,17 +168,25 @@ public class CustomerRecentAppointmentsJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblRecentOrders);
 
+        btnView.setText("View");
+        btnView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 657, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnView)
                     .addComponent(btnRefresh)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(176, Short.MAX_VALUE))
+                .addContainerGap(197, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,7 +196,9 @@ public class CustomerRecentAppointmentsJPanel extends javax.swing.JPanel {
                 .addComponent(btnRefresh)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(196, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnView)
+                .addContainerGap(155, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -201,10 +218,29 @@ public class CustomerRecentAppointmentsJPanel extends javax.swing.JPanel {
         populateTable();
     }//GEN-LAST:event_btnRefreshActionPerformed
 
+    private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblRecentOrders.getSelectedRow();
+
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        else {
+            Doctor lt = (Doctor) tblRecentOrders.getValueAt(selectedRow, 0);
+            PatientAppointmentWorkRequest wr = (PatientAppointmentWorkRequest) tblRecentOrders.getValueAt(selectedRow, 4);
+            selDoc = lt;
+            selReq = wr;
+        }
+        
+       
+    }//GEN-LAST:event_btnViewActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBackBtn;
     private javax.swing.JButton btnRefresh;
+    private javax.swing.JButton btnView;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblSelectedNode;

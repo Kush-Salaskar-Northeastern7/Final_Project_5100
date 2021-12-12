@@ -51,5 +51,8 @@ public class PatientOrderWorkRequest extends WorkRequest{
         this.customer = customer;
     }
     
-    
+    @Override
+    public String toString(){
+        return this.getStatus();
+    }
 }

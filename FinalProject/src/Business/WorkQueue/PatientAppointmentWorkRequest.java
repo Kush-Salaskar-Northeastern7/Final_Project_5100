@@ -51,5 +51,8 @@ public class PatientAppointmentWorkRequest extends WorkRequest {
         this.quantity = quantity;
     }
     
-    
+    @Override
+    public String toString(){
+        return this.getStatus();
+    }
 }
