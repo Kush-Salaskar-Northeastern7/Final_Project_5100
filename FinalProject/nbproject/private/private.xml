@@ -3,13 +3,36 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/anushka/Final_Project_5100/FinalProject/src/userinterface/PharmacistWorkArea/PharmacistViewInventoryJPanel.java</file>
-            <file>file:/Users/anushka/Final_Project_5100/FinalProject/src/userinterface/DoctorWorkArea/DoctorAddInventoryJPanel.java</file>
-            <file>file:/Users/anushka/Final_Project_5100/FinalProject/src/Business/Pharmacist/Pharmacist.java</file>
-            <file>file:/Users/anushka/Final_Project_5100/FinalProject/src/userinterface/DoctorWorkArea/DoctorWorkAreaJPanel.java</file>
-            <file>file:/Users/anushka/Final_Project_5100/FinalProject/src/userinterface/PharmacistWorkArea/PharmacistWorkAreaJPanel.java</file>
-            <file>file:/Users/anushka/Final_Project_5100/FinalProject/src/userinterface/PharmacistWorkArea/PharmacistAddInventoryJPanel.java</file>
-            <file>file:/Users/anushka/Final_Project_5100/FinalProject/src/userinterface/DeliveryManRole/ProcessSupplierWorkRequestJPanel.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/LabTechnicianWorkArea/LabTechnicianWorkAreaJPanel.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/SystemAdminWorkArea/AnalyticsJPanel.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/SupplyManagerWorkArea/SupplyManagerWorkAreaJPanel.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/LabSupervisorWorkArea/LabSupervisorWorkAreaJPanel.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/SupplyManagerWorkArea/SupplyManagerAssignDeliveryManJPanel.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/SupplyManagerWorkArea/SupplyManagerCreateDeliveryManJPanel.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/FactoryWorkerWorkArea/FactoryWorkerAssignDeliveryJPanel.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/NurseWorkArea/NurseWorkAreaJPanel.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/DoctorWorkArea/DoctorWorkAreaJPanel.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/ManagerRoleWorkArea/ManagerRoleWorkAreaJPanel.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/DoctorWorkArea/DoctorCreateNurseJPanel.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/SystemAdminWorkArea/SystemAdminWorkAreaJPanel.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/CustomerRole/CustomerSignupJPanel.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/LabTechnicianWorkArea/LabTechnicianAcceptPatientsJPanel.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/LabSupervisorWorkArea/LabSupervisorWorkRequestJPanel.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/SystemAdminWorkArea/ManagePatientsJPanel.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/DoctorWorkArea/DoctorViewInventoryJPanel.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/DoctorWorkArea/DoctorCreatePharmacistJPanel.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/LabSupervisorWorkArea/LabSupervisorCreateTechnicianJPanel.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/NurseWorkArea/NurseAdministerInsulinJPanel.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/ManagerRoleWorkArea/ManagerCreateDeliveryManJPanel.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/ManagerRoleWorkArea/ManagerCreateFactoryWorkerJPanel.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/DoctorWorkArea/DoctorAddInventoryJPanel.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/SupplyManagerWorkArea/SupplyManagerAddInventoryJPanel.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/FactoryWorkerWorkArea/FactoryWorkerWorkAreaJPanel.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/SystemAdminWorkArea/ManageEnterpriseJPanel.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/DoctorWorkArea/DoctorWorkRequestJPanel.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/SupplyManagerWorkArea/SupplyManagerViewInventoryJPanel.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/ManagerRoleWorkArea/ManagerAssignWorkJPanel.java</file>
+            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/LoginScreen.java</file>
         </group>
     </open-files>
 </project-private>

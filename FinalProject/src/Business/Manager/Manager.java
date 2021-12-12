@@ -14,6 +14,24 @@ import Business.UserAccount.UserAccount;
 public class Manager {
    private String managerName;
    private UserAccount userAccount;
+   private String phoneNum;
+   private String location;
+
+    public String getPhoneNum() {
+        return phoneNum;
+    }
+
+    public void setPhoneNum(String phoneNum) {
+        this.phoneNum = phoneNum;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
    
    public Manager(){
        userAccount = new UserAccount();

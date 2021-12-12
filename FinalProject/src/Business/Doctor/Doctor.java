@@ -16,6 +16,24 @@ public class Doctor {
     private UserAccount userAccount;
     private int type1;
     private int type2;
+    private String phoneNum;
+    private String location;
+
+    public String getPhoneNum() {
+        return phoneNum;
+    }
+
+    public void setPhoneNum(String phoneNum) {
+        this.phoneNum = phoneNum;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
     
     public Doctor(){
         userAccount = new UserAccount();

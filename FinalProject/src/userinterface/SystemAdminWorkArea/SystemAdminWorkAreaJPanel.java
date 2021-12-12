@@ -262,6 +262,10 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnAnalyticsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalyticsActionPerformed
         // TODO add your handling code here:
+        AnalyticsJPanel actionPanel = new AnalyticsJPanel(innerContainer, ecosystem);
+        innerContainer.add("manageEnterpriseJPanel", actionPanel);
+        CardLayout layout=(CardLayout)innerContainer.getLayout();
+        layout.next(innerContainer);
     }//GEN-LAST:event_btnAnalyticsActionPerformed
 
 

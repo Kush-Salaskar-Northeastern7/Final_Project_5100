@@ -16,6 +16,24 @@ public class SupplyManager {
     private UserAccount userAccount;
     private int type1 = 0;
     private int type2 = 0;
+    private String phoneNum;
+    private String location;
+
+    public String getPhoneNum() {
+        return phoneNum;
+    }
+
+    public void setPhoneNum(String phoneNum) {
+        this.phoneNum = phoneNum;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
     
     public SupplyManager(){
         userAccount = new UserAccount();
