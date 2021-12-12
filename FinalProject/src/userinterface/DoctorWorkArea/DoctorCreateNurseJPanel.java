@@ -300,7 +300,10 @@ public class DoctorCreateNurseJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Nurse is Created");
             dB4OUtil.storeSystem(system);
 
-        } 
+        }
+        
+
+
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void populateTable() {

@@ -368,7 +368,7 @@ public class DoctorWorkRequestJPanel extends javax.swing.JPanel {
         }
         else {
             String type = (String) tblDoctorInv.getValueAt(selectedTypeRow, 0);
-            PatientAppointmentWorkRequest wr = (PatientAppointmentWorkRequest) patientApmtWorkRequestJTable.getValueAt(selectedTypeRow, 0);
+            PatientAppointmentWorkRequest wr = (PatientAppointmentWorkRequest) patientApmtWorkRequestJTable.getValueAt(selectedRow, 0);
             
             int availQuantity = (int) tblDoctorInv.getValueAt(selectedTypeRow, 1);
 //            PatientAppointmentWorkRequest wr = new PatientAppointmentWorkRequest();
