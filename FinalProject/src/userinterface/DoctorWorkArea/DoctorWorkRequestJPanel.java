@@ -414,7 +414,7 @@ public class DoctorWorkRequestJPanel extends javax.swing.JPanel {
             System.out.println("Line removed here" + account.getWorkQueue().getWorkRequestList().size());
             account.getWorkQueue().getWorkRequestList().remove(req);
             System.out.println(account.getWorkQueue().getWorkRequestList().size());
-            JOptionPane.showMessageDialog(null, "Task assigned to Lab Technician", "Error", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Task assigned to Nurse", "Error", JOptionPane.WARNING_MESSAGE);
             populateWorkRequestTable();
             populateNursesTable();
             hideNursesTable();

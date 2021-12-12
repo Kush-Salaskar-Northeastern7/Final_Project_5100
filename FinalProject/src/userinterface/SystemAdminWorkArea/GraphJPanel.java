@@ -17,6 +17,9 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
+import org.jfree.chart.ui.ApplicationFrame;
+import org.jfree.data.general.DefaultPieDataset;
+import org.jfree.data.general.PieDataset;
 
 /**
  *
@@ -38,7 +41,7 @@ public class GraphJPanel extends javax.swing.JPanel {
       this.ecosystem = ecosystem;
       
       SwingUtilities.invokeLater(() -> {  
-      LineChartExample example = new LineChartExample("Line Chart Example");  
+      PieChart_AWT example = new PieChart_AWT("Pie Chart Example");  
       example.setAlwaysOnTop(true);  
       example.pack();  
       example.setSize(600, 400);  
@@ -68,58 +71,44 @@ public class GraphJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
  
+ 
   
-public class LineChartExample extends JFrame {  
-  
-  private static final long serialVersionUID = 1L;  
-  
-  public LineChartExample(String title) {  
-    super(title);  
-    // Create dataset  
-    DefaultCategoryDataset dataset = createDataset();  
-    // Create chart  
-    JFreeChart chart = ChartFactory.createLineChart(  
-        "Site Traffic", // Chart title  
-        "Date", // X-Axis Label  
-        "Number of Visitor", // Y-Axis Label  
-        dataset  
-        );  
-  
-    ChartPanel panel = new ChartPanel(chart);  
-    setContentPane(panel);  
-  }  
-  
-  private DefaultCategoryDataset createDataset() {  
-  
-    String series1 = "Visitor";  
-    String series2 = "Unique Visitor";  
-  
-    DefaultCategoryDataset dataset = new DefaultCategoryDataset();  
-  
-    dataset.addValue(200, series1, "2021-12-19");  
-    dataset.addValue(150, series1, "2021-12-20");  
-    dataset.addValue(100, series1, "2021-12-21");  
-    dataset.addValue(210, series1, "2021-12-22");  
-    dataset.addValue(240, series1, "2021-12-23");  
-    dataset.addValue(195, series1, "2021-12-24");  
-    dataset.addValue(245, series1, "2021-12-25");  
-  
-    dataset.addValue(150, series2, "2021-12-19");  
-    dataset.addValue(130, series2, "2021-12-20");  
-    dataset.addValue(95, series2, "2021-12-21");  
-    dataset.addValue(195, series2, "2021-12-22");  
-    dataset.addValue(200, series2, "2021-12-23");  
-    dataset.addValue(180, series2, "2021-12-24");  
-    dataset.addValue(230, series2, "2021-12-25");  
-  
-    return dataset;  
-  }  
-  
-//  public static void main(String[] args) {  
-//      
-//    });  
-  }  
-}  
+  public class PieChart_AWT extends ApplicationFrame {
+   
+   public PieChart_AWT( String title ) {
+      super( title ); 
+      setContentPane(createDemoPanel( ));
+   }
+   
+   private PieDataset createDataset( ) {
+      DefaultPieDataset dataset = new DefaultPieDataset( );
+      dataset.setValue( "IPhone 5s" , new Double( 20 ) );  
+      dataset.setValue( "SamSung Grand" , new Double( 20 ) );   
+      dataset.setValue( "MotoG" , new Double( 40 ) );    
+      dataset.setValue( "Nokia Lumia" , new Double( 10 ) );  
+      return dataset;         
+   }
+   
+   private JFreeChart createChart( PieDataset dataset ) {
+      JFreeChart chart = ChartFactory.createPieChart(      
+         "Mobile Sales",   // chart title 
+         dataset,          // data    
+         true,             // include legend   
+         true, 
+         false);
+
+      return chart;
+   }
+   
+   public JPanel createDemoPanel( ) {
+      JFreeChart chart = createChart(createDataset( ) );  
+      return new ChartPanel( chart ); 
+   }
+
+   
+   }
+}
+ 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
