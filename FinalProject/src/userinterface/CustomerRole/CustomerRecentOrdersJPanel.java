@@ -298,6 +298,8 @@ public class CustomerRecentOrdersJPanel extends javax.swing.JPanel {
         String rating = (String) liRating.getSelectedValue(); 
         int rate = Integer.parseInt(rating);
         
+        selSm.addRating(rate);
+        System.out.print(selSm.getStars());
         
     }//GEN-LAST:event_btnSubmitActionPerformed
 

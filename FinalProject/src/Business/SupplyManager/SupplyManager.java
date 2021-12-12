@@ -23,7 +23,7 @@ public class SupplyManager {
     
     public SupplyManager(){
         userAccount = new UserAccount();
-        rating = new ArrayList<>();
+        rating = new ArrayList<Integer>();
     }
 
     public float getStars() {
@@ -49,7 +49,7 @@ public class SupplyManager {
     }
     
     public void addRating(int rate){
-        rating.add(rate);
+        this.rating.add(rate);
     }
 
     public int getType1() {
