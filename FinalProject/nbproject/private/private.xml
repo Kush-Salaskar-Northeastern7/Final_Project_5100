@@ -3,12 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/Users/anushka/Final_Project_5100/FinalProject/src/userinterface/PharmacistWorkArea/PharmacistViewInventoryJPanel.java</file>
+            <file>file:/Users/anushka/Final_Project_5100/FinalProject/src/userinterface/DoctorWorkArea/DoctorAddInventoryJPanel.java</file>
+            <file>file:/Users/anushka/Final_Project_5100/FinalProject/src/Business/Pharmacist/Pharmacist.java</file>
             <file>file:/Users/anushka/Final_Project_5100/FinalProject/src/userinterface/DoctorWorkArea/DoctorWorkAreaJPanel.java</file>
-            <file>file:/Users/anushka/Final_Project_5100/FinalProject/src/Business/Role/NurseRole.java</file>
-            <file>file:/Users/anushka/Final_Project_5100/FinalProject/src/Business/Utils/BusinessEmail.java</file>
-            <file>file:/Users/anushka/Final_Project_5100/FinalProject/src/userinterface/DoctorWorkArea/DoctorCreateNurseJPanel.java</file>
-            <file>file:/Users/anushka/Final_Project_5100/FinalProject/src/userinterface/DoctorWorkArea/DoctorCreatePharmacistJPanel.java</file>
-            <file>file:/Users/anushka/Final_Project_5100/FinalProject/src/Business/Role/PharmacistRole.java</file>
+            <file>file:/Users/anushka/Final_Project_5100/FinalProject/src/userinterface/PharmacistWorkArea/PharmacistWorkAreaJPanel.java</file>
+            <file>file:/Users/anushka/Final_Project_5100/FinalProject/src/userinterface/PharmacistWorkArea/PharmacistAddInventoryJPanel.java</file>
+            <file>file:/Users/anushka/Final_Project_5100/FinalProject/src/userinterface/DeliveryManRole/ProcessSupplierWorkRequestJPanel.java</file>
         </group>
     </open-files>
 </project-private>

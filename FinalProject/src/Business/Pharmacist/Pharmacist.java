@@ -15,6 +15,24 @@ public class Pharmacist {
     private String pharmacistName;
     private UserAccount userAccount;
     private int DoctorId;
+    private int type1;
+    private int type2;
+
+    public int getType1() {
+        return type1;
+    }
+
+    public void setType1(int type1) {
+        this.type1 = type1;
+    }
+
+    public int getType2() {
+        return type2;
+    }
+
+    public void setType2(int type2) {
+        this.type2 = type2;
+    }
 
     public String getPharmacistName() {
         return pharmacistName;

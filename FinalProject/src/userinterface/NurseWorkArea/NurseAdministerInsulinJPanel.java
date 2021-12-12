@@ -31,7 +31,7 @@ public class NurseAdministerInsulinJPanel extends javax.swing.JPanel {
     private EcoSystem system;
     private UserAccount account;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
-    Doctor doctor;
+    private Doctor doctor;
     private PatientAppointmentWorkRequest req;
     public NurseAdministerInsulinJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem system) {
         initComponents();
@@ -268,22 +268,22 @@ public class NurseAdministerInsulinJPanel extends javax.swing.JPanel {
         }
         else {
             account.getWorkQueue().getWorkRequestList().remove(req);
+            
             JOptionPane.showMessageDialog(null, "Insulin has been administered.");
+            
             for(Doctor d : system.getDoctorDirectory().getDoctorList()){
-                if (req.getSender().getUid() == d.getUserAccount().getUid()){
+                if(req.getReceiver().getUid() == d.getUserAccount().getUid()){
                     doctor = d;
                 }
             }
             for(Nurse ns : system.getNurseDirectory().getNurseList()){
-                
                     if(doctor.getUserAccount().getUid() == ns.getDoctorId()){
                         if(req.isType1()){
                             doctor.setType1(-req.getQuantity());
                         } else {
                             doctor.setType2(-req.getQuantity());
                         }
-                        
-                    }                
+                    }
             }
             populateWorkReqTable();
             clearFields();

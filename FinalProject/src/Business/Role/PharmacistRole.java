@@ -9,6 +9,7 @@ import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 import userinterface.NurseWorkArea.NurseWorkAreaJPanel;
+import userinterface.PharmacistWorkArea.PharmacistWorkAreaJPanel;
 
 /**
  *
@@ -17,6 +18,6 @@ import userinterface.NurseWorkArea.NurseWorkAreaJPanel;
 public class PharmacistRole extends Role{
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
-        return new NurseWorkAreaJPanel(userProcessContainer,account,business);//To change body of generated methods, choose Tools | Templates.
+        return new PharmacistWorkAreaJPanel(userProcessContainer,account,business);//To change body of generated methods, choose Tools | Templates.
     }
 }
