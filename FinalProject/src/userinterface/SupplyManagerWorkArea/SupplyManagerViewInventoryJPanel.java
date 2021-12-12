@@ -10,6 +10,7 @@ import Business.EcoSystem;
 import Business.SupplyManager.SupplyManager;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import userinterface.LoginScreen;
 
@@ -27,6 +28,7 @@ public class SupplyManagerViewInventoryJPanel extends javax.swing.JPanel {
     private JPanel container;
     private EcoSystem system;
     private UserAccount account;
+    private SupplyManager sup;
     
     public SupplyManagerViewInventoryJPanel(JPanel container, UserAccount account, EcoSystem system) {
         initComponents();
@@ -34,11 +36,23 @@ public class SupplyManagerViewInventoryJPanel extends javax.swing.JPanel {
         this.container = container;
         this.system = system;
         populateValues();
+        showWarning();
     }
+    
+    public void showWarning(){
+        if(sup == null) return;
+        if(sup.getType1() <= 5 || sup.getType2() <= 5){
+            JOptionPane.showMessageDialog(this, "Looks like you are running low on insulin. Please refill.", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+    }
+    
     
     public void populateValues(){
         for(SupplyManager sm : system.getSupplyManagerDirectory().getSupplyManagerList()){
             if(sm.getUserAccount().getUid() == account.getUid()){
+                sup = sm;
                 lblType1.setText(String.valueOf(sm.getType1()));
                 lblType2.setText(String.valueOf(sm.getType2()));
             }
@@ -207,6 +221,7 @@ public class SupplyManagerViewInventoryJPanel extends javax.swing.JPanel {
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
         // TODO add your handling code here:
         populateValues();
+        showWarning();
     }//GEN-LAST:event_btnRefreshActionPerformed
 
 
