@@ -171,7 +171,6 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
         });
 
         lblName.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        lblName.setText("a");
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel2.setText("Name");
@@ -183,10 +182,8 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
         jLabel3.setText("Diabetes type");
 
         lblGlucoseLevel.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        lblGlucoseLevel.setText("w");
 
         lblDiabetesType.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        lblDiabetesType.setText("s");
 
         btnAccept.setBackground(new java.awt.Color(0, 153, 153));
         btnAccept.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -251,8 +248,6 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
         jLabel6.setText(":");
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/labtechnician-min.jpg"))); // NOI18N
-
-        imgPrescription.setText("prescription");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -369,8 +364,12 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
         req.getCustomer().setUserAccount(userAccount);
         String emailBody = "Congratulations!! Your account at Insumax has been created with Username= " +userAccount.getUsername() 
                 +" \n Use same password to login when you signed up";
-        BusinessEmail.sendBusinessEmail(req.getCustomer().getEmailId(), "Account Created at Insumax", emailBody);
-        
+        try {
+            BusinessEmail.sendBusinessEmail(req.getCustomer().getEmailId(), "Account Created at Insumax", emailBody);
+        } catch (Exception ex) {
+            System.out.println("Email is not correct: " +ex);
+        }
+         
         account.getWorkQueue().getWorkRequestList().remove(req);
         JOptionPane.showMessageDialog(null, "You accepted this user.");
         populateTable();
