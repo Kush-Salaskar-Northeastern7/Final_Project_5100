@@ -312,6 +312,9 @@ public class CustomerRecentOrdersJPanel extends javax.swing.JPanel {
         selSm.addRating(rate);
         selReq.setIsReviewed(true);
         
+        hideList();
+        populateTable();
+        
     }//GEN-LAST:event_btnSubmitActionPerformed
 
 
