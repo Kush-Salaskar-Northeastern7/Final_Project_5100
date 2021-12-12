@@ -81,20 +81,14 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 row[2] = en.getLocation();
                 row[3] = en.getUserAccount().getUsername();
                 model.addRow(row);
-                
-//                row[0] = en;
-//                row[1] = en.getDocName();
-//                row[2] = en.getUserAccount().getUsername();
-//                row[3] = en.getLocation();
            }
         } else if(enterprise.equals("Manufacturer")){
             for (Manager en : system.getManagerDirectory().getManagerList()) {
-                Object[] row = new Object[5];
+                Object[] row = new Object[4];
                 row[0] = en;
-                row[1] = en.getUserAccount().getUid();
-                row[2] = en.getUserAccount().getUsername();
-                row[3] = en.getManagerName();
-                row[4] = "hi";
+                row[1] = en.getPhoneNum();
+                row[2] = en.getLocation();
+                row[3] = en.getUserAccount().getUsername();
                 model.addRow(row);
            }
         } else if(enterprise.equals("Supplier")) {
@@ -671,7 +665,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
             } else if(enterprisetype.equals("Manufacturer")){
                 Employee employee = system.getEmployeeDirectory().createEmployee(name);       
                 UserAccount userAccount = system.getUserAccountDirectory().createUserAccount(username, password, employee, new AdminRole());        
-                Manager m = system.getManagerDirectory().addManager(name, userAccount);
+                Manager m = system.getManagerDirectory().addManager(name, userAccount, phone, address);
             } else if(enterprisetype.equals("Supplier")){
                 Employee employee = system.getEmployeeDirectory().createEmployee(name);       
                 UserAccount userAccount = system.getUserAccountDirectory().createUserAccount(username, password, employee, new SupplyManagerRole());        

@@ -27,10 +27,12 @@ public class ManagerDirectory {
         this.managerList = managerList;
     }
     
-    public Manager addManager(String name, UserAccount ua){
+    public Manager addManager(String name, UserAccount ua, String phoneNum, String location){
         Manager m = new Manager();
         m.setManagerName(name);
         m.setUserAccount(ua);
+        m.setLocation(location);
+        m.setPhoneNum(phoneNum);
         managerList.add(m);
         return m;
     }
