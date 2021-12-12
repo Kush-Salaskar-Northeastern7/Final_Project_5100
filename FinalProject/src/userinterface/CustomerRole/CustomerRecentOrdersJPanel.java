@@ -272,6 +272,7 @@ public class CustomerRecentOrdersJPanel extends javax.swing.JPanel {
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
         // TODO add your handling code here:
         populateTable();
+        hideList();
     }//GEN-LAST:event_btnRefreshActionPerformed
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
@@ -287,8 +288,14 @@ public class CustomerRecentOrdersJPanel extends javax.swing.JPanel {
             PatientOrderWorkRequest wr = (PatientOrderWorkRequest) tblRecentOrders.getValueAt(selectedRow, 4);
             selSm = lt;
             selReq = wr;
-            lblGreeting.setText("Give review for " + selSm.getSmName());
-            showList();
+            if(selReq.isIsReviewed()){
+                JOptionPane.showMessageDialog(null, "You have already reviewed this order", "Error", JOptionPane.WARNING_MESSAGE);
+                return;
+            } else {
+                lblGreeting.setText("Give review for " + selSm.getSmName());
+                showList(); 
+            }
+            
         }
         
     }//GEN-LAST:event_btnViewActionPerformed
@@ -296,10 +303,14 @@ public class CustomerRecentOrdersJPanel extends javax.swing.JPanel {
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
         String rating = (String) liRating.getSelectedValue(); 
+        if(rating == null){
+            JOptionPane.showMessageDialog(null, "Please select a rating", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         int rate = Integer.parseInt(rating);
         
         selSm.addRating(rate);
-        System.out.print(selSm.getStars());
+        selReq.setIsReviewed(true);
         
     }//GEN-LAST:event_btnSubmitActionPerformed
 
