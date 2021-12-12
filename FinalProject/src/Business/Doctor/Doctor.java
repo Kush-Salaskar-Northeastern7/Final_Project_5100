@@ -6,6 +6,8 @@
 package Business.Doctor;
 
 import Business.UserAccount.UserAccount;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -16,11 +18,40 @@ public class Doctor {
     private UserAccount userAccount;
     private int type1;
     private int type2;
+    private List<Integer> rating;
+    private float stars;
     
     public Doctor(){
         userAccount = new UserAccount();
+        rating = new ArrayList<Integer>();
     }
 
+    public float getStars() {
+        if(rating.size() == 0){
+            return -1;
+        } else {
+            int sum = 0;
+            for(int num : rating){
+                sum += num;
+            }
+            return sum/rating.size();
+        }
+    }
+    
+    
+
+    public List<Integer> getRating() {
+        return rating;
+    }
+
+    public void setRating(List<Integer> rating) {
+        this.rating = rating;
+    }
+    
+    public void addRating(int rate){
+        this.rating.add(rate);
+    }
+    
     public String getDocName() {
         return docName;
     }
