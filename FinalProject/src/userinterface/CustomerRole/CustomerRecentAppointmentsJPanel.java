@@ -40,6 +40,8 @@ public class CustomerRecentAppointmentsJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.account = account;
         this.system = system;
+        
+        populateTable();
     }
 
     /**
