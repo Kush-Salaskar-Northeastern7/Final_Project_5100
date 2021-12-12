@@ -66,10 +66,11 @@ public class ManagePatientsJPanel extends javax.swing.JPanel {
             row[2] = customer.getCustCommunity();
             row[3] = customer.getCustZip();
             row[4] = customer.getAge();
-            row[5] = customer.isDiagnosed();
+            row[5] = true; //customer.isDiagnosed();
             row[6] = customer.getTypeDiabetes();
             row[7] = customer.getGlucoseLvl();
-            row[8] = (customer.getUserAccount() == null) ? "not a cust" : customer.getUserAccount().getUid();
+            row[8] = customer.getCustPhoneNumber();
+            //(customer.getUserAccount() == null) ? "not a cust" : customer.getUserAccount().getUid();
             
 //            row[9] = customer.getUserAccount().getUsername();
 

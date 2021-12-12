@@ -271,7 +271,7 @@ public class DoctorCreatePharmacistJPanel extends javax.swing.JPanel {
             if(pharmacist.getDoctorId() == userAcc.getUid()){
                 Object[] row = new Object[2];
                  row[0] = pharmacist;
-                 row[1] = pharmacist.getPharmacistName(); 
+                 row[1] = pharmacist.getUserAccount().getUsername(); 
 
                  model.addRow(row);
              }

@@ -646,15 +646,20 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
             char[] passwordArr = txtPasswordField.getPassword();
             String password = String.valueOf(passwordArr);
             
-            Pattern p1 = Pattern.compile("^\\d{9}$");
+            Pattern p1 = Pattern.compile("^\\d{10}$");
             Matcher m1 = p1.matcher(txtEnterprisePhone.getText());
             if (!m1.find()){
             JOptionPane.showMessageDialog(null, "Please enter a valid Phone Number", "Error", JOptionPane.WARNING_MESSAGE);
             return;
         }
             
-
+            if(!system.getUserAccountDirectory().checkIfUsernameIsUnique(username)){
+                JOptionPane.showMessageDialog(null, "Username already exists, select a new username", "Error", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            
             if(enterprisetype.equals("Hospital")){
+                
                 Employee employee = system.getEmployeeDirectory().createEmployee(name);       
                 UserAccount userAccount = system.getUserAccountDirectory().createUserAccount(username, password, employee, new DoctorRole());        
 //                Customer c = ecosystem.getCustomerDirectory().addCustomer(name, age, address, 
