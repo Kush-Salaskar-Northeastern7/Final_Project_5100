@@ -152,7 +152,8 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         btnGraph.setBackground(new java.awt.Color(0, 0, 0));
         btnGraph.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnGraph.setForeground(new java.awt.Color(255, 255, 255));
-        btnGraph.setText("Analytics 2");
+        btnGraph.setText("Analytics 1");
+        btnGraph.setActionCommand("Analytics 1");
         btnGraph.setContentAreaFilled(false);
         btnGraph.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnGraph.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -173,7 +174,8 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         btnGraph1.setBackground(new java.awt.Color(0, 0, 0));
         btnGraph1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnGraph1.setForeground(new java.awt.Color(255, 255, 255));
-        btnGraph1.setText("Analytics 3");
+        btnGraph1.setText("Analytics 2");
+        btnGraph1.setActionCommand("Analytics 2");
         btnGraph1.setContentAreaFilled(false);
         btnGraph1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnGraph1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
