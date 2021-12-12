@@ -110,6 +110,7 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
 
+        labWorkRequestJTable.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         labWorkRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -136,11 +137,13 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        labWorkRequestJTable.setSelectionBackground(new java.awt.Color(0, 153, 153));
+        labWorkRequestJTable.setRowHeight(16);
+        labWorkRequestJTable.setSelectionBackground(new java.awt.Color(51, 153, 255));
         labWorkRequestJTable.setShowGrid(false);
         jScrollPane1.setViewportView(labWorkRequestJTable);
 
         btnView.setBackground(new java.awt.Color(0, 153, 153));
+        btnView.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         btnView.setForeground(new java.awt.Color(255, 255, 255));
         btnView.setText("View");
         btnView.addActionListener(new java.awt.event.ActionListener() {
@@ -149,26 +152,26 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
             }
         });
 
-        lblName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblName.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         lblName.setText("a");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel2.setText("Name");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel1.setText("Glucose Level");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel3.setText("Diabetes type");
 
-        lblGlucoseLevel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblGlucoseLevel.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         lblGlucoseLevel.setText("w");
 
-        lblDiabetesType.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblDiabetesType.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         lblDiabetesType.setText("s");
 
         btnAccept.setBackground(new java.awt.Color(0, 153, 153));
-        btnAccept.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnAccept.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         btnAccept.setForeground(new java.awt.Color(255, 255, 255));
         btnAccept.setText("Accept");
         btnAccept.addActionListener(new java.awt.event.ActionListener() {
@@ -178,7 +181,7 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
         });
 
         btnReject.setBackground(new java.awt.Color(0, 153, 153));
-        btnReject.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnReject.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         btnReject.setForeground(new java.awt.Color(255, 255, 255));
         btnReject.setText("Reject");
         btnReject.addActionListener(new java.awt.event.ActionListener() {
@@ -230,7 +233,7 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
         );
 
         btnDelete.setBackground(new java.awt.Color(0, 153, 153));
-        btnDelete.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnDelete.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         btnDelete.setForeground(new java.awt.Color(255, 255, 255));
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -239,10 +242,10 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel4.setText(":");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel5.setText(":");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
