@@ -119,6 +119,8 @@ public class CustomerPlaceOrderJPanel extends javax.swing.JPanel {
         txtQuantity = new javax.swing.JTextField();
         btnRefresh = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
         jPanel3.setBackground(new java.awt.Color(51, 51, 51));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
         jPanel3.setPreferredSize(new java.awt.Dimension(923, 59));
@@ -144,6 +146,7 @@ public class CustomerPlaceOrderJPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        tblSupplier.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         tblSupplier.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null},
@@ -176,6 +179,7 @@ public class CustomerPlaceOrderJPanel extends javax.swing.JPanel {
             }
         });
 
+        tblSupplierInv.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         tblSupplierInv.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -195,6 +199,7 @@ public class CustomerPlaceOrderJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblSupplierInv.setRowHeight(23);
         jScrollPane2.setViewportView(tblSupplierInv);
 
         btnPlaceOrder.setBackground(new java.awt.Color(0, 153, 153));
