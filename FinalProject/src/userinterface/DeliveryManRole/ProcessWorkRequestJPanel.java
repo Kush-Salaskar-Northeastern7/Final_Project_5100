@@ -10,6 +10,7 @@ import Business.UserAccount.UserAccount;
 import Business.WorkQueue.PatientOrderWorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -128,6 +129,7 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
         dm.getUserAccount().getWorkQueue().getWorkRequestList().remove(request);
             
         request.setStatus("DELIVERED");
+        request.setResolveDate(new Date());
         request.getCustomer().getUserAccount().getWorkQueue().getWorkRequestList().add(request);
         
         JOptionPane.showMessageDialog(null, "Delivery Complete");

@@ -15,6 +15,17 @@ public class PatientAppointmentWorkRequest extends WorkRequest {
     private Customer customer;
     private boolean type1;
     private int quantity;
+    private boolean isReviewed;
+
+    public boolean isIsReviewed() {
+        return isReviewed;
+    }
+
+    public void setIsReviewed(boolean isReviewed) {
+        this.isReviewed = isReviewed;
+    }
+    
+    
 
     public Customer getCustomer() {
         return customer;
@@ -40,5 +51,8 @@ public class PatientAppointmentWorkRequest extends WorkRequest {
         this.quantity = quantity;
     }
     
-    
+    @Override
+    public String toString(){
+        return this.getStatus();
+    }
 }
