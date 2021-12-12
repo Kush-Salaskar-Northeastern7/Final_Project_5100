@@ -125,14 +125,6 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAssignWorkRqst1ActionPerformed"/>
       </Events>
     </Component>
-    <Component class="java.awt.Button" name="buttonAddInventory1">
-      <Properties>
-        <Property name="label" type="java.lang.String" value="Add Inventory"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAddInventory1ActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="java.awt.Button" name="btnViewInventory">
       <Properties>
         <Property name="label" type="java.lang.String" value="View Inventory"/>
