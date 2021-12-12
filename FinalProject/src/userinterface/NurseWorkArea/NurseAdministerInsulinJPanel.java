@@ -276,15 +276,14 @@ public class NurseAdministerInsulinJPanel extends javax.swing.JPanel {
                     doctor = d;
                 }
             }
-            for(Nurse ns : system.getNurseDirectory().getNurseList()){
-                    if(doctor.getUserAccount().getUid() == ns.getDoctorId()){
-                        if(req.isType1()){
-                            doctor.setType1(-req.getQuantity());
-                        } else {
-                            doctor.setType2(-req.getQuantity());
-                        }
-                    }
+            
+            
+            if(req.isType1()){
+                doctor.setType1(-req.getQuantity());
+            } else {
+                doctor.setType2(-req.getQuantity());
             }
+                    
             populateWorkReqTable();
             clearFields();
             dB4OUtil.storeSystem(system);
