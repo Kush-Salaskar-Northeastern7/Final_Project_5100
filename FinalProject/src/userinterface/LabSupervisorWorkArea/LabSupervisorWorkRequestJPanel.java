@@ -267,7 +267,7 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
         custPrescriptionPanel.setLayout(custPrescriptionPanelLayout);
         custPrescriptionPanelLayout.setHorizontalGroup(
             custPrescriptionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 437, Short.MAX_VALUE)
+            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE)
             .addGroup(custPrescriptionPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(imgPrescription, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -301,7 +301,7 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
                             .addComponent(btnFinalSubmit)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(custImagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(31, 31, 31)
                         .addComponent(custPrescriptionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -352,24 +352,50 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
 
     private void btnAssignLabTechActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignLabTechActionPerformed
         // TODO add your handling code here:
-        
+        custImagePanel.setVisible(false);
+        custPrescriptionPanel.setVisible(false);
+        imgProfile.setIcon(null);
+        imgPrescription.setIcon(null);
         int selectedRow = labWorkRequestJTable.getSelectedRow();
-        
+        boolean cImage = false;
+        boolean pImage = false;
+     
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select a row", "Error", JOptionPane.NO_OPTION);
         }
         else {
             LabApprovalWorkRequest wr = (LabApprovalWorkRequest) labWorkRequestJTable.getValueAt(selectedRow, 0);
             req = wr;
-            custImagePanel.setVisible(true);
-            custPrescriptionPanel.setVisible(true);
+            
+            
+            
+//            if (!req.getCustomer().getCustImage().trim().equals("") && !req.getCustomer().getPrescriptionImg().trim().equals("")) {
+//                custImagePanel.setVisible(true);
+//                custPrescriptionPanel.setVisible(true);
+//                System.out.println(req.getCustomer().getCustImage());
+//            }
+            if(req.getCustomer().getCustImage() != null){
+                custImagePanel.setVisible(true);
+                System.out.println(req.getCustomer().getCustImage());
+
+            }
+            if(req.getCustomer().getPrescriptionImg() != null){
+                custPrescriptionPanel.setVisible(true);
+                System.out.println(req.getCustomer().getPrescriptionImg());
+            }
+            
             try {
                 BufferedImage profilePhoto = ImageIO.read(new File(req.getCustomer().getCustImage()));
-                BufferedImage prescriptionPhoto = ImageIO.read(new File(req.getCustomer().getPrescriptionImg()));
                 imgProfile.setIcon(new ImageIcon(profilePhoto.getScaledInstance(200, 150, java.awt.Image.SCALE_SMOOTH)));
+            } catch (IOException ex) {
+                System.out.println("Profile Image not uploaded");
+            }
+            
+            try {
+                BufferedImage prescriptionPhoto = ImageIO.read(new File(req.getCustomer().getPrescriptionImg()));
                 imgPrescription.setIcon(new ImageIcon(prescriptionPhoto.getScaledInstance(420, 231, java.awt.Image.SCALE_SMOOTH)));
             } catch (IOException ex) {
-                Logger.getLogger(LabSupervisorWorkRequestJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("Prescription Image not uploaded");
             }
             tblLabTech.setVisible(true);
             btnFinalSubmit.setVisible(true);

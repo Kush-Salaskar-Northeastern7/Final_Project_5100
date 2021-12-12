@@ -396,6 +396,8 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
         // TODO add your handling code here:
+        imgPrescription.setVisible(false);
+        imgPrescription.setIcon(null);
         int selectedRow = labWorkRequestJTable.getSelectedRow();
         
         if (selectedRow < 0) {
@@ -407,11 +409,17 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
             lblName.setText(wr.getCustomer().getCustName());
             lblGlucoseLevel.setText(String.valueOf(wr.getCustomer().getGlucoseLvl()));
             lblDiabetesType.setText(wr.getCustomer().getTypeDiabetes());
+ 
+            if(req.getCustomer().getPrescriptionImg() != null){
+                imgPrescription.setVisible(true);
+                System.out.println(req.getCustomer().getPrescriptionImg());
+            }
+            
             try {
                 BufferedImage prescriptionPhoto = ImageIO.read(new File(wr.getCustomer().getPrescriptionImg()));
                 imgPrescription.setIcon(new ImageIcon(prescriptionPhoto.getScaledInstance(310, 170, java.awt.Image.SCALE_SMOOTH)));
             } catch (IOException ex) {
-                Logger.getLogger(LabTechnicianAcceptPatientsJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("Prescription Profile Image not uploaded");
             }
             showButtons();
         }
