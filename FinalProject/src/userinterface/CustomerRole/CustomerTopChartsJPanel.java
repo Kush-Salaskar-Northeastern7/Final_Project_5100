@@ -6,6 +6,7 @@
 package userinterface.CustomerRole;
 
 import Business.DB4OUtil.DB4OUtil;
+import Business.Doctor.Doctor;
 import Business.EcoSystem;
 import Business.SupplyManager.SupplyManager;
 import Business.UserAccount.UserAccount;
@@ -61,6 +62,17 @@ public class CustomerTopChartsJPanel extends javax.swing.JPanel {
         
     }
     
+    public class DocComparator implements Comparator<Doctor> {
+        @Override
+        public int compare(Doctor o1, Doctor o2) {
+            return Float.compare(o2.getStars(), o1.getStars());
+        }
+
+        
+    }
+    
+    
+    
     public void populateSupRating(){
         DefaultTableModel model = (DefaultTableModel)tblSup.getModel();
         
@@ -79,7 +91,19 @@ public class CustomerTopChartsJPanel extends javax.swing.JPanel {
     }
     
     public void populateDocRating(){
+        DefaultTableModel model = (DefaultTableModel)tblDoc.getModel();
         
+        model.setRowCount(0);
+        
+        ArrayList<Doctor> docList = system.getDoctorDirectory().getDoctorList();
+        Collections.sort(docList, new DocComparator());
+        for (Doctor sm : docList) {
+            Object[] row = new Object[2];
+            row[0] = sm;
+            row[1] = sm.getStars() == -1.0 ? "Not rated" : sm.getStars();
+            
+            model.addRow(row);       
+        }
     }
     
     @SuppressWarnings("unchecked")
