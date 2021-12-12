@@ -47,10 +47,13 @@ public class SupplyManagerWorkAreaJPanel extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         btnLogout = new javax.swing.JButton();
         lblSelectedNode = new javax.swing.JLabel();
-        btnViewInv = new javax.swing.JButton();
+        jSplitPane1 = new javax.swing.JSplitPane();
+        jPanel1 = new javax.swing.JPanel();
         btnManageDeliveryMen1 = new javax.swing.JButton();
         buttonWorkRqst1 = new javax.swing.JButton();
         btnAddInventory = new javax.swing.JButton();
+        btnViewInv = new javax.swing.JButton();
+        innercontainer = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -81,7 +84,7 @@ public class SupplyManagerWorkAreaJPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblSelectedNode, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 482, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnLogout)
                 .addGap(19, 19, 19))
         );
@@ -94,15 +97,8 @@ public class SupplyManagerWorkAreaJPanel extends javax.swing.JPanel {
             .addComponent(lblSelectedNode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        btnViewInv.setBackground(new java.awt.Color(0, 153, 153));
-        btnViewInv.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        btnViewInv.setForeground(new java.awt.Color(255, 255, 255));
-        btnViewInv.setText("View Inventory");
-        btnViewInv.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnViewInvActionPerformed(evt);
-            }
-        });
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(266, 425));
 
         btnManageDeliveryMen1.setBackground(new java.awt.Color(0, 153, 153));
         btnManageDeliveryMen1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -134,25 +130,33 @@ public class SupplyManagerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+        btnViewInv.setBackground(new java.awt.Color(0, 153, 153));
+        btnViewInv.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        btnViewInv.setForeground(new java.awt.Color(255, 255, 255));
+        btnViewInv.setText("View Inventory");
+        btnViewInv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewInvActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(buttonWorkRqst1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnManageDeliveryMen1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAddInventory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnViewInv, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(btnManageDeliveryMen1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(buttonWorkRqst1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -160,7 +164,28 @@ public class SupplyManagerWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(btnAddInventory, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnViewInv, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(260, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jSplitPane1.setLeftComponent(jPanel1);
+
+        innercontainer.setBackground(new java.awt.Color(255, 255, 255));
+        innercontainer.setLayout(new java.awt.CardLayout());
+        jSplitPane1.setRightComponent(innercontainer);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jSplitPane1)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -177,38 +202,38 @@ public class SupplyManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnViewInvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewInvActionPerformed
         // TODO add your handling code here:
-        container.removeAll();
-        SupplyManagerViewInventoryJPanel ls = new SupplyManagerViewInventoryJPanel(container,account, system);
-        container.add("signup", ls);
-        CardLayout crdLyt = (CardLayout) container.getLayout();
-        crdLyt.next(container);
+        innercontainer.removeAll();
+        SupplyManagerViewInventoryJPanel ls = new SupplyManagerViewInventoryJPanel(innercontainer,account, system);
+        innercontainer.add("smi", ls);
+        CardLayout crdLyt = (CardLayout) innercontainer.getLayout();
+        crdLyt.next(innercontainer);
     }//GEN-LAST:event_btnViewInvActionPerformed
 
     private void btnManageDeliveryMen1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageDeliveryMen1ActionPerformed
         // TODO add your handling code here:
-        container.removeAll();
-        SupplyManagerCreateDeliveryManJPanel ls = new SupplyManagerCreateDeliveryManJPanel(container,account, system);
-        container.add("signup", ls);
-        CardLayout crdLyt = (CardLayout) container.getLayout();
-        crdLyt.next(container);
+        innercontainer.removeAll();
+        SupplyManagerCreateDeliveryManJPanel ls = new SupplyManagerCreateDeliveryManJPanel(innercontainer,account, system);
+        innercontainer.add("smcd", ls);
+        CardLayout crdLyt = (CardLayout) innercontainer.getLayout();
+        crdLyt.next(innercontainer);
     }//GEN-LAST:event_btnManageDeliveryMen1ActionPerformed
 
     private void buttonWorkRqst1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonWorkRqst1ActionPerformed
         // TODO add your handling code here:
-        container.removeAll();
-        SupplyManagerAssignDeliveryManJPanel ls = new SupplyManagerAssignDeliveryManJPanel(container,account, system);
-        container.add("signup", ls);
-        CardLayout crdLyt = (CardLayout) container.getLayout();
-        crdLyt.next(container);
+        innercontainer.removeAll();
+        SupplyManagerAssignDeliveryManJPanel ls = new SupplyManagerAssignDeliveryManJPanel(innercontainer,account, system);
+        innercontainer.add("smad", ls);
+        CardLayout crdLyt = (CardLayout) innercontainer.getLayout();
+        crdLyt.next(innercontainer);
     }//GEN-LAST:event_buttonWorkRqst1ActionPerformed
 
     private void btnAddInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddInventoryActionPerformed
         // TODO add your handling code here:
-        container.removeAll();
-        SupplyManagerAddInventoryJPanel ls = new SupplyManagerAddInventoryJPanel(container,account, system);
-        container.add("signup", ls);
-        CardLayout crdLyt = (CardLayout) container.getLayout();
-        crdLyt.next(container);
+        innercontainer.removeAll();
+        SupplyManagerAddInventoryJPanel ls = new SupplyManagerAddInventoryJPanel(innercontainer,account, system);
+        innercontainer.add("smai", ls);
+        CardLayout crdLyt = (CardLayout) innercontainer.getLayout();
+        crdLyt.next(innercontainer);
     }//GEN-LAST:event_btnAddInventoryActionPerformed
 
 
@@ -218,7 +243,10 @@ public class SupplyManagerWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnManageDeliveryMen1;
     private javax.swing.JButton btnViewInv;
     private javax.swing.JButton buttonWorkRqst1;
+    private javax.swing.JPanel innercontainer;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JLabel lblSelectedNode;
     // End of variables declaration//GEN-END:variables
 }
