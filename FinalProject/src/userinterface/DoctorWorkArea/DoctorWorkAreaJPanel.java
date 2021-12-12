@@ -45,11 +45,14 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         btnLogout = new javax.swing.JButton();
         lblSelectedNode = new javax.swing.JLabel();
+        jSplitPane1 = new javax.swing.JSplitPane();
+        jPanel1 = new javax.swing.JPanel();
+        buttonAddInventory1 = new java.awt.Button();
+        btnViewInventory = new java.awt.Button();
         btnManageNurses = new java.awt.Button();
         buttonManagePharmacists = new java.awt.Button();
         buttonAssignWorkRqst = new java.awt.Button();
-        buttonAddInventory1 = new java.awt.Button();
-        btnViewInventory = new java.awt.Button();
+        innercontainer = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -80,7 +83,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(lblSelectedNode, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 457, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 542, Short.MAX_VALUE)
                 .addComponent(btnLogout)
                 .addGap(19, 19, 19))
         );
@@ -90,52 +93,114 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblSelectedNode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnLogout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnLogout, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
-        add(jPanel3);
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        btnManageNurses.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
-        btnManageNurses.setLabel("Manage Nurses");
-        btnManageNurses.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnManageNursesActionPerformed(evt);
-            }
-        });
-        add(btnManageNurses);
-
-        buttonManagePharmacists.setLabel("Manage Pharmacists");
-        buttonManagePharmacists.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonManagePharmacistsActionPerformed(evt);
-            }
-        });
-        add(buttonManagePharmacists);
-
-        buttonAssignWorkRqst.setLabel("Assign Work to Nurses");
-        buttonAssignWorkRqst.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonAssignWorkRqst1ActionPerformed(evt);
-            }
-        });
-        add(buttonAssignWorkRqst);
-
+        buttonAddInventory1.setBackground(new java.awt.Color(0, 153, 153));
+        buttonAddInventory1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        buttonAddInventory1.setForeground(new java.awt.Color(255, 255, 255));
         buttonAddInventory1.setLabel("Add Inventory");
         buttonAddInventory1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonAddInventory1ActionPerformed(evt);
             }
         });
-        add(buttonAddInventory1);
 
+        btnViewInventory.setBackground(new java.awt.Color(0, 153, 153));
+        btnViewInventory.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        btnViewInventory.setForeground(new java.awt.Color(255, 255, 255));
         btnViewInventory.setLabel("View Inventory");
         btnViewInventory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnViewInventoryActionPerformed(evt);
             }
         });
-        add(btnViewInventory);
+
+        btnManageNurses.setBackground(new java.awt.Color(0, 153, 153));
+        btnManageNurses.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        btnManageNurses.setForeground(new java.awt.Color(255, 255, 255));
+        btnManageNurses.setLabel("Manage Nurses");
+        btnManageNurses.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageNursesActionPerformed(evt);
+            }
+        });
+
+        buttonManagePharmacists.setBackground(new java.awt.Color(0, 153, 153));
+        buttonManagePharmacists.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        buttonManagePharmacists.setForeground(new java.awt.Color(255, 255, 255));
+        buttonManagePharmacists.setLabel("Manage Pharmacists");
+        buttonManagePharmacists.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonManagePharmacistsActionPerformed(evt);
+            }
+        });
+
+        buttonAssignWorkRqst.setBackground(new java.awt.Color(0, 153, 153));
+        buttonAssignWorkRqst.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        buttonAssignWorkRqst.setForeground(new java.awt.Color(255, 255, 255));
+        buttonAssignWorkRqst.setLabel("Assign Work to Nurses");
+        buttonAssignWorkRqst.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAssignWorkRqst1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnViewInventory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonAddInventory1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnManageNurses, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonManagePharmacists, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonAssignWorkRqst, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(btnViewInventory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(buttonAddInventory1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
+                .addComponent(btnManageNurses, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(buttonManagePharmacists, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19)
+                .addComponent(buttonAssignWorkRqst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(335, Short.MAX_VALUE))
+        );
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnManageNurses, btnViewInventory, buttonAddInventory1, buttonAssignWorkRqst, buttonManagePharmacists});
+
+        jSplitPane1.setLeftComponent(jPanel1);
+
+        innercontainer.setBackground(new java.awt.Color(255, 255, 255));
+        innercontainer.setLayout(new java.awt.CardLayout());
+        jSplitPane1.setRightComponent(innercontainer);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jSplitPane1)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSplitPane1))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
@@ -150,20 +215,20 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnManageNursesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageNursesActionPerformed
-        userProcessContainer.removeAll();
-        DoctorCreateNurseJPanel ls = new DoctorCreateNurseJPanel(userProcessContainer,account, system);
-        userProcessContainer.add("nursearea", ls);
-        CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
-        crdLyt.next(userProcessContainer);
+        innercontainer.removeAll();
+        DoctorCreateNurseJPanel ls = new DoctorCreateNurseJPanel(innercontainer,account, system);
+        innercontainer.add("nursearea", ls);
+        CardLayout crdLyt = (CardLayout) innercontainer.getLayout();
+        crdLyt.next(innercontainer);
     }//GEN-LAST:event_btnManageNursesActionPerformed
 
     private void buttonManagePharmacistsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonManagePharmacistsActionPerformed
         // TODO add your handling code here:
-        userProcessContainer.removeAll();
-        DoctorCreatePharmacistJPanel ls = new DoctorCreatePharmacistJPanel(userProcessContainer,account, system);
-        userProcessContainer.add("pharmacistarea", ls);
-        CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
-        crdLyt.next(userProcessContainer);
+        innercontainer.removeAll();
+        DoctorCreatePharmacistJPanel ls = new DoctorCreatePharmacistJPanel(innercontainer,account, system);
+        innercontainer.add("pharmacistarea", ls);
+        CardLayout crdLyt = (CardLayout) innercontainer.getLayout();
+        crdLyt.next(innercontainer);
     }//GEN-LAST:event_buttonManagePharmacistsActionPerformed
 /*
     private void buttonAssignWorkRqst1ActionPerformed(java.awt.event.ActionEvent evt) {                                                      
@@ -193,31 +258,31 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
 */
     private void buttonAssignWorkRqst1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAssignWorkRqst1ActionPerformed
         // TODO add your handling code here:
-        userProcessContainer.removeAll();
-        DoctorWorkRequestJPanel dwj = new DoctorWorkRequestJPanel(userProcessContainer, account, system);
-        userProcessContainer.add("doctorwkreqarea", dwj);
-        CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
-        crdLyt.next(userProcessContainer);
+        innercontainer.removeAll();
+        DoctorWorkRequestJPanel dwj = new DoctorWorkRequestJPanel(innercontainer, account, system);
+        innercontainer.add("doctorwkreqarea", dwj);
+        CardLayout crdLyt = (CardLayout) innercontainer.getLayout();
+        crdLyt.next(innercontainer);
     }//GEN-LAST:event_buttonAssignWorkRqst1ActionPerformed
 
     
     private void buttonAddInventory1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddInventory1ActionPerformed
         // TODO add your handling code here:
-        userProcessContainer.removeAll();
-        DoctorAddInventoryJPanel dwj = new DoctorAddInventoryJPanel(userProcessContainer, account, system);
-        userProcessContainer.add("doctorwkreqarea", dwj);
-        CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
-        crdLyt.next(userProcessContainer);
+        innercontainer.removeAll();
+        DoctorAddInventoryJPanel dwj = new DoctorAddInventoryJPanel(innercontainer, account, system);
+        innercontainer.add("doctorwkreqarea", dwj);
+        CardLayout crdLyt = (CardLayout) innercontainer.getLayout();
+        crdLyt.next(innercontainer);
     }//GEN-LAST:event_buttonAddInventory1ActionPerformed
                                        
     
     private void btnViewInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewInventoryActionPerformed
         // TODO add your handling code here:
-        userProcessContainer.removeAll();
-        DoctorViewInventoryJPanel dwj = new DoctorViewInventoryJPanel(userProcessContainer, account, system);
-        userProcessContainer.add("doctorwkreqarea", dwj);
-        CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
-        crdLyt.next(userProcessContainer);
+        innercontainer.removeAll();
+        DoctorViewInventoryJPanel dwj = new DoctorViewInventoryJPanel(innercontainer, account, system);
+        innercontainer.add("di", dwj);
+        CardLayout crdLyt = (CardLayout) innercontainer.getLayout();
+        crdLyt.next(innercontainer);
     }//GEN-LAST:event_btnViewInventoryActionPerformed
 
 
@@ -228,7 +293,10 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
     private java.awt.Button buttonAddInventory1;
     private java.awt.Button buttonAssignWorkRqst;
     private java.awt.Button buttonManagePharmacists;
+    private javax.swing.JPanel innercontainer;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JLabel lblSelectedNode;
     // End of variables declaration//GEN-END:variables
 }
