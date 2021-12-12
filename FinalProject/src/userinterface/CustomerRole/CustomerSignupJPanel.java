@@ -18,6 +18,7 @@ import java.awt.CardLayout;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -504,14 +505,44 @@ public class CustomerSignupJPanel extends javax.swing.JPanel {
         
         
         String name = txtPtnName.getText();
+        
+        
+        Pattern p4 = Pattern.compile("^\\d{10}$");
+            Matcher m4 = p4.matcher(txtPtnPhoneNum.getText());
+            if (!m4.find()){
+            JOptionPane.showMessageDialog(null, "Please enter a valid phone number", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         long phonenumber = Long.parseLong(txtPtnPhoneNum.getText());
+        
         String address = txtPtnAddress.getText();        
         String username = txtPtnUsername.getText();
         String password = String.valueOf(txtPtnPassword.getPassword());
         String community = txtPtnCommunity.getText();        
         String diabetestype = (String)lstDiabetesType.getSelectedValue(); 
+        
+        Pattern p3 = Pattern.compile("^\\d{3}$");
+            Matcher m3 = p3.matcher(txtPtnGlucoseLvl.getText());
+            if (!m3.find()){
+            JOptionPane.showMessageDialog(null, "Please enter a valid glucose level", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         int glucoselvl = Integer.parseInt(txtPtnGlucoseLvl.getText());
+        
+         Pattern p2 = Pattern.compile("^\\d{5}$");
+            Matcher m2 = p2.matcher(txtPtnZip.getText());
+            if (!m2.find()){
+            JOptionPane.showMessageDialog(null, "Please enter a valid Zip", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         String zip = txtPtnZip.getText();
+        
+        Pattern p5 = Pattern.compile("^\\d{1,2}$");
+        Matcher m5 = p5.matcher(txtPtnAge.getText());
+        if (!m5.find()){
+            JOptionPane.showMessageDialog(null, "Please enter a valid Age", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         int age = Integer.parseInt(txtPtnAge.getText());
         
         String regex = "^(.+)@(.+)$";
