@@ -41,6 +41,7 @@ public class ManagerCreateDeliveryManJPanel extends javax.swing.JPanel {
         this.userAcc = userAcc;
 //        this.userAccount = account;
         this.ecosystem = ecosystem;
+        populateTable();
     }
 
     /**

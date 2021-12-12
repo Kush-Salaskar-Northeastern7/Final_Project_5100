@@ -246,12 +246,12 @@ public class NurseAdministerInsulinJPanel extends javax.swing.JPanel {
         else {
             PatientAppointmentWorkRequest wr = (PatientAppointmentWorkRequest) nurseWorkRequestJTable.getValueAt(selectedRow, 0);
             req = wr;
-            if (wr.isType1())
+            if (req.isType1())
                 txtInsulinType.setText("Type1");
             else
                 txtInsulinType.setText("Type2");
                 
-            txtQuantity.setText(String.valueOf(wr.getQuantity()));
+            txtQuantity.setText(String.valueOf(req.getQuantity()));
         }
     }//GEN-LAST:event_btnViewActionPerformed
 
@@ -269,22 +269,22 @@ public class NurseAdministerInsulinJPanel extends javax.swing.JPanel {
         else {
             account.getWorkQueue().getWorkRequestList().remove(req);
             JOptionPane.showMessageDialog(null, "Insulin has been administered.");
-            for(Nurse ns : system.getNurseDirectory().getNurseList()){
-                System.out.println("noobs");
-                for(Doctor doc : system.getDoctorDirectory().getDoctorList()){
-                    if(doc.getUserAccount().getUid() == ns.getDoctorId()){
-                        System.out.println("same ids");
-                        if(req.isType1()){
-                            doc.setType1(-req.getQuantity());
-                        } else {
-                            doc.setType2(-req.getQuantity());
-                        }
-                        doctor = doc;
-                    }
+            for(Doctor d : system.getDoctorDirectory().getDoctorList()){
+                if (req.getSender().getUid() == d.getUserAccount().getUid()){
+                    doctor = d;
                 }
             }
-            System.out.println(doctor.getType1());
-            System.out.println(doctor.getType2());
+            for(Nurse ns : system.getNurseDirectory().getNurseList()){
+                
+                    if(doctor.getUserAccount().getUid() == ns.getDoctorId()){
+                        if(req.isType1()){
+                            doctor.setType1(-req.getQuantity());
+                        } else {
+                            doctor.setType2(-req.getQuantity());
+                        }
+                        
+                    }                
+            }
             populateWorkReqTable();
             clearFields();
             dB4OUtil.storeSystem(system);

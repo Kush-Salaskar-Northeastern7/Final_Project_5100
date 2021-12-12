@@ -49,6 +49,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         buttonManagePharmacists = new java.awt.Button();
         buttonAssignWorkRqst = new java.awt.Button();
         buttonAddInventory1 = new java.awt.Button();
+        btnViewInventory = new java.awt.Button();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -79,7 +80,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(lblSelectedNode, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 456, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 457, Short.MAX_VALUE)
                 .addComponent(btnLogout)
                 .addGap(19, 19, 19))
         );
@@ -115,7 +116,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         buttonAssignWorkRqst.setLabel("Assign Work to Nurses");
         buttonAssignWorkRqst.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonAssignWorkRqstActionPerformed(evt);
+                buttonAssignWorkRqst1ActionPerformed(evt);
             }
         });
         add(buttonAssignWorkRqst);
@@ -127,6 +128,14 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(buttonAddInventory1);
+
+        btnViewInventory.setLabel("View Inventory");
+        btnViewInventory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewInventoryActionPerformed(evt);
+            }
+        });
+        add(btnViewInventory);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
@@ -156,31 +165,66 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
         crdLyt.next(userProcessContainer);
     }//GEN-LAST:event_buttonManagePharmacistsActionPerformed
-
-    private void buttonAssignWorkRqst1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAssignWorkRqst1ActionPerformed
+/*
+    private void buttonAssignWorkRqst1ActionPerformed(java.awt.event.ActionEvent evt) {                                                      
         // TODO add your handling code here:
-    }//GEN-LAST:event_buttonAssignWorkRqst1ActionPerformed
+//        userProcessContainer.removeAll();
+//        DoctorWorkRequestJPanel dwj = new DoctorWorkRequestJPanel(userProcessContainer, account, system);
+//        userProcessContainer.add("doctorwkreqarea", dwj);
+//        CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
+//        crdLyt.next(userProcessContainer);
+    }                                                     
 
-    private void btnViewInvActionPerformed(java.awt.event.ActionEvent evt) { 
+//    private void btnViewInvActionPerformed(java.awt.event.ActionEvent evt) { 
+//        
+//    }                                          
+//    private void buttonAssignWorkRqstActionPerformed(java.awt.event.ActionEvent evt) {   
+//        userProcessContainer.removeAll();
+//        DoctorWorkRequestJPanel dwj = new DoctorWorkRequestJPanel(userProcessContainer, account, system);
+//        userProcessContainer.add("doctorwkreqarea", dwj);
+//        CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
+//        crdLyt.next(userProcessContainer);
+//    }
+    /*
+    private void buttonAddInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddInventoryActionPerformed
+        // TODO add your handling code here:
         
-    }                                          
-    private void buttonAssignWorkRqstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAssignWorkRqstActionPerformed
+    }//GEN-LAST:event_buttonAddInventoryActionPerformed
+*/
+    private void buttonAssignWorkRqst1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAssignWorkRqst1ActionPerformed
         // TODO add your handling code here:
         userProcessContainer.removeAll();
         DoctorWorkRequestJPanel dwj = new DoctorWorkRequestJPanel(userProcessContainer, account, system);
         userProcessContainer.add("doctorwkreqarea", dwj);
         CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
         crdLyt.next(userProcessContainer);
-    }//GEN-LAST:event_buttonAssignWorkRqstActionPerformed
+    }//GEN-LAST:event_buttonAssignWorkRqst1ActionPerformed
 
+    
     private void buttonAddInventory1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddInventory1ActionPerformed
         // TODO add your handling code here:
+        userProcessContainer.removeAll();
+        DoctorAddInventoryJPanel dwj = new DoctorAddInventoryJPanel(userProcessContainer, account, system);
+        userProcessContainer.add("doctorwkreqarea", dwj);
+        CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
+        crdLyt.next(userProcessContainer);
     }//GEN-LAST:event_buttonAddInventory1ActionPerformed
+                                       
+    
+    private void btnViewInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewInventoryActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.removeAll();
+        DoctorViewInventoryJPanel dwj = new DoctorViewInventoryJPanel(userProcessContainer, account, system);
+        userProcessContainer.add("doctorwkreqarea", dwj);
+        CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
+        crdLyt.next(userProcessContainer);
+    }//GEN-LAST:event_btnViewInventoryActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogout;
     private java.awt.Button btnManageNurses;
+    private java.awt.Button btnViewInventory;
     private java.awt.Button buttonAddInventory1;
     private java.awt.Button buttonAssignWorkRqst;
     private java.awt.Button buttonManagePharmacists;
