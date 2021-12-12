@@ -38,6 +38,7 @@ public class DoctorCreateNurseJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;    
         this.userAcc = userAcc;
         this.system = system;
+        populateTable();
         system = dB4OUtil.retrieveSystem();
     }
 
@@ -313,7 +314,7 @@ public class DoctorCreateNurseJPanel extends javax.swing.JPanel {
             if(nurse.getDoctorId() == userAcc.getUid()){
                 Object[] row = new Object[2];
                  row[0] = nurse;
-                 row[1] = nurse.getNurseName(); 
+                 row[1] = nurse.getUserAccount().getUsername(); 
 
                  model.addRow(row);
              }

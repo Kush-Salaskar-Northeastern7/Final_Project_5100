@@ -22,11 +22,18 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="jPanel3" alignment="1" pref="800" max="32767" attributes="0"/>
-          <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="btnAppointment" max="32767" attributes="0"/>
-                  <Component id="btnOrder" max="32767" attributes="0"/>
-                  <Component id="btnRecentOrders" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Component id="btnAppointment" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnOrder" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnRecentOrders" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="btnTopCharts" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnRecentAppointments" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
@@ -43,7 +50,11 @@
               <Component id="btnOrder" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnRecentOrders" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="272" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="btnRecentAppointments" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="btnTopCharts" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="178" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -109,7 +120,7 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btnBackBtn" alignment="0" pref="36" max="32767" attributes="0"/>
+                      <Component id="btnBackBtn" alignment="0" pref="46" max="32767" attributes="0"/>
                       <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                           <Component id="lblSelectedNode" alignment="3" max="32767" attributes="0"/>
                           <Component id="valueLabel" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
@@ -163,5 +174,21 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JButton" name="btnTopCharts">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Top Charts"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTopChartsActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnRecentAppointments">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="View Recent Appointments"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRecentAppointmentsActionPerformed"/>
+      </Events>
+    </Component>
   </SubComponents>
 </Form>
