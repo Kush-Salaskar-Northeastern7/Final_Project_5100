@@ -9,6 +9,7 @@ import Business.Customer.Customer;
 import Business.DB4OUtil.DB4OUtil;
 import Business.Doctor.Doctor;
 import Business.EcoSystem;
+import Business.Nurse.Nurse;
 import Business.SupplyManager.SupplyManager;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.PatientAppointmentWorkRequest;
@@ -24,24 +25,25 @@ import userinterface.LoginScreen;
  *
  * @author kushsalaskar
  */
-public class CustomerRecentOrdersJPanel extends javax.swing.JPanel {
+public class CustomerRecentAppointmentsJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form CustomerRecentOrdersJPanel
+     * Creates new form CustomerRecentAppointmentsJPanel
      */
     
     private JPanel userProcessContainer;
-    private UserAccount account; 
+
+    private UserAccount account;
     private EcoSystem system;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
-    private SupplyManager selSm;
-    private PatientOrderWorkRequest selReq;
+    private Doctor selDoc;
+    private PatientAppointmentWorkRequest selReq;
     
-    public CustomerRecentOrdersJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem system) {
+    public CustomerRecentAppointmentsJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem system) {
         initComponents();
-        this.system = system;
         this.userProcessContainer = userProcessContainer;
         this.account = account;
+        this.system = system;
         
         populateTable();
         hideList();
@@ -77,20 +79,22 @@ public class CustomerRecentOrdersJPanel extends javax.swing.JPanel {
 //            account.getUsername()
             if (c.getUserAccount().getUid() == account.getUid()) {
                 for(WorkRequest request : c.getUserAccount().getWorkQueue().getWorkRequestList()){
-                    if(request instanceof PatientOrderWorkRequest){
-                        SupplyManager sup = null;
-                        for(SupplyManager sm : system.getSupplyManagerDirectory().getSupplyManagerList()){
-                            if(sm.getUserAccount().getUid() == ((PatientOrderWorkRequest)request).getReceiver().getUid()){
-                                sup = sm;
+                    if(request instanceof PatientAppointmentWorkRequest){
+                        Doctor doc = null;
+                        for(Doctor d : system.getDoctorDirectory().getDoctorList()){
+                            if(d.getUserAccount().getUid() == ((PatientAppointmentWorkRequest)request).getReceiver().getUid()){
+                                doc = d;
                                 break;
                             }
                         }
-                        Object[] row = new Object[5];
-                        row[0] = sup != null ? sup : "Supplier doesnt exist";
-                        row[1] = ((PatientOrderWorkRequest)request).isType1() ? "Type1" : "Type2";
-                        row[2] = ((PatientOrderWorkRequest)request).getQuantity();
-                        row[3] = ((PatientOrderWorkRequest)request).getResolveDate();
-                        row[4] = (PatientOrderWorkRequest)request;
+                        Object[] row = new Object[6];
+                        row[0] = doc != null ? doc : "Supplier doesnt exist";
+                        row[1] = ((PatientAppointmentWorkRequest)request).isType1() ? "Type1" : "Type2";
+                        row[2] = ((PatientAppointmentWorkRequest)request).getQuantity();
+                        row[3] = ((PatientAppointmentWorkRequest)request).getResolveDate();
+//                        row[4] = ((PatientAppointmentWorkRequest)request).getStatus();
+                        row[4] = (PatientAppointmentWorkRequest) request;
+                        
 
                         model.addRow(row);
                     }
@@ -106,14 +110,14 @@ public class CustomerRecentOrdersJPanel extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         btnBackBtn = new javax.swing.JButton();
         lblSelectedNode = new javax.swing.JLabel();
+        btnRefresh = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblRecentOrders = new javax.swing.JTable();
-        btnRefresh = new javax.swing.JButton();
         btnView = new javax.swing.JButton();
+        lblGreeting = new javax.swing.JLabel();
+        btnSubmit = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         liRating = new javax.swing.JList<>();
-        btnSubmit = new javax.swing.JButton();
-        lblGreeting = new javax.swing.JLabel();
 
         jPanel3.setBackground(new java.awt.Color(51, 51, 51));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
@@ -133,7 +137,7 @@ public class CustomerRecentOrdersJPanel extends javax.swing.JPanel {
 
         lblSelectedNode.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblSelectedNode.setForeground(new java.awt.Color(255, 255, 255));
-        lblSelectedNode.setText("View Recent Orders");
+        lblSelectedNode.setText("View Recent Appointments");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -156,6 +160,13 @@ public class CustomerRecentOrdersJPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        btnRefresh.setText("Refresh");
+        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshActionPerformed(evt);
+            }
+        });
+
         tblRecentOrders.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -164,7 +175,7 @@ public class CustomerRecentOrdersJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Supplier", "Type", "Quantity", "Delivery Date", "Status"
+                "Doctor", "Type", "Quantity", "Innoculation Date", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -177,17 +188,19 @@ public class CustomerRecentOrdersJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblRecentOrders);
 
-        btnRefresh.setText("Refresh");
-        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRefreshActionPerformed(evt);
-            }
-        });
-
         btnView.setText("Review");
         btnView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnViewActionPerformed(evt);
+            }
+        });
+
+        lblGreeting.setText("jLabel1");
+
+        btnSubmit.setText("Submit");
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitActionPerformed(evt);
             }
         });
 
@@ -199,62 +212,45 @@ public class CustomerRecentOrdersJPanel extends javax.swing.JPanel {
         liRating.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane2.setViewportView(liRating);
 
-        btnSubmit.setText("Submit");
-        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSubmitActionPerformed(evt);
-            }
-        });
-
-        lblGreeting.setText("jLabel1");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 657, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(213, 213, 213)
-                                .addComponent(btnView))
+                            .addComponent(btnView)
                             .addComponent(btnRefresh)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(128, 128, 128)
+                        .addGap(150, 150, 150)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblGreeting)
                             .addComponent(btnSubmit))))
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(197, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnRefresh)
-                .addGap(1, 1, 1)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnRefresh)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnView)
+                .addGap(18, 18, 18)
+                .addComponent(lblGreeting)
+                .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnView)
-                        .addGap(28, 28, 28))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblGreeting)
-                        .addGap(13, 13, 13)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnSubmit)
-                        .addGap(115, 115, 115))))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSubmit))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -272,7 +268,6 @@ public class CustomerRecentOrdersJPanel extends javax.swing.JPanel {
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
         // TODO add your handling code here:
         populateTable();
-        hideList();
     }//GEN-LAST:event_btnRefreshActionPerformed
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
@@ -284,37 +279,37 @@ public class CustomerRecentOrdersJPanel extends javax.swing.JPanel {
             return;
         }
         else {
-            SupplyManager lt = (SupplyManager) tblRecentOrders.getValueAt(selectedRow, 0);
-            PatientOrderWorkRequest wr = (PatientOrderWorkRequest) tblRecentOrders.getValueAt(selectedRow, 4);
-            selSm = lt;
+            Doctor lt = (Doctor) tblRecentOrders.getValueAt(selectedRow, 0);
+            PatientAppointmentWorkRequest wr = (PatientAppointmentWorkRequest) tblRecentOrders.getValueAt(selectedRow, 4);
+            selDoc = lt;
             selReq = wr;
             if(selReq.isIsReviewed()){
                 JOptionPane.showMessageDialog(null, "You have already reviewed this order", "Error", JOptionPane.WARNING_MESSAGE);
                 return;
             } else {
-                lblGreeting.setText("Give review for " + selSm.getSmName());
+                lblGreeting.setText("Give review for " + selDoc.getDocName());
                 showList(); 
             }
-            
         }
         
+       
     }//GEN-LAST:event_btnViewActionPerformed
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
-        String rating = (String) liRating.getSelectedValue(); 
+        String rating = (String) liRating.getSelectedValue();
         if(rating == null){
             JOptionPane.showMessageDialog(null, "Please select a rating", "Error", JOptionPane.WARNING_MESSAGE);
             return;
         }
         int rate = Integer.parseInt(rating);
-        
-        selSm.addRating(rate);
+
+        selDoc.addRating(rate);
         selReq.setIsReviewed(true);
-        
+
         hideList();
         populateTable();
-        
+
     }//GEN-LAST:event_btnSubmitActionPerformed
 
 
