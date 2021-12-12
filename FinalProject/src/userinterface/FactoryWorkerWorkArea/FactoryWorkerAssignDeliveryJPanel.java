@@ -208,7 +208,7 @@ public class FactoryWorkerAssignDeliveryJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tblDeliveryMan.setSelectionBackground(new java.awt.Color(255, 204, 204));
+        tblDeliveryMan.setSelectionBackground(new java.awt.Color(51, 153, 255));
         tblDeliveryMan.setShowGrid(false);
         jScrollPane2.setViewportView(tblDeliveryMan);
 
