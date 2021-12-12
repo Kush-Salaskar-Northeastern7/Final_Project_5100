@@ -73,7 +73,7 @@ public class DoctorViewInventoryJPanel extends javax.swing.JPanel {
 
         lblSelectedNode7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblSelectedNode7.setForeground(new java.awt.Color(255, 255, 255));
-        lblSelectedNode7.setText("Place Insulin Order");
+        lblSelectedNode7.setText("View Insulin Quantity");
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);

@@ -49,7 +49,6 @@ public class DoctorAddInventoryJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel10 = new javax.swing.JPanel();
-        btnBackBtn7 = new javax.swing.JButton();
         lblSelectedNode7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblFactory = new javax.swing.JTable();
@@ -65,18 +64,6 @@ public class DoctorAddInventoryJPanel extends javax.swing.JPanel {
         jPanel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
         jPanel10.setPreferredSize(new java.awt.Dimension(923, 59));
 
-        btnBackBtn7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.png"))); // NOI18N
-        btnBackBtn7.setAlignmentX(0.5F);
-        btnBackBtn7.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnBackBtn7.setBorderPainted(false);
-        btnBackBtn7.setContentAreaFilled(false);
-        btnBackBtn7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnBackBtn7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackBtn7ActionPerformed(evt);
-            }
-        });
-
         lblSelectedNode7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblSelectedNode7.setForeground(new java.awt.Color(255, 255, 255));
         lblSelectedNode7.setText("Place Insulin Order");
@@ -88,17 +75,13 @@ public class DoctorAddInventoryJPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(lblSelectedNode7, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 452, Short.MAX_VALUE)
-                .addComponent(btnBackBtn7)
-                .addGap(19, 19, 19))
+                .addContainerGap(506, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnBackBtn7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblSelectedNode7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(lblSelectedNode7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -169,8 +152,8 @@ public class DoctorAddInventoryJPanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -201,18 +184,6 @@ public class DoctorAddInventoryJPanel extends javax.swing.JPanel {
             }
         }
     
-    private void btnBackBtn7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackBtn7ActionPerformed
-        // TODO add your handling code here:
-        container.removeAll();
-        JPanel blankJP = new JPanel();
-        LoginScreen ls = new LoginScreen(container, system);
-        container.add("blank", ls);
-        CardLayout crdLyt = (CardLayout) container.getLayout();
-        crdLyt.next(container);
-
-        dB4OUtil.storeSystem(system);
-    }//GEN-LAST:event_btnBackBtn7ActionPerformed
-
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblFactory.getSelectedRow();
@@ -258,7 +229,6 @@ public class DoctorAddInventoryJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
-    private javax.swing.JButton btnBackBtn7;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblSelectedNode7;

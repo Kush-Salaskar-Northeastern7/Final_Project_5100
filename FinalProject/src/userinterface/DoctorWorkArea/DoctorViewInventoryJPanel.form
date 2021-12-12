@@ -154,7 +154,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Place Insulin Order"/>
+                <Property name="text" type="java.lang.String" value="View Insulin Quantity"/>
               </Properties>
             </Component>
           </SubComponents>
