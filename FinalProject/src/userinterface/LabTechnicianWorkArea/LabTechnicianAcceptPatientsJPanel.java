@@ -100,7 +100,6 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
         btnReject = new javax.swing.JButton();
         lblImage = new javax.swing.JLabel();
         jPanel23 = new javax.swing.JPanel();
-        btnLogout20 = new javax.swing.JButton();
         lblSelectedNode20 = new javax.swing.JLabel();
         btnDelete = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -195,19 +194,6 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
         jPanel23.setMaximumSize(new java.awt.Dimension(900, 32767));
         jPanel23.setPreferredSize(new java.awt.Dimension(900, 57));
 
-        btnLogout20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logout.png"))); // NOI18N
-        btnLogout20.setAlignmentX(0.5F);
-        btnLogout20.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnLogout20.setBorderPainted(false);
-        btnLogout20.setContentAreaFilled(false);
-        btnLogout20.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnLogout20.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hoveredlogin.png"))); // NOI18N
-        btnLogout20.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLogout20ActionPerformed(evt);
-            }
-        });
-
         lblSelectedNode20.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblSelectedNode20.setForeground(new java.awt.Color(255, 255, 255));
         lblSelectedNode20.setText("Lab Technician Work Area");
@@ -219,17 +205,11 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblSelectedNode20, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnLogout20)
-                .addGap(19, 19, 19))
+                .addContainerGap(615, Short.MAX_VALUE))
         );
         jPanel23Layout.setVerticalGroup(
             jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnLogout20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addComponent(lblSelectedNode20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblSelectedNode20, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
         );
 
         btnDelete.setBackground(new java.awt.Color(0, 153, 153));
@@ -382,17 +362,6 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
         clearFields();
     }//GEN-LAST:event_btnRejectActionPerformed
 
-    private void btnLogout20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogout20ActionPerformed
-        // TODO add your handling code here:
-        userProcessContainer.removeAll();
-        JPanel blankJP = new JPanel();
-        LoginScreen ls = new LoginScreen(userProcessContainer, system);
-        userProcessContainer.add("blank", ls);
-        CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
-        crdLyt.next(userProcessContainer);
-        dB4OUtil.storeSystem(system);
-    }//GEN-LAST:event_btnLogout20ActionPerformed
-
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
         // TODO add your handling code here:
         int selectedRow = labWorkRequestJTable.getSelectedRow();
@@ -436,7 +405,6 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAccept;
     private javax.swing.JButton btnDelete;
-    private javax.swing.JButton btnLogout20;
     private javax.swing.JButton btnReject;
     private javax.swing.JButton btnView;
     private javax.swing.JLabel jLabel1;

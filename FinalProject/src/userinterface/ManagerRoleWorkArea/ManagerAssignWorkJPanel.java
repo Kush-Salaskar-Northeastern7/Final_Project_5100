@@ -101,7 +101,6 @@ public class ManagerAssignWorkJPanel extends javax.swing.JPanel {
 
         jPanel3 = new javax.swing.JPanel();
         lblSelectedNode = new javax.swing.JLabel();
-        btnBack = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblOrders = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -119,15 +118,6 @@ public class ManagerAssignWorkJPanel extends javax.swing.JPanel {
         lblSelectedNode.setForeground(new java.awt.Color(255, 255, 255));
         lblSelectedNode.setText("Assign Work");
 
-        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.png"))); // NOI18N
-        btnBack.setContentAreaFilled(false);
-        btnBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -135,9 +125,7 @@ public class ManagerAssignWorkJPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(lblSelectedNode, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(546, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,7 +133,6 @@ public class ManagerAssignWorkJPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(lblSelectedNode, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
                 .addContainerGap())
-            .addComponent(btnBack, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         tblOrders.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -325,18 +312,9 @@ public class ManagerAssignWorkJPanel extends javax.swing.JPanel {
         populateTechTable();
     }//GEN-LAST:event_btnAssignLabTechActionPerformed
 
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        container.removeAll();
-        ManagerRoleWorkAreaJPanel mr = new ManagerRoleWorkAreaJPanel(container, account, system);
-        container.add("managerworkarea", mr);
-        CardLayout crdLyt = (CardLayout) container.getLayout();
-        crdLyt.previous(container);
-    }//GEN-LAST:event_btnBackActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAssignLabTech;
-    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnFinalSubmit;
     private javax.swing.JButton btnRefres;
     private javax.swing.JPanel jPanel3;
