@@ -102,12 +102,11 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
            } 
         } else {
             for(LabSupervisor ls: system.getLabSupervisorDirectory().getLabSupervisorList()){
-                Object[] row = new Object[5];
+                Object[] row = new Object[4];
                 row[0] = ls;
-                row[1] = ls.getUserAccount().getUid();
-                row[2] = ls.getUserAccount().getUsername();
-                row[3] = ls.getLsName();
-                row[4] = "hi";
+                row[1] = ls.getPhoneNum();
+                row[2] = ls.getLocation();
+                row[3] = ls.getUserAccount().getUsername();
                 model.addRow(row);
             }    
         }
@@ -672,7 +671,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
             } else {
                 Employee employee = system.getEmployeeDirectory().createEmployee(name);       
                 UserAccount userAccount = system.getUserAccountDirectory().createUserAccount(username, password, employee, new LabSupervisorRole());
-                LabSupervisor ls = system.getLabSupervisorDirectory().addLabSupervisor(name, userAccount);
+                LabSupervisor ls = system.getLabSupervisorDirectory().addLabSupervisor(name, userAccount, phone, address);
             }
 //            Enterprise enterprise = system.getEnterpriseDirectory().createEnterprise(enterpriseName, enterprisetype, enterpriseLoc, enterpriseEmail, enterprisePhone);
             JOptionPane.showMessageDialog(this, "Enterprise is added");
