@@ -27,9 +27,11 @@ public class SupplyManagerDirectory {
         this.supplyManagerList = supplyManagerList;
     }
     
-    public SupplyManager createSupplyManager(String name, UserAccount ua){
+    public SupplyManager createSupplyManager(String name, UserAccount ua, String phoneNum, String location){
         SupplyManager supplymanager = new SupplyManager();
         supplymanager.setSmName(name);
+        supplymanager.setLocation(location);
+        supplymanager.setPhoneNum(phoneNum);
         supplymanager.setUserAccount(ua);
         supplyManagerList.add(supplymanager);
         return supplymanager;

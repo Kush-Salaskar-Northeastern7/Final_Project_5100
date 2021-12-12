@@ -27,9 +27,11 @@ public class LabSupervisorDirectory {
         this.labSupervisorList = labSupervisorList;
     }
     
-    public LabSupervisor addLabSupervisor(String name, UserAccount ua){
+    public LabSupervisor addLabSupervisor(String name, UserAccount ua, String phoneNum, String location){
         LabSupervisor ls = new LabSupervisor();
         ls.setLsName(name);
+        ls.setPhoneNum(phoneNum);
+        ls.setLocation(location);
         ls.setUserAccount(ua);
         labSupervisorList.add(ls);
         return ls;
