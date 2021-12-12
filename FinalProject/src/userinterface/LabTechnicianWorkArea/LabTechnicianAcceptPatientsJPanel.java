@@ -382,7 +382,11 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         req.setStatus("REJECTED");
         String emailBody = "You are not diabetic and hence cannot buy Insulin from our App. Happy Sugar free life";
-        BusinessEmail.sendBusinessEmail(req.getCustomer().getEmailId(), "Account Created at Insumax", emailBody);
+        try {
+            BusinessEmail.sendBusinessEmail(req.getCustomer().getEmailId(), "Account Created at Insumax", emailBody);
+        } catch(Exception ex) { 
+            System.out.println("Email is incorrect: " +ex);
+        }
         System.out.println("reached hereee" +req.getStatus());
         JOptionPane.showMessageDialog(null, "You rejected this user.");
         populateTable();
