@@ -67,7 +67,8 @@ public class CustomerRecentOrdersJPanel extends javax.swing.JPanel {
                         row[0] = sup != null ? sup.getSmName() : "Supplier doesnt exist";
                         row[1] = ((PatientOrderWorkRequest)request).isType1() ? "Type1" : "Type2";
                         row[2] = ((PatientOrderWorkRequest)request).getQuantity();
-                        row[3] = ((PatientOrderWorkRequest)request).getStatus();
+                        row[3] = ((PatientOrderWorkRequest)request).getResolveDate();
+                        row[4] = ((PatientOrderWorkRequest)request).getStatus();
 
                         model.addRow(row);
                     }
@@ -130,17 +131,17 @@ public class CustomerRecentOrdersJPanel extends javax.swing.JPanel {
 
         tblRecentOrders.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Supplier", "Type", "Quantity", "Status"
+                "Supplier", "Type", "Quantity", "Delivery Date", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -160,13 +161,13 @@ public class CustomerRecentOrdersJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnRefresh)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
