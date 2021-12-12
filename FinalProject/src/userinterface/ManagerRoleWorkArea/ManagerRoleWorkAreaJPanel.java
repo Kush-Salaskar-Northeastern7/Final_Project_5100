@@ -81,7 +81,7 @@ public class ManagerRoleWorkAreaJPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblSelectedNode, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 465, Short.MAX_VALUE)
                 .addComponent(btnLogout)
                 .addGap(19, 19, 19))
         );
@@ -94,6 +94,10 @@ public class ManagerRoleWorkAreaJPanel extends javax.swing.JPanel {
             .addComponent(lblSelectedNode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        btnManageFactoryWorker.setBackground(new java.awt.Color(0, 153, 153));
+        btnManageFactoryWorker.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnManageFactoryWorker.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        btnManageFactoryWorker.setForeground(new java.awt.Color(255, 255, 255));
         btnManageFactoryWorker.setLabel("Manage Factory Workers");
         btnManageFactoryWorker.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,6 +105,10 @@ public class ManagerRoleWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        buttonWorkRqst.setBackground(new java.awt.Color(0, 153, 153));
+        buttonWorkRqst.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        buttonWorkRqst.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        buttonWorkRqst.setForeground(new java.awt.Color(255, 255, 255));
         buttonWorkRqst.setLabel("Assign Work to Factory Workers");
         buttonWorkRqst.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,6 +116,10 @@ public class ManagerRoleWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnManageDeliveryMan.setBackground(new java.awt.Color(0, 153, 153));
+        btnManageDeliveryMan.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnManageDeliveryMan.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        btnManageDeliveryMan.setForeground(new java.awt.Color(255, 255, 255));
         btnManageDeliveryMan.setLabel("Manage Delivery Men");
         btnManageDeliveryMan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,41 +133,35 @@ public class ManagerRoleWorkAreaJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(127, 127, 127)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnManageDeliveryMan, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnManageFactoryWorker, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(78, 78, 78)
-                        .addComponent(buttonWorkRqst, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(185, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(buttonWorkRqst, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnManageFactoryWorker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnManageDeliveryMan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(568, Short.MAX_VALUE))
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnManageFactoryWorker, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
-                    .addComponent(buttonWorkRqst, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnManageDeliveryMan, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
-                .addGap(178, 178, 178))
+                .addGap(36, 36, 36)
+                .addComponent(btnManageFactoryWorker, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19)
+                .addComponent(buttonWorkRqst, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19)
+                .addComponent(btnManageDeliveryMan, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(248, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         // TODO add your handling code here:
-        userProcessContainer.removeAll();
+        container.removeAll();
         JPanel blankJP = new JPanel();
-        LoginScreen ls = new LoginScreen(userProcessContainer, system);
-        userProcessContainer.add("blank", ls);
-        CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
-        crdLyt.next(userProcessContainer);
+        LoginScreen ls = new LoginScreen(container, system);
+        container.add("blank", ls);
+        CardLayout crdLyt = (CardLayout) container.getLayout();
+        crdLyt.next(container);
         dB4OUtil.storeSystem(system);
     }//GEN-LAST:event_btnLogoutActionPerformed
 
