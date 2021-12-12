@@ -151,7 +151,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         btnGraph.setBackground(new java.awt.Color(0, 0, 0));
         btnGraph.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnGraph.setForeground(new java.awt.Color(255, 255, 255));
-        btnGraph.setText("View Analytics");
+        btnGraph.setText("Analytics 2");
         btnGraph.setContentAreaFilled(false);
         btnGraph.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnGraph.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -195,8 +195,8 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(btnManageSuppliers2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addComponent(btnGraph, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(235, Short.MAX_VALUE))
+                .addComponent(btnGraph, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(217, Short.MAX_VALUE))
         );
 
         jSplitPane.setLeftComponent(jPanel1);
