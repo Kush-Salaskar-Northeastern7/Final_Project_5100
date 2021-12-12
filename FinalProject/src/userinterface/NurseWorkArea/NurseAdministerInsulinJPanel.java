@@ -246,12 +246,12 @@ public class NurseAdministerInsulinJPanel extends javax.swing.JPanel {
         else {
             PatientAppointmentWorkRequest wr = (PatientAppointmentWorkRequest) nurseWorkRequestJTable.getValueAt(selectedRow, 0);
             req = wr;
-            if (wr.isType1())
+            if (req.isType1())
                 txtInsulinType.setText("Type1");
             else
                 txtInsulinType.setText("Type2");
                 
-            txtQuantity.setText(String.valueOf(wr.getQuantity()));
+            txtQuantity.setText(String.valueOf(req.getQuantity()));
         }
     }//GEN-LAST:event_btnViewActionPerformed
 

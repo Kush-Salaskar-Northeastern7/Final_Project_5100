@@ -135,6 +135,7 @@ public class ProcessSupplierWorkRequestJPanel extends javax.swing.JPanel {
            request.getSm().setType1(request.getQuantity1());
            request.getSm().setType2(request.getQuantity2());
         } else {
+            System.out.println(request.getDoc());
             request.getDoc().setType1(request.getQuantity1());
             request.getDoc().setType2(request.getQuantity2());
         }

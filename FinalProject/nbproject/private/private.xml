@@ -3,15 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/CustomerRole/CustomerPlaceOrderJPanel.java</file>
-            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/CustomerRole/CustomerScheduleAppmtJPanel.java</file>
-            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/NurseWorkArea/NurseWorkAreaJPanel.java</file>
-            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/ManagerRoleWorkArea/ManagerRoleWorkAreaJPanel.java</file>
-            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/SupplyManagerWorkArea/SupplyManagerAssignDeliveryManJPanel.java</file>
-            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/NurseWorkArea/NurseAdministerInsulinJPanel.java</file>
-            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/ManagerRoleWorkArea/ManagerAssignWorkJPanel.java</file>
-            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/ManagerRoleWorkArea/ManagerCreateDeliveryManJPanel.java</file>
-            <file>file:/C:/Users/rolwy/University/AED%20PROJECT/Final_Project_5100/FinalProject/src/userinterface/ManagerRoleWorkArea/ManagerCreateFactoryWorkerJPanel.java</file>
+            <file>file:/Users/anushka/Final_Project_5100/FinalProject/src/userinterface/PharmacistWorkArea/PharmacistViewInventoryJPanel.java</file>
+            <file>file:/Users/anushka/Final_Project_5100/FinalProject/src/userinterface/DoctorWorkArea/DoctorAddInventoryJPanel.java</file>
+            <file>file:/Users/anushka/Final_Project_5100/FinalProject/src/Business/Pharmacist/Pharmacist.java</file>
+            <file>file:/Users/anushka/Final_Project_5100/FinalProject/src/userinterface/DoctorWorkArea/DoctorWorkAreaJPanel.java</file>
+            <file>file:/Users/anushka/Final_Project_5100/FinalProject/src/userinterface/PharmacistWorkArea/PharmacistWorkAreaJPanel.java</file>
+            <file>file:/Users/anushka/Final_Project_5100/FinalProject/src/userinterface/PharmacistWorkArea/PharmacistAddInventoryJPanel.java</file>
+            <file>file:/Users/anushka/Final_Project_5100/FinalProject/src/userinterface/DeliveryManRole/ProcessSupplierWorkRequestJPanel.java</file>
         </group>
     </open-files>
 </project-private>

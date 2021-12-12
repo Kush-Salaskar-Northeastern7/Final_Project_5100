@@ -340,7 +340,7 @@ public class DoctorWorkRequestJPanel extends javax.swing.JPanel {
             System.out.println("doccc id is " +ns.getDoctorId());
             
             if(account.getUid() == ns.getDoctorId()){
-                Object[] row = new Object[1];
+                Object[] row = new Object[2];
                 row[0] = ns;
 //                row[1] = ns.getNurseName();
                 
@@ -371,6 +371,7 @@ public class DoctorWorkRequestJPanel extends javax.swing.JPanel {
             PatientAppointmentWorkRequest wr = (PatientAppointmentWorkRequest) patientApmtWorkRequestJTable.getValueAt(selectedRow, 0);
             
             int availQuantity = (int) tblDoctorInv.getValueAt(selectedTypeRow, 1);
+//            PatientAppointmentWorkRequest wr = new PatientAppointmentWorkRequest();
             if(Integer.parseInt(txtQuantity.getText()) > availQuantity){
                 JOptionPane.showMessageDialog(null, "The Hospital inventory doesn't have the stock available. Please enter lower value", "Error", JOptionPane.NO_OPTION);
                 return;
@@ -385,6 +386,8 @@ public class DoctorWorkRequestJPanel extends javax.swing.JPanel {
                 wr.setType1(false);
             }
             req = wr;
+            System.out.println(req.getQuantity());
+            System.out.println(req.isType1());
             
             tblNurses.setVisible(true);
             btnFinalSubmit.setVisible(true);
@@ -405,16 +408,18 @@ public class DoctorWorkRequestJPanel extends javax.swing.JPanel {
         else {
             Nurse ns = (Nurse) tblNurses.getValueAt(selectedRow, 0);
             ns.getUserAccount().getWorkQueue().getWorkRequestList().add(req);
+            System.out.println("Line removed here" + account.getWorkQueue().getWorkRequestList().size());
             account.getWorkQueue().getWorkRequestList().remove(req);
+            System.out.println(account.getWorkQueue().getWorkRequestList().size());
             JOptionPane.showMessageDialog(null, "Task assigned to Lab Technician", "Error", JOptionPane.WARNING_MESSAGE);
             populateWorkRequestTable();
             populateNursesTable();
+            hideNursesTable();
         }
     }//GEN-LAST:event_btnFinalSubmitActionPerformed
 
     public void populateWorkRequestTable() {
         // populate doctorworkreqtable
-        System.out.println("fffff");
         DefaultTableModel model = (DefaultTableModel) patientApmtWorkRequestJTable.getModel();
         
         model.setRowCount(0);

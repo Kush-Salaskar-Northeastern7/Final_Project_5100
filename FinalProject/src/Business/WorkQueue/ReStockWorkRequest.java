@@ -6,6 +6,7 @@
 package Business.WorkQueue;
 
 import Business.Doctor.Doctor;
+import Business.Pharmacist.Pharmacist;
 import Business.SupplyManager.SupplyManager;
 
 /**
@@ -14,6 +15,15 @@ import Business.SupplyManager.SupplyManager;
  */
 public class ReStockWorkRequest extends WorkRequest{
     private Doctor doc;
+    private Pharmacist pharmacist;
+
+    public Pharmacist getPharmacist() {
+        return pharmacist;
+    }
+
+    public void setPharmacist(Pharmacist pharmacist) {
+        this.pharmacist = pharmacist;
+    }
     private SupplyManager sm;
     private int quantity1;
     private int quantity2;
