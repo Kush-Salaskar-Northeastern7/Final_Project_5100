@@ -11,6 +11,7 @@ import Business.EcoSystem;
 import Business.SupplyManager.SupplyManager;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import userinterface.LoginScreen;
 
@@ -36,6 +37,8 @@ public class PharmacistViewInventoryJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.account = account;
         this.system = system;
+        populateValues();
+        showWarning();
     }
 
     /**
@@ -171,8 +174,19 @@ public class PharmacistViewInventoryJPanel extends javax.swing.JPanel {
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
         // TODO add your handling code here:
         populateValues();
+        showWarning();
     }//GEN-LAST:event_btnRefreshActionPerformed
 
+    
+    public void showWarning(){
+        if(doctor == null) return;
+        if(doctor.getType1() <= 5 || doctor.getType2() <= 5){
+            JOptionPane.showMessageDialog(this, "Looks like you are running low on insulin. Please refill.", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+    }
+    
     public void populateValues(){
         for(Pharmacist sm : system.getPharmacistDirectory().getPharmacistList()){
             if(sm.getUserAccount().getUid() == account.getUid()){
@@ -186,6 +200,7 @@ public class PharmacistViewInventoryJPanel extends javax.swing.JPanel {
             }
         }
         
+        if(doctor == null) return;
         lblType1.setText(String.valueOf(doctor.getType1()));
         lblType2.setText(String.valueOf(doctor.getType2()));
         

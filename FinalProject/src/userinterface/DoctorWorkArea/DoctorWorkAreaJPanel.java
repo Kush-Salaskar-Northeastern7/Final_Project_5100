@@ -47,7 +47,6 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         lblSelectedNode = new javax.swing.JLabel();
         jSplitPane1 = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
-        buttonAddInventory1 = new java.awt.Button();
         btnViewInventory = new java.awt.Button();
         btnManageNurses = new java.awt.Button();
         buttonManagePharmacists = new java.awt.Button();
@@ -99,16 +98,6 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        buttonAddInventory1.setBackground(new java.awt.Color(0, 153, 153));
-        buttonAddInventory1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        buttonAddInventory1.setForeground(new java.awt.Color(255, 255, 255));
-        buttonAddInventory1.setLabel("Add Inventory");
-        buttonAddInventory1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonAddInventory1ActionPerformed(evt);
-            }
-        });
-
         btnViewInventory.setBackground(new java.awt.Color(0, 153, 153));
         btnViewInventory.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         btnViewInventory.setForeground(new java.awt.Color(255, 255, 255));
@@ -157,7 +146,6 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnViewInventory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonAddInventory1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnManageNurses, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buttonManagePharmacists, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buttonAssignWorkRqst, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE))
@@ -165,21 +153,19 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(btnViewInventory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(buttonAddInventory1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21)
-                .addComponent(btnManageNurses, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnManageNurses, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonManagePharmacists, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonAssignWorkRqst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(335, Short.MAX_VALUE))
+                .addContainerGap(427, Short.MAX_VALUE))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnManageNurses, btnViewInventory, buttonAddInventory1, buttonAssignWorkRqst, buttonManagePharmacists});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnManageNurses, btnViewInventory, buttonAssignWorkRqst, buttonManagePharmacists});
 
         jSplitPane1.setLeftComponent(jPanel1);
 
@@ -265,16 +251,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         crdLyt.next(innercontainer);
     }//GEN-LAST:event_buttonAssignWorkRqst1ActionPerformed
 
-    
-    private void buttonAddInventory1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddInventory1ActionPerformed
-        // TODO add your handling code here:
-        innercontainer.removeAll();
-        DoctorAddInventoryJPanel dwj = new DoctorAddInventoryJPanel(innercontainer, account, system);
-        innercontainer.add("doctorwkreqarea", dwj);
-        CardLayout crdLyt = (CardLayout) innercontainer.getLayout();
-        crdLyt.next(innercontainer);
-    }//GEN-LAST:event_buttonAddInventory1ActionPerformed
-                                       
+                                           
     
     private void btnViewInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewInventoryActionPerformed
         // TODO add your handling code here:
@@ -290,7 +267,6 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnLogout;
     private java.awt.Button btnManageNurses;
     private java.awt.Button btnViewInventory;
-    private java.awt.Button buttonAddInventory1;
     private java.awt.Button buttonAssignWorkRqst;
     private java.awt.Button buttonManagePharmacists;
     private javax.swing.JPanel innercontainer;
