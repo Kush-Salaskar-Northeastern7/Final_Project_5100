@@ -254,13 +254,14 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
         int selectedRow = tblLabTech.getSelectedRow();
         
         if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select a row", "Information", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please select a row");
         }
         else {
             LabTechnician lt = (LabTechnician) tblLabTech.getValueAt(selectedRow, 0);
             lt.getUserAccount().getWorkQueue().getWorkRequestList().add(req);
             account.getWorkQueue().getWorkRequestList().remove(req);
-            JOptionPane.showMessageDialog(null, "Task assigned to Lab Technician", "Information", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Task assigned to Lab Technician");
+            hideLabTechTable();
             populateWorkReqTable();
             populateTechTable();
         }
