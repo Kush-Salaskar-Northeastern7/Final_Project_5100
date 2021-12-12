@@ -56,6 +56,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         btnManageSuppliers1 = new javax.swing.JButton();
         btnManageSuppliers2 = new javax.swing.JButton();
+        btnAnalytics = new javax.swing.JButton();
         innerContainer = new javax.swing.JPanel();
 
         setLayout(new java.awt.BorderLayout());
@@ -147,6 +148,27 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnAnalytics.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnAnalytics.setForeground(new java.awt.Color(255, 255, 255));
+        btnAnalytics.setText("Analytics");
+        btnAnalytics.setBorder(null);
+        btnAnalytics.setContentAreaFilled(false);
+        btnAnalytics.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAnalytics.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnAnalytics.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAnalyticsMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAnalyticsMouseExited(evt);
+            }
+        });
+        btnAnalytics.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnalyticsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -157,7 +179,9 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnManageSuppliers1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnManageSuppliers1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAnalytics, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -167,7 +191,9 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(btnManageSuppliers1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnManageSuppliers2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(289, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnAnalytics, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(242, Short.MAX_VALUE))
         );
 
         jSplitPane.setLeftComponent(jPanel1);
@@ -226,8 +252,21 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         btnManageSuppliers2.setForeground(new Color(240,240,240));
     }//GEN-LAST:event_btnManageSuppliers2MouseExited
 
+    private void btnAnalyticsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnalyticsMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAnalyticsMouseEntered
+
+    private void btnAnalyticsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnalyticsMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAnalyticsMouseExited
+
+    private void btnAnalyticsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalyticsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAnalyticsActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAnalytics;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnManageSuppliers1;
     private javax.swing.JButton btnManageSuppliers2;
