@@ -7,6 +7,7 @@ package userinterface.DeliveryManRole;
 import Business.DeliveryMan.DeliveryMan;
 import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
+import Business.Utils.BusinessEmail;
 import Business.WorkQueue.PatientOrderWorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -133,7 +134,12 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
         request.setStatus("DELIVERED");
         request.setResolveDate(new Date());
         request.getCustomer().getUserAccount().getWorkQueue().getWorkRequestList().add(request);
-        
+        String emailBody = "Your order has been Delivered by " +dm.getDeliveryManName().toUpperCase() +".";
+        try {
+            BusinessEmail.sendBusinessEmail(request.getCustomer().getEmailId(), "Insulin Order Update", emailBody);
+        } catch(Exception ex) { 
+            System.out.println("Email is incorrect: " +ex);
+        }
         JOptionPane.showMessageDialog(null, "Delivery Complete");
         
         userProcessContainer.remove(this);
