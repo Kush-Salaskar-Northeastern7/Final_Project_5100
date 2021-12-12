@@ -61,6 +61,7 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
         lblSelectedNode = new javax.swing.JLabel();
         valueLabel = new javax.swing.JLabel();
         btnTopCharts = new javax.swing.JButton();
+        btnRecentAppointments = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -140,6 +141,13 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnRecentAppointments.setText("View Recent Appointments");
+        btnRecentAppointments.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRecentAppointmentsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -147,12 +155,14 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
             .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnTopCharts, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(btnAppointment, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnOrder, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnRecentOrders, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnRecentOrders, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnTopCharts, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnRecentAppointments, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -166,9 +176,11 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
                 .addComponent(btnOrder)
                 .addGap(18, 18, 18)
                 .addComponent(btnRecentOrders)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
+                .addComponent(btnRecentAppointments)
+                .addGap(18, 18, 18)
                 .addComponent(btnTopCharts)
-                .addContainerGap(231, Short.MAX_VALUE))
+                .addContainerGap(178, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -215,10 +227,20 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTopChartsActionPerformed
 
+    private void btnRecentAppointmentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecentAppointmentsActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.removeAll();
+        CustomerRecentAppointmentsJPanel ls = new CustomerRecentAppointmentsJPanel(userProcessContainer, userAccount, system);
+        userProcessContainer.add("signup", ls);
+        CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
+        crdLyt.next(userProcessContainer);
+    }//GEN-LAST:event_btnRecentAppointmentsActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAppointment;
     private javax.swing.JButton btnBackBtn;
     private javax.swing.JButton btnOrder;
+    private javax.swing.JButton btnRecentAppointments;
     private javax.swing.JButton btnRecentOrders;
     private javax.swing.JButton btnTopCharts;
     private javax.swing.JPanel jPanel3;
