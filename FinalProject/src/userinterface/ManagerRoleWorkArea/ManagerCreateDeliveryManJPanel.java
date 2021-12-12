@@ -320,7 +320,7 @@ public class ManagerCreateDeliveryManJPanel extends javax.swing.JPanel {
             if(deliveryman.getSupplyManagerId() == userAcc.getUid()){
                 Object[] row = new Object[2];
                  row[0] = deliveryman;
-                 row[1] = deliveryman.getDeliveryManName(); 
+                 row[1] = deliveryman.getUserAccount().getUsername(); 
 
                  model.addRow(row);
              }

@@ -325,7 +325,7 @@ public class ManagerCreateFactoryWorkerJPanel extends javax.swing.JPanel {
             if(factoryworker.getManagerId() == userAcc.getUid()){
                 Object[] row = new Object[2];
                  row[0] = factoryworker;
-                 row[1] = factoryworker.getFwName(); 
+                 row[1] = factoryworker.getUserAccount().getUsername(); 
 
                  model.addRow(row);
              }

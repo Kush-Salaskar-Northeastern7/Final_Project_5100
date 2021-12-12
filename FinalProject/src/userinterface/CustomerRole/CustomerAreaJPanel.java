@@ -256,11 +256,6 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
 
     private void btnTopChartsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTopChartsActionPerformed
         // TODO add your handling code here:
-        userProcessContainer.removeAll();
-        CustomerTopChartsJPanel ls = new CustomerTopChartsJPanel(userProcessContainer, userAccount, system);
-        userProcessContainer.add("signup", ls);
-        CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
-        crdLyt.next(userProcessContainer);
     }//GEN-LAST:event_btnTopChartsActionPerformed
 
     private void btnRecentAppointmentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecentAppointmentsActionPerformed

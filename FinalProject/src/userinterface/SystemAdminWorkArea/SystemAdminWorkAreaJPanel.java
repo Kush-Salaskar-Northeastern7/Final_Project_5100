@@ -56,7 +56,8 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         btnManageSuppliers1 = new javax.swing.JButton();
         btnManageSuppliers2 = new javax.swing.JButton();
-        btnAnalytics = new javax.swing.JButton();
+        btnGraph = new javax.swing.JButton();
+        btnGraph1 = new javax.swing.JButton();
         innerContainer = new javax.swing.JPanel();
 
         setLayout(new java.awt.BorderLayout());
@@ -148,24 +149,47 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnAnalytics.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnAnalytics.setForeground(new java.awt.Color(255, 255, 255));
-        btnAnalytics.setText("Analytics");
-        btnAnalytics.setBorder(null);
-        btnAnalytics.setContentAreaFilled(false);
-        btnAnalytics.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAnalytics.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnAnalytics.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnGraph.setBackground(new java.awt.Color(0, 0, 0));
+        btnGraph.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnGraph.setForeground(new java.awt.Color(255, 255, 255));
+        btnGraph.setText("Analytics 1");
+        btnGraph.setActionCommand("Analytics 1");
+        btnGraph.setContentAreaFilled(false);
+        btnGraph.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGraph.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnGraph.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnAnalyticsMouseEntered(evt);
+                btnGraphMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnAnalyticsMouseExited(evt);
+                btnGraphMouseExited(evt);
             }
         });
-        btnAnalytics.addActionListener(new java.awt.event.ActionListener() {
+        btnGraph.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAnalyticsActionPerformed(evt);
+                btnGraphActionPerformed(evt);
+            }
+        });
+
+        btnGraph1.setBackground(new java.awt.Color(0, 0, 0));
+        btnGraph1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnGraph1.setForeground(new java.awt.Color(255, 255, 255));
+        btnGraph1.setText("Analytics 2");
+        btnGraph1.setActionCommand("Analytics 2");
+        btnGraph1.setContentAreaFilled(false);
+        btnGraph1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGraph1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnGraph1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnGraph1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnGraph1MouseExited(evt);
+            }
+        });
+        btnGraph1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGraph1ActionPerformed(evt);
             }
         });
 
@@ -180,9 +204,14 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnManageSuppliers1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAnalytics, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addComponent(btnGraph1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(btnManageSuppliers1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap())
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(btnGraph, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(15, 15, 15)))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -191,9 +220,11 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(btnManageSuppliers1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnManageSuppliers2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(btnGraph, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnAnalytics, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(242, Short.MAX_VALUE))
+                .addComponent(btnGraph1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(151, Short.MAX_VALUE))
         );
 
         jSplitPane.setLeftComponent(jPanel1);
@@ -269,8 +300,45 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAnalyticsActionPerformed
 
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JButton btnAnalytics;
+
+    private void btnGraphMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGraphMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGraphMouseEntered
+
+    private void btnGraphMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGraphMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGraphMouseExited
+
+    private void btnGraphActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGraphActionPerformed
+        // TODO add your handling code here:
+        GraphJPanel actionPanel = new GraphJPanel(innerContainer, ecosystem);
+        innerContainer.add("managePatientsJPanel", actionPanel);
+        CardLayout layout = (CardLayout)innerContainer.getLayout();
+        layout.next(innerContainer);
+    }//GEN-LAST:event_btnGraphActionPerformed
+
+    private void btnGraph1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGraph1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGraph1MouseEntered
+
+    private void btnGraph1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGraph1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGraph1MouseExited
+
+    private void btnGraph1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGraph1ActionPerformed
+        // TODO add your handling code here:
+        Graph2JPanel actionPanel = new Graph2JPanel(innerContainer, ecosystem);
+        innerContainer.add("managePatientsJPanel", actionPanel);
+        CardLayout layout = (CardLayout)innerContainer.getLayout();
+        layout.next(innerContainer);
+    }//GEN-LAST:event_btnGraph1ActionPerformed
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGraph;
+    private javax.swing.JButton btnGraph1;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnManageSuppliers1;
     private javax.swing.JButton btnManageSuppliers2;
