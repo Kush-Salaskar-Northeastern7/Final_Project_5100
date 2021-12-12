@@ -362,37 +362,40 @@ public class DoctorWorkRequestJPanel extends javax.swing.JPanel {
         }
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select a patient", "Error", JOptionPane.NO_OPTION);
+            return;
         }
-        else if (selectedTypeRow < 0) {
+        if (selectedTypeRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select a type and set quantity from available", "Error", JOptionPane.NO_OPTION);
+            return;
+        }
+        
+        
+        String type = (String) tblDoctorInv.getValueAt(selectedTypeRow, 0);
+        PatientAppointmentWorkRequest wr = (PatientAppointmentWorkRequest) patientApmtWorkRequestJTable.getValueAt(selectedRow, 0);
+            
+        int availQuantity = (int) tblDoctorInv.getValueAt(selectedTypeRow, 1);
+//            PatientAppointmentWorkRequest wr = new PatientAppointmentWorkRequest();
+        if(Integer.parseInt(txtQuantity.getText()) > availQuantity){
+            JOptionPane.showMessageDialog(null, "The Hospital inventory doesn't have the stock available. Please enter lower value", "Error", JOptionPane.NO_OPTION);
+            return;
         }
         else {
-            String type = (String) tblDoctorInv.getValueAt(selectedTypeRow, 0);
-            PatientAppointmentWorkRequest wr = (PatientAppointmentWorkRequest) patientApmtWorkRequestJTable.getValueAt(selectedRow, 0);
+            wr.setQuantity(Integer.parseInt(txtQuantity.getText()));
+        }
             
-            int availQuantity = (int) tblDoctorInv.getValueAt(selectedTypeRow, 1);
-//            PatientAppointmentWorkRequest wr = new PatientAppointmentWorkRequest();
-            if(Integer.parseInt(txtQuantity.getText()) > availQuantity){
-                JOptionPane.showMessageDialog(null, "The Hospital inventory doesn't have the stock available. Please enter lower value", "Error", JOptionPane.NO_OPTION);
-                return;
-            }
-            else {
-                wr.setQuantity(Integer.parseInt(txtQuantity.getText()));
-            }
-            
-            if(type.equals("Type1")){
-                wr.setType1(true);  
-            } else {
-                wr.setType1(false);
-            }
-            req = wr;
+        if(type.equals("Type1")){
+            wr.setType1(true);  
+        } else {
+            wr.setType1(false);
+        }
+        req = wr;
             System.out.println(req.getQuantity());
             System.out.println(req.isType1());
             
-            tblNurses.setVisible(true);
-            btnFinalSubmit.setVisible(true);
-            nursesSPane.setVisible(true);
-        }
+        tblNurses.setVisible(true);
+        btnFinalSubmit.setVisible(true);
+        nursesSPane.setVisible(true);
+        
 
         populateNursesTable();
     }//GEN-LAST:event_btnAssignToNurseActionPerformed
