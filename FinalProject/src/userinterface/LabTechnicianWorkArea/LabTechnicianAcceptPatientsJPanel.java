@@ -43,6 +43,18 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
         this.system = system;
         this.account = account;
         populateTable();
+        hideButtons();
+        
+    }
+    
+    public void hideButtons(){
+        btnAccept.setVisible(false);
+        btnReject.setVisible(false);
+    }
+    
+    public void showButtons(){
+        btnAccept.setVisible(true);
+        btnReject.setVisible(true);
     }
 
     
@@ -365,6 +377,7 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(null, "You accepted this user.");
         populateTable();
         clearFields();
+        hideButtons();
         
     }//GEN-LAST:event_btnAcceptActionPerformed
 
@@ -377,6 +390,7 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(null, "You rejected this user.");
         populateTable();
         clearFields();
+        hideButtons();
     }//GEN-LAST:event_btnRejectActionPerformed
 
     private void btnLogout20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogout20ActionPerformed
@@ -403,7 +417,7 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
             lblName.setText(wr.getCustomer().getCustName());
             lblGlucoseLevel.setText(String.valueOf(wr.getCustomer().getGlucoseLvl()));
             lblDiabetesType.setText(wr.getCustomer().getTypeDiabetes());
-        
+            showButtons();
         }
     }//GEN-LAST:event_btnViewActionPerformed
 
