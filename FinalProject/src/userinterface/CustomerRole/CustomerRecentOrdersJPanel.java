@@ -193,7 +193,7 @@ public class CustomerRecentOrdersJPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnView)
-                .addGap(0, 128, Short.MAX_VALUE))
+                .addGap(0, 172, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
