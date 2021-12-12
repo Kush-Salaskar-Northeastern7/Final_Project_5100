@@ -20,6 +20,24 @@ public class SupplyManager {
     private int type2 = 0;
     private List<Integer> rating;
     private float stars;
+    private String phoneNum;
+    private String location;
+
+    public String getPhoneNum() {
+        return phoneNum;
+    }
+
+    public void setPhoneNum(String phoneNum) {
+        this.phoneNum = phoneNum;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
     
     public SupplyManager(){
         userAccount = new UserAccount();
