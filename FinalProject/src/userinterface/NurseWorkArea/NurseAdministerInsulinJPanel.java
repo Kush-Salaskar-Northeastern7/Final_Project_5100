@@ -13,6 +13,7 @@ import Business.UserAccount.UserAccount;
 import Business.WorkQueue.PatientAppointmentWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -267,6 +268,9 @@ public class NurseAdministerInsulinJPanel extends javax.swing.JPanel {
             return;
         }
         else {
+            req.setStatus("ADMINISTERED");
+            req.setResolveDate(new Date());
+            req.getCustomer().getUserAccount().getWorkQueue().getWorkRequestList().add(req);
             account.getWorkQueue().getWorkRequestList().remove(req);
             
             JOptionPane.showMessageDialog(null, "Insulin has been administered.");
