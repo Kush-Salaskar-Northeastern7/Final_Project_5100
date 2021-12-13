@@ -48,7 +48,10 @@ public class GraphJPanel extends javax.swing.JPanel {
       example.setAlwaysOnTop(true);  
       example.pack();  
       example.setSize(600, 400);  
-      example.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);  
+      
+      example.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+      
+      //example.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);  
       example.setVisible(true);  
     });  
     }

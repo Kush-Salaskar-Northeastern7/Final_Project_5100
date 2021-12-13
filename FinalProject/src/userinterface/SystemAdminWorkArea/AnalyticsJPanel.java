@@ -154,6 +154,8 @@ public class AnalyticsJPanel extends javax.swing.JPanel {
         dataset.addValue(orderedQuantity2, "Ordered Doses", "Type 2 Insulin");  
         dataset.addValue(apptQuantity2, "Administered Doses", "Type 2 Insulin");
         
+       
+                
         JFreeChart chart = ChartFactory.createBarChart("Quantity Ordered vs Administered to Patient", "Type of Diabetes", "Number of Doses", dataset, PlotOrientation.VERTICAL, true,true,false);
         CategoryPlot plot = chart.getCategoryPlot();
         plot.setRangeGridlinePaint(Color.black);

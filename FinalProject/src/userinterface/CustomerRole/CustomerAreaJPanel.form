@@ -72,7 +72,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btnLogout" alignment="1" pref="36" max="32767" attributes="0"/>
+                      <Component id="btnLogout" alignment="1" pref="46" max="32767" attributes="0"/>
                       <Component id="lblSelectedNode" alignment="0" max="32767" attributes="0"/>
                       <Component id="lblAccountName" alignment="0" max="32767" attributes="0"/>
                   </Group>
