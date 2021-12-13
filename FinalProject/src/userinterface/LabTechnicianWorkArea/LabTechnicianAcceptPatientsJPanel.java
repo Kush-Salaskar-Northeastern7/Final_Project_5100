@@ -16,6 +16,13 @@ import Business.Utils.BusinessEmail;
 import Business.WorkQueue.LabApprovalWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -112,16 +119,17 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
         btnReject = new javax.swing.JButton();
         lblImage = new javax.swing.JLabel();
         jPanel23 = new javax.swing.JPanel();
-        btnLogout20 = new javax.swing.JButton();
         lblSelectedNode20 = new javax.swing.JLabel();
         btnDelete = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        imgPrescription = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
+        labWorkRequestJTable.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         labWorkRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -148,11 +156,12 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        labWorkRequestJTable.setSelectionBackground(new java.awt.Color(0, 153, 153));
+        labWorkRequestJTable.setSelectionBackground(new java.awt.Color(51, 153, 255));
         labWorkRequestJTable.setShowGrid(false);
         jScrollPane1.setViewportView(labWorkRequestJTable);
 
         btnView.setBackground(new java.awt.Color(0, 153, 153));
+        btnView.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         btnView.setForeground(new java.awt.Color(255, 255, 255));
         btnView.setText("View");
         btnView.addActionListener(new java.awt.event.ActionListener() {
@@ -161,26 +170,23 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
             }
         });
 
-        lblName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblName.setText("a");
+        lblName.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel2.setText("Name");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel1.setText("Glucose Level");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel3.setText("Diabetes type");
 
-        lblGlucoseLevel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblGlucoseLevel.setText("w");
+        lblGlucoseLevel.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
 
-        lblDiabetesType.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblDiabetesType.setText("s");
+        lblDiabetesType.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
 
         btnAccept.setBackground(new java.awt.Color(0, 153, 153));
-        btnAccept.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnAccept.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         btnAccept.setForeground(new java.awt.Color(255, 255, 255));
         btnAccept.setText("Accept");
         btnAccept.addActionListener(new java.awt.event.ActionListener() {
@@ -190,7 +196,7 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
         });
 
         btnReject.setBackground(new java.awt.Color(0, 153, 153));
-        btnReject.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnReject.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         btnReject.setForeground(new java.awt.Color(255, 255, 255));
         btnReject.setText("Reject");
         btnReject.addActionListener(new java.awt.event.ActionListener() {
@@ -204,19 +210,6 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
         jPanel23.setMaximumSize(new java.awt.Dimension(900, 32767));
         jPanel23.setPreferredSize(new java.awt.Dimension(900, 57));
 
-        btnLogout20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logout.png"))); // NOI18N
-        btnLogout20.setAlignmentX(0.5F);
-        btnLogout20.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnLogout20.setBorderPainted(false);
-        btnLogout20.setContentAreaFilled(false);
-        btnLogout20.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnLogout20.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hoveredlogin.png"))); // NOI18N
-        btnLogout20.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLogout20ActionPerformed(evt);
-            }
-        });
-
         lblSelectedNode20.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblSelectedNode20.setForeground(new java.awt.Color(255, 255, 255));
         lblSelectedNode20.setText("Lab Technician Work Area");
@@ -228,21 +221,15 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblSelectedNode20, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnLogout20)
-                .addGap(19, 19, 19))
+                .addContainerGap(615, Short.MAX_VALUE))
         );
         jPanel23Layout.setVerticalGroup(
             jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnLogout20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addComponent(lblSelectedNode20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblSelectedNode20, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
         );
 
         btnDelete.setBackground(new java.awt.Color(0, 153, 153));
-        btnDelete.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnDelete.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         btnDelete.setForeground(new java.awt.Color(255, 255, 255));
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -251,10 +238,10 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel4.setText(":");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel5.setText(":");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -268,38 +255,42 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(21, 21, 21)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnAccept, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnReject))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(10, 10, 10)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel5)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(lblGlucoseLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(lblDiabetesType, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
-                        .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(10, 10, 10)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel5)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(lblGlucoseLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel4)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                .addComponent(jLabel6)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(lblDiabetesType, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(imgPrescription, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnAccept, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(25, 25, 25)
+                        .addComponent(btnReject)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -345,7 +336,9 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
                             .addComponent(jLabel3)
                             .addComponent(lblDiabetesType, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6))
-                        .addGap(24, 24, 24)
+                        .addGap(18, 18, 18)
+                        .addComponent(imgPrescription, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnReject, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnAccept, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -369,10 +362,14 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
         Employee employee = system.getEmployeeDirectory().createEmployee(req.getCustomer().getCustName());       
         UserAccount userAccount = system.getUserAccountDirectory().createUserAccount(req.getUsername(), req.getPassword(), employee, new CustomerRole());
         req.getCustomer().setUserAccount(userAccount);
-        String emailBody = "Congratulations!! Your account at Insumax has been created with \n Username= " +userAccount.getUsername() 
-                +" User same password to login when you signed up";
-        BusinessEmail.sendBusinessEmail(req.getCustomer().getEmailId(), "Account Created at Insumax", emailBody);
-        
+        String emailBody = "Congratulations!! Your account at Insumax has been created with Username= " +userAccount.getUsername() 
+                +" \n Use same password to login when you signed up";
+        try {
+            BusinessEmail.sendBusinessEmail(req.getCustomer().getEmailId(), "Account Created at Insumax", emailBody);
+        } catch (Exception ex) {
+            System.out.println("Email is not correct: " +ex);
+        }
+         
         account.getWorkQueue().getWorkRequestList().remove(req);
         JOptionPane.showMessageDialog(null, "You accepted this user.");
         populateTable();
@@ -385,7 +382,11 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         req.setStatus("REJECTED");
         String emailBody = "You are not diabetic and hence cannot buy Insulin from our App. Happy Sugar free life";
-        BusinessEmail.sendBusinessEmail(req.getCustomer().getEmailId(), "Account Created at Insumax", emailBody);
+        try {
+            BusinessEmail.sendBusinessEmail(req.getCustomer().getEmailId(), "Account Created at Insumax", emailBody);
+        } catch(Exception ex) { 
+            System.out.println("Email is incorrect: " +ex);
+        }
         System.out.println("reached hereee" +req.getStatus());
         JOptionPane.showMessageDialog(null, "You rejected this user.");
         populateTable();
@@ -393,19 +394,10 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
         hideButtons();
     }//GEN-LAST:event_btnRejectActionPerformed
 
-    private void btnLogout20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogout20ActionPerformed
-        // TODO add your handling code here:
-        userProcessContainer.removeAll();
-        JPanel blankJP = new JPanel();
-        LoginScreen ls = new LoginScreen(userProcessContainer, system);
-        userProcessContainer.add("blank", ls);
-        CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
-        crdLyt.next(userProcessContainer);
-        dB4OUtil.storeSystem(system);
-    }//GEN-LAST:event_btnLogout20ActionPerformed
-
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
         // TODO add your handling code here:
+        imgPrescription.setVisible(false);
+        imgPrescription.setIcon(null);
         int selectedRow = labWorkRequestJTable.getSelectedRow();
         
         if (selectedRow < 0) {
@@ -417,6 +409,18 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
             lblName.setText(wr.getCustomer().getCustName());
             lblGlucoseLevel.setText(String.valueOf(wr.getCustomer().getGlucoseLvl()));
             lblDiabetesType.setText(wr.getCustomer().getTypeDiabetes());
+ 
+            if(req.getCustomer().getPrescriptionImg() != null){
+                imgPrescription.setVisible(true);
+                System.out.println(req.getCustomer().getPrescriptionImg());
+            }
+            
+            try {
+                BufferedImage prescriptionPhoto = ImageIO.read(new File(wr.getCustomer().getPrescriptionImg()));
+                imgPrescription.setIcon(new ImageIcon(prescriptionPhoto.getScaledInstance(310, 170, java.awt.Image.SCALE_SMOOTH)));
+            } catch (IOException ex) {
+                System.out.println("Prescription Profile Image not uploaded");
+            }
             showButtons();
         }
     }//GEN-LAST:event_btnViewActionPerformed
@@ -447,9 +451,9 @@ public class LabTechnicianAcceptPatientsJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAccept;
     private javax.swing.JButton btnDelete;
-    private javax.swing.JButton btnLogout20;
     private javax.swing.JButton btnReject;
     private javax.swing.JButton btnView;
+    private javax.swing.JLabel imgPrescription;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

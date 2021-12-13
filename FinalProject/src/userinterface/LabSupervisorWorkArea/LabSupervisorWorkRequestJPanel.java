@@ -13,9 +13,17 @@ import Business.UserAccount.UserAccount;
 import Business.WorkQueue.LabApprovalWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import userinterface.LabTechnicianWorkArea.LabTechnicianAcceptPatientsJPanel;
 import userinterface.LoginScreen;
 
 /**
@@ -44,6 +52,8 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
     
     
     public void hideLabTechTable(){
+        custImagePanel.setVisible(false);
+        custPrescriptionPanel.setVisible(false);
         tblLabTech.setVisible(false);
         btnFinalSubmit.setVisible(false);
         jScrollPane2.setVisible(false);
@@ -99,7 +109,6 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel3 = new javax.swing.JPanel();
-        btnLogout = new javax.swing.JButton();
         lblSelectedNode = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         labWorkRequestJTable = new javax.swing.JTable();
@@ -108,24 +117,17 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
         btnRefres = new javax.swing.JButton();
         btnFinalSubmit = new javax.swing.JButton();
         btnAssignLabTech = new javax.swing.JButton();
+        custImagePanel = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        imgProfile = new javax.swing.JLabel();
+        custPrescriptionPanel = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        imgPrescription = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel3.setBackground(new java.awt.Color(51, 51, 51));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
-
-        btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logout.png"))); // NOI18N
-        btnLogout.setAlignmentX(0.5F);
-        btnLogout.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnLogout.setBorderPainted(false);
-        btnLogout.setContentAreaFilled(false);
-        btnLogout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnLogout.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hoveredlogin.png"))); // NOI18N
-        btnLogout.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLogoutActionPerformed(evt);
-            }
-        });
 
         lblSelectedNode.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblSelectedNode.setForeground(new java.awt.Color(255, 255, 255));
@@ -138,17 +140,13 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(lblSelectedNode, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnLogout)
-                .addGap(19, 19, 19))
+                .addContainerGap(521, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblSelectedNode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnLogout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(lblSelectedNode, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -201,7 +199,7 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tblLabTech.setSelectionBackground(new java.awt.Color(255, 204, 204));
+        tblLabTech.setSelectionBackground(new java.awt.Color(51, 153, 255));
         tblLabTech.setShowGrid(false);
         jScrollPane2.setViewportView(tblLabTech);
 
@@ -232,6 +230,58 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
             }
         });
 
+        custImagePanel.setBackground(new java.awt.Color(255, 255, 255));
+        custImagePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel2.setBackground(new java.awt.Color(0, 153, 153));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Customer Profile");
+
+        javax.swing.GroupLayout custImagePanelLayout = new javax.swing.GroupLayout(custImagePanel);
+        custImagePanel.setLayout(custImagePanelLayout);
+        custImagePanelLayout.setHorizontalGroup(
+            custImagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, custImagePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(imgProfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        custImagePanelLayout.setVerticalGroup(
+            custImagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(custImagePanelLayout.createSequentialGroup()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(imgProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        custPrescriptionPanel.setBackground(new java.awt.Color(255, 255, 255));
+        custPrescriptionPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel3.setBackground(new java.awt.Color(0, 153, 153));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Customer Prescription");
+
+        javax.swing.GroupLayout custPrescriptionPanelLayout = new javax.swing.GroupLayout(custPrescriptionPanel);
+        custPrescriptionPanel.setLayout(custPrescriptionPanelLayout);
+        custPrescriptionPanelLayout.setHorizontalGroup(
+            custPrescriptionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE)
+            .addGroup(custPrescriptionPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(imgPrescription, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        custPrescriptionPanelLayout.setVerticalGroup(
+            custPrescriptionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(custPrescriptionPanelLayout.createSequentialGroup()
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(imgPrescription, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -240,54 +290,56 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnAssignLabTech)
-                    .addComponent(btnFinalSubmit)
-                    .addComponent(btnRefres, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(293, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnAssignLabTech)
+                            .addComponent(btnRefres, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnFinalSubmit)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(custImagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
+                        .addComponent(custPrescriptionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(13, 13, 13)
                 .addComponent(btnRefres)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAssignLabTech)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAssignLabTech)
+                    .addComponent(btnFinalSubmit))
                 .addGap(18, 18, 18)
-                .addComponent(btnFinalSubmit)
-                .addGap(47, 47, 47))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(custImagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(custPrescriptionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
-        // TODO add your handling code here:
-        userProcessContainer.removeAll();
-        JPanel blankJP = new JPanel();
-        LoginScreen ls = new LoginScreen(userProcessContainer, system);
-        userProcessContainer.add("blank", ls);
-        CardLayout crdLyt = (CardLayout) userProcessContainer.getLayout();
-        crdLyt.next(userProcessContainer);
-        dB4OUtil.storeSystem(system);
-    }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnFinalSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalSubmitActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblLabTech.getSelectedRow();
         
         if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select a row", "Error", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please select a row");
         }
         else {
             LabTechnician lt = (LabTechnician) tblLabTech.getValueAt(selectedRow, 0);
             lt.getUserAccount().getWorkQueue().getWorkRequestList().add(req);
             account.getWorkQueue().getWorkRequestList().remove(req);
-            JOptionPane.showMessageDialog(null, "Task assigned to Lab Technician", "Error", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Task assigned to Lab Technician");
+            hideLabTechTable();
             populateWorkReqTable();
             populateTechTable();
         }
@@ -300,15 +352,51 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
 
     private void btnAssignLabTechActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignLabTechActionPerformed
         // TODO add your handling code here:
-        
+        custImagePanel.setVisible(false);
+        custPrescriptionPanel.setVisible(false);
+        imgProfile.setIcon(null);
+        imgPrescription.setIcon(null);
         int selectedRow = labWorkRequestJTable.getSelectedRow();
-        
+        boolean cImage = false;
+        boolean pImage = false;
+     
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select a row", "Error", JOptionPane.NO_OPTION);
         }
         else {
             LabApprovalWorkRequest wr = (LabApprovalWorkRequest) labWorkRequestJTable.getValueAt(selectedRow, 0);
             req = wr;
+            
+            
+            
+//            if (!req.getCustomer().getCustImage().trim().equals("") && !req.getCustomer().getPrescriptionImg().trim().equals("")) {
+//                custImagePanel.setVisible(true);
+//                custPrescriptionPanel.setVisible(true);
+//                System.out.println(req.getCustomer().getCustImage());
+//            }
+            if(req.getCustomer().getCustImage() != null){
+                custImagePanel.setVisible(true);
+                System.out.println(req.getCustomer().getCustImage());
+
+            }
+            if(req.getCustomer().getPrescriptionImg() != null){
+                custPrescriptionPanel.setVisible(true);
+                System.out.println(req.getCustomer().getPrescriptionImg());
+            }
+            
+            try {
+                BufferedImage profilePhoto = ImageIO.read(new File(req.getCustomer().getCustImage()));
+                imgProfile.setIcon(new ImageIcon(profilePhoto.getScaledInstance(200, 150, java.awt.Image.SCALE_SMOOTH)));
+            } catch (IOException ex) {
+                System.out.println("Profile Image not uploaded");
+            }
+            
+            try {
+                BufferedImage prescriptionPhoto = ImageIO.read(new File(req.getCustomer().getPrescriptionImg()));
+                imgPrescription.setIcon(new ImageIcon(prescriptionPhoto.getScaledInstance(420, 231, java.awt.Image.SCALE_SMOOTH)));
+            } catch (IOException ex) {
+                System.out.println("Prescription Image not uploaded");
+            }
             tblLabTech.setVisible(true);
             btnFinalSubmit.setVisible(true);
             jScrollPane2.setVisible(true);
@@ -322,8 +410,13 @@ public class LabSupervisorWorkRequestJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAssignLabTech;
     private javax.swing.JButton btnFinalSubmit;
-    private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnRefres;
+    private javax.swing.JPanel custImagePanel;
+    private javax.swing.JPanel custPrescriptionPanel;
+    private javax.swing.JLabel imgPrescription;
+    private javax.swing.JLabel imgProfile;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
