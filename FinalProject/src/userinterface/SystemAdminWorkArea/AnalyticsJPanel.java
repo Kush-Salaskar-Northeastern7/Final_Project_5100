@@ -5,15 +5,22 @@
  */
 package userinterface.SystemAdminWorkArea;
 
+import Business.Customer.Customer;
 import Business.EcoSystem;
+import Business.WorkQueue.PatientAppointmentWorkRequest;
+import Business.WorkQueue.PatientOrderWorkRequest;
+import Business.WorkQueue.WorkRequest;
 import java.awt.Color;
 import javax.swing.JPanel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
+import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
 
 /**
  *
@@ -44,6 +51,7 @@ public class AnalyticsJPanel extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         lblSelectedNode = new javax.swing.JLabel();
         insulinTypeBarGraph = new javax.swing.JButton();
+        insulinTypePieChart = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -71,10 +79,17 @@ public class AnalyticsJPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        insulinTypeBarGraph.setText("Insulin Type Sales Comparison");
+        insulinTypeBarGraph.setText("Insulin Type Comparison");
         insulinTypeBarGraph.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 insulinTypeBarGraphActionPerformed(evt);
+            }
+        });
+
+        insulinTypePieChart.setText("Total Administered vs Total Purchased");
+        insulinTypePieChart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                insulinTypePieChartActionPerformed(evt);
             }
         });
 
@@ -86,6 +101,8 @@ public class AnalyticsJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(insulinTypeBarGraph, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(insulinTypePieChart, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -93,7 +110,9 @@ public class AnalyticsJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
-                .addComponent(insulinTypeBarGraph, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(insulinTypeBarGraph, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(insulinTypePieChart, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 652, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -101,20 +120,78 @@ public class AnalyticsJPanel extends javax.swing.JPanel {
     private void insulinTypeBarGraphActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insulinTypeBarGraphActionPerformed
         // TODO add your handling code here:
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        dataset.setValue(50, "Amount Inoculated" , "Type 1");
-        dataset.setValue(80, "Amount Inoculated" , "Type 2");
+
+        int orderedQuantity1 = 0;
+        int orderedQuantity2 = 0;
+        int apptQuantity1 = 0;
+        int apptQuantity2 = 0;
+        for(Customer c : system.getCustomerDirectory().getCustomerList()){
+            for(WorkRequest wr : c.getUserAccount().getWorkQueue().getWorkRequestList()){
+                if(wr instanceof PatientAppointmentWorkRequest){
+            //                  apptQuantity += ((PatientAppointmentWorkRequest) wr).getQuantity();
+                      if(((PatientAppointmentWorkRequest) wr).isType1()){
+                          apptQuantity1 += ((PatientAppointmentWorkRequest) wr).getQuantity();
+                      }else{
+                          apptQuantity2 += ((PatientAppointmentWorkRequest) wr).getQuantity();
+                      }
+                }
+                if(wr instanceof PatientOrderWorkRequest){
+            //                  orderedQuantity += ((PatientOrderWorkRequest) wr).getQuantity();
+                      if(((PatientOrderWorkRequest) wr).isType1()){
+                         orderedQuantity1 +=  ((PatientOrderWorkRequest) wr).getQuantity();
+                      }else{
+                          orderedQuantity2 += ((PatientOrderWorkRequest) wr).getQuantity();
+                      }
+                }
+            }
+        }
+    
+        // Type 1 Insulin  
+        dataset.addValue(orderedQuantity1, "Ordered Doses", "Type 1 Insulin");  
+        dataset.addValue(apptQuantity1, "Administered Doses", "Type 1 Insulin");  
+
+        // Type 2 Insulin  
+        dataset.addValue(orderedQuantity2, "Ordered Doses", "Type 2 Insulin");  
+        dataset.addValue(apptQuantity2, "Administered Doses", "Type 2 Insulin");
         
-        JFreeChart chart = ChartFactory.createBarChart("Amount of Insulin given", "Insulin Type", "Amount", dataset, PlotOrientation.VERTICAL, false, true, false);
+        JFreeChart chart = ChartFactory.createBarChart("Quantity Ordered vs Administered to Patient", "Type of Diabetes", "Number of Doses", dataset, PlotOrientation.VERTICAL, true,true,false);
         CategoryPlot plot = chart.getCategoryPlot();
         plot.setRangeGridlinePaint(Color.black);
         ChartFrame myFrame = new ChartFrame("Bar Chart for Insulin type", chart);
         myFrame.setVisible(true);
         myFrame.setSize(480,380);
+        
     }//GEN-LAST:event_insulinTypeBarGraphActionPerformed
 
+    private void insulinTypePieChartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insulinTypePieChartActionPerformed
+        // TODO add your handling code here:
+        int orderedQuantity = 0;
+        int apptQuantity = 0;
+        for(Customer c : system.getCustomerDirectory().getCustomerList()){
+            for(WorkRequest wr : c.getUserAccount().getWorkQueue().getWorkRequestList()){
+                if(wr instanceof PatientAppointmentWorkRequest){
+                    apptQuantity += ((PatientAppointmentWorkRequest) wr).getQuantity();
+                }
+                if(wr instanceof PatientOrderWorkRequest){
+                    orderedQuantity += ((PatientOrderWorkRequest) wr).getQuantity();
+                }
+            }
+        } 
+        
+        DefaultPieDataset dataset = new DefaultPieDataset( );
+        dataset.setValue( "Supplied Doses" , orderedQuantity );  
+        dataset.setValue( "Administered Doses" , apptQuantity );
+        
+        JFreeChart chart = ChartFactory.createPieChart("Patient Requests", dataset,true,true,false);
+        ChartFrame myFrame = new ChartFrame("Pie Chart", chart);
+        myFrame.setVisible(true);
+        myFrame.setSize(480,380);
+    }//GEN-LAST:event_insulinTypePieChartActionPerformed
+  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton insulinTypeBarGraph;
+    private javax.swing.JButton insulinTypePieChart;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lblSelectedNode;
     // End of variables declaration//GEN-END:variables
