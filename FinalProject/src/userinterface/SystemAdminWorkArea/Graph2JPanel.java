@@ -91,48 +91,48 @@ public class BarChartExample extends ApplicationFrame {
         true,true,false  
        );  
   
-    ChartPanel panel=new ChartPanel(chart);  
+        ChartPanel panel=new ChartPanel(chart);  
     setContentPane(panel);  
   }  
   
-  private CategoryDataset createDataset() {  
-    DefaultCategoryDataset dataset = new DefaultCategoryDataset();  
+    private CategoryDataset createDataset() {  
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();  
   
-      int orderedQuantity1 = 0;
-      int orderedQuantity2 = 0;
-      int apptQuantity1 = 0;
-      int apptQuantity2 = 0;
-      for(Customer c : ecosystem.getCustomerDirectory().getCustomerList()){
-          for(WorkRequest wr : c.getUserAccount().getWorkQueue().getWorkRequestList()){
-              if(wr instanceof PatientAppointmentWorkRequest){
-//                  apptQuantity += ((PatientAppointmentWorkRequest) wr).getQuantity();
-                    if(((PatientAppointmentWorkRequest) wr).isType1()){
-                        apptQuantity1 += ((PatientAppointmentWorkRequest) wr).getQuantity();
-                    }else{
-                        apptQuantity2 += ((PatientAppointmentWorkRequest) wr).getQuantity();
-                    }
-              }
-              if(wr instanceof PatientOrderWorkRequest){
-//                  orderedQuantity += ((PatientOrderWorkRequest) wr).getQuantity();
-                    if(((PatientOrderWorkRequest) wr).isType1()){
-                       orderedQuantity1 +=  ((PatientOrderWorkRequest) wr).getQuantity();
-                    }else{
-                        orderedQuantity2 += ((PatientOrderWorkRequest) wr).getQuantity();
-                    }
-              }
-          }
-      }
+        int orderedQuantity1 = 0;
+        int orderedQuantity2 = 0;
+        int apptQuantity1 = 0;
+        int apptQuantity2 = 0;
+        for(Customer c : ecosystem.getCustomerDirectory().getCustomerList()){
+            for(WorkRequest wr : c.getUserAccount().getWorkQueue().getWorkRequestList()){
+                if(wr instanceof PatientAppointmentWorkRequest){
+            //                  apptQuantity += ((PatientAppointmentWorkRequest) wr).getQuantity();
+                      if(((PatientAppointmentWorkRequest) wr).isType1()){
+                          apptQuantity1 += ((PatientAppointmentWorkRequest) wr).getQuantity();
+                      }else{
+                          apptQuantity2 += ((PatientAppointmentWorkRequest) wr).getQuantity();
+                      }
+                }
+                if(wr instanceof PatientOrderWorkRequest){
+            //                  orderedQuantity += ((PatientOrderWorkRequest) wr).getQuantity();
+                      if(((PatientOrderWorkRequest) wr).isType1()){
+                         orderedQuantity1 +=  ((PatientOrderWorkRequest) wr).getQuantity();
+                      }else{
+                          orderedQuantity2 += ((PatientOrderWorkRequest) wr).getQuantity();
+                      }
+                }
+            }
+        }
     
     // Type 1 Insulin  
-    dataset.addValue(orderedQuantity1, "Ordered Doses", "Type 1 Insulin");  
-    dataset.addValue(apptQuantity1, "Administered Doses", "Type 1 Insulin");  
+        dataset.addValue(orderedQuantity1, "Ordered Doses", "Type 1 Insulin");  
+        dataset.addValue(apptQuantity1, "Administered Doses", "Type 1 Insulin");  
+
+        // Type 2 Insulin  
+        dataset.addValue(orderedQuantity2, "Ordered Doses", "Type 2 Insulin");  
+        dataset.addValue(apptQuantity2, "Administered Doses", "Type 2 Insulin");
   
-    // Type 2 Insulin  
-    dataset.addValue(orderedQuantity2, "Ordered Doses", "Type 2 Insulin");  
-    dataset.addValue(apptQuantity2, "Administered Doses", "Type 2 Insulin");
-  
-    return dataset;  
-  }  
+        return dataset;  
+    }  
   
   
   }  

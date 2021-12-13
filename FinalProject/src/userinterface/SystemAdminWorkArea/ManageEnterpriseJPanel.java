@@ -665,18 +665,43 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
 //                Customer c = ecosystem.getCustomerDirectory().addCustomer(name, age, address, 
 //                                                           community, zip, "sk", phonenumber, userAccount); 
                 Doctor doc = system.getDoctorDirectory().addDoctor(name, userAccount, phone, address);
+                
+                txtEnterpriseName.setText("");
+                txtEnterpriseLoc.setText("");
+                txtEnterpriseUsername.setText("");
+                txtEnterprisePhone.setText("");
+                txtPasswordField.setText("");
+                
             } else if(enterprisetype.equals("Manufacturer")){
                 Employee employee = system.getEmployeeDirectory().createEmployee(name);       
                 UserAccount userAccount = system.getUserAccountDirectory().createUserAccount(username, password, employee, new AdminRole());        
                 Manager m = system.getManagerDirectory().addManager(name, userAccount, phone, address);
+                
+                txtEnterpriseName.setText("");
+                txtEnterpriseLoc.setText("");
+                txtEnterpriseUsername.setText("");
+                txtEnterprisePhone.setText("");
+                txtPasswordField.setText("");
             } else if(enterprisetype.equals("Supplier")){
                 Employee employee = system.getEmployeeDirectory().createEmployee(name);       
                 UserAccount userAccount = system.getUserAccountDirectory().createUserAccount(username, password, employee, new SupplyManagerRole());        
                 SupplyManager sm = system.getSupplyManagerDirectory().createSupplyManager(name, userAccount,phone, address);
+                
+                txtEnterpriseName.setText("");
+                txtEnterpriseLoc.setText("");
+                txtEnterpriseUsername.setText("");
+                txtEnterprisePhone.setText("");
+                txtPasswordField.setText("");
             } else {
                 Employee employee = system.getEmployeeDirectory().createEmployee(name);       
                 UserAccount userAccount = system.getUserAccountDirectory().createUserAccount(username, password, employee, new LabSupervisorRole());
                 LabSupervisor ls = system.getLabSupervisorDirectory().addLabSupervisor(name, userAccount, phone, address);
+                
+                txtEnterpriseName.setText("");
+                txtEnterpriseLoc.setText("");
+                txtEnterpriseUsername.setText("");
+                txtEnterprisePhone.setText("");
+                txtPasswordField.setText("");
             }
 //            Enterprise enterprise = system.getEnterpriseDirectory().createEnterprise(enterpriseName, enterprisetype, enterpriseLoc, enterpriseEmail, enterprisePhone);
             JOptionPane.showMessageDialog(this, "Enterprise is added");
