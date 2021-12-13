@@ -61,7 +61,7 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="lblSelectedNode" min="-2" pref="273" max="-2" attributes="0"/>
-                  <EmptySpace pref="620" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -97,8 +97,11 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jScrollPane1" alignment="0" min="-2" pref="600" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
+                          <Component id="jScrollPane1" min="-2" pref="600" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
@@ -111,7 +114,7 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="txtDmusername" min="-2" pref="165" max="-2" attributes="0"/>
                                       <Component id="txtDmpassword" min="-2" pref="165" max="-2" attributes="0"/>
-                                      <Component id="txtDmname" min="-2" pref="165" max="-2" attributes="0"/>
+                                      <Component id="txtDmname" alignment="0" min="-2" pref="165" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -124,9 +127,11 @@
                                   <Component id="btnDelete" min="-2" pref="95" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <EmptySpace pref="30" max="32767" attributes="0"/>
+                          <Component id="jLabel4" min="-2" pref="502" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="285" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -136,28 +141,33 @@
                   <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="172" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel1" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtDmname" linkSize="3" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel1" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtDmname" linkSize="3" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel2" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtDmusername" linkSize="2" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel3" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtDmpassword" linkSize="1" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="btnCreate" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                              <Component id="btnViewLt" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                              <Component id="btnUpdate" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                              <Component id="btnDelete" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Component id="jLabel4" min="-2" pref="291" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel2" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtDmusername" linkSize="2" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel3" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtDmpassword" linkSize="1" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btnCreate" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                      <Component id="btnViewLt" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                      <Component id="btnUpdate" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                      <Component id="btnDelete" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace pref="291" max="32767" attributes="0"/>
+                  <EmptySpace pref="221" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -287,6 +297,13 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel4">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/images/Delivery.jpeg"/>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

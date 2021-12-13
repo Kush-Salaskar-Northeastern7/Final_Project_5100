@@ -108,6 +108,7 @@ public class ManagerAssignWorkJPanel extends javax.swing.JPanel {
         btnAssignLabTech = new javax.swing.JButton();
         btnRefres = new javax.swing.JButton();
         btnFinalSubmit = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -221,6 +222,8 @@ public class ManagerAssignWorkJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/assign (1).png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -238,7 +241,11 @@ public class ManagerAssignWorkJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnFinalSubmit))
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -253,7 +260,9 @@ public class ManagerAssignWorkJPanel extends javax.swing.JPanel {
                     .addComponent(btnRefres)
                     .addComponent(btnFinalSubmit)
                     .addComponent(btnAssignLabTech))
-                .addGap(0, 345, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
+                .addGap(38, 38, 38))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -317,6 +326,7 @@ public class ManagerAssignWorkJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnAssignLabTech;
     private javax.swing.JButton btnFinalSubmit;
     private javax.swing.JButton btnRefres;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
