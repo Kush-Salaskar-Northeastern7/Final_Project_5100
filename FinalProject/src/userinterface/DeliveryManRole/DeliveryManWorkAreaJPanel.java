@@ -157,6 +157,9 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        processJButton.setBackground(new java.awt.Color(0, 153, 153));
+        processJButton.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        processJButton.setForeground(new java.awt.Color(255, 255, 255));
         processJButton.setText("Process");
         processJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,6 +167,9 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        refreshJButton.setBackground(new java.awt.Color(0, 153, 153));
+        refreshJButton.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        refreshJButton.setForeground(new java.awt.Color(255, 255, 255));
         refreshJButton.setText("Refresh");
         refreshJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -171,6 +177,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        tblOrders.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         tblOrders.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -197,6 +204,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblOrders.setRowHeight(23);
         tblOrders.setSelectionBackground(new java.awt.Color(51, 153, 255));
         tblOrders.setShowGrid(false);
         jScrollPane1.setViewportView(tblOrders);
